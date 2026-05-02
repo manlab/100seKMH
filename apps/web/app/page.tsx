@@ -1,0 +1,206 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, Phone } from "lucide-react";
+import { pageMeta } from "@/lib/seo";
+import { SITE } from "@/lib/site";
+import { ROUTES } from "@/lib/navigation";
+import { Button } from "@/components/ui/Button";
+import { Section } from "@/components/ui/Section";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { Reveal } from "@/components/layout/Reveal";
+
+export const metadata: Metadata = pageMeta({
+  title: SITE.name,
+  description: SITE.description,
+  path: "/",
+});
+
+type ClinicCard = {
+  href: string;
+  eyebrow: string;
+  title: string;
+  desc: string;
+  big?: boolean;
+  accent?: boolean;
+};
+
+const CLINICS: ClinicCard[] = [
+  {
+    href: ROUTES.spine.root,
+    eyebrow: "01 SPINE & JOINT",
+    title: "척추·관절 클리닉",
+    desc: "디스크부터 오십견까지, 통증의 원인을 함께 봅니다.",
+    big: true,
+  },
+  {
+    href: ROUTES.posture.root,
+    eyebrow: "02 POSTURE",
+    title: "추나·체형교정",
+    desc: "틀어진 자세를 바로잡는 비수술 한방 교정.",
+  },
+  {
+    href: ROUTES.accident.root,
+    eyebrow: "03 ACCIDENT",
+    title: "교통사고 한방치료",
+    desc: "교통사고 후유증, 자동차보험으로 진료받으세요.",
+  },
+  {
+    href: ROUTES.immunity.root,
+    eyebrow: "04 IMMUNITY & CHRONIC",
+    title: "면역·만성 클리닉",
+    desc: "떨어진 면역과 누적된 피로, 한방으로 회복합니다.",
+    big: true,
+  },
+  {
+    href: ROUTES.womenKids.root,
+    eyebrow: "05 WOMEN & KIDS",
+    title: "여성·소아 클리닉",
+    desc: "산후·생리·갱년기·성장, 시기별 맞춤 진료.",
+  },
+  {
+    href: ROUTES.about.doctors,
+    eyebrow: "06 MEDICAL TEAM",
+    title: "의료진 소개",
+    desc: "한방 전문성을 갖춘 의료진이 책임감을 가지고 진료합니다.",
+    accent: true,
+  },
+];
+
+export default function HomePage() {
+  return (
+    <>
+      <h1 className="sr-only">
+        {SITE.name} — {SITE.tagline}
+      </h1>
+
+      {/* HERO — TODO: Hero slider 컴포넌트로 분리 */}
+      <section className="relative h-[520px] sm:h-[560px] lg:h-[640px] overflow-hidden bg-primary-700 text-white">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 18% 30%, rgba(74,142,156,0.25), transparent 50%), radial-gradient(circle at 86% 65%, rgba(143,191,204,0.18), transparent 55%), linear-gradient(135deg, #08172A 0%, #143A6B 55%, #102E55 100%)",
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative container max-w-container-base h-full flex items-center">
+          <div className="max-w-[640px]">
+            <Eyebrow variant="light">BAEKSE KOREAN MEDICINE</Eyebrow>
+            <h2 className="mt-5 text-balanced text-[36px] sm:text-[44px] lg:text-[58px] leading-[1.15] font-extrabold">
+              백세 건강의 시작,<br />
+              <span className="text-accent-300">백세한방병원</span>입니다
+            </h2>
+            <p className="mt-5 text-[16px] sm:text-[18px] leading-[1.7] text-primary-100/95 max-w-[480px]">
+              정성스러운 한방 치료로 환자 한 분 한 분의<br className="hidden sm:block" />
+              오랜 건강을 함께 만들어 갑니다.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button href="#clinics" variant="secondary" size="lg" className="bg-white text-primary-700 hover:bg-primary-50">
+                진료 안내 <ArrowRight size={16} aria-hidden="true" />
+              </Button>
+              <Button href={ROUTES.community.counsel} variant="outline-white" size="lg">
+                온라인 상담
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 클리닉 카드 그리드 */}
+      <Section id="clinics" bg="neutral-50" spacing="lg">
+        <Reveal as="header" className="flex flex-col items-center text-center mb-10 lg:mb-14">
+          <Eyebrow className="mb-3">CLINIC GUIDE</Eyebrow>
+          <h2 className="text-[28px] sm:text-[32px] lg:text-[40px] font-bold text-primary-700 leading-tight text-balanced">
+            부위와 증상에 따른 정성스러운 진료
+          </h2>
+          <p className="mt-4 text-[15px] sm:text-[17px] text-neutral-600 max-w-[640px]">
+            한방의 6개 클리닉을 중심으로, 환자 한 분 한 분의 체질과 생활 습관을 살펴<br className="hidden sm:block" />
+            맞춤형 진료 계획을 세워드립니다.
+          </p>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          {CLINICS.map((c) => (
+            <Link
+              key={c.href}
+              href={c.href}
+              className={
+                "group relative overflow-hidden rounded-2xl shadow-card h-[300px] sm:h-[340px] lg:h-[420px] transition-all duration-base ease-out-soft hover:-translate-y-1 hover:shadow-xl " +
+                (c.accent
+                  ? "bg-accent-500 text-white col-span-1"
+                  : c.big
+                    ? "bg-primary-700 md:col-span-2 lg:col-span-2 text-white"
+                    : "bg-white border border-neutral-200")
+              }
+              style={
+                c.big
+                  ? {
+                      background:
+                        "linear-gradient(135deg, #08172A 0%, #143A6B 55%, #2C555E 100%)",
+                    }
+                  : undefined
+              }
+            >
+              <div className={c.big || c.accent ? "absolute inset-x-0 bottom-0 p-6 lg:p-8 text-white" : "flex-1 p-5 lg:p-6 flex flex-col h-full"}>
+                <Eyebrow variant={c.big || c.accent ? "light" : "default"}>{c.eyebrow}</Eyebrow>
+                <h3
+                  className={
+                    "mt-2 font-bold leading-snug " +
+                    (c.big ? "text-[22px] lg:text-[28px] text-white" : c.accent ? "text-[20px] lg:text-[24px] text-white" : "text-[18px] lg:text-[20px] text-primary-700")
+                  }
+                >
+                  {c.title}
+                </h3>
+                <p
+                  className={
+                    "mt-2 text-[13px] lg:text-[14px] leading-relaxed " +
+                    (c.big || c.accent ? "text-primary-100/95 max-w-[420px]" : "text-neutral-600 flex-1")
+                  }
+                >
+                  {c.desc}
+                </p>
+                <span
+                  className={
+                    "mt-4 inline-flex items-center gap-2 text-[13px] font-semibold " +
+                    (c.big || c.accent ? "text-accent-300" : "text-accent-600")
+                  }
+                >
+                  자세히 보기 <ArrowRight size={14} aria-hidden="true" className="transition-transform group-hover:translate-x-1" />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </Section>
+
+      {/* Bottom CTA */}
+      <Section bg="primary" spacing="xl">
+        <div className="grid lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-8">
+            <Eyebrow variant="light">365 DAYS WITH YOU</Eyebrow>
+            <h2 className="mt-3 text-[28px] sm:text-[34px] lg:text-[44px] font-bold text-white text-balanced leading-[1.2]">
+              아플 때 참지 마세요.<br />
+              언제든 <span className="text-accent-300">{SITE.name}</span>을 찾아주세요.
+            </h2>
+            <p className="mt-5 text-[15px] sm:text-[17px] text-primary-100/90 leading-relaxed max-w-[640px]">
+              평일·주말·공휴일 모두 진료합니다. 전화 한 통이면 가능한 빠른 진료 일정으로 안내드리겠습니다.
+            </p>
+          </div>
+          <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">
+            <Button href={`tel:${SITE.contact.representative}`} external variant="accent" size="lg" className="justify-between h-14">
+              <span className="inline-flex items-center gap-2">
+                <Phone size={18} aria-hidden="true" />
+                지금 전화 상담하기
+              </span>
+              <ArrowRight size={16} aria-hidden="true" />
+            </Button>
+            <Button href={ROUTES.community.counsel} variant="outline-white" size="lg" className="justify-between h-14">
+              <span>온라인으로 상담 남기기</span>
+              <ArrowRight size={16} aria-hidden="true" />
+            </Button>
+          </div>
+        </div>
+      </Section>
+    </>
+  );
+}

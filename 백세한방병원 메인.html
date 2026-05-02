@@ -1,0 +1,1365 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#143A6B" />
+  <meta name="description" content="백세 건강의 시작, 백세한방병원. 척추·관절, 추나·교정, 교통사고, 면역·만성, 여성·소아 클리닉을 운영하는 한방병원입니다. 1년 365일 진료." />
+  <meta property="og:title" content="백세한방병원 — 정성스러운 한방, 100년의 건강" />
+  <meta property="og:description" content="한약·침·추나·약침으로 부위별 맞춤 진료를 제공합니다. 평일·주말·공휴일 1년 365일 진료." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ko_KR" />
+  <link rel="canonical" href="https://baeksehospital.kr/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <title>백세한방병원 — 정성스러운 한방, 100년의 건강</title>
+
+  <!-- Pretendard Variable (필수) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        container: { center: true, padding: { DEFAULT: "1.25rem", md: "2rem", lg: "2.5rem" } },
+        extend: {
+          colors: {
+            primary: {
+              50: "#F1F5FA", 100: "#DCE5F1", 200: "#B7C7DD", 300: "#92A9C9",
+              400: "#4F6E9F", 500: "#143A6B", 600: "#102E55", 700: "#0C2340",
+              800: "#08172A", 900: "#040C15"
+            },
+            accent: {
+              50: "#F1F8FA", 100: "#DAEAEE", 200: "#B5D5DD", 300: "#8FBFCC",
+              400: "#6AAABA", 500: "#4A8E9C", 600: "#3B727D", 700: "#2C555E",
+              800: "#1E393F", 900: "#0F1C1F"
+            },
+            neutral: {
+              0: "#FFFFFF", 50: "#F8FAFC", 100: "#F1F5F9", 200: "#E2E8F0",
+              300: "#CBD5E1", 400: "#94A3B8", 500: "#64748B", 600: "#475569",
+              700: "#334155", 800: "#1E293B", 900: "#0F172A"
+            }
+          },
+          fontFamily: {
+            sans: ['"Pretendard Variable"', "Pretendard", "-apple-system", "BlinkMacSystemFont",
+                   '"Apple SD Gothic Neo"', '"Malgun Gothic"', "맑은 고딕", "sans-serif"]
+          },
+          maxWidth: { content: "1320px", wide: "1440px", narrow: "768px" },
+          boxShadow: {
+            sm:    "0 1px 2px rgba(20, 58, 107, 0.05)",
+            md:    "0 4px 12px rgba(20, 58, 107, 0.08)",
+            lg:    "0 8px 24px rgba(20, 58, 107, 0.10)",
+            xl:    "0 16px 48px rgba(20, 58, 107, 0.14)",
+            card:  "0 2px 8px rgba(20, 58, 107, 0.06), 0 0 0 1px rgba(20, 58, 107, 0.04)",
+            cta:   "0 8px 20px rgba(74, 142, 156, 0.30)"
+          },
+          transitionTimingFunction: {
+            "out-soft": "cubic-bezier(0.16, 1, 0.3, 1)"
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root { color-scheme: light; }
+    html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
+    body {
+      background-color: #F8FAFC;
+      color: #475569;
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+                   "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
+      letter-spacing: -0.01em;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    p, h1, h2, h3, h4, h5, h6, li, dt, dd, blockquote, figcaption {
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    h1, h2, h3, h4, h5, h6 { letter-spacing: -0.02em; color: #0C2340; }
+    .text-balanced { text-wrap: balance; }
+    ::selection { background-color: #B5D5DD; color: #0C2340; }
+
+    /* tabular nums */
+    .tabular, time, .tel-number, .hours-time {
+      font-feature-settings: "tnum" 1, "lnum" 1;
+      font-variant-numeric: tabular-nums lining-nums;
+    }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute; top: -100px; left: 1rem; z-index: 99;
+      padding: 0.75rem 1rem; background: #143A6B; color: #fff;
+      border-radius: 0.5rem; font-weight: 600;
+      transition: top .15s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .skip-link:focus { top: 1rem; }
+
+    /* Mobile bottom quick bar offset */
+    @media (max-width: 1023px) { body { padding-bottom: 64px; } }
+
+    /* Hero slider */
+    .hero-slide {
+      opacity: 0;
+      transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+    .hero-slide.is-active { opacity: 1; pointer-events: auto; }
+    .hero-dot { width: 10px; height: 10px; border-radius: 9999px;
+      background: rgba(255,255,255,0.45);
+      transition: width 300ms cubic-bezier(0.16, 1, 0.3, 1), background-color 300ms; }
+    .hero-dot.is-active { width: 32px; background: #4A8E9C; }
+
+    /* Mega menu */
+    .gnb-item:hover .mega { opacity: 1; visibility: visible; transform: translateY(0); }
+    .mega { opacity: 0; visibility: hidden; transform: translateY(-6px);
+      transition: opacity 200ms cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 200ms,
+                  transform 200ms cubic-bezier(0.16, 1, 0.3, 1); }
+    .gnb-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+      white-space: nowrap;
+      transition: color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .gnb-link::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 14px;
+      height: 2px;
+      width: 0;
+      background: #4A8E9C;
+      transform: translateX(-50%);
+      transition: width 220ms cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+    .gnb-item:hover .gnb-link::after,
+    .gnb-link.is-active::after,
+    .gnb-link:focus-visible::after { width: calc(100% - 24px); }
+    .gnb-link.is-active { color: #3B727D; }
+
+    /* Card hover */
+    .card-clinic { transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 250ms; }
+    .card-clinic:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(20, 58, 107, 0.14); }
+    .card-clinic:hover .clinic-img { transform: scale(1.06); }
+    .card-clinic .clinic-img { transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1); }
+    .card-clinic:hover .arrow-x { transform: translateX(4px); }
+    .arrow-x { transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1); }
+
+    /* Notice rows */
+    .notice-row { transition: background-color 200ms cubic-bezier(0.16, 1, 0.3, 1); }
+    .notice-row:hover { background-color: #F1F5FA; }
+
+    /* Mobile drawer */
+    #mobileDrawer { transform: translateX(100%); transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1); }
+    #mobileDrawer.open { transform: translateX(0); }
+    body.drawer-open { overflow: hidden; }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(16px); filter: blur(4px);
+      transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 600ms cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.is-visible { opacity: 1; transform: none; filter: none; }
+
+    /* Subtle texture for primary banner */
+    .banner-grain {
+      background-image:
+        radial-gradient(circle at 20% 20%, rgba(74,142,156,0.18), transparent 40%),
+        radial-gradient(circle at 80% 60%, rgba(143,191,204,0.10), transparent 45%);
+    }
+
+    /* Header scrolled state */
+    header.is-scrolled .gnb-row { height: 64px; }
+    header.is-scrolled { box-shadow: 0 4px 12px rgba(20,58,107,0.08); }
+    .gnb-row { transition: height 200ms cubic-bezier(0.16, 1, 0.3, 1); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1; transform: none; filter: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">본문 바로가기</a>
+
+  <!-- =============== HEADER =============== -->
+  <header id="siteHeader" class="sticky top-0 z-40 bg-white border-b border-neutral-200">
+    <!-- Utility bar (desktop only) -->
+    <div class="hidden lg:block bg-primary-500 text-primary-100">
+      <div class="container max-w-content flex items-center justify-between h-9 text-[13px]">
+        <div class="flex items-center gap-2 text-primary-100/90">
+          <span class="inline-flex w-1.5 h-1.5 rounded-full bg-accent-400"></span>
+          <span>1년 365일 진료 · 평일·주말·공휴일 모두 진료합니다</span>
+        </div>
+        <nav aria-label="유틸리티" class="flex items-center gap-5">
+          <a href="#" class="hover:text-white transition-colors">로그인</a>
+          <span class="text-primary-300/60">|</span>
+          <a href="#" class="hover:text-white transition-colors">회원가입</a>
+          <span class="text-primary-300/60">|</span>
+          <a href="#location" class="hover:text-white transition-colors">오시는 길</a>
+          <span class="text-primary-300/60">|</span>
+          <a href="tel:031-0000-0000" class="tabular hover:text-white transition-colors flex items-center gap-1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <strong class="text-white">031-0000-0000</strong>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- GNB -->
+    <div class="container max-w-content flex items-center justify-between h-14 lg:h-[84px] gnb-row">
+      <!-- Logo -->
+      <a href="#" class="flex items-center shrink-0" aria-label="백세한방병원 홈으로">
+        <svg viewBox="0 0 8013.91 1033.8" xmlns="http://www.w3.org/2000/svg" class="h-5 sm:h-6 lg:h-7 w-auto" role="img" aria-label="백세한방병원">
+          <path fill="#396683" d="M2420.54,1008.72h-186.37c-40.83,0-66.34-43.4-45.9-78.14l93.17-158.58,93.15-158.56c20.44-34.72,71.47-34.72,91.89,0l93.17,158.56,93.17,158.58c20.44,34.74-5.07,78.14-45.95,78.14h-186.33Z"/>
+          <path fill="#091950" d="M2282.4,488.02C2267.41,215.99,2042.11,0,1766.34,0c-137.86,0-262.94,54.15-355.62,142.05C1318.11,54.12,1192.98,0,1055.15,0c-237.48,0-437.39,160.21-497.98,378.39V20.01h-280.66c-12.36,29.44-30.36,57.06-54.29,80.98C161.84,161.34,78.38,184.61,0,171.19v226.28c95.52,8.79,193.09-10.88,278.87-59.38v675.7h278.3v-358.37c60.58,218.17,260.49,378.38,497.98,378.38,137.83,0,262.96-54.07,355.57-142.04,92.68,87.92,217.76,142.04,355.62,142.04,80.94,0,157.35-18.89,225.57-52.08l290.49-493.7ZM1055.15,774.64c-142.37,0-257.76-115.39-257.76-257.71s115.39-257.77,257.76-257.77,257.74,115.4,257.74,257.77-115.39,257.71-257.74,257.71M1508.62,516.92c0-142.36,115.39-257.77,257.73-257.77s257.78,115.4,257.78,257.77-115.44,257.71-257.78,257.71-257.73-115.39-257.73-257.71"/>
+          <path fill="#091950" d="M3084.31,217.7h130.33v-108.24h133.13v472.13h-396.59V109.46h133.13v108.24ZM3625.06,957.48v-184.46h-635.06v-121.3h780.18v305.75h-145.12ZM3214.64,339.99h-130.33v119.28h130.33v-119.28ZM3421.68,606.62V99.4h133.13v184.46l81.32-31.1V99.4h134.05v507.22h-134.05v-218.54l-81.32,31.08v187.46h-133.13Z"/>
+          <path fill="#091950" d="M4125.14,474.3c0,27.39-1.08,53.3-3.23,77.66-2.17,24.43-5.36,48.28-9.72,71.68l186.76,190.45-80.43,106.27-155.31-158.38c-19.71,34.74-44.81,65.65-75.35,92.72-30.49,27.09-67.63,49.27-111.38,66.68l-63.76-116.32c30.19-14.02,55.76-29.73,76.73-47.07,20.93-17.4,38.17-38.92,51.76-64.67,13.53-25.73,23.39-56.27,29.59-91.73,6.13-35.44,9.23-78.16,9.23-128.32V107.41h145.12v366.89ZM4336.84,937.39v-453.07l-130.32,49.12v-135.32l130.32-49.1V99.38h133.11v838.01h-133.11ZM4671.46,937.39h-134.03V99.38h134.03v838.01Z"/>
+          <path fill="#091950" d="M5056.91,129.46h188.54v122.29h-522.23v-122.29h188.54V56.29h145.16v73.16ZM4983.88,286.81c80.08,0,140.05,15.4,179.76,46.16,39.75,30.75,59.64,74.82,59.64,132.31s-19.89,103.07-59.64,132.8c-39.71,29.8-99.68,44.63-179.76,44.63s-138.18-14.84-177.93-44.63c-39.75-29.72-59.65-73.96-59.65-132.8s19.9-101.55,59.65-132.31c39.76-30.76,99.01-46.16,177.93-46.16M4937.67,691.81v144.37h538.89v121.26h-684.02v-265.62h145.13ZM4983.88,393.13c-25.29,0-47.01,5.33-65.18,16.02-18.19,10.71-27.25,29.39-27.25,56.13s8.89,44.62,26.76,55.63c17.9,11.01,39.78,16.53,65.66,16.53,12.32,0,24.19-1.33,35.59-3.99,11.41-2.68,21.39-6.83,30.03-12.54,8.63-5.68,15.56-13.06,20.79-22.01,5.26-9.08,7.86-20.25,7.86-33.62s-2.6-24.55-7.86-33.59c-5.23-9-12.32-16.38-21.29-22.06-8.89-5.66-19.06-9.85-30.45-12.52-11.41-2.64-23.01-3.98-34.66-3.98M5467.33,439.2v288.73h-145.16V99.4h145.16v217.52h80.4v122.28h-80.4Z"/>
+          <path fill="#091950" d="M5735.37,212.66h161.77v-103.19h145.1v452.01h-451.99V109.46h145.12v103.19ZM5967.39,977.46c-55.49,0-105.25-3.65-149.29-10.99-44.07-7.36-81.33-18.68-111.87-34.06-30.49-15.43-53.75-34.48-69.77-57.19-16.06-22.7-24.03-49.73-24.03-81.18s7.98-57.61,24.03-80.67c16.01-23.05,39.28-42.13,69.77-57.16,30.54-15,67.8-26.17,111.87-33.55,44.03-7.36,93.8-11.01,149.29-11.01s105.25,3.65,149.28,11.01c44.07,7.38,81.33,18.55,111.86,33.55,30.49,15.03,53.72,34.11,69.78,57.16,16.04,23.07,24.02,50,24.02,80.67s-7.98,58.48-24.02,81.18c-16.05,22.71-39.29,41.76-69.78,57.19-30.53,15.38-67.8,26.7-111.86,34.06-44.04,7.34-93.82,10.99-149.28,10.99M5897.14,334.94h-161.77v104.26h161.77v-104.26ZM5967.39,855.19c65.94,0,117.4-4.64,154.35-14.03,36.98-9.37,55.48-25.05,55.48-47.11s-18.5-37.7-55.48-47.12c-36.95-9.33-88.41-14.01-154.35-14.01s-117.39,4.68-154.36,14.01c-36.98,9.42-55.48,25.11-55.48,47.12s18.49,37.74,55.48,47.11c36.97,9.39,88.4,14.03,154.36,14.03M6303.88,379.04v207.54h-145.17V99.4h145.17v157.35h80.38v122.29h-80.38Z"/>
+          <path fill="#091950" d="M6571.92,212.66h161.75v-103.23h145.12v452.05h-452.01V109.42h145.14v103.23ZM6817.82,977.52c-57.96,0-109.73-3.7-155.34-11.04-45.61-7.36-84.24-18.68-116.01-34.06-31.71-15.4-55.91-34.48-72.56-57.19-16.64-22.7-24.94-49.73-24.94-81.18s8.3-57.65,24.94-80.67c16.66-23.05,40.85-42.13,72.56-57.16,31.77-15,70.4-26.17,116.01-33.59,45.61-7.32,97.37-10.97,155.34-10.97s109.68,3.65,155.31,10.97c45.55,7.42,84.24,18.59,115.98,33.59,31.74,15.03,55.94,34.11,72.55,57.16,16.64,23.03,24.97,49.95,24.97,80.67s-8.33,58.48-24.97,81.18c-16.62,22.71-40.82,41.79-72.55,57.19-31.75,15.38-70.44,26.7-115.98,34.06-45.63,7.34-97.42,11.04-155.31,11.04M6733.67,334.94h-161.75v104.26h161.75v-104.26ZM6817.82,855.22c70.85,0,125.84-4.71,164.99-14.04,39.12-9.39,58.66-25.07,58.66-47.13s-19.55-37.73-58.66-47.09c-39.16-9.36-94.14-14-164.99-14s-125.89,4.64-165.02,14c-39.16,9.36-58.69,25.08-58.69,47.09s19.54,37.74,58.69,47.13c39.13,9.33,94.14,14.04,165.02,14.04M7168.11,99.38v496.19h-145.1v-126.3l-116.47,23.1v-119.32l116.47-25.04v-63.15l-116.47,24.03v-119.27l116.47-25.02v-65.2h145.1Z"/>
+          <path fill="#091950" d="M7444.52,769v-107.25h-216.32v-122.28h576.81v122.28h-215.39v107.25h-145.1ZM7242.08,292.84c0-60.81,23.09-108.04,69.31-141.78,46.25-33.75,110.91-50.64,194.1-50.64,65.96,0,120.34,10.64,163.17,32.04,42.84,21.42,72.24,52.1,88.27,92.21l102.64-25.04v-100.24h145.07v657.58h-145.07v-432.06l-98,24.07c-12.95,44.14-41.59,77.9-85.97,101.26-44.41,23.36-101.11,35.07-170.11,35.07-83.2,0-147.86-16.88-194.1-50.62-46.22-33.72-69.31-80.99-69.31-141.84M7416.76,711.84v124.33h597.15v121.26h-742.24v-245.58h145.09ZM7387.2,292.84c0,11.39,3.38,21.59,10.2,30.56,6.76,9.07,15.67,16.59,26.75,22.58,11.11,6,23.73,10.55,37.91,13.55,14.17,2.99,28.67,4.48,43.44,4.48s29.44-1.62,43.91-5.01c14.5-3.34,27.42-7.98,38.82-14.04,11.41-6,20.5-13.35,27.3-22.01,6.79-8.67,10.15-18.72,10.15-30.11,0-22.01-11.24-39.41-33.72-52.14-22.51-12.66-51.32-18.98-86.45-18.98s-62.83,5.96-85.04,18.03c-22.14,12-33.25,29.72-33.25,53.09"/>
+        </svg>
+      </a>
+
+      <!-- Desktop GNB -->
+      <nav class="hidden lg:flex items-center" aria-label="주메뉴">
+        <ul class="flex items-center gap-1">
+          <li class="gnb-item relative">
+            <a href="#" class="gnb-link block px-3 xl:px-4 py-5 text-[15px] font-semibold text-primary-700 hover:text-accent-600">백세한방병원</a>
+            <div class="mega absolute left-0 top-full w-[280px] bg-white border border-neutral-200 shadow-lg rounded-b-xl p-3">
+              <ul class="text-[14px] text-neutral-700">
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">인사말</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">의료진 소개</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">시설 둘러보기</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">한약·탕전 안내</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">입원 안내</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">진료시간</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">오시는 길</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="gnb-item relative">
+            <a href="#" class="gnb-link block px-3 xl:px-4 py-5 text-[15px] font-semibold text-primary-700 hover:text-accent-600">척추·관절</a>
+            <div class="mega absolute left-0 top-full w-[260px] bg-white border border-neutral-200 shadow-lg rounded-b-xl p-3">
+              <ul class="text-[14px] text-neutral-700">
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">디스크 (목·허리)</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">척추관협착증</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">오십견·회전근개</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">무릎관절통</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">스포츠 손상</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="gnb-item relative">
+            <a href="#" class="gnb-link block px-3 xl:px-4 py-5 text-[15px] font-semibold text-primary-700 hover:text-accent-600">추나·교정</a>
+            <div class="mega absolute left-0 top-full w-[260px] bg-white border border-neutral-200 shadow-lg rounded-b-xl p-3">
+              <ul class="text-[14px] text-neutral-700">
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">척추측만증</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">일자목·거북목</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">골반·휜다리</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">산후 체형교정</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="gnb-item relative">
+            <a href="#" class="gnb-link block px-3 xl:px-4 py-5 text-[15px] font-semibold text-primary-700 hover:text-accent-600">교통사고</a>
+            <div class="mega absolute left-0 top-full w-[260px] bg-white border border-neutral-200 shadow-lg rounded-b-xl p-3">
+              <ul class="text-[14px] text-neutral-700">
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">교통사고 후유증</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">자동차보험 진료절차</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">치료·입원 시스템</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="gnb-item relative">
+            <a href="#" class="gnb-link block px-3 xl:px-4 py-5 text-[15px] font-semibold text-primary-700 hover:text-accent-600">면역·만성</a>
+            <div class="mega absolute left-0 top-full w-[260px] bg-white border border-neutral-200 shadow-lg rounded-b-xl p-3">
+              <ul class="text-[14px] text-neutral-700">
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">비염·천식</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">만성피로</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">수면장애·두통</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">수족냉증</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="gnb-item relative">
+            <a href="#" class="gnb-link block px-3 xl:px-4 py-5 text-[15px] font-semibold text-primary-700 hover:text-accent-600">여성·소아</a>
+            <div class="mega absolute left-0 top-full w-[260px] bg-white border border-neutral-200 shadow-lg rounded-b-xl p-3">
+              <ul class="text-[14px] text-neutral-700">
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">산후조리</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">생리통·월경불순</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">갱년기</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">성장 클리닉</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">총명탕</a></li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="gnb-item relative">
+            <a href="#" class="gnb-link block px-3 xl:px-4 py-5 text-[15px] font-semibold text-primary-700 hover:text-accent-600">커뮤니티</a>
+            <div class="mega absolute right-0 top-full w-[260px] bg-white border border-neutral-200 shadow-lg rounded-b-xl p-3">
+              <ul class="text-[14px] text-neutral-700">
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">공지사항</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">온라인 상담</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">자주묻는 질문</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">비급여 항목</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">서류 발급 안내</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-2 shrink-0">
+        <a href="#" class="inline-flex items-center gap-2 h-11 px-5 rounded-full text-[14px] font-semibold text-primary-600 border border-primary-200 hover:bg-primary-50 transition-colors whitespace-nowrap">온라인 상담</a>
+        <a href="tel:031-0000-0000" class="inline-flex items-center gap-2 h-11 px-5 rounded-full text-[14px] font-semibold text-white bg-accent-500 hover:bg-accent-600 shadow-cta transition-colors whitespace-nowrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          전화 예약
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="hamburger" type="button" aria-label="메뉴 열기" aria-controls="mobileDrawer" aria-expanded="false"
+              class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-md text-primary-700 hover:bg-primary-50 transition-colors">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- =============== MOBILE DRAWER =============== -->
+  <div id="mobileDrawer" class="fixed inset-0 z-50 lg:hidden bg-white" aria-hidden="true" role="dialog" aria-label="모바일 메뉴">
+    <div class="flex items-center justify-between h-14 border-b border-neutral-200 px-5">
+      <span class="font-bold text-primary-700">메뉴</span>
+      <button id="hamburgerClose" type="button" aria-label="메뉴 닫기"
+              class="inline-flex items-center justify-center w-11 h-11 rounded-md text-primary-700 hover:bg-primary-50">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav class="overflow-y-auto h-[calc(100%-56px-72px)] px-2 py-3" aria-label="모바일 주메뉴">
+      <details class="group border-b border-neutral-200">
+        <summary class="cursor-pointer list-none px-3 py-4 flex items-center justify-between font-semibold text-primary-700">
+          백세한방병원
+          <span class="text-neutral-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <ul class="pb-3 pl-3 text-[14px] text-neutral-600">
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">인사말</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">의료진 소개</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">시설 둘러보기</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">한약·탕전 안내</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">입원 안내</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">진료시간</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">오시는 길</a></li>
+        </ul>
+      </details>
+      <details class="group border-b border-neutral-200">
+        <summary class="cursor-pointer list-none px-3 py-4 flex items-center justify-between font-semibold text-primary-700">
+          척추·관절 <span class="text-neutral-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <ul class="pb-3 pl-3 text-[14px] text-neutral-600">
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">디스크 (목·허리)</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">척추관협착증</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">오십견·회전근개</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">무릎관절통</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">스포츠 손상</a></li>
+        </ul>
+      </details>
+      <details class="group border-b border-neutral-200">
+        <summary class="cursor-pointer list-none px-3 py-4 flex items-center justify-between font-semibold text-primary-700">
+          추나·교정 <span class="text-neutral-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <ul class="pb-3 pl-3 text-[14px] text-neutral-600">
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">척추측만증</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">일자목·거북목</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">골반·휜다리</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">산후 체형교정</a></li>
+        </ul>
+      </details>
+      <details class="group border-b border-neutral-200">
+        <summary class="cursor-pointer list-none px-3 py-4 flex items-center justify-between font-semibold text-primary-700">
+          교통사고 <span class="text-neutral-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <ul class="pb-3 pl-3 text-[14px] text-neutral-600">
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">교통사고 후유증</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">자동차보험 진료절차</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">치료·입원 시스템</a></li>
+        </ul>
+      </details>
+      <details class="group border-b border-neutral-200">
+        <summary class="cursor-pointer list-none px-3 py-4 flex items-center justify-between font-semibold text-primary-700">
+          면역·만성 <span class="text-neutral-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <ul class="pb-3 pl-3 text-[14px] text-neutral-600">
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">비염·천식</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">만성피로</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">수면장애·두통</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">수족냉증</a></li>
+        </ul>
+      </details>
+      <details class="group border-b border-neutral-200">
+        <summary class="cursor-pointer list-none px-3 py-4 flex items-center justify-between font-semibold text-primary-700">
+          여성·소아 <span class="text-neutral-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <ul class="pb-3 pl-3 text-[14px] text-neutral-600">
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">산후조리</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">생리통·월경불순</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">갱년기</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">성장 클리닉</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">총명탕</a></li>
+        </ul>
+      </details>
+      <details class="group border-b border-neutral-200">
+        <summary class="cursor-pointer list-none px-3 py-4 flex items-center justify-between font-semibold text-primary-700">
+          커뮤니티 <span class="text-neutral-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <ul class="pb-3 pl-3 text-[14px] text-neutral-600">
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">공지사항</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">온라인 상담</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">자주묻는 질문</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">비급여 항목</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">서류 발급 안내</a></li>
+        </ul>
+      </details>
+    </nav>
+    <div class="absolute bottom-0 inset-x-0 grid grid-cols-3 gap-2 p-3 bg-white border-t border-neutral-200">
+      <a href="#" class="flex flex-col items-center justify-center h-14 rounded-md bg-primary-50 text-primary-600 text-[12px] font-semibold">온라인 상담</a>
+      <a href="tel:031-0000-0000" class="flex flex-col items-center justify-center h-14 rounded-md bg-accent-500 text-white text-[12px] font-semibold">전화걸기</a>
+      <a href="#hours" class="flex flex-col items-center justify-center h-14 rounded-md bg-primary-50 text-primary-600 text-[12px] font-semibold">진료시간</a>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <h1 class="sr-only">백세한방병원 — 정성스러운 한방, 100년의 건강</h1>
+
+    <!-- =============== HERO SLIDER =============== -->
+    <section aria-roledescription="carousel" aria-label="메인 비주얼" class="relative">
+      <div id="heroSlider" class="relative h-[520px] sm:h-[560px] lg:h-[640px] overflow-hidden bg-primary-700">
+        <!-- Slide 1 -->
+        <article class="hero-slide is-active absolute inset-0" data-index="0" aria-roledescription="slide" aria-label="1번 슬라이드">
+          <div class="absolute inset-0">
+            <img class="w-full h-full object-cover" loading="eager" decoding="async"
+                 alt="따뜻한 분위기의 한방 진료실"
+                 src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1920&q=70" />
+            <div class="absolute inset-0 bg-gradient-to-r from-primary-900/85 via-primary-700/55 to-primary-700/10"></div>
+          </div>
+          <div class="relative container max-w-content h-full flex items-center">
+            <div class="max-w-[640px] text-white">
+              <span class="inline-block text-[12px] tracking-[0.2em] font-semibold text-accent-300 mb-5">BAEKSE KOREAN MEDICINE</span>
+              <h2 class="text-balanced text-[36px] sm:text-[44px] lg:text-[58px] leading-[1.15] font-extrabold text-white">
+                백세 건강의 시작,<br/>
+                <span class="text-accent-300">백세한방병원</span>입니다
+              </h2>
+              <p class="mt-5 text-[16px] sm:text-[18px] leading-[1.7] text-primary-100/95 max-w-[480px]">
+                정성스러운 한방 치료로 환자 한 분 한 분의<br class="hidden sm:block"/>오랜 건강을 함께 만들어 갑니다.
+              </p>
+              <div class="mt-8 flex flex-wrap gap-3">
+                <a href="#clinics" class="inline-flex items-center gap-2 h-12 px-7 rounded-full bg-white text-primary-700 text-[15px] font-semibold hover:bg-primary-50 transition-colors">
+                  진료 안내
+                  <span class="arrow-x">→</span>
+                </a>
+                <a href="#" class="inline-flex items-center gap-2 h-12 px-7 rounded-full border border-white/40 text-white text-[15px] font-semibold hover:bg-white/10 transition-colors">
+                  온라인 상담
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 2 -->
+        <article class="hero-slide absolute inset-0" data-index="1" aria-roledescription="slide" aria-label="2번 슬라이드">
+          <div class="absolute inset-0">
+            <img class="w-full h-full object-cover" loading="lazy" decoding="async"
+                 alt="척추·관절 한방 치료를 위한 진료실 풍경"
+                 src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=1920&q=70" />
+            <div class="absolute inset-0 bg-gradient-to-r from-primary-900/85 via-primary-800/55 to-primary-700/10"></div>
+          </div>
+          <div class="relative container max-w-content h-full flex items-center">
+            <div class="max-w-[640px] text-white">
+              <span class="inline-block text-[12px] tracking-[0.2em] font-semibold text-accent-300 mb-5">PAIN &amp; SPINE CARE</span>
+              <h2 class="text-balanced text-[36px] sm:text-[44px] lg:text-[58px] leading-[1.15] font-extrabold text-white">
+                통증의 뿌리부터<br/>
+                바로잡는 <span class="text-accent-300">한방 치료</span>
+              </h2>
+              <p class="mt-5 text-[16px] sm:text-[18px] leading-[1.7] text-primary-100/95 max-w-[480px]">
+                한약·침·추나·약침으로 부위별 맞춤 치료를 제공합니다.<br class="hidden sm:block"/>증상의 원인을 함께 찾아 회복까지 동행하겠습니다.
+              </p>
+              <div class="mt-8 flex flex-wrap gap-3">
+                <a href="#clinics" class="inline-flex items-center gap-2 h-12 px-7 rounded-full bg-white text-primary-700 text-[15px] font-semibold hover:bg-primary-50 transition-colors">
+                  진료 안내
+                  <span class="arrow-x">→</span>
+                </a>
+                <a href="#" class="inline-flex items-center gap-2 h-12 px-7 rounded-full border border-white/40 text-white text-[15px] font-semibold hover:bg-white/10 transition-colors">
+                  온라인 상담
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Slide 3 -->
+        <article class="hero-slide absolute inset-0" data-index="2" aria-roledescription="slide" aria-label="3번 슬라이드">
+          <div class="absolute inset-0">
+            <img class="w-full h-full object-cover" loading="lazy" decoding="async"
+                 alt="가족이 함께 손을 맞잡고 있는 모습"
+                 src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1920&q=70" />
+            <div class="absolute inset-0 bg-gradient-to-r from-primary-900/85 via-primary-700/55 to-primary-700/10"></div>
+          </div>
+          <div class="relative container max-w-content h-full flex items-center">
+            <div class="max-w-[640px] text-white">
+              <span class="inline-block text-[12px] tracking-[0.2em] font-semibold text-accent-300 mb-5">365 DAYS OPEN</span>
+              <h2 class="text-balanced text-[36px] sm:text-[44px] lg:text-[58px] leading-[1.15] font-extrabold text-white">
+                온 가족의 건강 주치의,<br/>
+                <span class="text-accent-300 tabular">1년 365일</span> 진료
+              </h2>
+              <p class="mt-5 text-[16px] sm:text-[18px] leading-[1.7] text-primary-100/95 max-w-[480px]">
+                평일·주말·공휴일 언제든 진료받으실 수 있습니다.<br class="hidden sm:block"/>가까운 곳에서 든든하게 가족 건강을 지켜드립니다.
+              </p>
+              <div class="mt-8 flex flex-wrap gap-3">
+                <a href="#hours" class="inline-flex items-center gap-2 h-12 px-7 rounded-full bg-white text-primary-700 text-[15px] font-semibold hover:bg-primary-50 transition-colors">
+                  진료시간 보기
+                  <span class="arrow-x">→</span>
+                </a>
+                <a href="tel:031-0000-0000" class="inline-flex items-center gap-2 h-12 px-7 rounded-full bg-accent-500 text-white text-[15px] font-semibold shadow-cta hover:bg-accent-600 transition-colors">
+                  지금 전화하기
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Dots -->
+        <div class="absolute left-1/2 -translate-x-1/2 bottom-7 flex items-center gap-2 z-10" role="tablist" aria-label="슬라이드 선택">
+          <button class="hero-dot is-active" data-index="0" type="button" aria-label="1번 슬라이드 보기" aria-selected="true" role="tab"></button>
+          <button class="hero-dot" data-index="1" type="button" aria-label="2번 슬라이드 보기" aria-selected="false" role="tab"></button>
+          <button class="hero-dot" data-index="2" type="button" aria-label="3번 슬라이드 보기" aria-selected="false" role="tab"></button>
+        </div>
+
+        <!-- Counters -->
+        <div class="hidden lg:flex absolute right-10 bottom-7 z-10 items-center gap-2 text-white/80 tabular text-[13px]">
+          <span id="heroCurrent">01</span>
+          <span class="block w-8 h-px bg-white/40"></span>
+          <span class="text-white/60">03</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== CLINIC CARDS =============== -->
+    <section id="clinics" class="py-16 lg:py-24 bg-neutral-50">
+      <div class="container max-w-content">
+        <header class="reveal flex flex-col items-center text-center mb-10 lg:mb-14">
+          <span class="text-[12px] tracking-[0.2em] font-semibold text-accent-600 mb-3">CLINIC GUIDE</span>
+          <h2 class="text-[28px] sm:text-[32px] lg:text-[40px] font-bold text-primary-700 leading-tight text-balanced">
+            부위와 증상에 따른 정성스러운 진료
+          </h2>
+          <p class="mt-4 text-[15px] sm:text-[17px] text-neutral-600 max-w-[640px]">
+            한방의 6개 클리닉을 중심으로, 환자 한 분 한 분의 체질과 생활 습관을 살펴<br class="hidden sm:block"/>맞춤형 진료 계획을 세워드립니다.
+          </p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          <!-- 1. 척추·관절 (큰 카드 — 2칸) — 경혈/침 모티프 -->
+          <a href="백세한방병원 통증클리닉.html" class="card-clinic group relative overflow-hidden rounded-2xl shadow-card md:col-span-2 lg:col-span-2 lg:row-span-1 h-[300px] sm:h-[340px] lg:h-[420px]"
+             style="background: linear-gradient(135deg, #08172A 0%, #143A6B 55%, #2C555E 100%);">
+            <!-- 한방 경혈선 SVG (이미지 로딩 실패 시 안전망) -->
+            <svg class="absolute inset-0 w-full h-full opacity-30" preserveAspectRatio="xMidYMid slice" viewBox="0 0 600 420" aria-hidden="true">
+              <path d="M-20 340 Q150 140 300 240 T620 220" stroke="#8FBFCC" stroke-width="1.5" fill="none"/>
+              <path d="M-20 290 Q140 120 290 200 T620 180" stroke="#B5D5DD" stroke-width="1" fill="none" opacity="0.6"/>
+              <g fill="#8FBFCC">
+                <circle cx="80" cy="290" r="4"/><circle cx="160" cy="220" r="5"/>
+                <circle cx="240" cy="190" r="4"/><circle cx="320" cy="220" r="5"/>
+                <circle cx="420" cy="200" r="4"/><circle cx="500" cy="180" r="5"/>
+              </g>
+            </svg>
+            <img alt="척추·관절 한방 치료 이미지"
+                 class="clinic-img absolute inset-0 w-full h-full object-cover"
+                 loading="lazy" decoding="async"
+                 onerror="this.style.display='none'"
+                 src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1400&q=70" />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-800/55 to-primary-700/15"></div>
+            <div class="absolute inset-x-0 bottom-0 p-6 lg:p-8 text-white">
+              <span class="inline-flex items-center gap-1.5 text-[11px] tracking-[0.18em] font-semibold text-accent-300 mb-3">
+                <span class="block w-4 h-px bg-accent-400"></span> 01 SPINE &amp; JOINT
+              </span>
+              <h3 class="text-[22px] lg:text-[28px] font-bold leading-snug">척추·관절 클리닉</h3>
+              <p class="mt-2 text-[14px] lg:text-[15px] text-primary-100/95 max-w-[420px] leading-relaxed">
+                디스크부터 오십견까지, 통증의 원인을 함께 봅니다.
+              </p>
+              <span class="mt-4 inline-flex items-center gap-2 text-[13px] font-semibold text-accent-300">
+                자세히 보기 <span class="arrow-x">→</span>
+              </span>
+            </div>
+          </a>
+
+          <!-- 2. 추나·체형교정 — 척추/자세 라인 모티프 -->
+          <a href="백세한방병원 추나교정클리닉.html" class="card-clinic group relative overflow-hidden rounded-2xl bg-white border border-neutral-200 shadow-card h-[300px] sm:h-[340px] lg:h-[420px] flex flex-col">
+            <div class="relative h-1/2 overflow-hidden"
+                 style="background: linear-gradient(135deg, #102E55 0%, #143A6B 60%, #3B727D 100%);">
+              <svg class="absolute inset-0 w-full h-full opacity-30" preserveAspectRatio="xMidYMid slice" viewBox="0 0 400 200" aria-hidden="true">
+                <path d="M200 10 Q188 45 200 80 Q212 115 192 145 Q180 180 200 200" stroke="#8FBFCC" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                <g fill="#B5D5DD">
+                  <circle cx="200" cy="35" r="3.5"/><circle cx="194" cy="75" r="3.5"/>
+                  <circle cx="206" cy="115" r="3.5"/><circle cx="190" cy="155" r="3.5"/>
+                </g>
+                <path d="M120 90 L160 90 M240 90 L280 90" stroke="#8FBFCC" stroke-width="1" stroke-dasharray="4 4" opacity="0.5"/>
+              </svg>
+              <img alt="추나 치료 이미지" class="clinic-img absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async"
+                   onerror="this.style.display='none'"
+                   src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=70" />
+            </div>
+            <div class="flex-1 p-5 lg:p-6 flex flex-col">
+              <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-600">02 POSTURE</span>
+              <h3 class="mt-2 text-[18px] lg:text-[20px] font-bold text-primary-700">추나·체형교정</h3>
+              <p class="mt-2 text-[13px] lg:text-[14px] text-neutral-600 leading-relaxed flex-1">
+                틀어진 자세를 바로잡는 비수술 한방 교정.
+              </p>
+              <span class="mt-3 inline-flex items-center gap-2 text-[13px] font-semibold text-accent-600">
+                자세히 보기 <span class="arrow-x">→</span>
+              </span>
+            </div>
+          </a>
+
+          <!-- 3. 교통사고 — 회복/한방 십자 모티프 -->
+          <a href="백세한방병원 교통사고클리닉.html" class="card-clinic group relative overflow-hidden rounded-2xl bg-white border border-neutral-200 shadow-card h-[300px] sm:h-[340px] lg:h-[420px] flex flex-col">
+            <div class="relative h-1/2 overflow-hidden"
+                 style="background: linear-gradient(135deg, #102E55 0%, #143A6B 60%, #3B727D 100%);">
+              <svg class="absolute inset-0 w-full h-full opacity-30" preserveAspectRatio="xMidYMid slice" viewBox="0 0 400 200" aria-hidden="true">
+                <path d="M170 100 L230 100 M200 70 L200 130" stroke="#8FBFCC" stroke-width="3" stroke-linecap="round"/>
+                <path d="M120 60 Q140 40 170 50 Q165 78 142 82 Q122 80 120 60Z" fill="#8FBFCC" opacity="0.55"/>
+                <path d="M280 140 Q260 162 230 152 Q235 124 258 120 Q278 122 280 140Z" fill="#8FBFCC" opacity="0.55"/>
+                <circle cx="80" cy="100" r="3" fill="#B5D5DD" opacity="0.6"/>
+                <circle cx="320" cy="100" r="3" fill="#B5D5DD" opacity="0.6"/>
+              </svg>
+              <img alt="교통사고 한방치료 이미지" class="clinic-img absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async"
+                   onerror="this.style.display='none'"
+                   src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=900&q=70" />
+            </div>
+            <div class="flex-1 p-5 lg:p-6 flex flex-col">
+              <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-600">03 ACCIDENT</span>
+              <h3 class="mt-2 text-[18px] lg:text-[20px] font-bold text-primary-700">교통사고 한방치료</h3>
+              <p class="mt-2 text-[13px] lg:text-[14px] text-neutral-600 leading-relaxed flex-1">
+                교통사고 후유증, 자동차보험으로 진료받으세요.
+              </p>
+              <span class="mt-3 inline-flex items-center gap-2 text-[13px] font-semibold text-accent-600">
+                자세히 보기 <span class="arrow-x">→</span>
+              </span>
+            </div>
+          </a>
+
+          <!-- 4. 면역·만성 (큰 카드 — 2칸) — 한약재/탕약 모티프 -->
+          <a href="백세한방병원 면역만성클리닉.html" class="card-clinic group relative overflow-hidden rounded-2xl shadow-card md:col-span-2 lg:col-span-2 h-[300px] sm:h-[340px] lg:h-[420px]"
+             style="background: linear-gradient(135deg, #08172A 0%, #143A6B 50%, #3B727D 100%);">
+            <!-- 한약재 잎 + 탕약 그릇 SVG -->
+            <svg class="absolute inset-0 w-full h-full opacity-25" preserveAspectRatio="xMidYMid slice" viewBox="0 0 600 420" aria-hidden="true">
+              <g transform="translate(450 70)" stroke="#8FBFCC" stroke-width="1.5" fill="none">
+                <path d="M0 0 Q60 40 120 30 Q90 90 30 70 Q-20 50 0 0Z"/>
+                <path d="M-20 90 Q40 120 100 110 Q70 170 10 150 Q-40 130 -20 90Z"/>
+                <path d="M30 -50 Q90 -10 130 -30 Q120 -90 60 -80 Q10 -80 30 -50Z"/>
+                <line x1="60" y1="20" x2="80" y2="60"/>
+                <line x1="40" y1="110" x2="55" y2="140"/>
+                <line x1="60" y1="-30" x2="65" y2="0"/>
+              </g>
+              <g stroke="#B5D5DD" stroke-width="1.2" fill="none" opacity="0.7">
+                <path d="M120 360 Q132 320 122 280 Q115 250 128 230"/>
+                <path d="M155 360 Q165 330 158 300 Q150 270 162 250"/>
+                <path d="M190 360 Q200 325 192 295 Q185 270 197 250"/>
+              </g>
+              <ellipse cx="155" cy="380" rx="80" ry="14" fill="#8FBFCC" opacity="0.45"/>
+              <path d="M75 370 Q155 405 235 370 L235 380 Q155 415 75 380Z" fill="#8FBFCC" opacity="0.55"/>
+            </svg>
+            <img alt="면역·만성 한방 진료 이미지"
+                 class="clinic-img absolute inset-0 w-full h-full object-cover"
+                 loading="lazy" decoding="async"
+                 onerror="this.style.display='none'"
+                 src="https://images.unsplash.com/photo-1597305877032-0668b3c6413a?auto=format&fit=crop&w=1400&q=70" />
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-900/90 via-primary-700/55 to-primary-600/15"></div>
+            <div class="absolute inset-x-0 bottom-0 p-6 lg:p-8 text-white">
+              <span class="inline-flex items-center gap-1.5 text-[11px] tracking-[0.18em] font-semibold text-accent-300 mb-3">
+                <span class="block w-4 h-px bg-accent-400"></span> 04 IMMUNITY &amp; CHRONIC
+              </span>
+              <h3 class="text-[22px] lg:text-[28px] font-bold leading-snug">면역·만성 클리닉</h3>
+              <p class="mt-2 text-[14px] lg:text-[15px] text-primary-100/95 max-w-[420px] leading-relaxed">
+                떨어진 면역과 누적된 피로, 한방으로 회복합니다.
+              </p>
+              <span class="mt-4 inline-flex items-center gap-2 text-[13px] font-semibold text-accent-300">
+                자세히 보기 <span class="arrow-x">→</span>
+              </span>
+            </div>
+          </a>
+
+          <!-- 5. 여성·소아 — 연꽃 모티프 -->
+          <a href="백세한방병원 여성소아클리닉.html" class="card-clinic group relative overflow-hidden rounded-2xl bg-white border border-neutral-200 shadow-card h-[300px] sm:h-[340px] lg:h-[420px] flex flex-col">
+            <div class="relative h-1/2 overflow-hidden"
+                 style="background: linear-gradient(135deg, #102E55 0%, #143A6B 60%, #3B727D 100%);">
+              <svg class="absolute inset-0 w-full h-full opacity-35" preserveAspectRatio="xMidYMid slice" viewBox="0 0 400 200" aria-hidden="true">
+                <g transform="translate(200 130)" fill="#8FBFCC">
+                  <path d="M0 0 Q-30 -10 -40 -50 Q-30 -80 0 -65 Q30 -80 40 -50 Q30 -10 0 0Z" opacity="0.8"/>
+                  <path d="M0 0 Q-55 -20 -85 -60 Q-70 -30 -50 -3Z" opacity="0.55"/>
+                  <path d="M0 0 Q55 -20 85 -60 Q70 -30 50 -3Z" opacity="0.55"/>
+                  <path d="M0 0 Q-40 0 -65 -25 Q-30 -8 0 0Z" opacity="0.4"/>
+                  <path d="M0 0 Q40 0 65 -25 Q30 -8 0 0Z" opacity="0.4"/>
+                </g>
+                <g fill="#B5D5DD" opacity="0.6">
+                  <circle cx="100" cy="60" r="2"/>
+                  <circle cx="300" cy="60" r="2"/>
+                  <circle cx="80" cy="100" r="1.5"/>
+                  <circle cx="320" cy="100" r="1.5"/>
+                </g>
+              </svg>
+              <img alt="여성·소아 한방 진료 이미지" class="clinic-img absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async"
+                   onerror="this.style.display='none'"
+                   src="https://images.unsplash.com/photo-1492725764893-90b379c2b6e7?auto=format&fit=crop&w=900&q=70" />
+            </div>
+            <div class="flex-1 p-5 lg:p-6 flex flex-col">
+              <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-600">05 WOMEN &amp; KIDS</span>
+              <h3 class="mt-2 text-[18px] lg:text-[20px] font-bold text-primary-700">여성·소아 클리닉</h3>
+              <p class="mt-2 text-[13px] lg:text-[14px] text-neutral-600 leading-relaxed flex-1">
+                산후·생리·갱년기·성장, 시기별 맞춤 진료.
+              </p>
+              <span class="mt-3 inline-flex items-center gap-2 text-[13px] font-semibold text-accent-600">
+                자세히 보기 <span class="arrow-x">→</span>
+              </span>
+            </div>
+          </a>
+
+          <!-- 6. 의료진 (특수 — accent 배경) -->
+          <a href="백세한방병원 의료진소개.html" class="card-clinic group relative overflow-hidden rounded-2xl bg-accent-500 text-white shadow-cta h-[300px] sm:h-[340px] lg:h-[420px] flex flex-col">
+            <div class="absolute inset-0 banner-grain opacity-90"></div>
+            <div class="relative flex-1 p-6 lg:p-8 flex flex-col">
+              <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-100">06 MEDICAL TEAM</span>
+              <h3 class="mt-2 text-[20px] lg:text-[24px] font-bold leading-snug text-white">의료진 소개</h3>
+              <p class="mt-3 text-[13px] lg:text-[14px] text-accent-50/95 leading-relaxed flex-1">
+                한방 전문성을 갖춘 의료진이<br class="hidden sm:block"/>책임감을 가지고 진료합니다.
+              </p>
+              <div class="mt-5 grid grid-cols-3 gap-2">
+                <span aria-hidden="true" class="aspect-square rounded-full bg-white/15 ring-1 ring-white/20"></span>
+                <span aria-hidden="true" class="aspect-square rounded-full bg-white/15 ring-1 ring-white/20"></span>
+                <span aria-hidden="true" class="aspect-square rounded-full bg-white/15 ring-1 ring-white/20"></span>
+              </div>
+              <span class="mt-5 inline-flex items-center gap-2 text-[13px] font-semibold text-white">
+                의료진 보기 <span class="arrow-x">→</span>
+              </span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== ABOUT BANNER =============== -->
+    <section class="relative overflow-hidden bg-primary-600 text-white">
+      <div class="absolute inset-0 banner-grain pointer-events-none"></div>
+      <div class="absolute -right-24 -bottom-24 w-[420px] h-[420px] rounded-full bg-accent-500/15 blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative container max-w-content py-16 lg:py-24">
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div class="lg:col-span-7 reveal">
+            <span class="inline-block text-[12px] tracking-[0.2em] font-semibold text-accent-300 mb-4">BAEKSE KOREAN MEDICINE</span>
+            <h2 class="text-[28px] sm:text-[32px] lg:text-[44px] font-bold leading-[1.2] text-white text-balanced">
+              정성스러운 한방, <span class="text-accent-300 tabular">100</span>년의 건강
+            </h2>
+            <p class="mt-5 text-[15px] sm:text-[17px] text-primary-100/95 leading-relaxed max-w-[640px]">
+              백세한방병원은 환자 한 분 한 분의 체질과 생활습관을 살펴 맞춤형 진료 계획을 세웁니다.<br class="hidden sm:block"/>
+              한약·침·추나·약침을 중심으로, 필요한 경우 협진을 통해 회복을 돕겠습니다.
+            </p>
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a href="#" class="inline-flex items-center gap-2 h-12 px-7 rounded-full bg-white text-primary-700 text-[15px] font-semibold hover:bg-primary-50 transition-colors">
+                병원 소개 자세히 보기 <span class="arrow-x">→</span>
+              </a>
+              <a href="#" class="inline-flex items-center gap-2 h-12 px-7 rounded-full border border-white/40 text-white text-[15px] font-semibold hover:bg-white/10 transition-colors">
+                의료진 소개
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 reveal">
+            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+              <div class="rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 p-5 sm:p-6">
+                <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-200">진료시간</span>
+                <p class="mt-2 text-white text-[20px] sm:text-[24px] font-bold tabular">365일</p>
+                <p class="mt-1 text-[13px] text-primary-100/85">평일·주말·공휴일</p>
+              </div>
+              <div class="rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 p-5 sm:p-6">
+                <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-200">진료 영역</span>
+                <p class="mt-2 text-white text-[20px] sm:text-[24px] font-bold tabular">6개 클리닉</p>
+                <p class="mt-1 text-[13px] text-primary-100/85">부위별 전문 진료</p>
+              </div>
+              <div class="rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 p-5 sm:p-6">
+                <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-200">한약·탕전</span>
+                <p class="mt-2 text-white text-[20px] sm:text-[24px] font-bold">GMP 인증</p>
+                <p class="mt-1 text-[13px] text-primary-100/85">국내 약재 우선 사용</p>
+              </div>
+              <div class="rounded-2xl bg-accent-500/95 border border-accent-400/40 p-5 sm:p-6 text-white">
+                <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-100">자동차보험</span>
+                <p class="mt-2 text-[20px] sm:text-[24px] font-bold">교통사고 진료</p>
+                <p class="mt-1 text-[13px] text-accent-50/90">절차 안내 가능</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== NOTICE / QUICK SERVICE (3-COL) =============== -->
+    <section class="py-16 lg:py-24 bg-white">
+      <div class="container max-w-content">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+
+          <!-- (a) 공지사항 -->
+          <article class="lg:col-span-5 reveal">
+            <header class="flex items-end justify-between mb-5">
+              <div>
+                <span class="text-[12px] tracking-[0.2em] font-semibold text-accent-600">NOTICE</span>
+                <h3 class="mt-1 text-[22px] lg:text-[26px] font-bold text-primary-700">공지사항</h3>
+              </div>
+              <a href="#" class="text-[13px] font-semibold text-accent-600 hover:text-accent-700 inline-flex items-center gap-1">
+                더보기 <span class="arrow-x">+</span>
+              </a>
+            </header>
+            <ul class="border-t border-primary-200">
+              <li class="notice-row border-b border-neutral-200">
+                <a href="#" class="flex items-center justify-between gap-4 py-4 px-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <span class="shrink-0 inline-flex items-center justify-center h-6 px-2 rounded-md bg-accent-50 text-accent-700 text-[11px] font-semibold">진료안내</span>
+                    <span class="truncate text-[14px] lg:text-[15px] text-neutral-700">개원 안내 — 백세한방병원이 곧 문을 엽니다</span>
+                  </div>
+                  <time class="hidden sm:block tabular text-[13px] text-neutral-400">2026.05.01</time>
+                </a>
+              </li>
+              <li class="notice-row border-b border-neutral-200">
+                <a href="#" class="flex items-center justify-between gap-4 py-4 px-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <span class="shrink-0 inline-flex items-center justify-center h-6 px-2 rounded-md bg-primary-50 text-primary-600 text-[11px] font-semibold">이벤트</span>
+                    <span class="truncate text-[14px] lg:text-[15px] text-neutral-700">개원 기념 한약 상담 사전 예약 안내</span>
+                  </div>
+                  <time class="hidden sm:block tabular text-[13px] text-neutral-400">2026.04.22</time>
+                </a>
+              </li>
+              <li class="notice-row border-b border-neutral-200">
+                <a href="#" class="flex items-center justify-between gap-4 py-4 px-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <span class="shrink-0 inline-flex items-center justify-center h-6 px-2 rounded-md bg-accent-50 text-accent-700 text-[11px] font-semibold">진료안내</span>
+                    <span class="truncate text-[14px] lg:text-[15px] text-neutral-700">자동차보험 교통사고 한방치료 절차 안내</span>
+                  </div>
+                  <time class="hidden sm:block tabular text-[13px] text-neutral-400">2026.04.15</time>
+                </a>
+              </li>
+              <li class="notice-row border-b border-neutral-200">
+                <a href="#" class="flex items-center justify-between gap-4 py-4 px-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <span class="shrink-0 inline-flex items-center justify-center h-6 px-2 rounded-md bg-primary-50 text-primary-600 text-[11px] font-semibold">시설</span>
+                    <span class="truncate text-[14px] lg:text-[15px] text-neutral-700">시설 둘러보기 페이지 사진 업데이트 예정</span>
+                  </div>
+                  <time class="hidden sm:block tabular text-[13px] text-neutral-400">2026.04.08</time>
+                </a>
+              </li>
+              <li class="notice-row border-b border-neutral-200">
+                <a href="#" class="flex items-center justify-between gap-4 py-4 px-3">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <span class="shrink-0 inline-flex items-center justify-center h-6 px-2 rounded-md bg-neutral-100 text-neutral-600 text-[11px] font-semibold">휴진</span>
+                    <span class="truncate text-[14px] lg:text-[15px] text-neutral-700">개원 전 시설 점검 일정 사전 공지</span>
+                  </div>
+                  <time class="hidden sm:block tabular text-[13px] text-neutral-400">2026.04.01</time>
+                </a>
+              </li>
+            </ul>
+          </article>
+
+          <!-- (b) 블로그/매거진 -->
+          <article class="lg:col-span-4 reveal">
+            <header class="flex items-end justify-between mb-5">
+              <div>
+                <span class="text-[12px] tracking-[0.2em] font-semibold text-accent-600">MAGAZINE</span>
+                <h3 class="mt-1 text-[22px] lg:text-[26px] font-bold text-primary-700">한방 매거진</h3>
+              </div>
+              <a href="#" class="text-[13px] font-semibold text-accent-600 hover:text-accent-700 inline-flex items-center gap-1">
+                블로그 <span class="arrow-x">→</span>
+              </a>
+            </header>
+            <div class="grid grid-cols-1 gap-4">
+              <a href="#" class="group flex gap-4 rounded-xl border border-neutral-200 hover:border-primary-200 hover:shadow-card transition-all p-3">
+                <div class="shrink-0 w-24 h-24 rounded-lg overflow-hidden bg-primary-50">
+                  <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out-soft"
+                       loading="lazy" decoding="async"
+                       alt="한약 약재 이미지"
+                       src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=400&q=70" />
+                </div>
+                <div class="min-w-0 flex flex-col justify-center">
+                  <span class="text-[11px] font-semibold text-accent-600">한약 이야기</span>
+                  <h4 class="mt-1 text-[15px] font-semibold text-primary-700 line-clamp-2 group-hover:text-accent-600 transition-colors">
+                    체질에 맞는 한약, 어떻게 처방되나요?
+                  </h4>
+                  <time class="tabular mt-1 text-[12px] text-neutral-400">2026.04.20</time>
+                </div>
+              </a>
+              <a href="#" class="group flex gap-4 rounded-xl border border-neutral-200 hover:border-primary-200 hover:shadow-card transition-all p-3">
+                <div class="shrink-0 w-24 h-24 rounded-lg overflow-hidden bg-primary-50">
+                  <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out-soft"
+                       loading="lazy" decoding="async"
+                       alt="추나 치료 이미지"
+                       src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=400&q=70" />
+                </div>
+                <div class="min-w-0 flex flex-col justify-center">
+                  <span class="text-[11px] font-semibold text-accent-600">통증재활</span>
+                  <h4 class="mt-1 text-[15px] font-semibold text-primary-700 line-clamp-2 group-hover:text-accent-600 transition-colors">
+                    오래 앉아 일하는 분을 위한 허리 관리법
+                  </h4>
+                  <time class="tabular mt-1 text-[12px] text-neutral-400">2026.04.12</time>
+                </div>
+              </a>
+              <a href="#" class="group flex gap-4 rounded-xl border border-neutral-200 hover:border-primary-200 hover:shadow-card transition-all p-3">
+                <div class="shrink-0 w-24 h-24 rounded-lg overflow-hidden bg-primary-50">
+                  <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out-soft"
+                       loading="lazy" decoding="async"
+                       alt="가족 이미지"
+                       src="https://images.unsplash.com/photo-1607000868872-32a89db26a17?auto=format&fit=crop&w=400&q=70" />
+                </div>
+                <div class="min-w-0 flex flex-col justify-center">
+                  <span class="text-[11px] font-semibold text-accent-600">여성·소아</span>
+                  <h4 class="mt-1 text-[15px] font-semibold text-primary-700 line-clamp-2 group-hover:text-accent-600 transition-colors">
+                    산후조리, 한방에서 무엇을 봐드리나요?
+                  </h4>
+                  <time class="tabular mt-1 text-[12px] text-neutral-400">2026.04.05</time>
+                </div>
+              </a>
+            </div>
+          </article>
+
+          <!-- (c) 자주찾는 서비스 -->
+          <article class="lg:col-span-3 reveal">
+            <header class="mb-5">
+              <span class="text-[12px] tracking-[0.2em] font-semibold text-accent-600">QUICK SERVICE</span>
+              <h3 class="mt-1 text-[22px] lg:text-[26px] font-bold text-primary-700">자주찾는 서비스</h3>
+            </header>
+            <div class="grid grid-cols-2 lg:grid-cols-1 gap-3">
+              <a href="#" class="group flex items-center gap-3 p-4 rounded-xl bg-primary-50 hover:bg-primary-100 transition-colors">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white text-accent-600 shadow-sm">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+                </span>
+                <span class="flex-1 text-[14px] font-semibold text-primary-700">서류 발급</span>
+                <span class="arrow-x text-accent-600">→</span>
+              </a>
+              <a href="#" class="group flex items-center gap-3 p-4 rounded-xl bg-primary-50 hover:bg-primary-100 transition-colors">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white text-accent-600 shadow-sm">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                </span>
+                <span class="flex-1 text-[14px] font-semibold text-primary-700">비급여 항목</span>
+                <span class="arrow-x text-accent-600">→</span>
+              </a>
+              <a href="#" class="group flex items-center gap-3 p-4 rounded-xl bg-accent-50 hover:bg-accent-100 transition-colors">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white text-accent-600 shadow-sm">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </span>
+                <span class="flex-1 text-[14px] font-semibold text-primary-700">온라인 상담</span>
+                <span class="arrow-x text-accent-600">→</span>
+              </a>
+              <a href="#" class="group flex items-center gap-3 p-4 rounded-xl bg-primary-50 hover:bg-primary-100 transition-colors">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white text-accent-600 shadow-sm">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.39 4.84L20 8l-4 3.9.94 5.5L12 14.77 7.06 17.4 8 11.9 4 8l5.61-1.16z"/></svg>
+                </span>
+                <span class="flex-1 text-[14px] font-semibold text-primary-700">한약 안내</span>
+                <span class="arrow-x text-accent-600">→</span>
+              </a>
+              <a href="#" class="group flex items-center gap-3 p-4 rounded-xl bg-primary-50 hover:bg-primary-100 transition-colors col-span-2 lg:col-span-1">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white text-accent-600 shadow-sm">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </span>
+                <span class="flex-1 text-[14px] font-semibold text-primary-700">블로그 / 카카오톡</span>
+                <span class="arrow-x text-accent-600">→</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== LOCATION + HOURS =============== -->
+    <section id="location" class="py-16 lg:py-24 bg-neutral-50">
+      <div class="container max-w-content">
+        <header class="reveal flex flex-col items-center text-center mb-10 lg:mb-14">
+          <span class="text-[12px] tracking-[0.2em] font-semibold text-accent-600 mb-3">LOCATION &amp; HOURS</span>
+          <h2 class="text-[28px] sm:text-[32px] lg:text-[40px] font-bold text-primary-700 leading-tight text-balanced">
+            오시는 길과 진료시간 안내
+          </h2>
+          <p class="mt-4 text-[15px] sm:text-[17px] text-neutral-600 max-w-[640px]">
+            평일·주말·공휴일 모두 진료합니다. 전화 또는 온라인으로 미리 상담해 주시면<br class="hidden sm:block"/>대기 시간을 줄여드릴 수 있습니다.
+          </p>
+        </header>
+
+        <div class="grid lg:grid-cols-2 gap-6 lg:gap-8">
+          <!-- Map card -->
+          <div class="reveal rounded-2xl overflow-hidden bg-white border border-neutral-200 shadow-card">
+            <div class="relative aspect-[16/10] bg-primary-100">
+              <!-- 카카오맵 자리 (개원 시 좌표 + JS SDK 연결) -->
+              <img class="absolute inset-0 w-full h-full object-cover"
+                   alt="병원 위치 지도 이미지 (카카오맵 연동 예정)"
+                   loading="lazy" decoding="async"
+                   src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=70" />
+              <div class="absolute inset-0 bg-primary-900/15"></div>
+              <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+                <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent-500 text-white shadow-cta">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <span class="mt-2 px-3 py-1 rounded-full bg-white/95 text-[12px] font-semibold text-primary-700 shadow-sm">
+                  백세한방병원
+                </span>
+              </div>
+            </div>
+            <div class="p-5 lg:p-6">
+              <address class="not-italic text-[14px] lg:text-[15px] text-neutral-700 leading-relaxed">
+                <strong class="block text-primary-700 text-[15px] lg:text-[16px] mb-1">백세한방병원</strong>
+                경기도 OO시 OO로 OOO, OOO빌딩 O층
+              </address>
+              <div class="mt-4 grid grid-cols-2 gap-3 text-[13px] text-neutral-600">
+                <div class="flex items-start gap-2">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B727D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="mt-0.5"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  <span>지하철 OO역에서 도보 5분</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B727D" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="mt-0.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
+                  <span>전용 주차장 운영 (2시간 무료)</span>
+                </div>
+              </div>
+              <a href="#" class="mt-5 inline-flex items-center gap-2 text-[13px] font-semibold text-accent-600 hover:text-accent-700">
+                큰 지도로 길찾기 <span class="arrow-x">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hours + Tel card -->
+          <div id="hours" class="reveal flex flex-col gap-4 lg:gap-6">
+            <div class="rounded-2xl bg-primary-500 text-white p-6 lg:p-8 shadow-lg overflow-hidden relative">
+              <div class="absolute inset-0 banner-grain pointer-events-none"></div>
+              <div class="relative">
+                <div class="flex items-center justify-between">
+                  <h3 class="text-[20px] lg:text-[22px] font-bold text-white">진료시간</h3>
+                  <span class="inline-flex items-center gap-1.5 h-7 px-3 rounded-full bg-accent-500/90 text-white text-[12px] font-semibold">
+                    <span class="block w-1.5 h-1.5 rounded-full bg-white"></span>
+                    1년 365일 진료
+                  </span>
+                </div>
+                <dl class="mt-5 divide-y divide-white/10">
+                  <div class="grid grid-cols-[100px_1fr] py-3">
+                    <dt class="text-[13px] text-primary-100/85">평일</dt>
+                    <dd class="hours-time text-[15px] lg:text-[16px] font-semibold text-white">09:30 — 19:30</dd>
+                  </div>
+                  <div class="grid grid-cols-[100px_1fr] py-3">
+                    <dt class="text-[13px] text-primary-100/85">점심시간</dt>
+                    <dd class="hours-time text-[15px] lg:text-[16px] font-semibold text-white">12:30 — 13:30</dd>
+                  </div>
+                  <div class="grid grid-cols-[100px_1fr] py-3">
+                    <dt class="text-[13px] text-primary-100/85">주말</dt>
+                    <dd class="hours-time text-[15px] lg:text-[16px] font-semibold text-white">09:30 — 17:00</dd>
+                  </div>
+                  <div class="grid grid-cols-[100px_1fr] py-3">
+                    <dt class="text-[13px] text-primary-100/85">공휴일</dt>
+                    <dd class="hours-time text-[15px] lg:text-[16px] font-semibold text-white">09:30 — 17:00</dd>
+                  </div>
+                </dl>
+                <p class="mt-3 text-[12px] text-primary-100/70">※ 진료 마감 30분 전까지 접수 부탁드립니다.</p>
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4 lg:gap-6">
+              <a href="tel:031-0000-0000" class="group rounded-2xl bg-white border border-neutral-200 shadow-card p-6 hover:border-accent-300 hover:shadow-lg transition-all">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary-50 text-primary-600">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </span>
+                <span class="block mt-3 text-[12px] text-neutral-500">대표 전화</span>
+                <span class="block tel-number mt-1 text-[22px] lg:text-[24px] font-bold text-primary-700 group-hover:text-accent-600 transition-colors">031-0000-0000</span>
+              </a>
+              <a href="tel:031-0000-1111" class="group rounded-2xl bg-accent-500 text-white p-6 shadow-cta hover:bg-accent-600 transition-colors">
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white/15 text-white">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </span>
+                <span class="block mt-3 text-[12px] text-accent-50/85">상담 직통</span>
+                <span class="block tel-number mt-1 text-[22px] lg:text-[24px] font-bold">031-0000-1111</span>
+                <span class="block mt-1 text-[12px] text-accent-50/85">한약·교통사고·입원 상담</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== BOTTOM CTA =============== -->
+    <section class="relative overflow-hidden bg-primary-700 text-white">
+      <div class="absolute inset-0 banner-grain pointer-events-none"></div>
+      <div class="absolute -left-32 -top-32 w-[420px] h-[420px] rounded-full bg-accent-500/12 blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative container max-w-content py-16 lg:py-24">
+        <div class="grid lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-8 reveal">
+            <span class="inline-block text-[12px] tracking-[0.2em] font-semibold text-accent-300 mb-4">365 DAYS WITH YOU</span>
+            <h2 class="text-balanced text-[28px] sm:text-[34px] lg:text-[44px] font-bold leading-[1.2] text-white">
+              아플 때 참지 마세요.<br/>
+              언제든 <span class="text-accent-300">백세한방병원</span>을 찾아주세요.
+            </h2>
+            <p class="mt-5 text-[15px] sm:text-[17px] text-primary-100/90 leading-relaxed max-w-[640px]">
+              평일·주말·공휴일 모두 진료합니다. 전화 한 통이면 가능한 빠른 진료 일정으로 안내드리겠습니다.
+            </p>
+          </div>
+          <div class="lg:col-span-4 reveal flex flex-col sm:flex-row lg:flex-col gap-3">
+            <a href="tel:031-0000-0000" class="inline-flex items-center justify-between gap-3 h-14 px-6 rounded-full bg-accent-500 text-white text-[16px] font-semibold shadow-cta hover:bg-accent-600 transition-colors">
+              <span class="inline-flex items-center gap-2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                지금 전화 상담하기
+              </span>
+              <span class="arrow-x">→</span>
+            </a>
+            <a href="#" class="inline-flex items-center justify-between gap-3 h-14 px-6 rounded-full bg-white/10 border border-white/30 text-white text-[16px] font-semibold hover:bg-white/15 transition-colors">
+              <span>온라인으로 상담 남기기</span>
+              <span class="arrow-x">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =============== FOOTER =============== -->
+  <footer class="bg-primary-700 text-primary-100">
+    <div class="container max-w-content py-12 lg:py-16">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
+        <div class="md:col-span-4">
+          <div class="flex items-center gap-3">
+            <span aria-hidden="true" class="relative inline-flex items-center justify-center w-10 h-10 rounded-full bg-white text-primary-700 font-bold tabular shadow-md">
+              <span class="absolute -right-1 -top-1 w-3 h-3 rotate-45 bg-accent-500 rounded-[2px]"></span>
+              100
+            </span>
+            <span class="flex flex-col leading-none">
+              <span class="text-white text-[18px] font-bold">백세한방병원</span>
+              <span class="text-[11px] tracking-[0.18em] text-accent-300 mt-1">BAEKSE KOREAN MEDICINE</span>
+            </span>
+          </div>
+          <p class="mt-5 text-[13px] leading-relaxed text-primary-100/85">
+            정성스러운 한방 치료로 환자 한 분 한 분의<br class="hidden sm:block"/>오랜 건강을 함께 만들어 갑니다.
+          </p>
+          <ul class="mt-6 flex items-center gap-2">
+            <li><a href="#" aria-label="네이버 블로그" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-accent-500 transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8h-3v3l-3-3H7v8h3v-3l3 3h3z"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="인스타그램" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-accent-500 transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="유튜브" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-accent-500 transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+            </a></li>
+            <li><a href="#" aria-label="카카오톡 채널" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-white/10 hover:bg-accent-500 transition-colors">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4C6.48 4 2 7.58 2 12c0 2.66 1.65 5.02 4.18 6.46L5.4 21.4l3.45-2.18c1 .19 2.05.28 3.15.28 5.52 0 10-3.58 10-8s-4.48-7.5-10-7.5z"/></svg>
+            </a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-2">
+          <h4 class="text-white text-[14px] font-semibold mb-4">진료 안내</h4>
+          <ul class="space-y-2.5 text-[13px]">
+            <li><a href="#" class="hover:text-accent-300 transition-colors">척추·관절</a></li>
+            <li><a href="#" class="hover:text-accent-300 transition-colors">추나·교정</a></li>
+            <li><a href="#" class="hover:text-accent-300 transition-colors">교통사고</a></li>
+            <li><a href="#" class="hover:text-accent-300 transition-colors">면역·만성</a></li>
+            <li><a href="#" class="hover:text-accent-300 transition-colors">여성·소아</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-2">
+          <h4 class="text-white text-[14px] font-semibold mb-4">고객 지원</h4>
+          <ul class="space-y-2.5 text-[13px]">
+            <li><a href="#" class="hover:text-accent-300 transition-colors">공지사항</a></li>
+            <li><a href="#" class="hover:text-accent-300 transition-colors">온라인 상담</a></li>
+            <li><a href="#" class="hover:text-accent-300 transition-colors">자주묻는 질문</a></li>
+            <li><a href="#" class="hover:text-accent-300 transition-colors">비급여 항목</a></li>
+            <li><a href="#" class="hover:text-accent-300 transition-colors">서류 발급 안내</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-4">
+          <h4 class="text-white text-[14px] font-semibold mb-4">연락처</h4>
+          <dl class="space-y-2 text-[13px]">
+            <div class="flex gap-3">
+              <dt class="w-12 text-primary-100/70">대표</dt>
+              <dd class="tabular text-white font-semibold">031-0000-0000</dd>
+            </div>
+            <div class="flex gap-3">
+              <dt class="w-12 text-primary-100/70">상담</dt>
+              <dd class="tabular text-white font-semibold">031-0000-1111</dd>
+            </div>
+            <div class="flex gap-3">
+              <dt class="w-12 text-primary-100/70">주소</dt>
+              <dd>경기도 OO시 OO로 OOO, OOO빌딩 O층</dd>
+            </div>
+          </dl>
+          <a href="tel:031-0000-0000" class="mt-5 inline-flex items-center gap-2 h-11 px-5 rounded-full bg-accent-500 text-white text-[13px] font-semibold shadow-cta hover:bg-accent-600 transition-colors">
+            전화로 상담 예약 →
+          </a>
+        </div>
+      </div>
+
+      <hr class="border-t border-white/10 my-8 lg:my-10" />
+
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 text-[12px] text-primary-100/70">
+        <ul class="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <li><a href="#" class="text-white hover:text-accent-300 font-semibold transition-colors">개인정보처리방침</a></li>
+          <li><a href="#" class="hover:text-accent-300 transition-colors">이용약관</a></li>
+          <li><a href="#" class="hover:text-accent-300 transition-colors">환자권리장전</a></li>
+          <li><a href="#" class="hover:text-accent-300 transition-colors">비급여 항목</a></li>
+        </ul>
+        <p class="tabular">
+          대표자 OOO &nbsp;|&nbsp; 사업자등록번호 OOO-OO-OOOOO
+        </p>
+      </div>
+      <p class="mt-4 text-[12px] text-primary-100/55 tracking-[0.05em]">
+        COPYRIGHT © 2026 BAEKSE KOREAN MEDICINE HOSPITAL. ALL RIGHTS RESERVED.
+      </p>
+    </div>
+  </footer>
+
+  <!-- =============== MOBILE QUICK BAR =============== -->
+  <nav class="lg:hidden fixed bottom-0 inset-x-0 z-30 grid grid-cols-4 h-16 bg-white border-t border-neutral-200 shadow-[0_-4px_12px_rgba(20,58,107,0.06)]"
+       aria-label="모바일 빠른 메뉴">
+    <a href="#" class="flex flex-col items-center justify-center gap-1 text-[11px] font-semibold text-primary-700">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      온라인상담
+    </a>
+    <a href="tel:031-0000-0000" class="flex flex-col items-center justify-center gap-1 text-[11px] font-semibold bg-accent-500 text-white">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      전화걸기
+    </a>
+    <a href="#hours" class="flex flex-col items-center justify-center gap-1 text-[11px] font-semibold text-primary-700">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      진료시간
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 text-[11px] font-semibold text-primary-700">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      블로그/카톡
+    </a>
+  </nav>
+
+  <!-- =============== JSON-LD =============== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalOrganization",
+    "name": "백세한방병원",
+    "alternateName": "Baekse Korean Medicine Hospital",
+    "url": "https://baeksehospital.kr/",
+    "telephone": "+82-31-0000-0000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "경기도 OO시 OO로 OOO",
+      "addressCountry": "KR"
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:30", "closes": "19:30" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday","Sunday"], "opens": "09:30", "closes": "17:00" }
+    ],
+    "medicalSpecialty": ["TraditionalKoreanMedicine"]
+  }
+  </script>
+
+  <!-- =============== SCRIPTS =============== -->
+  <script>
+    (function () {
+      'use strict';
+
+      // --- Hero slider ---
+      const slides = document.querySelectorAll('#heroSlider .hero-slide');
+      const dots = document.querySelectorAll('.hero-dot');
+      const counter = document.getElementById('heroCurrent');
+      let idx = 0;
+      let timer = null;
+
+      function go(to) {
+        idx = (to + slides.length) % slides.length;
+        slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+        dots.forEach((d, i) => {
+          const active = i === idx;
+          d.classList.toggle('is-active', active);
+          d.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        if (counter) counter.textContent = String(idx + 1).padStart(2, '0');
+      }
+      function start() { stop(); timer = setInterval(() => go(idx + 1), 6000); }
+      function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+      dots.forEach(d => {
+        d.addEventListener('click', () => { go(parseInt(d.dataset.index, 10)); start(); });
+      });
+      const heroEl = document.getElementById('heroSlider');
+      if (heroEl) {
+        heroEl.addEventListener('mouseenter', stop);
+        heroEl.addEventListener('mouseleave', start);
+        heroEl.addEventListener('focusin', stop);
+        heroEl.addEventListener('focusout', start);
+      }
+      if (slides.length) start();
+
+      // --- Mobile drawer ---
+      const drawer = document.getElementById('mobileDrawer');
+      const openBtn = document.getElementById('hamburger');
+      const closeBtn = document.getElementById('hamburgerClose');
+      function openDrawer() {
+        drawer.classList.add('open');
+        drawer.setAttribute('aria-hidden', 'false');
+        openBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('drawer-open');
+      }
+      function closeDrawer() {
+        drawer.classList.remove('open');
+        drawer.setAttribute('aria-hidden', 'true');
+        openBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('drawer-open');
+      }
+      if (openBtn && drawer) openBtn.addEventListener('click', openDrawer);
+      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      drawer && drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+
+      // --- Header scroll state ---
+      const header = document.getElementById('siteHeader');
+      const onScroll = () => {
+        if (window.scrollY > 24) header.classList.add('is-scrolled');
+        else header.classList.remove('is-scrolled');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // --- Reveal on scroll (IntersectionObserver) ---
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add('is-visible'));
+      }
+    })();
+  </script>
+</body>
+</html>

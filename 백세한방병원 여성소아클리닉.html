@@ -1,0 +1,1121 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#143A6B" />
+  <meta name="description" content="백세한방병원 여성·소아 클리닉 — 산후조리, 생리통·월경불순, 갱년기, 성장·총명탕까지. 시기별 체질에 맞춘 한방 진료." />
+  <meta property="og:title" content="여성·소아 클리닉 - 백세한방병원" />
+  <meta property="og:description" content="산후·생리·갱년기·성장, 시기별 맞춤 진료. 부드러운 한방 치료로 가족 단위 관리." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ko_KR" />
+  <link rel="canonical" href="https://baeksehospital.kr/women-kids" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <title>여성·소아 클리닉 - 백세한방병원</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        container: { center: true, padding: { DEFAULT: "1.25rem", md: "2rem", lg: "2.5rem" } },
+        extend: {
+          colors: {
+            primary: {
+              50: "#F1F5FA", 100: "#DCE5F1", 200: "#B7C7DD", 300: "#92A9C9",
+              400: "#4F6E9F", 500: "#143A6B", 600: "#102E55", 700: "#0C2340",
+              800: "#08172A", 900: "#040C15"
+            },
+            accent: {
+              50: "#F1F8FA", 100: "#DAEAEE", 200: "#B5D5DD", 300: "#8FBFCC",
+              400: "#6AAABA", 500: "#4A8E9C", 600: "#3B727D", 700: "#2C555E",
+              800: "#1E393F", 900: "#0F1C1F"
+            },
+            neutral: {
+              0: "#FFFFFF", 50: "#F8FAFC", 100: "#F1F5F9", 200: "#E2E8F0",
+              300: "#CBD5E1", 400: "#94A3B8", 500: "#64748B", 600: "#475569",
+              700: "#334155", 800: "#1E293B", 900: "#0F172A"
+            }
+          },
+          fontFamily: {
+            sans: ['"Pretendard Variable"', "Pretendard", "-apple-system", "BlinkMacSystemFont",
+                   '"Apple SD Gothic Neo"', '"Malgun Gothic"', "맑은 고딕", "sans-serif"]
+          },
+          maxWidth: { content: "1320px", wide: "1440px", narrow: "768px" },
+          boxShadow: {
+            sm:    "0 1px 2px rgba(20, 58, 107, 0.05)",
+            md:    "0 4px 12px rgba(20, 58, 107, 0.08)",
+            lg:    "0 8px 24px rgba(20, 58, 107, 0.10)",
+            xl:    "0 16px 48px rgba(20, 58, 107, 0.14)",
+            card:  "0 2px 8px rgba(20, 58, 107, 0.06), 0 0 0 1px rgba(20, 58, 107, 0.04)",
+            cta:   "0 8px 20px rgba(74, 142, 156, 0.30)"
+          },
+          transitionTimingFunction: {
+            "out-soft": "cubic-bezier(0.16, 1, 0.3, 1)"
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root { color-scheme: light; }
+    html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; scroll-behavior: smooth; }
+    body {
+      background-color: #F8FAFC;
+      color: #475569;
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+                   "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
+      letter-spacing: -0.01em;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    p, h1, h2, h3, h4, h5, h6, li, dt, dd, blockquote, figcaption {
+      word-break: keep-all; overflow-wrap: break-word;
+    }
+    h1, h2, h3, h4, h5, h6 { letter-spacing: -0.02em; color: #0C2340; }
+    .text-balanced { text-wrap: balance; }
+    ::selection { background-color: #B5D5DD; color: #0C2340; }
+    .tabular, time, .tel-number, .hours-time {
+      font-feature-settings: "tnum" 1, "lnum" 1;
+      font-variant-numeric: tabular-nums lining-nums;
+    }
+    .skip-link {
+      position: absolute; top: -100px; left: 1rem; z-index: 99;
+      padding: 0.75rem 1rem; background: #143A6B; color: #fff;
+      border-radius: 0.5rem; font-weight: 600;
+      transition: top .15s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .skip-link:focus { top: 1rem; }
+    @media (max-width: 1023px) { body { padding-bottom: 64px; } }
+
+    /* Mega menu */
+    .gnb-item:hover .mega { opacity: 1; visibility: visible; transform: translateY(0); }
+    .mega { opacity: 0; visibility: hidden; transform: translateY(-6px);
+      transition: opacity 200ms cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 200ms,
+                  transform 200ms cubic-bezier(0.16, 1, 0.3, 1); }
+    .gnb-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      height: 100%;
+      white-space: nowrap;
+      transition: color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .gnb-link::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 14px;
+      height: 2px;
+      width: 0;
+      background: #4A8E9C;
+      transform: translateX(-50%);
+      transition: width 220ms cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+    .gnb-item:hover .gnb-link::after,
+    .gnb-link.is-active::after,
+    .gnb-link:focus-visible::after { width: calc(100% - 24px); }
+    .gnb-link.is-active { color: #3B727D; }
+
+    .arrow-x { transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1); }
+    .group:hover .arrow-x { transform: translateX(4px); }
+
+    /* Sub hero */
+    .sub-hero {
+      background:
+        radial-gradient(circle at 18% 30%, rgba(74,142,156,0.22), transparent 45%),
+        radial-gradient(circle at 86% 65%, rgba(143,191,204,0.16), transparent 50%),
+        linear-gradient(135deg, #0C2340 0%, #143A6B 55%, #102E55 100%);
+    }
+    .banner-grain {
+      background-image:
+        radial-gradient(circle at 22% 28%, rgba(74,142,156,0.18), transparent 42%),
+        radial-gradient(circle at 80% 70%, rgba(143,191,204,0.10), transparent 48%);
+    }
+
+    /* USP card */
+    .usp-card {
+      transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 250ms cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .usp-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(20,58,107,0.14); border-color: #B5D5DD; }
+
+    /* Symptom card */
+    .symptom-card { transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1); }
+    .symptom-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(20,58,107,0.14); }
+    .symptom-card:hover .symptom-img { transform: scale(1.06); }
+    .symptom-img { transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1); }
+
+    /* Process step */
+    .step-line {
+      background: repeating-linear-gradient(to right,
+        rgba(74,142,156,0.45) 0 6px, transparent 6px 12px);
+    }
+
+    /* FAQ */
+    details.faq summary { list-style: none; cursor: pointer; }
+    details.faq summary::-webkit-details-marker { display: none; }
+    details.faq .chev { transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1); }
+    details.faq[open] .chev { transform: rotate(180deg); color: #4A8E9C; }
+    details.faq[open] summary { color: #0C2340; }
+
+    /* Mobile drawer */
+    #mobileDrawer { transform: translateX(100%); transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1); }
+    #mobileDrawer.open { transform: translateX(0); }
+    body.drawer-open { overflow: hidden; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(16px); filter: blur(4px);
+      transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 600ms cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.is-visible { opacity: 1; transform: none; filter: none; }
+
+    /* Header scrolled state */
+    header.is-scrolled .gnb-row { height: 64px; }
+    header.is-scrolled { box-shadow: 0 4px 12px rgba(20,58,107,0.08); }
+    .gnb-row { transition: height 200ms cubic-bezier(0.16, 1, 0.3, 1); }
+
+    /* LNB sticky on desktop */
+    @media (min-width: 1024px) {
+      .lnb-sticky { position: sticky; top: 116px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1; transform: none; filter: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">본문 바로가기</a>
+
+  <!-- =============== HEADER =============== -->
+  <header id="siteHeader" class="sticky top-0 z-40 bg-white border-b border-neutral-200">
+    <div class="hidden lg:block bg-primary-500 text-primary-100">
+      <div class="container max-w-content flex items-center justify-between h-9 text-[13px]">
+        <div class="flex items-center gap-2 text-primary-100/90">
+          <span class="inline-flex w-1.5 h-1.5 rounded-full bg-accent-400"></span>
+          <span>1년 365일 진료 · 평일·주말·공휴일 모두 진료합니다</span>
+        </div>
+        <nav aria-label="유틸리티" class="flex items-center gap-5">
+          <a href="#" class="hover:text-white transition-colors">로그인</a>
+          <span class="text-primary-300/60">|</span>
+          <a href="#" class="hover:text-white transition-colors">회원가입</a>
+          <span class="text-primary-300/60">|</span>
+          <a href="#" class="hover:text-white transition-colors">오시는 길</a>
+          <span class="text-primary-300/60">|</span>
+          <a href="tel:031-0000-0000" class="tabular hover:text-white transition-colors flex items-center gap-1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <strong class="text-white">031-0000-0000</strong>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container max-w-content flex items-center justify-between h-14 lg:h-[84px] gnb-row">
+      <a href="백세한방병원 메인.html" class="flex items-center shrink-0" aria-label="백세한방병원 홈으로">
+        <svg viewBox="0 0 8013.91 1033.8" xmlns="http://www.w3.org/2000/svg" class="h-5 sm:h-6 lg:h-7 w-auto" role="img" aria-label="백세한방병원">
+          <path fill="#396683" d="M2420.54,1008.72h-186.37c-40.83,0-66.34-43.4-45.9-78.14l93.17-158.58,93.15-158.56c20.44-34.72,71.47-34.72,91.89,0l93.17,158.56,93.17,158.58c20.44,34.74-5.07,78.14-45.95,78.14h-186.33Z"/>
+          <path fill="#091950" d="M2282.4,488.02C2267.41,215.99,2042.11,0,1766.34,0c-137.86,0-262.94,54.15-355.62,142.05C1318.11,54.12,1192.98,0,1055.15,0c-237.48,0-437.39,160.21-497.98,378.39V20.01h-280.66c-12.36,29.44-30.36,57.06-54.29,80.98C161.84,161.34,78.38,184.61,0,171.19v226.28c95.52,8.79,193.09-10.88,278.87-59.38v675.7h278.3v-358.37c60.58,218.17,260.49,378.38,497.98,378.38,137.83,0,262.96-54.07,355.57-142.04,92.68,87.92,217.76,142.04,355.62,142.04,80.94,0,157.35-18.89,225.57-52.08l290.49-493.7ZM1055.15,774.64c-142.37,0-257.76-115.39-257.76-257.71s115.39-257.77,257.76-257.77,257.74,115.4,257.74,257.77-115.39,257.71-257.74,257.71M1508.62,516.92c0-142.36,115.39-257.77,257.73-257.77s257.78,115.4,257.78,257.77-115.44,257.71-257.78,257.71-257.73-115.39-257.73-257.71"/>
+          <path fill="#091950" d="M3084.31,217.7h130.33v-108.24h133.13v472.13h-396.59V109.46h133.13v108.24ZM3625.06,957.48v-184.46h-635.06v-121.3h780.18v305.75h-145.12ZM3214.64,339.99h-130.33v119.28h130.33v-119.28ZM3421.68,606.62V99.4h133.13v184.46l81.32-31.1V99.4h134.05v507.22h-134.05v-218.54l-81.32,31.08v187.46h-133.13Z"/>
+          <path fill="#091950" d="M4125.14,474.3c0,27.39-1.08,53.3-3.23,77.66-2.17,24.43-5.36,48.28-9.72,71.68l186.76,190.45-80.43,106.27-155.31-158.38c-19.71,34.74-44.81,65.65-75.35,92.72-30.49,27.09-67.63,49.27-111.38,66.68l-63.76-116.32c30.19-14.02,55.76-29.73,76.73-47.07,20.93-17.4,38.17-38.92,51.76-64.67,13.53-25.73,23.39-56.27,29.59-91.73,6.13-35.44,9.23-78.16,9.23-128.32V107.41h145.12v366.89ZM4336.84,937.39v-453.07l-130.32,49.12v-135.32l130.32-49.1V99.38h133.11v838.01h-133.11ZM4671.46,937.39h-134.03V99.38h134.03v838.01Z"/>
+          <path fill="#091950" d="M5056.91,129.46h188.54v122.29h-522.23v-122.29h188.54V56.29h145.16v73.16ZM4983.88,286.81c80.08,0,140.05,15.4,179.76,46.16,39.75,30.75,59.64,74.82,59.64,132.31s-19.89,103.07-59.64,132.8c-39.71,29.8-99.68,44.63-179.76,44.63s-138.18-14.84-177.93-44.63c-39.75-29.72-59.65-73.96-59.65-132.8s19.9-101.55,59.65-132.31c39.76-30.76,99.01-46.16,177.93-46.16M4937.67,691.81v144.37h538.89v121.26h-684.02v-265.62h145.13ZM4983.88,393.13c-25.29,0-47.01,5.33-65.18,16.02-18.19,10.71-27.25,29.39-27.25,56.13s8.89,44.62,26.76,55.63c17.9,11.01,39.78,16.53,65.66,16.53,12.32,0,24.19-1.33,35.59-3.99,11.41-2.68,21.39-6.83,30.03-12.54,8.63-5.68,15.56-13.06,20.79-22.01,5.26-9.08,7.86-20.25,7.86-33.62s-2.6-24.55-7.86-33.59c-5.23-9-12.32-16.38-21.29-22.06-8.89-5.66-19.06-9.85-30.45-12.52-11.41-2.64-23.01-3.98-34.66-3.98M5467.33,439.2v288.73h-145.16V99.4h145.16v217.52h80.4v122.28h-80.4Z"/>
+          <path fill="#091950" d="M5735.37,212.66h161.77v-103.19h145.1v452.01h-451.99V109.46h145.12v103.19ZM5967.39,977.46c-55.49,0-105.25-3.65-149.29-10.99-44.07-7.36-81.33-18.68-111.87-34.06-30.49-15.43-53.75-34.48-69.77-57.19-16.06-22.7-24.03-49.73-24.03-81.18s7.98-57.61,24.03-80.67c16.01-23.05,39.28-42.13,69.77-57.16,30.54-15,67.8-26.17,111.87-33.55,44.03-7.36,93.8-11.01,149.29-11.01s105.25,3.65,149.28,11.01c44.07,7.38,81.33,18.55,111.86,33.55,30.49,15.03,53.72,34.11,69.78,57.16,16.04,23.07,24.02,50,24.02,80.67s-7.98,58.48-24.02,81.18c-16.05,22.71-39.29,41.76-69.78,57.19-30.53,15.38-67.8,26.7-111.86,34.06-44.04,7.34-93.82,10.99-149.28,10.99M5897.14,334.94h-161.77v104.26h161.77v-104.26ZM5967.39,855.19c65.94,0,117.4-4.64,154.35-14.03,36.98-9.37,55.48-25.05,55.48-47.11s-18.5-37.7-55.48-47.12c-36.95-9.33-88.41-14.01-154.35-14.01s-117.39,4.68-154.36,14.01c-36.98,9.42-55.48,25.11-55.48,47.12s18.49,37.74,55.48,47.11c36.97,9.39,88.4,14.03,154.36,14.03M6303.88,379.04v207.54h-145.17V99.4h145.17v157.35h80.38v122.29h-80.38Z"/>
+          <path fill="#091950" d="M6571.92,212.66h161.75v-103.23h145.12v452.05h-452.01V109.42h145.14v103.23ZM6817.82,977.52c-57.96,0-109.73-3.7-155.34-11.04-45.61-7.36-84.24-18.68-116.01-34.06-31.71-15.4-55.91-34.48-72.56-57.19-16.64-22.7-24.94-49.73-24.94-81.18s8.3-57.65,24.94-80.67c16.66-23.05,40.85-42.13,72.56-57.16,31.77-15,70.4-26.17,116.01-33.59,45.61-7.32,97.37-10.97,155.34-10.97s109.68,3.65,155.31,10.97c45.55,7.42,84.24,18.59,115.98,33.59,31.74,15.03,55.94,34.11,72.55,57.16,16.64,23.03,24.97,49.95,24.97,80.67s-8.33,58.48-24.97,81.18c-16.62,22.71-40.82,41.79-72.55,57.19-31.75,15.38-70.44,26.7-115.98,34.06-45.63,7.34-97.42,11.04-155.31,11.04M6733.67,334.94h-161.75v104.26h161.75v-104.26ZM6817.82,855.22c70.85,0,125.84-4.71,164.99-14.04,39.12-9.39,58.66-25.07,58.66-47.13s-19.55-37.73-58.66-47.09c-39.16-9.36-94.14-14-164.99-14s-125.89,4.64-165.02,14c-39.16,9.36-58.69,25.08-58.69,47.09s19.54,37.74,58.69,47.13c39.13,9.33,94.14,14.04,165.02,14.04M7168.11,99.38v496.19h-145.1v-126.3l-116.47,23.1v-119.32l116.47-25.04v-63.15l-116.47,24.03v-119.27l116.47-25.02v-65.2h145.1Z"/>
+          <path fill="#091950" d="M7444.52,769v-107.25h-216.32v-122.28h576.81v122.28h-215.39v107.25h-145.1ZM7242.08,292.84c0-60.81,23.09-108.04,69.31-141.78,46.25-33.75,110.91-50.64,194.1-50.64,65.96,0,120.34,10.64,163.17,32.04,42.84,21.42,72.24,52.1,88.27,92.21l102.64-25.04v-100.24h145.07v657.58h-145.07v-432.06l-98,24.07c-12.95,44.14-41.59,77.9-85.97,101.26-44.41,23.36-101.11,35.07-170.11,35.07-83.2,0-147.86-16.88-194.1-50.62-46.22-33.72-69.31-80.99-69.31-141.84M7416.76,711.84v124.33h597.15v121.26h-742.24v-245.58h145.09ZM7387.2,292.84c0,11.39,3.38,21.59,10.2,30.56,6.76,9.07,15.67,16.59,26.75,22.58,11.11,6,23.73,10.55,37.91,13.55,14.17,2.99,28.67,4.48,43.44,4.48s29.44-1.62,43.91-5.01c14.5-3.34,27.42-7.98,38.82-14.04,11.41-6,20.5-13.35,27.3-22.01,6.79-8.67,10.15-18.72,10.15-30.11,0-22.01-11.24-39.41-33.72-52.14-22.51-12.66-51.32-18.98-86.45-18.98s-62.83,5.96-85.04,18.03c-22.14,12-33.25,29.72-33.25,53.09"/>
+        </svg>
+      </a>
+
+      <nav class="hidden lg:flex items-center" aria-label="주메뉴">
+        <ul class="flex items-center gap-1">
+          <li class="gnb-item relative">
+            <a href="#" class="gnb-link block px-3 xl:px-4 py-5 text-[15px] font-semibold text-primary-700 hover:text-accent-600">백세한방병원</a>
+            <div class="mega absolute left-0 top-full w-[280px] bg-white border border-neutral-200 shadow-lg rounded-b-xl p-3">
+              <ul class="text-[14px] text-neutral-700">
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">인사말</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">의료진 소개</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">시설 둘러보기</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">한약·탕전 안내</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">진료시간</a></li>
+                <li><a href="#" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">오시는 길</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="gnb-item relative">
+            <a href="백세한방병원 통증클리닉.html" class="gnb-link block px-3 xl:px-4 py-5 text-[15px] font-semibold text-primary-700 hover:text-accent-600">통증클리닉</a>
+          </li>
+          <li class="gnb-item relative">
+            <a href="백세한방병원 추나교정클리닉.html" class="gnb-link block px-3 xl:px-4 py-5 text-[15px] font-semibold text-primary-700 hover:text-accent-600">추나·교정</a>
+          </li>
+          <li class="gnb-item relative">
+            <a href="백세한방병원 교통사고클리닉.html" class="gnb-link block px-3 xl:px-4 py-5 text-[15px] font-semibold text-primary-700 hover:text-accent-600">교통사고</a>
+          </li>
+          <li class="gnb-item relative">
+            <a href="백세한방병원 면역만성클리닉.html" class="gnb-link block px-3 xl:px-4 py-5 text-[15px] font-semibold text-primary-700 hover:text-accent-600">면역·만성</a>
+          </li>
+          <li class="gnb-item relative">
+            <a href="#" class="gnb-link is-active block px-5 py-5 text-[15px] font-semibold hover:text-accent-600">여성·소아</a>
+            <div class="mega absolute left-0 top-full w-[260px] bg-white border border-neutral-200 shadow-lg rounded-b-xl p-3">
+              <ul class="text-[14px] text-neutral-700">
+                <li><a href="백세한방병원 산후조리.html" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">산후조리</a></li>
+                <li><a href="백세한방병원 생리통.html" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">생리통·월경불순</a></li>
+                <li><a href="백세한방병원 갱년기.html" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">갱년기</a></li>
+                <li><a href="백세한방병원 성장클리닉.html" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">성장 클리닉</a></li>
+                <li><a href="백세한방병원 총명탕.html" class="block px-3 py-2 rounded-md hover:bg-primary-50 hover:text-primary-600">총명탕</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="gnb-item relative">
+            <a href="#" class="gnb-link block px-3 xl:px-4 py-5 text-[15px] font-semibold text-primary-700 hover:text-accent-600">커뮤니티</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="hidden lg:flex items-center gap-2 shrink-0">
+        <a href="#" class="inline-flex items-center gap-2 h-11 px-5 rounded-full text-[14px] font-semibold text-primary-600 border border-primary-200 hover:bg-primary-50 transition-colors whitespace-nowrap">온라인 상담</a>
+        <a href="tel:031-0000-0000" class="inline-flex items-center gap-2 h-11 px-5 rounded-full text-[14px] font-semibold text-white bg-accent-500 hover:bg-accent-600 shadow-cta transition-colors whitespace-nowrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          전화 예약
+        </a>
+      </div>
+
+      <button id="hamburger" type="button" aria-label="메뉴 열기" aria-controls="mobileDrawer" aria-expanded="false"
+              class="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-md text-primary-700 hover:bg-primary-50 transition-colors">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- =============== MOBILE DRAWER =============== -->
+  <div id="mobileDrawer" class="fixed inset-0 z-50 lg:hidden bg-white" aria-hidden="true" role="dialog" aria-label="모바일 메뉴">
+    <div class="flex items-center justify-between h-14 border-b border-neutral-200 px-5">
+      <span class="font-bold text-primary-700">메뉴</span>
+      <button id="hamburgerClose" type="button" aria-label="메뉴 닫기"
+              class="inline-flex items-center justify-center w-11 h-11 rounded-md text-primary-700 hover:bg-primary-50">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav class="overflow-y-auto h-[calc(100%-56px-72px)] px-2 py-3" aria-label="모바일 주메뉴">
+      <details class="group border-b border-neutral-200">
+        <summary class="cursor-pointer list-none px-3 py-4 flex items-center justify-between font-semibold text-primary-700">
+          백세한방병원 <span class="text-neutral-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <ul class="pb-3 pl-3 text-[14px] text-neutral-600">
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">인사말</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">의료진 소개</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">시설 둘러보기</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">진료시간</a></li>
+          <li><a href="#" class="block px-3 py-2 hover:text-primary-600">오시는 길</a></li>
+        </ul>
+      </details>
+      <details class="group border-b border-neutral-200">
+        <summary class="cursor-pointer list-none px-3 py-4 flex items-center justify-between font-semibold text-primary-700">
+          통증클리닉 <span class="text-neutral-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+      </details>
+      <details class="group border-b border-neutral-200">
+        <summary class="cursor-pointer list-none px-3 py-4 flex items-center justify-between font-semibold text-primary-700">
+          추나·교정 <span class="text-neutral-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+      </details>
+      <details class="group border-b border-neutral-200">
+        <summary class="cursor-pointer list-none px-3 py-4 flex items-center justify-between font-semibold text-primary-700">
+          교통사고 <span class="text-neutral-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+      </details>
+      <details class="group border-b border-neutral-200">
+        <summary class="cursor-pointer list-none px-3 py-4 flex items-center justify-between font-semibold text-primary-700">
+          면역·만성 <span class="text-neutral-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+      </details>
+      <details open class="group border-b border-neutral-200">
+        <summary class="cursor-pointer list-none px-3 py-4 flex items-center justify-between font-semibold text-primary-700">
+          여성·소아 <span class="text-neutral-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+        <ul class="pb-3 pl-3 text-[14px] text-neutral-600">
+          <li><a href="백세한방병원 산후조리.html" class="block px-3 py-2 hover:text-primary-600">산후조리</a></li>
+          <li><a href="백세한방병원 생리통.html" class="block px-3 py-2 hover:text-primary-600">생리통·월경불순</a></li>
+          <li><a href="백세한방병원 갱년기.html" class="block px-3 py-2 hover:text-primary-600">갱년기</a></li>
+          <li><a href="백세한방병원 성장클리닉.html" class="block px-3 py-2 hover:text-primary-600">성장 클리닉</a></li>
+          <li><a href="백세한방병원 총명탕.html" class="block px-3 py-2 hover:text-primary-600">총명탕</a></li>
+        </ul>
+      </details>
+      <details class="group border-b border-neutral-200">
+        <summary class="cursor-pointer list-none px-3 py-4 flex items-center justify-between font-semibold text-primary-700">
+          커뮤니티 <span class="text-neutral-400 group-open:rotate-180 transition-transform">▾</span>
+        </summary>
+      </details>
+    </nav>
+    <div class="absolute bottom-0 inset-x-0 grid grid-cols-3 gap-2 p-3 bg-white border-t border-neutral-200">
+      <a href="#" class="flex flex-col items-center justify-center h-14 rounded-md bg-primary-50 text-primary-600 text-[12px] font-semibold">온라인 상담</a>
+      <a href="tel:031-0000-0000" class="flex flex-col items-center justify-center h-14 rounded-md bg-accent-500 text-white text-[12px] font-semibold">전화걸기</a>
+      <a href="#process" class="flex flex-col items-center justify-center h-14 rounded-md bg-primary-50 text-primary-600 text-[12px] font-semibold">치료과정</a>
+    </div>
+  </div>
+
+  <main id="main">
+
+    <!-- =============== SUB HERO =============== -->
+    <section class="sub-hero relative overflow-hidden text-white">
+      <div class="absolute inset-0 banner-grain pointer-events-none"></div>
+      <div class="absolute -right-40 -top-40 w-[520px] h-[520px] rounded-full bg-accent-500/15 blur-3xl pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute -left-32 -bottom-32 w-[420px] h-[420px] rounded-full bg-accent-400/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative container max-w-content py-16 lg:py-28">
+        <!-- Breadcrumb -->
+        <nav aria-label="현재 위치" class="text-[13px] text-primary-100/85 mb-6 lg:mb-10">
+          <ol class="flex items-center gap-2 flex-wrap">
+            <li><a href="백세한방병원 메인.html" class="hover:text-white transition-colors">홈</a></li>
+            <li aria-hidden="true" class="text-primary-100/40">/</li>
+            <li><span>진료안내</span></li>
+            <li aria-hidden="true" class="text-primary-100/40">/</li>
+            <li><span class="text-white font-semibold">여성·소아</span></li>
+          </ol>
+        </nav>
+
+        <div class="grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-7">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-500/20 border border-accent-400/30 text-[11px] tracking-[0.18em] font-semibold text-accent-200">
+              WOMEN &amp; KIDS
+            </span>
+            <h1 class="mt-5 text-balanced text-[34px] sm:text-[42px] lg:text-[56px] leading-[1.15] font-extrabold text-white">
+              산후·생리·갱년기·성장,<br/>
+              <span class="text-accent-300">시기별 맞춤 진료</span>
+            </h1>
+            <p class="mt-5 text-[15px] sm:text-[17px] leading-[1.75] text-primary-100/95 max-w-[560px]">
+              여성의 일생 주기와 아이의 성장 단계, 시기별로 필요한 한방 진료를 함께 살핍니다.<br class="hidden sm:block"/>
+              부드러운 한방 치료로 가족 단위 건강 관리를 안내드립니다.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href="#symptoms" class="inline-flex items-center gap-2 h-12 px-7 rounded-full bg-white text-primary-700 text-[15px] font-semibold hover:bg-primary-50 transition-colors group">
+                시기별 진료 보기
+                <span class="arrow-x">→</span>
+              </a>
+              <a href="tel:031-0000-0000" class="inline-flex items-center gap-2 h-12 px-7 rounded-full bg-accent-500 text-white text-[15px] font-semibold shadow-cta hover:bg-accent-600 transition-colors">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                지금 전화 상담
+              </a>
+            </div>
+          </div>
+
+          <!-- Stat side card -->
+          <div class="lg:col-span-5">
+            <div class="grid grid-cols-2 gap-3 sm:gap-4">
+              <div class="rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 p-5 sm:p-6">
+                <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-200">진료 대상</span>
+                <p class="mt-2 text-white text-[20px] sm:text-[22px] font-bold">여성·소아</p>
+                <p class="mt-1 text-[12px] text-primary-100/85">시기별 한방 진료</p>
+              </div>
+              <div class="rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 p-5 sm:p-6">
+                <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-200">진료 시간</span>
+                <p class="mt-2 text-white text-[20px] sm:text-[22px] font-bold tabular">365일</p>
+                <p class="mt-1 text-[12px] text-primary-100/85">평일·주말·공휴일</p>
+              </div>
+              <div class="rounded-2xl bg-white/10 backdrop-blur-sm border border-white/15 p-5 sm:p-6">
+                <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-200">전문 한약</span>
+                <p class="mt-2 text-white text-[20px] sm:text-[22px] font-bold">맞춤 처방</p>
+                <p class="mt-1 text-[12px] text-primary-100/85">총명탕·보양 한약</p>
+              </div>
+              <div class="rounded-2xl bg-accent-500/95 border border-accent-400/40 p-5 sm:p-6 text-white">
+                <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-100">가족 진료</span>
+                <p class="mt-2 text-[20px] sm:text-[22px] font-bold">가족 단위 관리</p>
+                <p class="mt-1 text-[12px] text-accent-50/90">엄마·아이 함께</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== LAYOUT: LNB + CONTENT =============== -->
+    <div class="container max-w-content py-12 lg:py-20">
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
+
+        <!-- LNB (left nav, desktop only) -->
+        <aside class="hidden lg:block lg:col-span-3" aria-label="여성·소아 하위 메뉴">
+          <div class="lnb-sticky">
+            <div class="rounded-2xl border border-neutral-200 bg-white p-2 shadow-card">
+              <div class="px-4 py-4 border-b border-neutral-200">
+                <span class="block text-[11px] tracking-[0.18em] font-semibold text-accent-600">WOMEN &amp; KIDS</span>
+                <h2 class="mt-1 text-[18px] font-bold text-primary-700">여성·소아</h2>
+              </div>
+              <ul class="py-2 text-[14px]">
+                <li><a href="#overview" class="flex items-center justify-between px-4 py-2.5 rounded-lg text-primary-700 bg-primary-50 font-semibold">
+                  클리닉 소개 <span class="arrow-x text-accent-600">›</span>
+                </a></li>
+                <li><a href="백세한방병원 산후조리.html" class="flex items-center justify-between px-4 py-2.5 rounded-lg text-neutral-600 hover:bg-primary-50 hover:text-primary-700">
+                  산후조리
+                </a></li>
+                <li><a href="백세한방병원 생리통.html" class="flex items-center justify-between px-4 py-2.5 rounded-lg text-neutral-600 hover:bg-primary-50 hover:text-primary-700">
+                  생리통·월경불순
+                </a></li>
+                <li><a href="백세한방병원 갱년기.html" class="flex items-center justify-between px-4 py-2.5 rounded-lg text-neutral-600 hover:bg-primary-50 hover:text-primary-700">
+                  갱년기
+                </a></li>
+                <li><a href="백세한방병원 성장클리닉.html" class="flex items-center justify-between px-4 py-2.5 rounded-lg text-neutral-600 hover:bg-primary-50 hover:text-primary-700">
+                  성장 클리닉
+                </a></li>
+                <li><a href="백세한방병원 총명탕.html" class="flex items-center justify-between px-4 py-2.5 rounded-lg text-neutral-600 hover:bg-primary-50 hover:text-primary-700">
+                  총명탕
+                </a></li>
+              </ul>
+            </div>
+
+            <!-- LNB CTA -->
+            <div class="mt-4 rounded-2xl bg-primary-700 text-white p-5 overflow-hidden relative">
+              <div class="absolute inset-0 banner-grain pointer-events-none"></div>
+              <div class="relative">
+                <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-300">CONSULT</span>
+                <p class="mt-2 text-[15px] font-semibold text-white leading-snug">
+                  엄마·아이를 위한 진료가 필요하다면<br/>전화 한 통이면 됩니다.
+                </p>
+                <a href="tel:031-0000-0000" class="mt-4 inline-flex items-center gap-2 h-10 px-4 rounded-full bg-accent-500 text-white text-[13px] font-semibold shadow-cta hover:bg-accent-600 transition-colors">
+                  <span class="tabular">031-0000-0000</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Content -->
+        <div class="lg:col-span-9 space-y-16 lg:space-y-24">
+
+          <!-- =============== OVERVIEW =============== -->
+          <section id="overview" class="reveal">
+            <span class="text-[12px] tracking-[0.2em] font-semibold text-accent-600">CLINIC OVERVIEW</span>
+            <h2 class="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
+              여성의 일생 주기와 아이의 성장,<br class="hidden sm:block"/>
+              시기별로 부드럽게 살핍니다
+            </h2>
+            <p class="mt-4 text-[15px] lg:text-[17px] text-neutral-600 leading-relaxed max-w-[760px]">
+              백세한방병원 여성·소아 클리닉은 산후조리, 생리통·월경불순, 갱년기, 성장·총명탕까지 시기별 한방 진료를 함께 봅니다.
+              체질·성장 단계를 함께 살펴 부드러운 한방 치료로 정성스러운 가족 단위 관리를 안내드립니다.
+            </p>
+
+            <!-- 다루는 증상 칩 -->
+            <div id="symptoms" class="mt-7 lg:mt-9">
+              <h3 class="text-[14px] font-semibold text-primary-600 mb-3">이 클리닉에서 다루는 증상</h3>
+              <ul class="flex flex-wrap gap-2">
+                <li><a href="백세한방병원 산후조리.html" class="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-primary-50 text-primary-700 text-[13px] font-semibold hover:bg-primary-100 transition-colors">산후 회복</a></li>
+                <li><a href="백세한방병원 산후조리.html" class="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-primary-50 text-primary-700 text-[13px] font-semibold hover:bg-primary-100 transition-colors">산후 부종</a></li>
+                <li><a href="백세한방병원 생리통.html" class="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-primary-50 text-primary-700 text-[13px] font-semibold hover:bg-primary-100 transition-colors">생리통</a></li>
+                <li><a href="백세한방병원 생리통.html" class="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-primary-50 text-primary-700 text-[13px] font-semibold hover:bg-primary-100 transition-colors">월경불순</a></li>
+                <li><a href="백세한방병원 갱년기.html" class="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-primary-50 text-primary-700 text-[13px] font-semibold hover:bg-primary-100 transition-colors">갱년기 안면홍조</a></li>
+                <li><a href="백세한방병원 갱년기.html" class="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-primary-50 text-primary-700 text-[13px] font-semibold hover:bg-primary-100 transition-colors">갱년기 불면</a></li>
+                <li><a href="백세한방병원 성장클리닉.html" class="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-primary-50 text-primary-700 text-[13px] font-semibold hover:bg-primary-100 transition-colors">성장 부진</a></li>
+                <li><a href="백세한방병원 성장클리닉.html" class="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-primary-50 text-primary-700 text-[13px] font-semibold hover:bg-primary-100 transition-colors">식욕부진</a></li>
+                <li><a href="백세한방병원 총명탕.html" class="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-primary-50 text-primary-700 text-[13px] font-semibold hover:bg-primary-100 transition-colors">집중력 저하</a></li>
+                <li><a href="백세한방병원 총명탕.html" class="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-primary-50 text-primary-700 text-[13px] font-semibold hover:bg-primary-100 transition-colors">한약 보양</a></li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- =============== USP =============== -->
+          <section class="reveal">
+            <header class="mb-7 lg:mb-9">
+              <span class="text-[12px] tracking-[0.2em] font-semibold text-accent-600">WHY BAEKSE</span>
+              <h2 class="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
+                백세한방병원 여성·소아 클리닉이 다른 점
+              </h2>
+              <p class="mt-3 text-[15px] text-neutral-600 leading-relaxed max-w-[760px]">
+                여성의 일생 주기와 아이의 성장 단계는 시기별로 필요한 한방 진료가 다릅니다. 시기에 맞춘 부드러운 진료를 진행합니다.
+              </p>
+            </header>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-2 gap-4 lg:gap-5">
+              <article class="usp-card rounded-2xl bg-white border border-neutral-200 shadow-card p-6 lg:p-7">
+                <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent-50 text-accent-600">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                </span>
+                <h3 class="mt-4 text-[18px] lg:text-[20px] font-bold text-primary-700">시기별 전문 진료</h3>
+                <p class="mt-2 text-[14px] lg:text-[15px] text-neutral-600 leading-relaxed">
+                  산전·산후·생리·갱년기·성장 등 시기에 맞춘 한방 진료를 진행합니다. 시기 특성에 맞지 않는 일률적 처방은 진행하지 않습니다.
+                </p>
+              </article>
+
+              <article class="usp-card rounded-2xl bg-white border border-neutral-200 shadow-card p-6 lg:p-7">
+                <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent-50 text-accent-600">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </span>
+                <h3 class="mt-4 text-[18px] lg:text-[20px] font-bold text-primary-700">부드러운 한방 치료</h3>
+                <p class="mt-2 text-[14px] lg:text-[15px] text-neutral-600 leading-relaxed">
+                  여성·아이 체질에 맞춘 부드러운 침과 한약 처방을 진행합니다. 무리한 강도 없이 정성스러운 진료가 이어집니다.
+                </p>
+              </article>
+
+              <article class="usp-card rounded-2xl bg-white border border-neutral-200 shadow-card p-6 lg:p-7">
+                <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent-50 text-accent-600">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+                </span>
+                <h3 class="mt-4 text-[18px] lg:text-[20px] font-bold text-primary-700">체질·성장 단계 분석</h3>
+                <p class="mt-2 text-[14px] lg:text-[15px] text-neutral-600 leading-relaxed">
+                  여성 체질·생리주기·아이의 성장 단계를 함께 살펴 맞춤형 한방 진료 계획을 체계적으로 세웁니다.
+                </p>
+              </article>
+
+              <article class="usp-card rounded-2xl bg-white border border-neutral-200 shadow-card p-6 lg:p-7">
+                <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent-50 text-accent-600">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </span>
+                <h3 class="mt-4 text-[18px] lg:text-[20px] font-bold text-primary-700">가족 단위 관리</h3>
+                <p class="mt-2 text-[14px] lg:text-[15px] text-neutral-600 leading-relaxed">
+                  엄마와 아이를 한 자리에서 함께 진료받으실 수 있도록 동선을 설계했습니다. 가족 단위 한방 관리가 자연스럽게 이어집니다.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <!-- =============== 세부 증상별 카드 =============== -->
+          <section class="reveal">
+            <header class="mb-7 lg:mb-9">
+              <span class="text-[12px] tracking-[0.2em] font-semibold text-accent-600">SUB CLINICS</span>
+              <h2 class="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
+                시기별 세부 진료 안내
+              </h2>
+              <p class="mt-3 text-[15px] text-neutral-600 leading-relaxed max-w-[760px]">
+                해당 카드를 눌러 시기별 자세한 진료 내용을 확인하실 수 있습니다.
+              </p>
+            </header>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+              <a href="백세한방병원 산후조리.html" class="symptom-card group rounded-2xl overflow-hidden bg-white border border-neutral-200 shadow-card flex flex-col">
+                <div class="relative h-44 overflow-hidden bg-primary-50">
+                  <img class="symptom-img w-full h-full object-cover" loading="lazy" decoding="async"
+                       alt="산후조리 한방 진료 이미지"
+                       src="https://images.unsplash.com/photo-1559757175-08f3a01dd0d3?auto=format&fit=crop&w=900&q=70" />
+                </div>
+                <div class="p-5 lg:p-6 flex-1 flex flex-col">
+                  <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-600">01 POSTPARTUM</span>
+                  <h3 class="mt-2 text-[18px] font-bold text-primary-700">산후조리</h3>
+                  <p class="mt-2 text-[13px] lg:text-[14px] text-neutral-600 leading-relaxed flex-1">
+                    출산 후 회복기 어혈·부종·기력 저하를 산후 한약과 침으로 함께 살펴드립니다.
+                  </p>
+                  <span class="mt-4 inline-flex items-center gap-2 text-[13px] font-semibold text-accent-600">
+                    자세히 보기 <span class="arrow-x">→</span>
+                  </span>
+                </div>
+              </a>
+
+              <a href="백세한방병원 생리통.html" class="symptom-card group rounded-2xl overflow-hidden bg-white border border-neutral-200 shadow-card flex flex-col">
+                <div class="relative h-44 overflow-hidden bg-primary-50">
+                  <img class="symptom-img w-full h-full object-cover" loading="lazy" decoding="async"
+                       alt="생리통·월경불순 진료 이미지"
+                       src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&w=900&q=70" />
+                </div>
+                <div class="p-5 lg:p-6 flex-1 flex flex-col">
+                  <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-600">02 MENSTRUATION</span>
+                  <h3 class="mt-2 text-[18px] font-bold text-primary-700">생리통·월경불순</h3>
+                  <p class="mt-2 text-[13px] lg:text-[14px] text-neutral-600 leading-relaxed flex-1">
+                    심한 생리통, 불규칙한 주기, 무월경 신호 등을 체질에 맞춘 한방 진료로 살펴드립니다.
+                  </p>
+                  <span class="mt-4 inline-flex items-center gap-2 text-[13px] font-semibold text-accent-600">
+                    자세히 보기 <span class="arrow-x">→</span>
+                  </span>
+                </div>
+              </a>
+
+              <a href="백세한방병원 갱년기.html" class="symptom-card group rounded-2xl overflow-hidden bg-white border border-neutral-200 shadow-card flex flex-col">
+                <div class="relative h-44 overflow-hidden bg-primary-50">
+                  <img class="symptom-img w-full h-full object-cover" loading="lazy" decoding="async"
+                       alt="갱년기 한방 진료 이미지"
+                       src="https://images.unsplash.com/photo-1583912267550-23b18062cee2?auto=format&fit=crop&w=900&q=70" />
+                </div>
+                <div class="p-5 lg:p-6 flex-1 flex flex-col">
+                  <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-600">03 MENOPAUSE</span>
+                  <h3 class="mt-2 text-[18px] font-bold text-primary-700">갱년기</h3>
+                  <p class="mt-2 text-[13px] lg:text-[14px] text-neutral-600 leading-relaxed flex-1">
+                    안면홍조, 식은땀, 불면 등 갱년기 변화를 부드러운 한방 진료로 함께 살펴드립니다.
+                  </p>
+                  <span class="mt-4 inline-flex items-center gap-2 text-[13px] font-semibold text-accent-600">
+                    자세히 보기 <span class="arrow-x">→</span>
+                  </span>
+                </div>
+              </a>
+
+              <a href="백세한방병원 성장클리닉.html" class="symptom-card group rounded-2xl overflow-hidden bg-white border border-neutral-200 shadow-card flex flex-col">
+                <div class="relative h-44 overflow-hidden bg-primary-50">
+                  <img class="symptom-img w-full h-full object-cover" loading="lazy" decoding="async"
+                       alt="성장 클리닉 진료 이미지"
+                       src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=900&q=70" />
+                </div>
+                <div class="p-5 lg:p-6 flex-1 flex flex-col">
+                  <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-600">04 GROWTH</span>
+                  <h3 class="mt-2 text-[18px] font-bold text-primary-700">성장 클리닉</h3>
+                  <p class="mt-2 text-[13px] lg:text-[14px] text-neutral-600 leading-relaxed flex-1">
+                    또래보다 키 성장이 느리거나 식욕·체력이 약한 아이를 성장 단계별 한약으로 관리.
+                  </p>
+                  <span class="mt-4 inline-flex items-center gap-2 text-[13px] font-semibold text-accent-600">
+                    자세히 보기 <span class="arrow-x">→</span>
+                  </span>
+                </div>
+              </a>
+
+              <a href="백세한방병원 총명탕.html" class="symptom-card group rounded-2xl overflow-hidden bg-white border border-neutral-200 shadow-card flex flex-col">
+                <div class="relative h-44 overflow-hidden bg-primary-50">
+                  <img class="symptom-img w-full h-full object-cover" loading="lazy" decoding="async"
+                       alt="총명탕 한약 진료 이미지"
+                       src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=900&q=70" />
+                </div>
+                <div class="p-5 lg:p-6 flex-1 flex flex-col">
+                  <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-600">05 CHONGMYUNG</span>
+                  <h3 class="mt-2 text-[18px] font-bold text-primary-700">총명탕</h3>
+                  <p class="mt-2 text-[13px] lg:text-[14px] text-neutral-600 leading-relaxed flex-1">
+                    학령기 아이의 집중력·체력 회복을 위한 맞춤형 총명탕을 체질에 맞춰 처방해 드립니다.
+                  </p>
+                  <span class="mt-4 inline-flex items-center gap-2 text-[13px] font-semibold text-accent-600">
+                    자세히 보기 <span class="arrow-x">→</span>
+                  </span>
+                </div>
+              </a>
+
+              <!-- 의료진 안내 카드 (특수 — accent) -->
+              <a href="#" class="symptom-card group rounded-2xl overflow-hidden bg-accent-500 text-white shadow-cta flex flex-col">
+                <div class="absolute inset-0 banner-grain opacity-50"></div>
+                <div class="relative p-5 lg:p-6 flex-1 flex flex-col">
+                  <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-100">06 DOCTORS</span>
+                  <h3 class="mt-2 text-[18px] font-bold text-white">담당 의료진 보기</h3>
+                  <p class="mt-2 text-[13px] lg:text-[14px] text-accent-50/95 leading-relaxed flex-1">
+                    여성·소아 진료를 담당하는 한방부인과·소아과 전문성을 갖춘 의료진을 만나보세요.
+                  </p>
+                  <div class="mt-5 grid grid-cols-3 gap-2">
+                    <span aria-hidden="true" class="aspect-square rounded-full bg-white/15 ring-1 ring-white/20"></span>
+                    <span aria-hidden="true" class="aspect-square rounded-full bg-white/15 ring-1 ring-white/20"></span>
+                    <span aria-hidden="true" class="aspect-square rounded-full bg-white/15 ring-1 ring-white/20"></span>
+                  </div>
+                  <span class="mt-5 inline-flex items-center gap-2 text-[13px] font-semibold text-white">
+                    의료진 소개로 이동 <span class="arrow-x">→</span>
+                  </span>
+                </div>
+              </a>
+            </div>
+          </section>
+
+          <!-- =============== 치료 방법 =============== -->
+          <section class="reveal">
+            <header class="mb-7 lg:mb-9">
+              <span class="text-[12px] tracking-[0.2em] font-semibold text-accent-600">TREATMENT</span>
+              <h2 class="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
+                백세한방병원의 여성·소아 진료 방법
+              </h2>
+              <p class="mt-3 text-[15px] text-neutral-600 leading-relaxed max-w-[760px]">
+                시기와 체질에 따라 아래 진료를 단독 또는 함께 사용해 부드러운 한방 진료가 진행됩니다.
+              </p>
+            </header>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <article class="rounded-2xl border border-neutral-200 bg-white p-5 lg:p-6 hover:border-primary-200 transition-colors">
+                <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-600 tabular">METHOD 01</span>
+                <h3 class="mt-2 text-[17px] font-bold text-primary-700">산후 한약</h3>
+                <p class="mt-2 text-[13px] text-neutral-600 leading-relaxed">
+                  출산 후 어혈·부종·기력 회복을 위한 산후조리 한약을 시기별로 처방.
+                </p>
+              </article>
+              <article class="rounded-2xl border border-neutral-200 bg-white p-5 lg:p-6 hover:border-primary-200 transition-colors">
+                <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-600 tabular">METHOD 02</span>
+                <h3 class="mt-2 text-[17px] font-bold text-primary-700">여성 한약</h3>
+                <p class="mt-2 text-[13px] text-neutral-600 leading-relaxed">
+                  생리통·월경불순·갱년기 등 여성 시기별 신호에 맞춘 맞춤 한약 처방.
+                </p>
+              </article>
+              <article class="rounded-2xl border border-neutral-200 bg-white p-5 lg:p-6 hover:border-primary-200 transition-colors">
+                <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-600 tabular">METHOD 03</span>
+                <h3 class="mt-2 text-[17px] font-bold text-primary-700">성장 한약(총명탕)</h3>
+                <p class="mt-2 text-[13px] text-neutral-600 leading-relaxed">
+                  아이 성장 단계별 한약과 학령기 총명탕을 체질에 맞춰 처방해 드립니다.
+                </p>
+              </article>
+              <article class="rounded-2xl border border-neutral-200 bg-white p-5 lg:p-6 hover:border-primary-200 transition-colors">
+                <span class="text-[11px] tracking-[0.18em] font-semibold text-accent-600 tabular">METHOD 04</span>
+                <h3 class="mt-2 text-[17px] font-bold text-primary-700">침·약침</h3>
+                <p class="mt-2 text-[13px] text-neutral-600 leading-relaxed">
+                  여성·아이 체질에 맞춘 부드러운 침과 약침을 함께 사용해 진행합니다.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <!-- =============== 치료 과정 =============== -->
+          <section id="process" class="reveal">
+            <header class="mb-8 lg:mb-10">
+              <span class="text-[12px] tracking-[0.2em] font-semibold text-accent-600">CARE PROCESS</span>
+              <h2 class="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
+                내원부터 사후 관리까지, 5단계 진료 과정
+              </h2>
+            </header>
+
+            <ol class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-3">
+              <span class="hidden lg:block absolute left-[8%] right-[8%] top-7 h-px step-line" aria-hidden="true"></span>
+
+              <li class="relative bg-white border border-neutral-200 rounded-2xl p-5 lg:p-6 shadow-card">
+                <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-500 text-white tabular text-[18px] font-bold shadow-md">01</span>
+                <h3 class="mt-4 text-[16px] font-bold text-primary-700">체질·시기 진단</h3>
+                <p class="mt-2 text-[13px] text-neutral-600 leading-relaxed">진맥·문진으로 시기·체질·증상을 함께 살핍니다.</p>
+              </li>
+              <li class="relative bg-white border border-neutral-200 rounded-2xl p-5 lg:p-6 shadow-card">
+                <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-500 text-white tabular text-[18px] font-bold shadow-md">02</span>
+                <h3 class="mt-4 text-[16px] font-bold text-primary-700">처방 결정</h3>
+                <p class="mt-2 text-[13px] text-neutral-600 leading-relaxed">산후·여성·성장 한약을 체질·시기에 맞춰 결정.</p>
+              </li>
+              <li class="relative bg-white border border-neutral-200 rounded-2xl p-5 lg:p-6 shadow-card">
+                <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent-500 text-white tabular text-[18px] font-bold shadow-cta">03</span>
+                <h3 class="mt-4 text-[16px] font-bold text-primary-700">정기 진료</h3>
+                <p class="mt-2 text-[13px] text-neutral-600 leading-relaxed">한약 복용 중 정기 점검과 침·약침 함께 진행.</p>
+              </li>
+              <li class="relative bg-white border border-neutral-200 rounded-2xl p-5 lg:p-6 shadow-card">
+                <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-500 text-white tabular text-[18px] font-bold shadow-md">04</span>
+                <h3 class="mt-4 text-[16px] font-bold text-primary-700">생활 관리</h3>
+                <p class="mt-2 text-[13px] text-neutral-600 leading-relaxed">식이·수면·습관 가이드를 함께 안내드립니다.</p>
+              </li>
+              <li class="relative bg-white border border-neutral-200 rounded-2xl p-5 lg:p-6 shadow-card">
+                <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary-500 text-white tabular text-[18px] font-bold shadow-md">05</span>
+                <h3 class="mt-4 text-[16px] font-bold text-primary-700">사후 관리</h3>
+                <p class="mt-2 text-[13px] text-neutral-600 leading-relaxed">시기별 사후 관리와 가족 단위 진료까지 안내.</p>
+              </li>
+            </ol>
+          </section>
+
+          <!-- =============== 자가 점검 체크리스트 =============== -->
+          <section class="reveal">
+            <div class="rounded-2xl bg-primary-50 border border-primary-100 p-6 lg:p-8">
+              <header class="mb-5 lg:mb-6">
+                <span class="text-[12px] tracking-[0.2em] font-semibold text-accent-600">SELF CHECK</span>
+                <h2 class="mt-2 text-[22px] lg:text-[26px] font-bold text-primary-700 leading-snug">
+                  이런 신호가 있다면 진료가 필요합니다
+                </h2>
+              </header>
+              <ul class="grid sm:grid-cols-2 gap-3 lg:gap-4">
+                <li class="flex items-start gap-3 text-[14px] lg:text-[15px] text-neutral-700">
+                  <span class="shrink-0 inline-flex items-center justify-center w-6 h-6 rounded-md bg-accent-500 text-white"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  출산 후 부종·통증·기력 저하가 지속됩니다
+                </li>
+                <li class="flex items-start gap-3 text-[14px] lg:text-[15px] text-neutral-700">
+                  <span class="shrink-0 inline-flex items-center justify-center w-6 h-6 rounded-md bg-accent-500 text-white"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  생리통이 일상에 영향을 줍니다
+                </li>
+                <li class="flex items-start gap-3 text-[14px] lg:text-[15px] text-neutral-700">
+                  <span class="shrink-0 inline-flex items-center justify-center w-6 h-6 rounded-md bg-accent-500 text-white"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  생리 주기가 자주 불규칙합니다
+                </li>
+                <li class="flex items-start gap-3 text-[14px] lg:text-[15px] text-neutral-700">
+                  <span class="shrink-0 inline-flex items-center justify-center w-6 h-6 rounded-md bg-accent-500 text-white"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  안면홍조·식은땀·불면이 반복됩니다
+                </li>
+                <li class="flex items-start gap-3 text-[14px] lg:text-[15px] text-neutral-700">
+                  <span class="shrink-0 inline-flex items-center justify-center w-6 h-6 rounded-md bg-accent-500 text-white"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  아이가 또래보다 키·체격이 작습니다
+                </li>
+                <li class="flex items-start gap-3 text-[14px] lg:text-[15px] text-neutral-700">
+                  <span class="shrink-0 inline-flex items-center justify-center w-6 h-6 rounded-md bg-accent-500 text-white"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>
+                  아이 식욕이 약하고 잔병이 잦습니다
+                </li>
+              </ul>
+              <p class="mt-5 text-[12px] text-neutral-500">
+                ※ 자가 점검은 일반적인 안내이며, 정확한 진단은 내원 후 진료를 통해 안내드립니다.
+              </p>
+            </div>
+          </section>
+
+          <!-- =============== FAQ =============== -->
+          <section class="reveal">
+            <header class="mb-7 lg:mb-9">
+              <span class="text-[12px] tracking-[0.2em] font-semibold text-accent-600">FAQ</span>
+              <h2 class="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
+                자주 묻는 질문
+              </h2>
+            </header>
+
+            <div class="rounded-2xl bg-white border border-neutral-200 shadow-card overflow-hidden divide-y divide-neutral-200">
+              <details class="faq group">
+                <summary class="flex items-start gap-4 p-5 lg:p-6">
+                  <span class="shrink-0 mt-0.5 inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary-50 text-primary-600 font-bold text-[14px]">Q</span>
+                  <span class="flex-1 text-[15px] lg:text-[16px] font-semibold text-primary-700">산후조리 한약은 언제 시작하면 좋나요?</span>
+                  <span class="chev shrink-0 mt-1 text-neutral-400">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                  </span>
+                </summary>
+                <div class="px-5 lg:px-6 pb-5 lg:pb-6 pl-16 lg:pl-[88px]">
+                  <p class="text-[14px] lg:text-[15px] text-neutral-600 leading-relaxed">
+                    출산 직후부터 시작 가능한 단계와 회복기에 따라 처방이 달라집니다. 자연분만·제왕절개 여부에 따라 시기와 한약 종류를 함께 안내해 드립니다.
+                  </p>
+                </div>
+              </details>
+
+              <details class="faq group">
+                <summary class="flex items-start gap-4 p-5 lg:p-6">
+                  <span class="shrink-0 mt-0.5 inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary-50 text-primary-600 font-bold text-[14px]">Q</span>
+                  <span class="flex-1 text-[15px] lg:text-[16px] font-semibold text-primary-700">생리통 한약은 보험 적용이 되나요?</span>
+                  <span class="chev shrink-0 mt-1 text-neutral-400">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                  </span>
+                </summary>
+                <div class="px-5 lg:px-6 pb-5 lg:pb-6 pl-16 lg:pl-[88px]">
+                  <p class="text-[14px] lg:text-[15px] text-neutral-600 leading-relaxed">
+                    일부 한약은 건강보험 적용이 가능하며, 맞춤 처방 한약은 비급여로 안내됩니다. 비용은 비급여 항목 페이지에서 확인하실 수 있습니다.
+                  </p>
+                </div>
+              </details>
+
+              <details class="faq group">
+                <summary class="flex items-start gap-4 p-5 lg:p-6">
+                  <span class="shrink-0 mt-0.5 inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary-50 text-primary-600 font-bold text-[14px]">Q</span>
+                  <span class="flex-1 text-[15px] lg:text-[16px] font-semibold text-primary-700">갱년기 한약은 부작용이 없나요?</span>
+                  <span class="chev shrink-0 mt-1 text-neutral-400">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                  </span>
+                </summary>
+                <div class="px-5 lg:px-6 pb-5 lg:pb-6 pl-16 lg:pl-[88px]">
+                  <p class="text-[14px] lg:text-[15px] text-neutral-600 leading-relaxed">
+                    체질·복용 약물·기저질환에 따라 안전한 한약 범위가 달라집니다. 첫 진료 시 충분히 상담드리고, 정성스러운 진료가 진행됩니다.
+                  </p>
+                </div>
+              </details>
+
+              <details class="faq group">
+                <summary class="flex items-start gap-4 p-5 lg:p-6">
+                  <span class="shrink-0 mt-0.5 inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary-50 text-primary-600 font-bold text-[14px]">Q</span>
+                  <span class="flex-1 text-[15px] lg:text-[16px] font-semibold text-primary-700">성장한약은 몇 살부터 처방받을 수 있나요?</span>
+                  <span class="chev shrink-0 mt-1 text-neutral-400">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                  </span>
+                </summary>
+                <div class="px-5 lg:px-6 pb-5 lg:pb-6 pl-16 lg:pl-[88px]">
+                  <p class="text-[14px] lg:text-[15px] text-neutral-600 leading-relaxed">
+                    아이의 성장 단계와 체질에 따라 다릅니다. 일반적으로 학령기 전후부터 단계별 처방이 가능하며, 첫 진료에서 시기와 처방 방식을 함께 안내해 드립니다.
+                  </p>
+                </div>
+              </details>
+
+              <details class="faq group">
+                <summary class="flex items-start gap-4 p-5 lg:p-6">
+                  <span class="shrink-0 mt-0.5 inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary-50 text-primary-600 font-bold text-[14px]">Q</span>
+                  <span class="flex-1 text-[15px] lg:text-[16px] font-semibold text-primary-700">총명탕은 어떤 효과가 있나요?</span>
+                  <span class="chev shrink-0 mt-1 text-neutral-400">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                  </span>
+                </summary>
+                <div class="px-5 lg:px-6 pb-5 lg:pb-6 pl-16 lg:pl-[88px]">
+                  <p class="text-[14px] lg:text-[15px] text-neutral-600 leading-relaxed">
+                    총명탕은 학령기 아이의 집중력과 체력 회복에 도움이 되는 한약 처방으로, 체질에 맞춰 조제해 드립니다. 자세한 사항은 첫 진료 시 함께 안내드립니다.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <!-- =============== BOTTOM CTA (in-content) =============== -->
+          <section class="reveal">
+            <div class="relative overflow-hidden rounded-3xl bg-primary-700 text-white p-8 lg:p-12">
+              <div class="absolute inset-0 banner-grain pointer-events-none"></div>
+              <div class="absolute -right-24 -top-24 w-[320px] h-[320px] rounded-full bg-accent-500/15 blur-3xl pointer-events-none" aria-hidden="true"></div>
+              <div class="relative grid lg:grid-cols-12 gap-6 items-center">
+                <div class="lg:col-span-8">
+                  <span class="inline-block text-[12px] tracking-[0.2em] font-semibold text-accent-300 mb-3">CONSULT</span>
+                  <h2 class="text-[24px] sm:text-[28px] lg:text-[34px] font-bold leading-tight text-white text-balanced">
+                    엄마와 아이 모두를 위해,<br/>먼저 전화 한 통 부탁드립니다.
+                  </h2>
+                  <p class="mt-3 text-[14px] lg:text-[15px] text-primary-100/90 leading-relaxed max-w-[560px]">
+                    시기와 체질에 맞춰 가능한 한방 진료 일정과 절차를 안내해 드리겠습니다.
+                  </p>
+                </div>
+                <div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">
+                  <a href="tel:031-0000-0000" class="inline-flex items-center justify-between gap-3 h-12 px-6 rounded-full bg-accent-500 text-white text-[15px] font-semibold shadow-cta hover:bg-accent-600 transition-colors group">
+                    <span class="inline-flex items-center gap-2 tabular">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                      031-0000-0000
+                    </span>
+                    <span class="arrow-x">→</span>
+                  </a>
+                  <a href="#" class="inline-flex items-center justify-between gap-3 h-12 px-6 rounded-full bg-white/10 border border-white/30 text-white text-[15px] font-semibold hover:bg-white/15 transition-colors group">
+                    <span>온라인 상담</span>
+                    <span class="arrow-x">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- =============== FOOTER =============== -->
+  <footer class="bg-primary-700 text-primary-100">
+    <div class="container max-w-content py-12 lg:py-16">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
+        <div class="md:col-span-4">
+          <div class="flex items-center gap-3">
+            <span aria-hidden="true" class="relative inline-flex items-center justify-center w-10 h-10 rounded-full bg-white text-primary-700 font-bold tabular shadow-md">
+              <span class="absolute -right-1 -top-1 w-3 h-3 rotate-45 bg-accent-500 rounded-[2px]"></span>
+              100
+            </span>
+            <span class="flex flex-col leading-none">
+              <span class="text-white text-[18px] font-bold">백세한방병원</span>
+              <span class="text-[11px] tracking-[0.18em] text-accent-300 mt-1">BAEKSE KOREAN MEDICINE</span>
+            </span>
+          </div>
+          <p class="mt-5 text-[13px] leading-relaxed text-primary-100/85">
+            정성스러운 한방 치료로 환자 한 분 한 분의<br class="hidden sm:block"/>오랜 건강을 함께 만들어 갑니다.
+          </p>
+        </div>
+
+        <div class="md:col-span-2">
+          <h4 class="text-white text-[14px] font-semibold mb-4">진료 안내</h4>
+          <ul class="space-y-2.5 text-[13px]">
+            <li><a href="백세한방병원 통증클리닉.html" class="hover:text-accent-300 transition-colors">통증클리닉</a></li>
+            <li><a href="백세한방병원 추나교정클리닉.html" class="hover:text-accent-300 transition-colors">추나·교정</a></li>
+            <li><a href="백세한방병원 교통사고클리닉.html" class="hover:text-accent-300 transition-colors">교통사고</a></li>
+            <li><a href="백세한방병원 면역만성클리닉.html" class="hover:text-accent-300 transition-colors">면역·만성</a></li>
+            <li><a href="#" class="text-white hover:text-accent-300 font-semibold transition-colors">여성·소아</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-2">
+          <h4 class="text-white text-[14px] font-semibold mb-4">고객 지원</h4>
+          <ul class="space-y-2.5 text-[13px]">
+            <li><a href="#" class="hover:text-accent-300 transition-colors">공지사항</a></li>
+            <li><a href="#" class="hover:text-accent-300 transition-colors">온라인 상담</a></li>
+            <li><a href="#" class="hover:text-accent-300 transition-colors">자주묻는 질문</a></li>
+            <li><a href="#" class="hover:text-accent-300 transition-colors">비급여 항목</a></li>
+            <li><a href="#" class="hover:text-accent-300 transition-colors">서류 발급 안내</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-4">
+          <h4 class="text-white text-[14px] font-semibold mb-4">연락처</h4>
+          <dl class="space-y-2 text-[13px]">
+            <div class="flex gap-3"><dt class="w-12 text-primary-100/70">대표</dt><dd class="tabular text-white font-semibold">031-0000-0000</dd></div>
+            <div class="flex gap-3"><dt class="w-12 text-primary-100/70">상담</dt><dd class="tabular text-white font-semibold">031-0000-1111</dd></div>
+            <div class="flex gap-3"><dt class="w-12 text-primary-100/70">주소</dt><dd>경기도 OO시 OO로 OOO, OOO빌딩 O층</dd></div>
+          </dl>
+          <a href="tel:031-0000-0000" class="mt-5 inline-flex items-center gap-2 h-11 px-5 rounded-full bg-accent-500 text-white text-[13px] font-semibold shadow-cta hover:bg-accent-600 transition-colors">
+            전화로 상담 예약 →
+          </a>
+        </div>
+      </div>
+
+      <hr class="border-t border-white/10 my-8 lg:my-10" />
+
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 text-[12px] text-primary-100/70">
+        <ul class="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <li><a href="#" class="text-white hover:text-accent-300 font-semibold transition-colors">개인정보처리방침</a></li>
+          <li><a href="#" class="hover:text-accent-300 transition-colors">이용약관</a></li>
+          <li><a href="#" class="hover:text-accent-300 transition-colors">환자권리장전</a></li>
+          <li><a href="#" class="hover:text-accent-300 transition-colors">비급여 항목</a></li>
+        </ul>
+        <p class="tabular">대표자 OOO &nbsp;|&nbsp; 사업자등록번호 OOO-OO-OOOOO</p>
+      </div>
+      <p class="mt-4 text-[12px] text-primary-100/55 tracking-[0.05em]">
+        COPYRIGHT © 2026 BAEKSE KOREAN MEDICINE HOSPITAL. ALL RIGHTS RESERVED.
+      </p>
+    </div>
+  </footer>
+
+  <!-- =============== MOBILE QUICK BAR =============== -->
+  <nav class="lg:hidden fixed bottom-0 inset-x-0 z-30 grid grid-cols-4 h-16 bg-white border-t border-neutral-200 shadow-[0_-4px_12px_rgba(20,58,107,0.06)]"
+       aria-label="모바일 빠른 메뉴">
+    <a href="#" class="flex flex-col items-center justify-center gap-1 text-[11px] font-semibold text-primary-700">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      온라인상담
+    </a>
+    <a href="tel:031-0000-0000" class="flex flex-col items-center justify-center gap-1 text-[11px] font-semibold bg-accent-500 text-white">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      전화걸기
+    </a>
+    <a href="#process" class="flex flex-col items-center justify-center gap-1 text-[11px] font-semibold text-primary-700">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      치료과정
+    </a>
+    <a href="#" class="flex flex-col items-center justify-center gap-1 text-[11px] font-semibold text-primary-700">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      블로그/카톡
+    </a>
+  </nav>
+
+  <!-- =============== JSON-LD =============== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "백세한방병원 여성·소아 클리닉",
+    "url": "https://baeksehospital.kr/women-kids",
+    "medicalSpecialty": "Obstetric",
+    "availableService": [
+      { "@type": "MedicalProcedure", "name": "산후 한약" },
+      { "@type": "MedicalProcedure", "name": "여성 한약" },
+      { "@type": "MedicalProcedure", "name": "성장 한약(총명탕)" },
+      { "@type": "MedicalProcedure", "name": "침·약침" }
+    ]
+  }
+  </script>
+
+  <!-- =============== SCRIPTS =============== -->
+  <script>
+    (function () {
+      'use strict';
+
+      // Mobile drawer
+      const drawer = document.getElementById('mobileDrawer');
+      const openBtn = document.getElementById('hamburger');
+      const closeBtn = document.getElementById('hamburgerClose');
+      function openDrawer() {
+        drawer.classList.add('open');
+        drawer.setAttribute('aria-hidden', 'false');
+        openBtn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('drawer-open');
+      }
+      function closeDrawer() {
+        drawer.classList.remove('open');
+        drawer.setAttribute('aria-hidden', 'true');
+        openBtn.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('drawer-open');
+      }
+      if (openBtn && drawer) openBtn.addEventListener('click', openDrawer);
+      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      drawer && drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
+
+      // Header scroll state
+      const header = document.getElementById('siteHeader');
+      const onScroll = () => {
+        if (window.scrollY > 24) header.classList.add('is-scrolled');
+        else header.classList.remove('is-scrolled');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // Reveal on scroll
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach((el) => io.observe(el));
+      } else {
+        reveals.forEach((el) => el.classList.add('is-visible'));
+      }
+    })();
+  </script>
+</body>
+</html>

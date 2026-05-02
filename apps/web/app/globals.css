@@ -1,0 +1,295 @@
+/**
+ * 백세한방병원 — Global CSS
+ * Tailwind v3 + custom CSS variables
+ * digital-system 토큰과 1:1 매핑
+ */
+
+/* Pretendard Variable: 자체 호스팅 (npm pretendard) */
+@import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- CSS variables ---------- */
+@layer base {
+  :root {
+    /* Layout */
+    --container-narrow: 768px;
+    --container-base: 1320px;
+    --container-wide: 1440px;
+
+    /* Easing & Duration */
+    --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --duration-fast: 150ms;
+    --duration-base: 250ms;
+    --duration-slow: 400ms;
+    --duration-hero: 700ms;
+
+    /* Header heights — JS scroll lock 등에서 참조 */
+    --header-h-desktop: 96px;
+    --header-h-desktop-scrolled: 64px;
+    --header-h-mobile: 56px;
+    --mobile-quickbar-h: 64px;
+  }
+
+  /* Light mode 강제 */
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-neutral-50 text-neutral-700;
+    font-family:
+      "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+      "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
+    font-size: 1rem;
+    line-height: 1.625;
+    letter-spacing: -0.01em;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* 한글 어절 단위 줄바꿈 — 모든 텍스트 컨테이너 */
+  p,
+  h1, h2, h3, h4, h5, h6,
+  li, dt, dd, blockquote, figcaption {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-primary-700;
+    font-family: "Pretendard Variable", Pretendard, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-out-soft);
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(74, 142, 156, 0.2);
+    border-radius: 0.25rem;
+  }
+
+  /* tabular nums */
+  .tabular,
+  time,
+  .tel-number,
+  .hours-time {
+    font-feature-settings: "tnum" 1, "lnum" 1;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  ::selection {
+    background-color: theme("colors.accent.200");
+    color: theme("colors.primary.700");
+  }
+
+  a, button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input, textarea, select, button {
+    font-family: inherit;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid theme("colors.neutral.200");
+    margin: 2rem 0;
+  }
+}
+
+/* ---------- Components ---------- */
+@layer components {
+  /* Skip-to-content (a11y) */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 1rem;
+    z-index: 9999;
+    padding: 0.75rem 1rem;
+    background: theme("colors.primary.500");
+    color: #fff;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: top var(--duration-fast) var(--ease-out-soft);
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  /* Container utilities — base는 Tailwind container 사용, narrow/wide만 별도 */
+  .container-narrow {
+    max-width: var(--container-narrow);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  .container-wide {
+    max-width: var(--container-wide);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-narrow,
+    .container-wide {
+      padding-inline: 2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container-narrow,
+    .container-wide {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  /* GNB link 패턴 — header 컴포넌트에서 사용 */
+  .gnb-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    white-space: nowrap;
+    transition: color 200ms var(--ease-out-soft);
+  }
+  .gnb-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    height: 2px;
+    width: 0;
+    background: theme("colors.accent.500");
+    transform: translateX(-50%);
+    transition: width 220ms var(--ease-out-soft);
+    pointer-events: none;
+  }
+  .gnb-item:hover .gnb-link::after,
+  .gnb-link.is-active::after,
+  .gnb-link:focus-visible::after {
+    width: calc(100% - 24px);
+  }
+  .gnb-link.is-active {
+    color: theme("colors.accent.600");
+  }
+
+  /* Mega menu */
+  .gnb-item:hover .mega {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .mega {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition:
+      opacity 200ms var(--ease-out-soft),
+      visibility 200ms,
+      transform 200ms var(--ease-out-soft);
+  }
+
+  /* Reveal-on-scroll (IntersectionObserver-driven) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(4px);
+    transition:
+      opacity 600ms var(--ease-out-soft),
+      transform 600ms var(--ease-out-soft),
+      filter 600ms var(--ease-out-soft);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* ---------- Utilities ---------- */
+@layer utilities {
+  .text-balanced {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+}
+
+/* ---------- Mobile QuickBar offset ---------- */
+@layer base {
+  @media (max-width: 1023px) {
+    body {
+      padding-bottom: var(--mobile-quickbar-h);
+    }
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* ---------- Print ---------- */
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+  }
+  header,
+  footer,
+  nav,
+  .mobile-quickbar,
+  .no-print {
+    display: none !important;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #555;
+  }
+}
