@@ -219,7 +219,8 @@ export function CounselForm() {
         )}
       </div>
 
-      <div className="mt-5 space-y-3">
+      <div className="mt-7 space-y-5">
+        {/* 비공개 옵션 */}
         <label className="flex items-start gap-3 text-[13px] text-neutral-700 cursor-pointer">
           <input
             type="checkbox"
@@ -228,11 +229,67 @@ export function CounselForm() {
           />
           <span>비공개 글로 등록 (본인과 담당자만 확인 가능)</span>
         </label>
+
+        {/* 개인정보 수집·이용 안내 — 개인정보보호법 §15 4대 고지 의무 */}
+        <section
+          aria-labelledby="cs-privacy-heading"
+          className="rounded-xl border border-neutral-200 bg-neutral-50 p-4 lg:p-5 text-[13px] leading-relaxed"
+        >
+          <h3 id="cs-privacy-heading" className="text-[14px] font-bold text-primary-700 mb-3">
+            개인정보 수집·이용 안내
+          </h3>
+          <dl className="grid sm:grid-cols-[100px_1fr] gap-x-4 gap-y-2">
+            <dt className="font-semibold text-neutral-700">수집 항목</dt>
+            <dd className="text-neutral-700">
+              이름, 휴대전화번호, 비밀번호, 상담 제목 및 내용
+            </dd>
+
+            <dt className="font-semibold text-neutral-700">수집 목적</dt>
+            <dd className="text-neutral-700">
+              온라인 상담 답변 및 진료 안내, 본인 확인
+            </dd>
+
+            <dt className="font-semibold text-neutral-700">
+              보유·이용 기간
+            </dt>
+            <dd className="text-neutral-700">
+              <strong className="font-bold">상담 종료 후 1년</strong>
+              <span className="text-neutral-600">
+                {" "}(관계 법령상 보존이 필요한 경우 해당 기간 동안 보관)
+              </span>
+            </dd>
+
+            <dt className="font-semibold text-neutral-700">거부 권리</dt>
+            <dd className="text-neutral-700">
+              동의를 거부하실 권리가 있습니다.{" "}
+              <strong className="font-bold">거부 시 온라인 상담을 신청하실 수 없으며</strong>, 대표번호({SITE.contact.representative})를 통한 전화 문의로 이용해 주셔야 합니다.
+            </dd>
+          </dl>
+          <p className="mt-3 text-[12px] text-neutral-500">
+            자세한 사항은{" "}
+            <Link
+              href={ROUTES.legal.privacy}
+              target="_blank"
+              rel="noopener"
+              className="text-primary-600 underline underline-offset-2"
+            >
+              개인정보처리방침
+            </Link>
+            을 참고해 주세요.
+          </p>
+        </section>
+
+        {/* 일반 개인정보 동의 — 개인정보보호법 §15 */}
         <div>
-          <label className="flex items-start gap-3 text-[13px] text-neutral-700 cursor-pointer">
+          <label
+            htmlFor="cs-agreed"
+            className="flex items-start gap-3 text-[13px] text-neutral-700 cursor-pointer"
+          >
             <input
+              id="cs-agreed"
               type="checkbox"
               aria-invalid={errors.agreed ? "true" : "false"}
+              aria-describedby={errors.agreed ? "cs-agreed-err" : undefined}
               className={cn(
                 "mt-0.5 w-4 h-4 rounded text-primary-600 focus:ring-primary-200",
                 errors.agreed ? "border-danger-500" : "border-neutral-300"
@@ -240,19 +297,52 @@ export function CounselForm() {
               {...register("agreed")}
             />
             <span>
-              <Link
-                href={ROUTES.legal.privacy}
-                target="_blank"
-                rel="noopener"
-                className="text-primary-600 underline underline-offset-2"
-              >
-                개인정보 수집·이용
-              </Link>
-              에 동의합니다. <span className="text-accent-600" aria-hidden="true">*</span>
+              위 개인정보 수집·이용에 동의합니다.{" "}
+              <span className="text-accent-600" aria-hidden="true">*</span>
             </span>
           </label>
           {errors.agreed && (
-            <p className="mt-1.5 ml-7 text-[12px] text-danger-600">{errors.agreed.message}</p>
+            <p id="cs-agreed-err" className="mt-1.5 ml-7 text-[12px] text-danger-600">
+              {errors.agreed.message}
+            </p>
+          )}
+        </div>
+
+        {/* 민감정보(건강정보) 별도 동의 — 개인정보보호법 §23 */}
+        <div className="rounded-xl border border-amber-200 bg-amber-50/50 p-4">
+          <p className="text-[12px] font-semibold text-amber-800 mb-2">
+            민감정보 처리 동의 (개인정보보호법 §23)
+          </p>
+          <p className="text-[12px] text-neutral-700 leading-relaxed">
+            상담 내용에 포함되는{" "}
+            <strong className="font-bold">증상·병력 등 건강 관련 정보(민감정보)</strong>
+            는 일반 개인정보와 분리해 별도 동의를 받습니다.{" "}
+            <strong className="font-bold">동의를 거부하시면 온라인 상담을 신청하실 수 없습니다.</strong>
+          </p>
+          <label
+            htmlFor="cs-agreed-sensitive"
+            className="mt-3 flex items-start gap-3 text-[13px] text-neutral-700 cursor-pointer"
+          >
+            <input
+              id="cs-agreed-sensitive"
+              type="checkbox"
+              aria-invalid={errors.agreedSensitive ? "true" : "false"}
+              aria-describedby={errors.agreedSensitive ? "cs-agreed-sensitive-err" : undefined}
+              className={cn(
+                "mt-0.5 w-4 h-4 rounded text-primary-600 focus:ring-primary-200",
+                errors.agreedSensitive ? "border-danger-500" : "border-neutral-300"
+              )}
+              {...register("agreedSensitive")}
+            />
+            <span>
+              위 민감정보 처리에 동의합니다.{" "}
+              <span className="text-accent-600" aria-hidden="true">*</span>
+            </span>
+          </label>
+          {errors.agreedSensitive && (
+            <p id="cs-agreed-sensitive-err" className="mt-1.5 ml-7 text-[12px] text-danger-600">
+              {errors.agreedSensitive.message}
+            </p>
           )}
         </div>
       </div>

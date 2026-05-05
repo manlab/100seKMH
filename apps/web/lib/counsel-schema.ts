@@ -39,8 +39,15 @@ export const CounselFormSchema = z.object({
 
   isPrivate: z.boolean(),
 
+  // 일반 개인정보(이름·연락처·비밀번호) 수집·이용 동의 — 개인정보보호법 §15
   agreed: z.boolean().refine((v) => v === true, {
     message: "개인정보 수집·이용에 동의해 주세요.",
+  }),
+
+  // 민감정보(증상·병력 등 건강 관련) 처리 동의 — 개인정보보호법 §23
+  // 일반 동의와 분리해서 별도로 받아야 법적 효력이 인정된다.
+  agreedSensitive: z.boolean().refine((v) => v === true, {
+    message: "민감정보(증상·건강정보) 처리에 동의해 주세요.",
   }),
 
   // Honeypot — 봇이 채울 가능성이 높은 빈 필드. UI에 노출되지 않음.
@@ -61,5 +68,6 @@ export const counselDefaults: CounselFormValues = {
   content: "",
   isPrivate: true,
   agreed: false,
+  agreedSensitive: false,
   website: "",
 };
