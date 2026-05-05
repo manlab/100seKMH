@@ -1,0 +1,14 @@
+# 100seKMH — 3-CLI harness tmux keybinding (optional)
+#
+# Replace __PROJECT_ROOT__ with the absolute path to the project, then either:
+#   1) source this file from ~/.tmux.conf, or
+#   2) write it to ~/.tmux.conf directly.
+#
+# Inside a tmux session, prefix + R triggers the layout split.
+
+bind R run-shell "tmux send-keys 'bash __PROJECT_ROOT__/.agents-dev/tmux/setup.sh' Enter"
+
+# Optional: a status-bar hint of the current latest verdict.
+# Uncomment if you want it in the right status:
+#
+# set -g status-right '#(awk "NR==1" __PROJECT_ROOT__/.agents-dev/log/$(ls -1t __PROJECT_ROOT__/.agents-dev/log/codex-*.md 2>/dev/null | head -1 | xargs basename 2>/dev/null) 2>/dev/null) | %H:%M'
