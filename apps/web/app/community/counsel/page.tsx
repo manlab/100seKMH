@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { desc, sql } from "drizzle-orm";
 import { Lock, MessageSquare, Phone } from "lucide-react";
 import { pageMeta } from "@/lib/seo";
 import { GNB, ROUTES } from "@/lib/navigation";
 import { SITE } from "@/lib/site";
+import { db, schema } from "@/lib/db/client";
+import { maskName, decryptField } from "@/lib/crypto";
+import { env } from "@/lib/env";
 import { SubLayout } from "@/components/layout/SubLayout";
 import { Reveal } from "@/components/layout/Reveal";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -17,9 +21,14 @@ export const metadata: Metadata = pageMeta({
   path: "/community/counsel",
 });
 
+// 글이 즉시 반영되도록 — 캐시 비활성. 트래픽이 늘면 ISR 로 전환 검토.
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 const COMMUNITY_LNB = GNB.find((g) => g.href === ROUTES.community.notice)?.children ?? [];
 
 type CounselRow = {
+  id: string;
   no: number;
   status: "답변완료" | "답변대기";
   title: string;
@@ -28,19 +37,56 @@ type CounselRow = {
   isPrivate: boolean;
 };
 
-// TODO(client-asset): 실제 상담 데이터 / API 연동
-const COUNSELS: CounselRow[] = [
-  { no: 38, status: "답변대기", title: "허리 통증으로 진료 예약 문의드립니다", author: "김O준", date: "2026-04-28", isPrivate: true },
-  { no: 37, status: "답변완료", title: "교통사고 후 한약 처방 가능한지 궁금합니다", author: "이O희", date: "2026-04-25", isPrivate: true },
-  { no: 36, status: "답변완료", title: "산후조리 한약 비용이 궁금합니다", author: "박O진", date: "2026-04-22", isPrivate: true },
-  { no: 35, status: "답변완료", title: "추나치료 보험 적용 여부 문의", author: "정O민", date: "2026-04-18", isPrivate: false },
-  { no: 34, status: "답변완료", title: "비염 한약 어린이 복용 가능 연령 문의", author: "최O아", date: "2026-04-14", isPrivate: true },
-  { no: 33, status: "답변완료", title: "주말에도 진료 가능한가요?", author: "강O현", date: "2026-04-09", isPrivate: false },
-  { no: 32, status: "답변완료", title: "갱년기 증상 진료 문의", author: "윤O경", date: "2026-04-04", isPrivate: true },
-  { no: 31, status: "답변완료", title: "입원 진료 일정 문의", author: "한O석", date: "2026-03-29", isPrivate: true },
-];
+const PAGE_SIZE = 10;
 
-export default function CounselPage() {
+async function fetchCounselList(): Promise<CounselRow[]> {
+  // DB 미설정 환경 (예: 빌드 타임, env 누락) 에서는 빈 목록으로 폴백.
+  if (!env.POSTGRES_URL) return [];
+  try {
+    const totalResult = await db()
+      .select({ n: sql<number>`count(*)::int` })
+      .from(schema.counsels);
+    const totalCount = totalResult[0]?.n ?? 0;
+
+    const rows = await db()
+      .select({
+        id: schema.counsels.id,
+        nameEncrypted: schema.counsels.nameEncrypted,
+        title: schema.counsels.title,
+        isPrivate: schema.counsels.isPrivate,
+        createdAt: schema.counsels.createdAt,
+        repliedAt: schema.counsels.repliedAt,
+      })
+      .from(schema.counsels)
+      .orderBy(desc(schema.counsels.createdAt))
+      .limit(PAGE_SIZE);
+
+    return rows.map((r, i) => {
+      let author: string;
+      try {
+        author = maskName(decryptField(r.nameEncrypted, "name", r.id));
+      } catch {
+        author = "***";
+      }
+      return {
+        id: r.id,
+        no: totalCount - i,
+        status: r.repliedAt ? "답변완료" : "답변대기",
+        title: r.isPrivate ? "비공개 글입니다" : r.title,
+        author,
+        date: r.createdAt.toISOString().slice(0, 10),
+        isPrivate: r.isPrivate,
+      };
+    });
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error("[counsel page] DB fetch failed", err);
+    return [];
+  }
+}
+
+export default async function CounselPage() {
+  const COUNSELS = await fetchCounselList();
   return (
     <SubLayout
       hero={{
@@ -129,36 +175,54 @@ export default function CounselPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-neutral-200">
-              {COUNSELS.map((c) => (
-                <tr key={c.no} className="hover:bg-primary-50/40 transition-colors">
-                  <td className="px-4 py-3 tabular text-neutral-500">{c.no}</td>
-                  <td className="px-4 py-3">
-                    <span
-                      className={
-                        "inline-flex items-center px-2.5 py-1 rounded-full text-[12px] font-semibold " +
-                        (c.status === "답변완료"
-                          ? "bg-emerald-50 text-emerald-700"
-                          : "bg-neutral-100 text-neutral-600")
-                      }
-                    >
-                      {c.status}
-                    </span>
+              {COUNSELS.length === 0 && (
+                <tr>
+                  <td colSpan={5} className="px-4 py-10 text-center text-[14px] text-neutral-500">
+                    아직 등록된 상담 글이 없습니다. 첫 상담을 남겨보세요.
                   </td>
-                  <td className="px-4 py-3">
-                    <span className="inline-flex items-center gap-2 text-primary-700 font-semibold">
-                      {c.isPrivate && (
-                        <Lock size={13} aria-hidden="true" className="text-neutral-400" />
-                      )}
-                      {c.isPrivate ? "비공개 글입니다" : c.title}
-                    </span>
-                    <div className="mt-1 text-[12px] text-neutral-500 md:hidden tabular">
-                      {c.author} · {c.date}
-                    </div>
-                  </td>
-                  <td className="px-4 py-3 text-neutral-600 hidden md:table-cell">{c.author}</td>
-                  <td className="px-4 py-3 text-neutral-500 tabular hidden md:table-cell">{c.date}</td>
                 </tr>
-              ))}
+              )}
+              {COUNSELS.map((c) => {
+                const labelCell = (
+                  <span className="inline-flex items-center gap-2 text-primary-700 font-semibold">
+                    {c.isPrivate && (
+                      <Lock size={13} aria-hidden="true" className="text-neutral-400" />
+                    )}
+                    {c.title}
+                  </span>
+                );
+                return (
+                  <tr key={c.id} className="hover:bg-primary-50/40 transition-colors">
+                    <td className="px-4 py-3 tabular text-neutral-500">{c.no}</td>
+                    <td className="px-4 py-3">
+                      <span
+                        className={
+                          "inline-flex items-center px-2.5 py-1 rounded-full text-[12px] font-semibold " +
+                          (c.status === "답변완료"
+                            ? "bg-emerald-50 text-emerald-700"
+                            : "bg-neutral-100 text-neutral-600")
+                        }
+                      >
+                        {c.status}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3">
+                      <Link
+                        href={`/community/counsel/${c.id}`}
+                        className="hover:underline underline-offset-2"
+                        aria-label={`상담글 ${c.no}번 ${c.isPrivate ? "비공개 글 — 비밀번호로 확인" : c.title}`}
+                      >
+                        {labelCell}
+                      </Link>
+                      <div className="mt-1 text-[12px] text-neutral-500 md:hidden tabular">
+                        {c.author} · {c.date}
+                      </div>
+                    </td>
+                    <td className="px-4 py-3 text-neutral-600 hidden md:table-cell">{c.author}</td>
+                    <td className="px-4 py-3 text-neutral-500 tabular hidden md:table-cell">{c.date}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

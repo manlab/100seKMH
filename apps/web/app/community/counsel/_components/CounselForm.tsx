@@ -41,7 +41,7 @@ export function CounselForm() {
     setState({ kind: "submitting" });
 
     try {
-      const res = await fetch("/api/counsel", {
+      const res = await fetch("/api/counsels", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
