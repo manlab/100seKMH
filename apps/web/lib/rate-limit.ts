@@ -1,15 +1,19 @@
+import { sql } from "drizzle-orm";
+import { db, schema } from "./db/client";
+
 /**
- * 매우 단순한 인메모리 rate limit (placeholder).
- * 운영 시 Upstash Redis 또는 @vercel/kv로 교체 권장.
+ * DB 기반 rate limit — IP/key 별 토큰버킷.
  *
- * 동일 IP로 1분에 5회 이상 요청 시 차단.
+ * Vercel serverless 의 in-memory 인스턴스 격리 문제를 해결하기 위해
+ * Postgres 단일 source of truth 로 카운팅. 동일 윈도우 내 동시 호출은
+ * `INSERT ... ON CONFLICT DO UPDATE` 의 원자성에 의존.
+ *
+ * 단발 호출이 잦은 폼 제출에서 1회 추가 쿼리 비용 vs 어뷰즈 방어 trade-off
+ * — Hobby tier 에서도 무리 없는 수준.
  */
 
-type Bucket = { count: number; resetAt: number };
-const buckets = new Map<string, Bucket>();
-
 const WINDOW_MS = 60_000; // 1분
-const MAX = 5;
+const DEFAULT_MAX = 5;
 
 export type RateLimitResult = {
   ok: boolean;
@@ -17,31 +21,41 @@ export type RateLimitResult = {
   retryAfterSec?: number;
 };
 
-export function rateLimit(key: string): RateLimitResult {
-  const now = Date.now();
-  const bucket = buckets.get(key);
+export async function rateLimit(key: string, max = DEFAULT_MAX): Promise<RateLimitResult> {
+  const now = new Date();
+  const reset = new Date(now.getTime() + WINDOW_MS);
 
-  if (!bucket || bucket.resetAt < now) {
-    buckets.set(key, { count: 1, resetAt: now + WINDOW_MS });
-    return { ok: true, remaining: MAX - 1 };
+  const result = await db()
+    .insert(schema.rateLimits)
+    .values({ key, count: 1, resetAt: reset })
+    .onConflictDoUpdate({
+      target: schema.rateLimits.key,
+      set: {
+        count: sql`CASE
+          WHEN ${schema.rateLimits.resetAt} < NOW()
+            THEN 1
+          ELSE ${schema.rateLimits.count} + 1
+        END`,
+        resetAt: sql`CASE
+          WHEN ${schema.rateLimits.resetAt} < NOW()
+            THEN ${reset}
+          ELSE ${schema.rateLimits.resetAt}
+        END`,
+      },
+    })
+    .returning({
+      count: schema.rateLimits.count,
+      resetAt: schema.rateLimits.resetAt,
+    });
+
+  const row = result[0];
+  if (!row) return { ok: true, remaining: max - 1 };
+
+  const ok = row.count <= max;
+  const remaining = Math.max(0, max - row.count);
+  if (!ok) {
+    const retryAfterSec = Math.max(1, Math.ceil((row.resetAt.getTime() - now.getTime()) / 1000));
+    return { ok: false, remaining, retryAfterSec };
   }
-
-  if (bucket.count >= MAX) {
-    return {
-      ok: false,
-      remaining: 0,
-      retryAfterSec: Math.ceil((bucket.resetAt - now) / 1000),
-    };
-  }
-
-  bucket.count += 1;
-  return { ok: true, remaining: MAX - bucket.count };
-}
-
-/** 메모리 누수 방지용 — 주기적으로 만료된 버킷 정리 (가벼운 GC). */
-export function cleanupBuckets() {
-  const now = Date.now();
-  for (const [k, v] of buckets) {
-    if (v.resetAt < now) buckets.delete(k);
-  }
+  return { ok: true, remaining };
 }
