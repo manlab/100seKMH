@@ -1,13 +1,15 @@
 # 백세한방병원 웹사이트
 
-Next.js 14 App Router + TypeScript strict + Tailwind CSS 3.4 + Pretendard.
+Next.js 14 App Router + TypeScript strict + Tailwind CSS 3.4 + Pretendard. 온라인 상담은 Postgres(Neon) + Drizzle ORM + 어드민 콘솔.
 
-## 로컬 개발
+> **GitHub → Vercel 배포 흐름**: 상세 셋업·운영은 [`DEPLOY.md`](./DEPLOY.md) 참고.
+
+## 로컬 개발 (선택)
 
 ```bash
 cd apps/web
 npm install
-cp .env.example .env.local   # RESEND_API_KEY 등 채우기
+cp .env.example .env.local   # POSTGRES_URL, RESEND_API_KEY, 암호화 키 등
 npm run dev                  # http://localhost:3030
 ```
 
@@ -15,17 +17,24 @@ npm run dev                  # http://localhost:3030
 
 ```bash
 npm run type-check           # tsc --noEmit
-npm run build                # 정적 prerender + API route 빌드
+npm run build                # drizzle-kit migrate && next build
 npm run start                # production 서버 (port 3030)
+npm run db:generate          # 스키마 변경 후 마이그레이션 SQL 생성
+npm run db:studio            # Drizzle Studio (DB 시각화)
 ```
 
 ## 환경변수 (필수)
 
 | 키 | 설명 | 예시 |
 |---|---|---|
-| `RESEND_API_KEY` | 온라인 상담 메일 전송 | `re_xxxxx` ([resend.com](https://resend.com) 가입 후 발급) |
+| `POSTGRES_URL` | Neon 연결 (Vercel 자동 주입) | `postgres://...neon.tech/...` |
+| `POSTGRES_URL_NON_POOLING` | 마이그레이션용 (Vercel 자동 주입) | `postgres://...` |
+| `PHONE_ENC_KEY` | 식별·민감정보 AES-256 키 (hex 64자) | `openssl rand -hex 32` |
+| `ADMIN_SESSION_SECRET` | 어드민 세션 토큰 비밀 (≥32자) | `openssl rand -hex 32` |
+| `ADMIN_SEED_TOKEN` | 첫 어드민 1회 생성용 토큰 | `openssl rand -hex 32` |
+| `RESEND_API_KEY` | 온라인 상담 메일 전송 | `re_xxxxx` ([resend.com](https://resend.com)) |
 | `COUNSEL_TO_EMAIL` | 상담 메일 수신 (병원 운영팀) | `ops@baeksehospital.kr` |
-| `RESEND_FROM_EMAIL` | 발신자 (Resend verified domain) | `백세한방병원 <onboarding@resend.dev>` (개발용 기본) |
+| `RESEND_FROM_EMAIL` | 발신자 (Resend verified domain) | `백세한방병원 <onboarding@resend.dev>` |
 | `NEXT_PUBLIC_SITE_URL` | 사이트 공개 URL | `https://baeksehospital.kr` |
 
 ## Vercel 배포
