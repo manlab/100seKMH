@@ -5,6 +5,7 @@ import { rateLimit } from "@/lib/rate-limit";
 import * as crypto from "node:crypto";
 import { db, schema } from "@/lib/db/client";
 import { encryptField, hashPassword } from "@/lib/crypto";
+import { parsePage } from "@/lib/pagination";
 
 /** Resend SDK + bcrypt + AES 모두 Node 런타임 (edge 미지원). */
 export const runtime = "nodejs";
@@ -125,7 +126,7 @@ const PAGE_SIZE = 10;
 
 export async function GET(req: NextRequest): Promise<NextResponse> {
   const { searchParams } = new URL(req.url);
-  const page = Math.max(1, Number(searchParams.get("page") ?? 1));
+  const page = parsePage(searchParams.get("page"));
   const offset = (page - 1) * PAGE_SIZE;
 
   const { desc, sql } = await import("drizzle-orm");

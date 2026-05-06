@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Search, ChevronLeft, ChevronRight } from "lucide-react";
+import { and, desc, eq, sql } from "drizzle-orm";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { pageMeta } from "@/lib/seo";
 import { GNB, ROUTES } from "@/lib/navigation";
+import { db, schema } from "@/lib/db/client";
+import { env } from "@/lib/env";
+import { NOTICE_CATEGORIES, type NoticeCategory } from "@/lib/db/schema";
+import { parsePage } from "@/lib/pagination";
 import { SubLayout } from "@/components/layout/SubLayout";
 import { Reveal } from "@/components/layout/Reveal";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -14,47 +19,111 @@ export const metadata: Metadata = pageMeta({
   path: "/community/notice",
 });
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 const COMMUNITY_LNB = GNB.find((g) => g.href === ROUTES.community.notice)?.children ?? [];
 
-const CATEGORIES = [
+const CATEGORY_FILTERS = [
   { label: "전체", value: "all" },
-  { label: "진료안내", value: "진료안내" },
-  { label: "이벤트", value: "이벤트" },
-  { label: "휴진", value: "휴진" },
-  { label: "시설", value: "시설" },
+  ...NOTICE_CATEGORIES.map((c) => ({ label: c, value: c })),
 ] as const;
 
-type NoticeRow = {
-  no: number;
-  category: "진료안내" | "이벤트" | "휴진" | "시설";
-  title: string;
-  date: string;
-  views: number;
-  pinned?: boolean;
-};
-
-// TODO(client-asset): 실제 공지 데이터 / API 연동
-const NOTICES: NoticeRow[] = [
-  { no: 10, category: "진료안내", title: "365일 진료 운영 안내 — 평일·주말·공휴일 모두 진료합니다", date: "2026-04-22", views: 2418, pinned: true },
-  { no: 9, category: "휴진", title: "5월 가정의 달 진료 일정 안내", date: "2026-04-18", views: 1206 },
-  { no: 8, category: "시설", title: "여성 전용 입원실 리뉴얼 완료 안내", date: "2026-04-12", views: 982 },
-  { no: 7, category: "진료안내", title: "교통사고 한방 진료 — 자동차보험 처리 안내", date: "2026-04-05", views: 1764 },
-  { no: 6, category: "이벤트", title: "봄철 환절기 면역 한약 상담 캠페인", date: "2026-03-28", views: 1521 },
-  { no: 5, category: "진료안내", title: "추나·체형교정 클리닉 신규 개설 안내", date: "2026-03-20", views: 1843 },
-  { no: 4, category: "휴진", title: "3월 정기 휴진일 안내", date: "2026-03-10", views: 644 },
-  { no: 3, category: "시설", title: "탕전실 위생 점검 결과 공지", date: "2026-03-02", views: 528 },
-  { no: 2, category: "진료안내", title: "온라인 상담 운영 시간 변경 안내", date: "2026-02-22", views: 712 },
-  { no: 1, category: "이벤트", title: "신환 한약 첫 상담 안내 캠페인", date: "2026-02-12", views: 998 },
-];
-
-const CATEGORY_BADGE: Record<NoticeRow["category"], string> = {
+const CATEGORY_BADGE: Record<NoticeCategory, string> = {
   진료안내: "bg-primary-50 text-primary-700",
   이벤트: "bg-accent-50 text-accent-700",
   휴진: "bg-neutral-100 text-neutral-700",
   시설: "bg-emerald-50 text-emerald-700",
 };
 
-export default function NoticePage() {
+const PAGE_SIZE = 10;
+
+type Props = {
+  searchParams: { category?: string; page?: string };
+};
+
+type NoticeRow = {
+  id: string;
+  no: number;
+  category: NoticeCategory;
+  title: string;
+  date: string;
+  views: number;
+  pinned: boolean;
+};
+
+function parseCategory(s: string | undefined): NoticeCategory | undefined {
+  if (!s) return undefined;
+  return (NOTICE_CATEGORIES as readonly string[]).includes(s)
+    ? (s as NoticeCategory)
+    : undefined;
+}
+
+async function fetchNotices(
+  category: NoticeCategory | undefined,
+  page: number
+): Promise<{ rows: NoticeRow[]; total: number }> {
+  if (!env.POSTGRES_URL) return { rows: [], total: 0 };
+  try {
+    const where = category
+      ? and(eq(schema.notices.isPublished, true), eq(schema.notices.category, category))
+      : eq(schema.notices.isPublished, true);
+
+    const totalResult = await db()
+      .select({ n: sql<number>`count(*)::int` })
+      .from(schema.notices)
+      .where(where);
+    const total = totalResult[0]?.n ?? 0;
+
+    const offset = (page - 1) * PAGE_SIZE;
+    const rows = await db()
+      .select({
+        id: schema.notices.id,
+        title: schema.notices.title,
+        category: schema.notices.category,
+        isPinned: schema.notices.isPinned,
+        viewCount: schema.notices.viewCount,
+        publishedAt: schema.notices.publishedAt,
+      })
+      .from(schema.notices)
+      .where(where)
+      .orderBy(desc(schema.notices.isPinned), desc(schema.notices.publishedAt))
+      .limit(PAGE_SIZE)
+      .offset(offset);
+
+    return {
+      total,
+      rows: rows.map((r, i) => ({
+        id: r.id,
+        no: total - offset - i,
+        category: r.category as NoticeCategory,
+        title: r.title,
+        date: r.publishedAt.toISOString().slice(0, 10),
+        views: r.viewCount,
+        pinned: r.isPinned,
+      })),
+    };
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error("[notice page] DB fetch failed", err);
+    return { rows: [], total: 0 };
+  }
+}
+
+function buildHref(category: NoticeCategory | undefined, page: number): string {
+  const params = new URLSearchParams();
+  if (category) params.set("category", category);
+  if (page > 1) params.set("page", String(page));
+  const qs = params.toString();
+  return qs ? `${ROUTES.community.notice}?${qs}` : ROUTES.community.notice;
+}
+
+export default async function NoticePage({ searchParams }: Props) {
+  const category = parseCategory(searchParams.category);
+  const page = parsePage(searchParams.page);
+  const { rows: NOTICES, total } = await fetchNotices(category, page);
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
   return (
     <SubLayout
       hero={{
@@ -76,11 +145,7 @@ export default function NoticePage() {
           { label: "공지사항" },
         ],
       }}
-      lnb={{
-        title: "커뮤니티",
-        eyebrow: "COMMUNITY",
-        items: COMMUNITY_LNB,
-      }}
+      lnb={{ title: "커뮤니티", eyebrow: "COMMUNITY", items: COMMUNITY_LNB }}
     >
       {/* Filters */}
       <Reveal as="section">
@@ -89,46 +154,35 @@ export default function NoticePage() {
           전체 공지사항
         </h2>
         <p className="mt-3 text-[14px] text-neutral-600">
-          카테고리 또는 검색어로 원하는 공지를 찾아보실 수 있습니다.
+          카테고리별로 공지를 확인하실 수 있습니다. (총 {total}건)
         </p>
 
-        <div className="mt-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <ul className="flex flex-wrap gap-2" role="tablist" aria-label="공지 카테고리">
-            {CATEGORIES.map((c) => (
-              <li key={c.value}>
-                <button
-                  type="button"
-                  className={
-                    "inline-flex items-center h-9 px-4 rounded-full text-[13px] font-semibold transition-colors " +
-                    (c.value === "all"
-                      ? "bg-primary-700 text-white"
-                      : "bg-primary-50 text-primary-700 hover:bg-primary-100")
-                  }
-                  aria-pressed={c.value === "all"}
-                >
-                  {c.label}
-                </button>
-              </li>
-            ))}
+        <div className="mt-6">
+          <ul className="flex flex-wrap gap-2" aria-label="공지 카테고리">
+            {CATEGORY_FILTERS.map((c) => {
+              const isActive = (c.value === "all" && !category) || c.value === category;
+              const href =
+                c.value === "all"
+                  ? ROUTES.community.notice
+                  : buildHref(c.value as NoticeCategory, 1);
+              return (
+                <li key={c.value}>
+                  <Link
+                    href={href}
+                    aria-current={isActive ? "page" : undefined}
+                    className={
+                      "inline-flex items-center h-9 px-4 rounded-full text-[13px] font-semibold transition-colors " +
+                      (isActive
+                        ? "bg-primary-700 text-white"
+                        : "bg-primary-50 text-primary-700 hover:bg-primary-100")
+                    }
+                  >
+                    {c.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
-          {/* TODO(client-asset): wire search to API/state */}
-          <form role="search" className="relative w-full max-w-sm">
-            <label htmlFor="notice-search" className="sr-only">
-              공지 검색
-            </label>
-            <Search
-              size={16}
-              aria-hidden="true"
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400"
-            />
-            <input
-              id="notice-search"
-              type="search"
-              name="q"
-              placeholder="공지 제목 검색"
-              className="w-full h-10 pl-9 pr-4 rounded-full border border-neutral-200 bg-white text-[13px] text-neutral-700 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-200"
-            />
-          </form>
         </div>
       </Reveal>
 
@@ -139,26 +193,23 @@ export default function NoticePage() {
             <caption className="sr-only">백세한방병원 공지사항 목록</caption>
             <thead className="bg-primary-50/60 text-primary-700">
               <tr>
-                <th scope="col" className="px-4 py-3 text-left font-semibold w-[80px]">
-                  번호
-                </th>
-                <th scope="col" className="px-4 py-3 text-left font-semibold w-[110px]">
-                  카테고리
-                </th>
-                <th scope="col" className="px-4 py-3 text-left font-semibold">
-                  제목
-                </th>
-                <th scope="col" className="px-4 py-3 text-left font-semibold w-[120px] hidden md:table-cell">
-                  등록일
-                </th>
-                <th scope="col" className="px-4 py-3 text-right font-semibold w-[80px] hidden md:table-cell">
-                  조회
-                </th>
+                <th scope="col" className="px-4 py-3 text-left font-semibold w-[80px]">번호</th>
+                <th scope="col" className="px-4 py-3 text-left font-semibold w-[110px]">카테고리</th>
+                <th scope="col" className="px-4 py-3 text-left font-semibold">제목</th>
+                <th scope="col" className="px-4 py-3 text-left font-semibold w-[120px] hidden md:table-cell">등록일</th>
+                <th scope="col" className="px-4 py-3 text-right font-semibold w-[80px] hidden md:table-cell">조회</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-neutral-200">
+              {NOTICES.length === 0 && (
+                <tr>
+                  <td colSpan={5} className="px-4 py-10 text-center text-[14px] text-neutral-500">
+                    등록된 공지가 없습니다.
+                  </td>
+                </tr>
+              )}
               {NOTICES.map((n) => (
-                <tr key={n.no} className="hover:bg-primary-50/40 transition-colors">
+                <tr key={n.id} className="hover:bg-primary-50/40 transition-colors">
                   <td className="px-4 py-3 tabular text-neutral-500">
                     {n.pinned ? (
                       <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-accent-500 text-white text-[11px] font-semibold">
@@ -180,7 +231,7 @@ export default function NoticePage() {
                   </td>
                   <td className="px-4 py-3">
                     <Link
-                      href={`${ROUTES.community.notice}#${n.no}`}
+                      href={`${ROUTES.community.notice}/${n.id}`}
                       className="text-primary-700 hover:text-accent-600 hover:underline underline-offset-4 font-semibold"
                     >
                       {n.title}
@@ -200,37 +251,53 @@ export default function NoticePage() {
         </div>
 
         {/* Pagination */}
-        <nav aria-label="페이지" className="mt-8 flex items-center justify-center gap-1">
-          <button
-            type="button"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-neutral-200 text-neutral-500 hover:bg-primary-50 hover:text-primary-700 transition-colors"
-            aria-label="이전 페이지"
-          >
-            <ChevronLeft size={16} aria-hidden="true" />
-          </button>
-          {[1, 2, 3, 4, 5].map((p) => (
-            <button
-              key={p}
-              type="button"
+        {totalPages > 1 && (
+          <nav aria-label="페이지" className="mt-8 flex items-center justify-center gap-1">
+            <Link
+              href={buildHref(category, Math.max(1, page - 1))}
+              aria-disabled={page === 1}
+              tabIndex={page === 1 ? -1 : undefined}
               className={
-                "inline-flex items-center justify-center w-9 h-9 rounded-lg text-[13px] font-semibold tabular transition-colors " +
-                (p === 1
-                  ? "bg-primary-700 text-white"
-                  : "text-neutral-600 hover:bg-primary-50 hover:text-primary-700")
+                "inline-flex items-center justify-center w-9 h-9 rounded-lg border border-neutral-200 transition-colors " +
+                (page === 1
+                  ? "pointer-events-none text-neutral-300"
+                  : "text-neutral-500 hover:bg-primary-50 hover:text-primary-700")
               }
-              aria-current={p === 1 ? "page" : undefined}
             >
-              {p}
-            </button>
-          ))}
-          <button
-            type="button"
-            className="inline-flex items-center justify-center w-9 h-9 rounded-lg border border-neutral-200 text-neutral-500 hover:bg-primary-50 hover:text-primary-700 transition-colors"
-            aria-label="다음 페이지"
-          >
-            <ChevronRight size={16} aria-hidden="true" />
-          </button>
-        </nav>
+              <ChevronLeft size={16} aria-hidden="true" />
+              <span className="sr-only">이전 페이지</span>
+            </Link>
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+              <Link
+                key={p}
+                href={buildHref(category, p)}
+                aria-current={p === page ? "page" : undefined}
+                className={
+                  "inline-flex items-center justify-center w-9 h-9 rounded-lg text-[13px] font-semibold tabular transition-colors " +
+                  (p === page
+                    ? "bg-primary-700 text-white"
+                    : "text-neutral-600 hover:bg-primary-50 hover:text-primary-700")
+                }
+              >
+                {p}
+              </Link>
+            ))}
+            <Link
+              href={buildHref(category, Math.min(totalPages, page + 1))}
+              aria-disabled={page === totalPages}
+              tabIndex={page === totalPages ? -1 : undefined}
+              className={
+                "inline-flex items-center justify-center w-9 h-9 rounded-lg border border-neutral-200 transition-colors " +
+                (page === totalPages
+                  ? "pointer-events-none text-neutral-300"
+                  : "text-neutral-500 hover:bg-primary-50 hover:text-primary-700")
+              }
+            >
+              <ChevronRight size={16} aria-hidden="true" />
+              <span className="sr-only">다음 페이지</span>
+            </Link>
+          </nav>
+        )}
       </Reveal>
     </SubLayout>
   );

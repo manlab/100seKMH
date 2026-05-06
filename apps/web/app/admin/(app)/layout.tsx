@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import { LogOut, MessageCircle, ShieldCheck } from "lucide-react";
+import { LogOut, Megaphone, MessageCircle, ShieldCheck } from "lucide-react";
 import { ROUTES } from "@/lib/navigation";
 import { SESSION_COOKIE, verifySession } from "@/lib/auth";
 import { LogoutButton } from "./_components/LogoutButton";
@@ -32,6 +32,13 @@ export default async function AdminAppLayout({ children }: { children: React.Rea
             <ShieldCheck size={12} aria-hidden="true" /> 어드민
           </span>
           <nav className="ml-auto flex items-center gap-5 text-[13px]">
+            <Link
+              href="/admin/notices"
+              className="inline-flex items-center gap-1.5 text-primary-100 hover:text-white"
+            >
+              <Megaphone size={14} aria-hidden="true" />
+              공지
+            </Link>
             <Link
               href="/admin/counsels"
               className="inline-flex items-center gap-1.5 text-primary-100 hover:text-white"

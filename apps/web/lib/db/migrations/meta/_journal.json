@@ -8,6 +8,13 @@
       "when": 1778022732850,
       "tag": "0000_easy_mephistopheles",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1778105168991,
+      "tag": "0001_youthful_doctor_faustus",
+      "breakpoints": true
     }
   ]
 }

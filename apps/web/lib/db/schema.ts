@@ -96,6 +96,43 @@ export const adminSessions = pgTable(
 export type AdminSession = typeof adminSessions.$inferSelect;
 
 /**
+ * 공지사항. 작성자는 어드민, 노출은 공개. 본문은 plain text (줄바꿈 보존).
+ *
+ * 정렬: is_pinned DESC → published_at DESC (고정 공지가 최상단).
+ * 카테고리: 진료안내 / 이벤트 / 휴진 / 시설 (UI 와 동기).
+ */
+export const NOTICE_CATEGORIES = ["진료안내", "이벤트", "휴진", "시설"] as const;
+export type NoticeCategory = (typeof NOTICE_CATEGORIES)[number];
+
+export const notices = pgTable(
+  "notices",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    title: varchar("title", { length: 200 }).notNull(),
+    content: text("content").notNull(),
+    category: varchar("category", { length: 20 }).notNull().$type<NoticeCategory>(),
+
+    isPinned: boolean("is_pinned").notNull().default(false),
+    isPublished: boolean("is_published").notNull().default(true),
+    viewCount: integer("view_count").notNull().default(0),
+
+    authorId: uuid("author_id").references(() => adminUsers.id, { onDelete: "set null" }),
+    authorName: varchar("author_name", { length: 60 }),
+
+    publishedAt: timestamp("published_at", { withTimezone: true }).notNull().defaultNow(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    pinnedPublishedIdx: index("notices_pinned_published_idx").on(t.isPinned, t.publishedAt),
+    categoryIdx: index("notices_category_idx").on(t.category),
+  })
+);
+
+export type Notice = typeof notices.$inferSelect;
+export type NewNotice = typeof notices.$inferInsert;
+
+/**
  * Rate limit — IP 별 카운터. Vercel serverless 의 in-memory 한계를 DB 로 우회.
  * 만료된 row 는 cleanup 시점이나 다음 호출 시 갱신.
  */

@@ -3,6 +3,7 @@ import { desc, sql } from "drizzle-orm";
 import { CheckCircle2, Clock, Lock } from "lucide-react";
 import { db, schema } from "@/lib/db/client";
 import { maskName, decryptField } from "@/lib/crypto";
+import { parsePage } from "@/lib/pagination";
 
 export const dynamic = "force-dynamic";
 
@@ -11,7 +12,7 @@ const PAGE_SIZE = 20;
 type Search = { searchParams: { page?: string } };
 
 export default async function AdminCounselsPage({ searchParams }: Search) {
-  const page = Math.max(1, Number(searchParams.page ?? 1));
+  const page = parsePage(searchParams.page);
   const offset = (page - 1) * PAGE_SIZE;
 
   const totalRows = await db()
