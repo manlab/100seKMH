@@ -213,7 +213,7 @@ export default function PrivacyPage() {
 
             <Reveal>
               <p className="text-[15px] leading-[1.85] text-neutral-700 mb-10">
-                백세한방병원(이하 '병원')은 「개인정보 보호법」 및 「의료법」 등
+                백세한방병원(이하 &lsquo;병원&rsquo;)은 「개인정보 보호법」 및 「의료법」 등
                 관계 법령에 따라 환자(정보주체)의 개인정보를 안전하게 보호하기 위해
                 다음과 같이 개인정보 처리방침을 수립·공개합니다.
               </p>
