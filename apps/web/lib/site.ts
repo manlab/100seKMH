@@ -14,8 +14,8 @@ export const SITE = {
     representative: "1668-0103",
     counsel: "1668-0103",
     address: "부산광역시 부산진구 서면로 32 MMM메디컬센터 9F·10F·12F·13F·14F",
-    businessNumber: "OOO-OO-OOOOO",
-    representativeName: "OOO",
+    businessNumber: "610-96-11438",
+    representativeName: "신승협",
   },
 
   // 진료시간 (개원 시 확정)
