@@ -39,35 +39,37 @@ export function Header() {
       <header
         className={cn(
           "sticky top-0 z-40 bg-white border-b border-neutral-200 transition-shadow duration-200",
-          isScrolled && "shadow-md"
+          isScrolled && "shadow-md",
         )}
       >
         {/* 유틸리티 바 (데스크톱 전용) */}
         <div className="hidden lg:block bg-primary-500 text-primary-100">
           <div className="container max-w-container-base flex items-center justify-between h-9 text-[13px]">
             <div className="flex items-center gap-2 text-primary-100/90">
-              <span className="inline-flex w-1.5 h-1.5 rounded-full bg-accent-400" aria-hidden="true" />
+              <span
+                className="inline-flex w-1.5 h-1.5 rounded-full bg-accent-400"
+                aria-hidden="true"
+              />
               <span>1년 365일 진료 · 평일·주말·공휴일 모두 진료합니다</span>
             </div>
             <nav aria-label="유틸리티" className="flex items-center gap-5">
-              <Link href="#" className="hover:text-white transition-colors">
-                로그인
-              </Link>
-              <span className="text-primary-300/60" aria-hidden="true">|</span>
-              <Link href="#" className="hover:text-white transition-colors">
-                회원가입
-              </Link>
-              <span className="text-primary-300/60" aria-hidden="true">|</span>
-              <Link href={ROUTES.about.location} className="hover:text-white transition-colors">
+              <Link
+                href={ROUTES.about.location}
+                className="hover:text-white transition-colors"
+              >
                 오시는 길
               </Link>
-              <span className="text-primary-300/60" aria-hidden="true">|</span>
+              <span className="text-primary-300/60" aria-hidden="true">
+                |
+              </span>
               <a
                 href={`tel:${SITE.contact.representative}`}
                 className="tabular hover:text-white transition-colors flex items-center gap-1.5"
               >
                 <Phone size={14} aria-hidden="true" />
-                <strong className="text-white">{SITE.contact.representative}</strong>
+                <strong className="text-white">
+                  {SITE.contact.representative}
+                </strong>
               </a>
             </nav>
           </div>
@@ -77,11 +79,15 @@ export function Header() {
         <div
           className={cn(
             "container max-w-container-base flex items-center justify-between h-14 transition-[height] duration-200",
-            isScrolled ? "lg:h-16" : "lg:h-[84px]"
+            isScrolled ? "lg:h-16" : "lg:h-[84px]",
           )}
         >
           {/* 로고 */}
-          <Link href={ROUTES.home} aria-label={`${SITE.name} 홈으로`} className="flex items-center shrink-0">
+          <Link
+            href={ROUTES.home}
+            aria-label={`${SITE.name} 홈으로`}
+            className="flex items-center shrink-0"
+          >
             <BrandLogo className="h-5 sm:h-6 lg:h-7 w-auto" />
           </Link>
 
@@ -97,7 +103,7 @@ export function Header() {
                       href={item.href}
                       className={cn(
                         "gnb-link px-3 xl:px-4 py-5 text-[15px] font-semibold hover:text-accent-600",
-                        isActive ? "is-active" : "text-primary-700"
+                        isActive ? "is-active" : "text-primary-700",
                       )}
                     >
                       {item.label}
