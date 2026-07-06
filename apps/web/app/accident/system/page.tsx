@@ -29,10 +29,9 @@ const ADMISSION_TARGET = [
 ];
 
 const ROOM_TYPES = [
-  { num: "01", title: "1인실", desc: "프라이빗한 공간에서 충분한 휴식과 회복에 집중하실 수 있습니다." },
-  { num: "02", title: "2인실", desc: "동반 보호자 또는 함께 입원하시는 분과 사용하실 수 있는 객실입니다." },
-  { num: "03", title: "3인실", desc: "조용한 분위기에서 합리적인 비용으로 입원 치료를 받으실 수 있습니다." },
-  { num: "04", title: "4인실", desc: "기본 입원실로, 보험 적용 범위 내에서 안정적인 회복을 돕습니다." },
+  { num: "01", title: "1인실", desc: "10층·14층에 마련된 조용한 회복 공간입니다." },
+  { num: "02", title: "2인실", desc: "10층·13층·14층 병동에서 이용 가능한 입원실입니다." },
+  { num: "03", title: "4인실", desc: "10층·13층에 구성된 기본 입원실입니다." },
 ];
 
 const DAILY_SCHEDULE = [
@@ -143,7 +142,7 @@ export default function AccidentSystemPage() {
           진료하고 있습니다.
         </p>
         <p className="mt-3 text-[15px] lg:text-[17px] text-neutral-600 leading-relaxed max-w-[760px]">
-          1인실부터 4인실까지 다양한 입원실을 운영하며, 자동차보험 적용 범위 내에서 본인 부담 없이
+          10층·13층·14층에 1인실·2인실·4인실 입원 공간을 운영하며, 자동차보험 적용 범위 내에서
           치료를 받으실 수 있도록 도와드립니다. 보호자 동반·면회 등 병동 운영 안내까지 친절히
           설명드립니다.
         </p>
@@ -182,7 +181,7 @@ export default function AccidentSystemPage() {
             입원실 종류
           </h2>
         </header>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {ROOM_TYPES.map((t) => (
             <article
               key={t.num}

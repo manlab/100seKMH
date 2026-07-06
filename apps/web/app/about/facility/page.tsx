@@ -11,44 +11,57 @@ import { InContentCta } from "@/components/ui/InContentCta";
 export const metadata: Metadata = pageMeta({
   title: "시설 안내",
   description:
-    "백세한방병원 시설을 둘러보세요. 진료실·치료실·입원실·탕전실까지 환자 동선을 고려해 설계했습니다.",
+    "백세한방병원 시설 안내. 9층 접수·진료실, 10·13·14층 입원실, 12층 진료·치료실 등 층별 시설을 안내합니다.",
   path: "/about/facility",
 });
 
 const ABOUT_LNB_ITEMS = GNB.find((g) => g.href === ROUTES.about.greeting)?.children ?? [];
 
-type Facility = {
-  name: string;
-  desc: string;
+type FloorFacility = {
+  floor: string;
+  title: string;
+  spaces: string[];
   tone: "primary" | "accent" | "deep" | "soft";
 };
 
-const TONES: Record<Facility["tone"], string> = {
+const TONES: Record<FloorFacility["tone"], string> = {
   primary: "from-primary-100 via-primary-200 to-primary-300",
   accent: "from-accent-100 via-accent-200 to-primary-200",
   deep: "from-primary-200 via-primary-300 to-primary-400",
   soft: "from-neutral-100 via-primary-100 to-accent-100",
 };
 
-const FACILITIES: Facility[] = [
-  { name: "병원 외관", desc: "환자 동선과 접근성을 고려한 입구 설계.", tone: "primary" },
-  { name: "1층 로비", desc: "넓고 밝은 대기 공간으로 편안하게 머무실 수 있습니다.", tone: "soft" },
-  { name: "원무 접수", desc: "신속하고 친절한 접수·수납 안내가 이뤄집니다.", tone: "accent" },
-  { name: "진료 대기실", desc: "프라이버시를 고려한 좌석 배치로 편안한 대기를 돕습니다.", tone: "primary" },
-  { name: "원장 진료실", desc: "체질·증상을 충분히 듣는 1:1 진료 공간.", tone: "deep" },
-  { name: "한의사 진료실", desc: "각 클리닉별 전문 진료가 이루어지는 공간입니다.", tone: "soft" },
-  { name: "침 치료실", desc: "프라이버시를 고려한 개별 침대 구성.", tone: "primary" },
-  { name: "약침·봉침실", desc: "정밀 시술이 가능한 청결한 치료 환경을 갖췄습니다.", tone: "accent" },
-  { name: "추나 치료실", desc: "체형 분석·추나 시술을 위한 전용 공간입니다.", tone: "deep" },
-  { name: "물리치료실", desc: "전기·온열 치료 장비가 체계적으로 배치되어 있습니다.", tone: "soft" },
-  { name: "도수 치료실", desc: "정밀한 도수 치료를 위한 개별 룸을 운영합니다.", tone: "primary" },
-  { name: "재활 운동실", desc: "재활 운동 동작을 지도받을 수 있는 운동 공간.", tone: "accent" },
-  { name: "한약 탕전실", desc: "GMP 기준에 따라 한약을 정성스럽게 달여 드립니다.", tone: "deep" },
-  { name: "한약 보관실", desc: "온도·습도가 관리되는 청결한 한약재 보관 공간.", tone: "soft" },
-  { name: "1인 입원실", desc: "프라이버시가 중요한 환자분을 위한 1인 전용 입원실.", tone: "primary" },
-  { name: "다인 입원실", desc: "체계적인 동선으로 편안한 입원 치료가 가능합니다.", tone: "accent" },
-  { name: "환자 식당", desc: "회복기에 맞춘 식단을 정성스럽게 준비해 드립니다.", tone: "deep" },
-  { name: "옥상 정원", desc: "산책과 휴식을 위한 자연 친화 공간을 제공합니다.", tone: "soft" },
+const FLOOR_FACILITIES: FloorFacility[] = [
+  {
+    floor: "9층",
+    title: "접수 및 진료실",
+    spaces: ["접수데스크", "원장실", "진료실 1(양의)", "진료실 2", "고주파치료실", "처치실", "침구실", "조제실", "X-ray실"],
+    tone: "primary",
+  },
+  {
+    floor: "10층",
+    title: "입원실",
+    spaces: ["1인실", "2인실", "4인실", "직원휴게실", "라운지"],
+    tone: "accent",
+  },
+  {
+    floor: "12층",
+    title: "진료 및 치료실",
+    spaces: ["고압산소치료실", "대표원장 진료실", "총괄이사실", "도수치료실 1", "도수치료실 2", "세미나실", "탈의실", "임상병리실"],
+    tone: "deep",
+  },
+  {
+    floor: "13층",
+    title: "입원실",
+    spaces: ["2인실", "4인실", "라운지"],
+    tone: "soft",
+  },
+  {
+    floor: "14층",
+    title: "입원실",
+    spaces: ["1인실", "2인실", "원내식당", "라운지"],
+    tone: "primary",
+  },
 ];
 
 export default function FacilityPage() {
@@ -64,8 +77,8 @@ export default function FacilityPage() {
         ),
         description: (
           <>
-            진료실, 치료실, 입원실, 탕전실까지<br className="hidden sm:block" />
-            환자분이 머무시는 모든 공간을 정성껏 설계했습니다.
+            9층·10층·12층·13층·14층에 걸쳐<br className="hidden sm:block" />
+            접수, 진료, 치료, 입원 공간을 체계적으로 운영합니다.
           </>
         ),
         breadcrumb: [
@@ -74,10 +87,10 @@ export default function FacilityPage() {
           { label: "시설 둘러보기" },
         ],
         stats: [
-          { eyebrow: "총 시설", value: "18개 공간", caption: "진료·치료·입원" },
-          { eyebrow: "입원 시설", value: "1·2·3·4인실", caption: "맞춤형 입원" },
-          { eyebrow: "한약 시설", value: "GMP 탕전", caption: "위생 관리 철저" },
-          { eyebrow: "운영 원칙", value: "동선 설계", caption: "체계적 진료", accent: true },
+          { eyebrow: "운영 층", value: "5개 층", caption: "9·10·12·13·14F" },
+          { eyebrow: "입원 시설", value: "1·2·4인실", caption: "10·13·14층" },
+          { eyebrow: "치료 시설", value: "고압산소·도수", caption: "12층 치료실" },
+          { eyebrow: "접수", value: "9층", caption: "접수·진료", accent: true },
         ],
         actions: (
           <>
@@ -105,8 +118,8 @@ export default function FacilityPage() {
           <span className="text-accent-600">함께 살핀 진료 공간</span>
         </h2>
         <p className="mt-4 text-[15px] lg:text-[17px] text-neutral-600 leading-relaxed max-w-[760px]">
-          백세한방병원은 진료부터 치료, 입원, 회복까지 환자분이 머무시는 모든 공간을 정성껏
-          설계했습니다. 동선이 짧고, 대기가 편하며, 프라이버시가 보호되는 진료 공간을 만나보세요.
+          백세한방병원은 부산 서면 MMM메디컬센터 9층, 10층, 12층, 13층, 14층에서 접수·진료·치료·입원
+          공간을 운영합니다. 층별 시설 구성을 확인하시고 방문 동선을 미리 살펴보세요.
         </p>
       </Reveal>
 
@@ -115,13 +128,13 @@ export default function FacilityPage() {
         <header className="mb-7 lg:mb-9">
           <Eyebrow>FACILITY GALLERY</Eyebrow>
           <h2 className="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
-            18개 시설 둘러보기
+            층별 시설 둘러보기
           </h2>
         </header>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
-          {FACILITIES.map((f) => (
+          {FLOOR_FACILITIES.map((f) => (
             <article
-              key={f.name}
+              key={f.floor}
               className="rounded-2xl bg-white border border-neutral-200 shadow-card overflow-hidden transition-all duration-base ease-out-soft hover:-translate-y-1 hover:border-accent-200 hover:shadow-xl"
             >
               {/* TODO(client-asset): 시설 사진으로 교체 */}
@@ -130,18 +143,25 @@ export default function FacilityPage() {
                 aria-hidden="true"
               >
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_60%,rgba(255,255,255,0.3),transparent_60%)]" />
+                <div className="absolute bottom-4 left-4 rounded-full bg-white/85 backdrop-blur-sm px-4 py-2 text-[18px] font-bold text-primary-700 tabular shadow">
+                  {f.floor}
+                </div>
               </div>
               <div className="p-5 lg:p-6">
-                <h3 className="text-[16px] lg:text-[17px] font-bold text-primary-700">{f.name}</h3>
-                <p className="mt-2 text-[13px] lg:text-[14px] text-neutral-600 leading-relaxed">
-                  {f.desc}
-                </p>
+                <h3 className="text-[16px] lg:text-[17px] font-bold text-primary-700">{f.title}</h3>
+                <ul className="mt-3 flex flex-wrap gap-2 text-[12px] lg:text-[13px] text-neutral-600">
+                  {f.spaces.map((space) => (
+                    <li key={space} className="rounded-full bg-neutral-50 border border-neutral-200 px-3 py-1">
+                      {space}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </article>
           ))}
         </div>
         <p className="mt-6 text-[12px] text-neutral-500">
-          ※ 시설 사진은 개원 후 실제 사진으로 교체 예정입니다.
+          ※ 세부 시설 이용 가능 여부는 진료 일정과 병동 운영 상황에 따라 달라질 수 있습니다.
         </p>
       </Reveal>
 

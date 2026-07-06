@@ -476,7 +476,7 @@ export default function PrivacyPage() {
                           연락처
                         </dt>
                         <dd className="mt-1 font-semibold text-primary-700 tabular">
-                          031-0000-0000
+                          {SITE.contact.representative}
                         </dd>
                       </div>
                       <div>

@@ -12,7 +12,7 @@ import { InContentCta } from "@/components/ui/InContentCta";
 export const metadata: Metadata = pageMeta({
   title: "입원 안내",
   description:
-    "백세한방병원 입원 안내. 입원 대상, 입원실 종류(1·2·3·4인실), 입원 절차와 면회·식사 안내까지 한눈에 정리했습니다.",
+    "백세한방병원 입원 안내. 10·13·14층 입원실과 1·2·4인실 구성, 입원 절차와 면회·식사 안내까지 한눈에 정리했습니다.",
   path: "/about/admission",
 });
 
@@ -42,26 +42,20 @@ const TONES: Record<Room["tone"], string> = {
 const ROOMS: Room[] = [
   {
     type: "1인 입원실",
-    beds: "1인 사용",
-    features: ["프라이버시 보호", "보호자 침대 제공", "전용 화장실", "TV·냉장고"],
+    beds: "10·14층",
+    features: ["1인실 구성", "조용한 회복 공간", "라운지 인접", "입원 상담 시 이용 가능 여부 안내"],
     tone: "primary",
   },
   {
     type: "2인 입원실",
-    beds: "2인 사용",
-    features: ["프라이버시 커튼", "보호자 의자", "공용 화장실", "수납 공간"],
+    beds: "10·13·14층",
+    features: ["2인실 구성", "편안한 병동 동선", "라운지 이용", "입원 상담 시 이용 가능 여부 안내"],
     tone: "accent",
   },
   {
-    type: "3인 입원실",
-    beds: "3인 사용",
-    features: ["넓은 동선 확보", "보호자 의자", "공용 화장실", "수납 공간"],
-    tone: "deep",
-  },
-  {
     type: "4인 입원실",
-    beds: "4인 사용",
-    features: ["기본 입원실", "프라이버시 커튼", "공용 화장실", "수납 공간"],
+    beds: "10·13층",
+    features: ["4인실 구성", "기본 입원실", "라운지 인접", "입원 상담 시 이용 가능 여부 안내"],
     tone: "soft",
   },
 ];
@@ -97,7 +91,7 @@ export default function AdmissionPage() {
           { label: "입원 안내" },
         ],
         stats: [
-          { eyebrow: "입원실 종류", value: "1·2·3·4인실", caption: "맞춤형 선택" },
+          { eyebrow: "입원실 종류", value: "1·2·4인실", caption: "10·13·14층" },
           { eyebrow: "회진 운영", value: "정기 회진", caption: "의료진 협진" },
           { eyebrow: "식사 제공", value: "회복식 식단", caption: "환자 맞춤" },
           { eyebrow: "보험 적용", value: "자동차보험 가능", caption: "절차 안내", accent: true },
@@ -156,7 +150,7 @@ export default function AdmissionPage() {
             입원실 종류 안내
           </h2>
         </header>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {ROOMS.map((r) => (
             <article
               key={r.type}

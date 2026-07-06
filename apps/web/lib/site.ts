@@ -5,15 +5,15 @@ export const SITE = {
   name: "백세한방병원",
   nameEn: "Baekse Korean Medicine Hospital",
   tagline: "정성스러운 한방, 100년의 건강",
-  url: "https://baeksehospital.kr",
+  url: "https://www.xn--vh3bpa59b04lwmilrx.kr",
   description:
-    "백세 건강의 시작, 백세한방병원. 척추·관절, 추나·교정, 교통사고, 면역·만성, 여성·소아 클리닉을 운영하는 한방병원입니다. 1년 365일 진료.",
+    "부산 서면의 백세한방병원. 척추·관절, 추나·교정, 교통사고, 면역·만성, 여성·소아 클리닉과 입원실을 운영하는 한방병원입니다.",
 
   // TODO(client-asset): 개원 시 실제 값으로 교체
   contact: {
-    representative: "031-0000-0000",
-    counsel: "031-0000-1111",
-    address: "경기도 OO시 OO로 OOO, OOO빌딩 O층",
+    representative: "1668-0103",
+    counsel: "1668-0103",
+    address: "부산광역시 부산진구 서면로 32 MMM메디컬센터 9F·10F·12F·13F·14F",
     businessNumber: "OOO-OO-OOOOO",
     representativeName: "OOO",
   },

@@ -37,7 +37,7 @@ const envSchema = z.object({
   RESEND_FROM_EMAIL: z.string().default("백세한방병원 <onboarding@resend.dev>"),
 
   // === 사이트 ===
-  NEXT_PUBLIC_SITE_URL: z.string().url().default("https://baeksehospital.kr"),
+  NEXT_PUBLIC_SITE_URL: z.string().url().default("https://www.xn--vh3bpa59b04lwmilrx.kr"),
 
   NODE_ENV: z.enum(["development", "production", "test"]).default("development"),
 });

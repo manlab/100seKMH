@@ -23,28 +23,25 @@ const TRANSIT = [
     Icon: Train,
     title: "지하철",
     items: [
-      // TODO(client-asset): 실제 노선·역명·도보 시간 교체
-      "OO호선 OO역 O번 출구에서 도보 5분",
-      "OO호선 OO역 O번 출구에서 도보 8분",
+      "부산 서면 중심가 MMM메디컬센터로 방문해 주세요",
+      "건물 도착 후 9층 접수데스크에서 안내받으실 수 있습니다",
     ],
   },
   {
     Icon: Bus,
     title: "버스",
     items: [
-      // TODO(client-asset): 실제 정류장·번호 교체
-      "OO 정류장: 간선 OOO·OOO·OOO",
-      "OO 정류장: 지선 OOO·OOO",
-      "광역 버스 OOOO·OOOO 정차",
+      "부산진구 서면로 32 인근 정류장을 이용해 주세요",
+      "하차 후 MMM메디컬센터 9층 접수데스크로 오시면 됩니다",
     ],
   },
   {
     Icon: Car,
     title: "자가용·주차",
     items: [
-      "건물 내 지하 주차장 이용 가능",
-      "내원 환자분 주차 OO시간 무료",
-      "주차장 협소 시 인근 공영주차장 안내",
+      "주소: 부산광역시 부산진구 서면로 32 MMM메디컬센터",
+      "방문 전 대표번호로 주차 가능 여부를 확인해 주세요",
+      "진료·입원 안내는 9층 접수데스크에서 도와드립니다",
     ],
   },
 ];
@@ -72,8 +69,8 @@ export default function LocationPage() {
           { label: "오시는 길" },
         ],
         stats: [
-          { eyebrow: "위치", value: "도심 접근", caption: "지하철·버스 편리" },
-          { eyebrow: "주차", value: "건물 주차장", caption: "내원 환자 무료" },
+          { eyebrow: "위치", value: "부산 서면", caption: "MMM메디컬센터" },
+          { eyebrow: "주차", value: "사전 문의", caption: "대표번호 안내" },
           { eyebrow: "전화", value: SITE.contact.representative, caption: "대표 번호" },
           { eyebrow: "운영", value: "365일 진료", caption: "언제나 오세요", accent: true },
         ],
