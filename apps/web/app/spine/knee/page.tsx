@@ -108,7 +108,7 @@ export default function KneePage() {
             { eyebrow: "치료 방식", value: "비수술 한방", caption: "약침·봉침·도수" },
             { eyebrow: "평균 기간", value: "개인별 안내", caption: "초진 시 상담" },
             { eyebrow: "보험 적용", value: "일부 가능", caption: "비급여 별도" },
-            { eyebrow: "진료 시간", value: "365일", caption: "주말·공휴일 진료", accent: true },
+            { eyebrow: "진료 시간", value: "토요일", caption: "오전 진료", accent: true },
           ],
           actions: (
             <>

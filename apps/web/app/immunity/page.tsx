@@ -132,7 +132,7 @@ export default function ImmunityPage() {
         ],
         stats: [
           { eyebrow: "치료 방식", value: "체질 한방", caption: "맞춤 한약·침" },
-          { eyebrow: "진료 시간", value: "365일", caption: "평일·주말·공휴일" },
+          { eyebrow: "진료 시간", value: "월-토", caption: "토요일 오전" },
           { eyebrow: "진단 방식", value: "체질 분석", caption: "진맥·문진" },
           { eyebrow: "관리 방식", value: "생활 가이드", caption: "식이·수면 안내", accent: true },
         ],

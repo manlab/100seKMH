@@ -113,7 +113,7 @@ export default function GrowthPage() {
             { eyebrow: "치료 방식", value: "성장 한방", caption: "한약·침·뜸·추나" },
             { eyebrow: "권장 연령", value: "4-15세", caption: "성장기 전반" },
             { eyebrow: "권장 시기", value: "성장 도약기", caption: "초·중기 권장", accent: true },
-            { eyebrow: "진료시간", value: "365일", caption: "평일·주말·공휴일" },
+            { eyebrow: "진료시간", value: "월-토", caption: "토요일 오전" },
           ],
           actions: (
             <>

@@ -113,7 +113,7 @@ export default function MenstruationPage() {
             { eyebrow: "치료 방식", value: "체질 한방", caption: "어혈·기체·한증" },
             { eyebrow: "평균 기간", value: "3~6개월", caption: "주기 안정 기준" },
             { eyebrow: "권장 시기", value: "월경 전후", caption: "주기별 처방", accent: true },
-            { eyebrow: "진료시간", value: "365일", caption: "평일·주말·공휴일" },
+            { eyebrow: "진료시간", value: "월-토", caption: "토요일 오전" },
           ],
           actions: (
             <>

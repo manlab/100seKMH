@@ -113,7 +113,7 @@ export default function ColdHandFootPage() {
             { eyebrow: "치료 방식", value: "보양 한방", caption: "한약·뜸·침·약침" },
             { eyebrow: "평균 기간", value: "2~4개월", caption: "체질·증상별 차이" },
             { eyebrow: "한방 진단", value: "기허·양허", caption: "체질별 변별", accent: true },
-            { eyebrow: "진료시간", value: "365일", caption: "평일·주말·공휴일" },
+            { eyebrow: "진료시간", value: "월-토", caption: "토요일 오전" },
           ],
           actions: (
             <>

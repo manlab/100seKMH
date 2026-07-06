@@ -72,7 +72,7 @@ export default function LocationPage() {
           { eyebrow: "위치", value: "부산 서면", caption: "MMM메디컬센터" },
           { eyebrow: "주차", value: "사전 문의", caption: "대표번호 안내" },
           { eyebrow: "전화", value: SITE.contact.representative, caption: "대표 번호" },
-          { eyebrow: "운영", value: "365일 진료", caption: "언제나 오세요", accent: true },
+          { eyebrow: "운영", value: "월-토 진료", caption: "일요일 휴진", accent: true },
         ],
         actions: (
           <>

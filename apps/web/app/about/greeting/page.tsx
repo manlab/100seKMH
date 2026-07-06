@@ -75,7 +75,7 @@ export default function GreetingPage() {
         stats: [
           { eyebrow: "진료 철학", value: "체질 맞춤", caption: "사람 중심의 한방" },
           { eyebrow: "통합 진료", value: "5개 클리닉", caption: "한자리에서 진료" },
-          { eyebrow: "운영 시간", value: "365일 진료", caption: "평일·주말·공휴일" },
+          { eyebrow: "운영 시간", value: "월-토 진료", caption: "일요일 휴진" },
           { eyebrow: "환자 약속", value: "정성 진료", caption: "끝까지 함께 봅니다", accent: true },
         ],
         actions: (

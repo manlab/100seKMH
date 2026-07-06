@@ -18,12 +18,12 @@ export const SITE = {
     representativeName: "신승협",
   },
 
-  // 진료시간 (개원 시 확정)
+  // 진료시간
   hours: {
-    weekday: "09:30 — 19:30",
-    saturday: "09:30 — 17:00",
-    sunday: "09:30 — 17:00",
-    holiday: "09:30 — 17:00",
+    weekday: "09:00 — 18:00",
+    saturday: "09:00 — 13:00",
+    sunday: "휴진",
+    holiday: "별도 공지",
     lunch: "12:30 — 13:30",
   },
 

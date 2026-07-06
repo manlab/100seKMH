@@ -113,7 +113,7 @@ export default function SleepPage() {
             { eyebrow: "치료 방식", value: "변별 한방", caption: "심허·간울·담음" },
             { eyebrow: "평균 기간", value: "2~4개월", caption: "증상별 차이" },
             { eyebrow: "동반 가이드", value: "수면 위생", caption: "생활 관리 안내", accent: true },
-            { eyebrow: "진료시간", value: "365일", caption: "평일·주말·공휴일" },
+            { eyebrow: "진료시간", value: "월-토", caption: "토요일 오전" },
           ],
           actions: (
             <>

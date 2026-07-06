@@ -121,7 +121,7 @@ export default function AccidentAftercarePage() {
             { eyebrow: "치료 방식", value: "비수술 한방", caption: "한약·침·약침·추나" },
             { eyebrow: "평균 기간", value: "2~6주", caption: "증상별 차이 있음" },
             { eyebrow: "보험", value: "자동차보험", caption: "본인 부담금 0원", accent: true },
-            { eyebrow: "진료시간", value: "365일", caption: "평일·주말·공휴일" },
+            { eyebrow: "진료시간", value: "월-토", caption: "토요일 오전" },
           ],
           actions: (
             <>

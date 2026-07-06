@@ -132,7 +132,7 @@ export default function WomenKidsPage() {
         ],
         stats: [
           { eyebrow: "치료 방식", value: "체질 한방", caption: "맞춤 처방" },
-          { eyebrow: "진료 시간", value: "365일", caption: "평일·주말·공휴일" },
+          { eyebrow: "진료 시간", value: "월-토", caption: "토요일 오전" },
           { eyebrow: "진료 대상", value: "전 연령", caption: "산모·여성·아이" },
           { eyebrow: "관리 방식", value: "가족 단위", caption: "함께 진료 가능", accent: true },
         ],

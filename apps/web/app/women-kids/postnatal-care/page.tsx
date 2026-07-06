@@ -118,7 +118,7 @@ export default function PostnatalCarePage() {
             { eyebrow: "치료 방식", value: "산후 한방", caption: "어혈→회복→보양" },
             { eyebrow: "권장 시기", value: "출산 후 2~3주", caption: "회복기 권장", accent: true },
             { eyebrow: "평균 기간", value: "1~3개월", caption: "단계별 진행" },
-            { eyebrow: "진료시간", value: "365일", caption: "평일·주말·공휴일" },
+            { eyebrow: "진료시간", value: "월-토", caption: "토요일 오전" },
           ],
           actions: (
             <>

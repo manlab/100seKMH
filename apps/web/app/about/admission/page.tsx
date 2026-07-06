@@ -333,7 +333,9 @@ export default function AdmissionPage() {
               면회 안내
             </h3>
             <ul className="mt-3 space-y-2 text-[14px] text-neutral-600 leading-relaxed">
-              <li>· 평일·주말 면회 가능 시간: 10:00 — 20:00</li>
+              <li>
+                · 면회 가능 시간은 입원 상담 시 병동 상황에 맞춰 안내드립니다.
+              </li>
               <li>
                 · 환자 회복을 위해 1회 면회 인원은 2명 이내로 부탁드립니다.
               </li>

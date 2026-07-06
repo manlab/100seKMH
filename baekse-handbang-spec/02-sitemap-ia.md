@@ -205,7 +205,7 @@ public/
 3. **About Banner** ("백세 건강을 위한 정성스러운 한방진료" 같은 강조 띠)
 4. **Notice / Quick Service** (3단: 공지사항 + 블로그/웹툰 + 자주찾는 서비스)
 5. **Location + Hours** (지도 + 진료시간 + 대표번호)
-6. **Bottom CTA** (개원 안내 / 1년 365일 진료 같은 강조 배너)
+6. **Bottom CTA** (개원 안내 / 평일·토요일 진료시간 강조 배너)
 7. **Footer**
 
 (상세는 `03-content-spec.md` 참고)

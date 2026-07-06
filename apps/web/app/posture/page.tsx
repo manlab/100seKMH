@@ -130,7 +130,7 @@ export default function PosturePage() {
         ],
         stats: [
           { eyebrow: "치료 방식", value: "한방 추나", caption: "정규 추나요법" },
-          { eyebrow: "진료 시간", value: "365일", caption: "평일·주말·공휴일" },
+          { eyebrow: "진료 시간", value: "월-토", caption: "토요일 오전" },
           { eyebrow: "진단 방식", value: "체형 분석", caption: "정렬·근막 평가" },
           { eyebrow: "보험 적용", value: "추나 급여", caption: "적응증 기준 적용", accent: true },
         ],

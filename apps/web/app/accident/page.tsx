@@ -130,7 +130,7 @@ export default function AccidentPage() {
         ],
         stats: [
           { eyebrow: "보험 처리", value: "자동차보험", caption: "한방 진료 가능" },
-          { eyebrow: "진료 시간", value: "365일", caption: "평일·주말·공휴일" },
+          { eyebrow: "진료 시간", value: "월-토", caption: "토요일 오전" },
           { eyebrow: "입원", value: "입원 가능", caption: "집중 치료 시" },
           { eyebrow: "절차 안내", value: "직접 안내", caption: "접수·서류 도움", accent: true },
         ],

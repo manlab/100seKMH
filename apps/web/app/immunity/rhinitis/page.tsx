@@ -118,7 +118,7 @@ export default function RhinitisPage() {
             { eyebrow: "치료 방식", value: "체질 한방", caption: "한약·침·뜸·약침" },
             { eyebrow: "평균 기간", value: "3~6개월", caption: "체질·증상별 차이" },
             { eyebrow: "권장 시기", value: "환절기 전", caption: "예방 관리 가능", accent: true },
-            { eyebrow: "진료시간", value: "365일", caption: "평일·주말·공휴일" },
+            { eyebrow: "진료시간", value: "월-토", caption: "토요일 오전" },
           ],
           actions: (
             <>

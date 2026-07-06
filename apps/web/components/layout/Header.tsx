@@ -50,7 +50,7 @@ export function Header() {
                 className="inline-flex w-1.5 h-1.5 rounded-full bg-accent-400"
                 aria-hidden="true"
               />
-              <span>1년 365일 진료 · 평일·주말·공휴일 모두 진료합니다</span>
+              <span>평일 09:00–18:00 · 토요일 09:00–13:00 · 일요일 휴진</span>
             </div>
             <nav aria-label="유틸리티" className="flex items-center gap-5">
               <Link

@@ -46,8 +46,8 @@ const USPS = [
   },
   {
     Icon: Clock,
-    title: "365일 정기 진료",
-    desc: "통증은 시간을 가리지 않습니다. 평일·주말·공휴일 모두 진료해 회복 기간 동안 치료가 끊기지 않도록 합니다.",
+    title: "월-토 정기 진료",
+    desc: "통증 회복을 위해 평일과 토요일 오전까지 꾸준한 진료 일정을 운영합니다.",
   },
   {
     Icon: Shield,
@@ -132,7 +132,7 @@ export default function SpinePage() {
         ],
         stats: [
           { eyebrow: "치료 방식", value: "비수술 한방", caption: "한약·침·약침·추나" },
-          { eyebrow: "진료 시간", value: "365일", caption: "평일·주말·공휴일" },
+          { eyebrow: "진료 시간", value: "월-토", caption: "토요일 오전" },
           { eyebrow: "치료 협력", value: "필요시 협진", caption: "영상검사 안내 가능" },
           { eyebrow: "자동차보험", value: "교통사고 진료", caption: "절차 안내 가능", accent: true },
         ],

@@ -108,7 +108,7 @@ export default function ScoliosisPage() {
             { eyebrow: "치료 방식", value: "추나·운동", caption: "한방 통합" },
             { eyebrow: "평균 기간", value: "개인별 안내", caption: "초진 시 상담" },
             { eyebrow: "보험 적용", value: "추나 보험", caption: "연간 한도 적용" },
-            { eyebrow: "진료 시간", value: "365일", caption: "주말·공휴일 진료", accent: true },
+            { eyebrow: "진료 시간", value: "토요일", caption: "오전 진료", accent: true },
           ],
           actions: (
             <>

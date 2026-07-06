@@ -113,7 +113,7 @@ export default function ChongmyeongPage() {
             { eyebrow: "치료 방식", value: "체질 한방", caption: "총명탕·침·약침" },
             { eyebrow: "권장 연령", value: "초·중·고", caption: "학습기 전반" },
             { eyebrow: "권장 시기", value: "시험 2~3개월 전", caption: "사전 보양 권장", accent: true },
-            { eyebrow: "진료시간", value: "365일", caption: "평일·주말·공휴일" },
+            { eyebrow: "진료시간", value: "월-토", caption: "토요일 오전" },
           ],
           actions: (
             <>

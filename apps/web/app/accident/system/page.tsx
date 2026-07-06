@@ -111,7 +111,7 @@ export default function AccidentSystemPage() {
           { eyebrow: "치료 방식", value: "통합 한방", caption: "한약·침·약침·추나" },
           { eyebrow: "평균 기간", value: "1~3주", caption: "증상별 차이 있음" },
           { eyebrow: "보험", value: "자동차보험", caption: "기본 입원실 적용", accent: true },
-          { eyebrow: "진료시간", value: "365일", caption: "주말·공휴일 진료" },
+          { eyebrow: "진료시간", value: "토요일", caption: "오전 진료" },
         ],
         actions: (
           <>

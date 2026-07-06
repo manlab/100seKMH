@@ -106,7 +106,7 @@ export default function AccidentInsurancePage() {
           { eyebrow: "절차", value: "4단계", caption: "접수부터 정산까지" },
           { eyebrow: "본인 부담금", value: "0원", caption: "보험사 직접 정산", accent: true },
           { eyebrow: "보험 적용", value: "한약 포함", caption: "한약·침·약침·추나" },
-          { eyebrow: "진료시간", value: "365일", caption: "평일·주말·공휴일" },
+          { eyebrow: "진료시간", value: "월-토", caption: "토요일 오전" },
         ],
         actions: (
           <>

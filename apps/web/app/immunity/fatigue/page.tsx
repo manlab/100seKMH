@@ -113,7 +113,7 @@ export default function FatiguePage() {
             { eyebrow: "치료 방식", value: "보양 한방", caption: "허증별 맞춤 처방" },
             { eyebrow: "평균 기간", value: "2~4개월", caption: "체질·증상별 차이" },
             { eyebrow: "한방 변별", value: "4가지 허증", caption: "기·혈·음·양", accent: true },
-            { eyebrow: "진료시간", value: "365일", caption: "평일·주말·공휴일" },
+            { eyebrow: "진료시간", value: "월-토", caption: "토요일 오전" },
           ],
           actions: (
             <>

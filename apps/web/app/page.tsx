@@ -177,13 +177,13 @@ export default function HomePage() {
       <Section bg="primary" spacing="xl">
         <div className="grid lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-8">
-            <Eyebrow variant="light">365 DAYS WITH YOU</Eyebrow>
+            <Eyebrow variant="light">WEEKDAY & SATURDAY CARE</Eyebrow>
             <h2 className="mt-3 text-[28px] sm:text-[34px] lg:text-[44px] font-bold text-white text-balanced leading-[1.2]">
               아플 때 참지 마세요.<br />
-              언제든 <span className="text-accent-300">{SITE.name}</span>을 찾아주세요.
+              진료시간에 맞춰 <span className="text-accent-300">{SITE.name}</span>을 찾아주세요.
             </h2>
             <p className="mt-5 text-[15px] sm:text-[17px] text-primary-100/90 leading-relaxed max-w-[640px]">
-              평일·주말·공휴일 모두 진료합니다. 전화 한 통이면 가능한 빠른 진료 일정으로 안내드리겠습니다.
+              평일은 09:00–18:00, 토요일은 09:00–13:00까지 진료합니다. 일요일은 휴진입니다.
             </p>
           </div>
           <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">

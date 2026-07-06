@@ -12,7 +12,7 @@ import { InContentCta } from "@/components/ui/InContentCta";
 export const metadata: Metadata = pageMeta({
   title: "진료시간",
   description:
-    "백세한방병원 진료시간 안내. 평일·토요일·일요일·공휴일 모두 진료하며, 점심시간과 휴진 안내, 예약 방법까지 정리했습니다.",
+    "백세한방병원 진료시간 안내. 평일 09:00–18:00, 토요일 09:00–13:00, 일요일 휴진과 점심시간을 정리했습니다.",
   path: "/about/hours",
 });
 
@@ -26,14 +26,16 @@ const SCHEDULE: Schedule[] = [
   { day: "수요일", hours: SITE.hours.weekday },
   { day: "목요일", hours: SITE.hours.weekday },
   { day: "금요일", hours: SITE.hours.weekday },
-  { day: "토요일", hours: SITE.hours.saturday, note: "주말 진료" },
-  { day: "일요일", hours: SITE.hours.sunday, note: "주말 진료", highlight: true },
-  { day: "공휴일", hours: SITE.hours.holiday, note: "공휴일 진료" },
+  { day: "토요일", hours: SITE.hours.saturday, note: "오전 진료" },
+  { day: "일요일", hours: SITE.hours.sunday, note: "휴진", highlight: true },
+  { day: "공휴일", hours: SITE.hours.holiday, note: "방문 전 확인" },
 ];
 
 const NOTICES = [
-  "점심시간은 12:30 — 13:30 입니다 (점심시간에는 진료가 진행되지 않습니다).",
-  "설날·추석 당일은 휴진할 수 있으며, 사전에 공지사항으로 안내드립니다.",
+  "평일 점심시간은 12:30 — 13:30 입니다 (점심시간에는 진료가 진행되지 않습니다).",
+  "토요일은 09:00 — 13:00 오전 진료이며 별도 점심시간은 없습니다.",
+  "일요일은 휴진입니다.",
+  "공휴일 운영 여부는 사전에 공지사항 또는 전화로 안내드립니다.",
   "진료 마감 30분 전까지 접수를 부탁드립니다.",
   "예약 환자분 우선 진료로 대기 시간이 단축됩니다.",
 ];
@@ -45,14 +47,14 @@ export default function HoursPage() {
         eyebrow: "OPENING HOURS",
         title: (
           <>
-            1년 365일,<br />
-            <span className="text-accent-300">언제나 진료합니다</span>
+            평일과 토요일,<br />
+            <span className="text-accent-300">정해진 시간에 진료합니다</span>
           </>
         ),
         description: (
           <>
-            평일·토요일·일요일·공휴일 모두 진료해<br className="hidden sm:block" />
-            치료가 끊기지 않도록 진료 일정을 운영하고 있습니다.
+            평일 09:00–18:00, 토요일 09:00–13:00<br className="hidden sm:block" />
+            일요일은 휴진입니다.
           </>
         ),
         breadcrumb: [
@@ -62,9 +64,9 @@ export default function HoursPage() {
         ],
         stats: [
           { eyebrow: "평일", value: SITE.hours.weekday, caption: "월요일 — 금요일" },
-          { eyebrow: "토요일", value: SITE.hours.saturday, caption: "주말 진료" },
-          { eyebrow: "일요일·공휴일", value: SITE.hours.sunday, caption: "365일 운영" },
-          { eyebrow: "점심시간", value: SITE.hours.lunch, caption: "진료 중단", accent: true },
+          { eyebrow: "토요일", value: SITE.hours.saturday, caption: "오전 진료" },
+          { eyebrow: "일요일", value: SITE.hours.sunday, caption: "정기 휴진" },
+          { eyebrow: "점심시간", value: SITE.hours.lunch, caption: "평일 진료 중단", accent: true },
         ],
         actions: (
           <>
@@ -208,7 +210,7 @@ export default function HoursPage() {
             </span>
             <h3 className="mt-4 text-[18px] font-bold text-primary-700">카카오톡 상담</h3>
             <p className="mt-2 text-[14px] text-neutral-600 leading-relaxed">
-              평일·주말 모두 메시지로 문의 가능합니다. 순차적으로 답변드립니다.
+              메시지를 남겨 주시면 진료일 기준으로 순차 답변드립니다.
             </p>
             <p className="mt-4 inline-flex items-center gap-1.5 text-[14px] font-semibold text-accent-600">
               카카오톡 채널 <ArrowRight size={14} aria-hidden="true" />
@@ -242,7 +244,7 @@ export default function HoursPage() {
           <div>
             <h3 className="text-[18px] font-bold text-primary-700">한눈에 보는 진료시간</h3>
             <p className="mt-2 text-[14px] lg:text-[15px] text-neutral-600 leading-relaxed">
-              평일 {SITE.hours.weekday} · 토요일 {SITE.hours.saturday} · 일요일·공휴일 {SITE.hours.sunday} ·
+              평일 {SITE.hours.weekday} · 토요일 {SITE.hours.saturday} · 일요일 {SITE.hours.sunday} ·
               점심시간 {SITE.hours.lunch}.
             </p>
           </div>
