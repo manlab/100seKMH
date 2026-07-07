@@ -253,11 +253,11 @@ public/
 |---|---|---|
 | 의료진/시설/진료 콘텐츠 | MDX/JSON 파일 | Sanity / Strapi |
 | 공지사항 | MDX 파일 | DB + 어드민 |
-| 온라인 상담 | API Route → 이메일/Slack 전송 | DB + 어드민 + 답변 페이지 |
+| 온라인 상담 | API Route → DB 저장 | DB + 어드민 + 답변 페이지 |
 | FAQ | JSON | CMS |
 | 비급여 항목 | 정적 표 (CSV → JSON) | CMS |
 
-`api/counsel/route.ts` 는 처음에는 그냥 폼 내용을 병원 이메일로 전송 (Resend, SendGrid 등). 나중에 Supabase 테이블 + 어드민 CRUD 로 확장.
+`api/counsel/route.ts` 는 상담 내용을 DB에 저장하고 어드민에서 확인·답변하는 흐름으로 운영한다.
 
 ---
 

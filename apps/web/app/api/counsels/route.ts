@@ -1,13 +1,12 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { CounselFormSchema } from "@/lib/counsel-schema";
-import { sendCounselEmail } from "@/lib/email";
 import { rateLimit } from "@/lib/rate-limit";
 import * as crypto from "node:crypto";
 import { db, schema } from "@/lib/db/client";
 import { encryptField, hashPassword } from "@/lib/crypto";
 import { parsePage } from "@/lib/pagination";
 
-/** Resend SDK + bcrypt + AES 모두 Node 런타임 (edge 미지원). */
+/** bcrypt + AES + DB 모두 Node 런타임 (edge 미지원). */
 export const runtime = "nodejs";
 
 type CounselApiResponse =
@@ -95,14 +94,6 @@ export async function POST(req: NextRequest): Promise<NextResponse<CounselApiRes
       { ok: false, error: "저장 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요." },
       { status: 500 }
     );
-  }
-
-  // 6) 운영팀 이메일 알림 — 실패해도 사용자에게는 성공 응답.
-  // 글은 DB 에 들어갔고, 운영팀이 어드민 콘솔에서 확인 가능.
-  const emailResult = await sendCounselEmail(data);
-  if (!emailResult.ok) {
-    // eslint-disable-next-line no-console
-    console.error("[counsel] email notify failed (글은 저장됨)", emailResult.error);
   }
 
   return NextResponse.json({ ok: true, id });

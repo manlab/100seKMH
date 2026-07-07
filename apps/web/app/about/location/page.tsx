@@ -18,10 +18,12 @@ export const metadata: Metadata = pageMeta({
 
 const ABOUT_LNB_ITEMS = GNB.find((g) => g.href === ROUTES.about.greeting)?.children ?? [];
 
+const GOOGLE_MAP_COORDS = "35.1567872,129.056768";
+const GOOGLE_MAP_ZOOM = 18;
 const GOOGLE_MAP_QUERY = `${SITE.name} ${SITE.contact.address}`;
 const GOOGLE_MAP_EMBED_URL = `https://www.google.com/maps?q=${encodeURIComponent(
-  GOOGLE_MAP_QUERY
-)}&output=embed`;
+  GOOGLE_MAP_COORDS
+)}&z=${GOOGLE_MAP_ZOOM}&hl=ko&output=embed`;
 const GOOGLE_MAP_LINK_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
   GOOGLE_MAP_QUERY
 )}`;
@@ -121,7 +123,7 @@ export default function LocationPage() {
             <div className="text-[13px] leading-relaxed text-neutral-600">
               <p className="inline-flex items-start gap-2">
                 <MapPin size={16} className="mt-0.5 shrink-0 text-accent-600" aria-hidden="true" />
-                <span>구글 지도에서 {SITE.name} 위치와 경로를 바로 확인하실 수 있습니다.</span>
+                <span>확대된 지도에서 {SITE.name} 위치 핀과 경로를 바로 확인하실 수 있습니다.</span>
               </p>
               <p className="mt-1 pl-6 text-[12px] text-neutral-500">
                 지도 이용 시 Google 개인정보처리방침이 적용될 수 있습니다.

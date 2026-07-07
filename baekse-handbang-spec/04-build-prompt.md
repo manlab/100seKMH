@@ -240,7 +240,7 @@ content/clinics/ 에 각 진료 페이지의 MDX 파일을 만듭니다 (또는 
 6단계입니다.
 
 - /community/notice: MDX 기반 리스트 + 상세, 페이지네이션
-- /community/counsel: 폼 (react-hook-form + zod), API Route /api/counsel 에 이메일 전송 (Resend 또는 단순 mailto fallback)
+- /community/counsel: 폼 (react-hook-form + zod), API Route /api/counsel 에 DB 저장 + 어드민 답변
 - /community/faq: JSON 기반 아코디언, 카테고리 탭 + 검색
 - /community/non-covered: JSON 기반 표 + 검색 필터
 - /community/documents: 정적 컨텐츠
@@ -289,8 +289,7 @@ content/clinics/ 에 각 진료 페이지의 MDX 파일을 만듭니다 (또는 
     "embla-carousel-react": "^8.1.0",
     "next-mdx-remote": "^4.4.1",
     "gray-matter": "^4.0.3",
-    "date-fns": "^3.6.0",
-    "resend": "^3.2.0"
+    "date-fns": "^3.6.0"
   },
   "devDependencies": {
     "@types/node": "^20.12.0",
@@ -310,10 +309,6 @@ content/clinics/ 에 각 진료 페이지의 MDX 파일을 만듭니다 (또는 
 ```
 # Site
 NEXT_PUBLIC_SITE_URL=https://baeksehospital.kr
-
-# Email (online counsel)
-RESEND_API_KEY=
-COUNSEL_TO_EMAIL=6334shin@naver.com
 
 # Analytics (개원 후 발급)
 NEXT_PUBLIC_GA_ID=

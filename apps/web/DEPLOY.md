@@ -34,9 +34,7 @@ Vercel Dashboard → 프로젝트 → Storage → Browse Storage
 
 `openssl rand -hex 32` 가 PC 에 없으면 https://www.random.org/strings/ 또는 Python 한 줄: `python3 -c "import secrets;print(secrets.token_hex(32))"`. 어떻게든 64자 hex 문자열을 만들면 됩니다.
 
-기존 변수도 그대로 둡니다:
-- `RESEND_API_KEY` (이메일 알림)
-- `COUNSEL_TO_EMAIL`, `RESEND_FROM_EMAIL`
+선택 변수:
 - `NEXT_PUBLIC_SITE_URL`
 
 ### 1.3 — GitHub 에 push → Vercel 빌드 시작

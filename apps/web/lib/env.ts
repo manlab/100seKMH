@@ -31,11 +31,6 @@ const envSchema = z.object({
    */
   ADMIN_SEED_TOKEN: z.string().min(32).optional(),
 
-  // === Resend (이메일) ===
-  RESEND_API_KEY: z.string().default(""),
-  COUNSEL_TO_EMAIL: z.string().email().default("6334shin@naver.com"),
-  RESEND_FROM_EMAIL: z.string().default("백세한방병원 <onboarding@resend.dev>"),
-
   // === 사이트 ===
   NEXT_PUBLIC_SITE_URL: z.string().url().default("https://www.xn--vh3bpa59b04lwmilrx.kr"),
 
@@ -58,9 +53,6 @@ export const env = {
   PHONE_ENC_KEY: data.PHONE_ENC_KEY ?? "",
   ADMIN_SESSION_SECRET: data.ADMIN_SESSION_SECRET ?? "",
   ADMIN_SEED_TOKEN: data.ADMIN_SEED_TOKEN ?? "",
-  RESEND_API_KEY: data.RESEND_API_KEY,
-  COUNSEL_TO_EMAIL: data.COUNSEL_TO_EMAIL,
-  RESEND_FROM_EMAIL: data.RESEND_FROM_EMAIL,
   SITE_URL: data.NEXT_PUBLIC_SITE_URL,
   NODE_ENV: data.NODE_ENV,
   isProd: data.NODE_ENV === "production",
