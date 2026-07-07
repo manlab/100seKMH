@@ -18,7 +18,7 @@ export const metadata: Metadata = pageMeta({
 
 const ABOUT_LNB_ITEMS = GNB.find((g) => g.href === ROUTES.about.greeting)?.children ?? [];
 
-const GOOGLE_MAP_COORDS = "35.1567872,129.056768";
+const GOOGLE_MAP_COORDS = "35.1536023,129.0580585";
 const GOOGLE_MAP_ZOOM = 18;
 const GOOGLE_MAP_QUERY = `${SITE.name} ${SITE.contact.address}`;
 const GOOGLE_MAP_EMBED_URL = `https://www.google.com/maps?q=${encodeURIComponent(
