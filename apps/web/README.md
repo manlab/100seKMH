@@ -33,7 +33,7 @@ npm run db:studio            # Drizzle Studio (DB 시각화)
 | `ADMIN_SESSION_SECRET` | 어드민 세션 토큰 비밀 (≥32자) | `openssl rand -hex 32` |
 | `ADMIN_SEED_TOKEN` | 첫 어드민 1회 생성용 토큰 | `openssl rand -hex 32` |
 | `RESEND_API_KEY` | 온라인 상담 메일 전송 | `re_xxxxx` ([resend.com](https://resend.com)) |
-| `COUNSEL_TO_EMAIL` | 상담 메일 수신 (병원 운영팀) | `ops@baeksehospital.kr` |
+| `COUNSEL_TO_EMAIL` | 상담 메일 수신 (병원 운영팀) | `6334shin@naver.com` |
 | `RESEND_FROM_EMAIL` | 발신자 (Resend verified domain) | `백세한방병원 <onboarding@resend.dev>` |
 | `NEXT_PUBLIC_SITE_URL` | 사이트 공개 URL | `https://baeksehospital.kr` |
 
@@ -119,7 +119,7 @@ apps/web/
 - [ ] `lib/site.ts` placeholder를 실제 값으로 교체 (전화·주소·사업자번호·대표자명)
 - [ ] 의료진 사진/약력 (`app/about/doctors/page.tsx`)
 - [ ] 시설 사진 18~22장 (`app/about/facility/page.tsx`)
-- [ ] 카카오맵 SDK 연결 (`NEXT_PUBLIC_KAKAO_MAP_KEY`)
+- [ ] 구글 지도 임베드 확인 (`/about/location`)
 - [ ] 약관/개인정보 법무 검토 (`app/legal/*`)
 - [ ] 비급여 항목 표 확정 (`app/community/non-covered/page.tsx`)
 - [ ] 네이버 서치어드바이저·구글 서치콘솔 등록 + sitemap 제출

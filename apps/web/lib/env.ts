@@ -33,7 +33,7 @@ const envSchema = z.object({
 
   // === Resend (이메일) ===
   RESEND_API_KEY: z.string().default(""),
-  COUNSEL_TO_EMAIL: z.string().email().default("ops@baeksehospital.kr"),
+  COUNSEL_TO_EMAIL: z.string().email().default("6334shin@naver.com"),
   RESEND_FROM_EMAIL: z.string().default("백세한방병원 <onboarding@resend.dev>"),
 
   // === 사이트 ===

@@ -18,6 +18,14 @@ export const metadata: Metadata = pageMeta({
 
 const ABOUT_LNB_ITEMS = GNB.find((g) => g.href === ROUTES.about.greeting)?.children ?? [];
 
+const GOOGLE_MAP_QUERY = `${SITE.name} ${SITE.contact.address}`;
+const GOOGLE_MAP_EMBED_URL = `https://www.google.com/maps?q=${encodeURIComponent(
+  GOOGLE_MAP_QUERY
+)}&output=embed`;
+const GOOGLE_MAP_LINK_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  GOOGLE_MAP_QUERY
+)}`;
+
 const TRANSIT = [
   {
     Icon: Train,
@@ -92,42 +100,36 @@ export default function LocationPage() {
         items: ABOUT_LNB_ITEMS,
       }}
     >
-      {/* Map placeholder */}
+      {/* Map */}
       <Reveal as="section">
         <Eyebrow>MAP</Eyebrow>
         <h2 className="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
           지도로 보는 병원 위치
         </h2>
         <div className="mt-6 lg:mt-8 rounded-2xl overflow-hidden border border-neutral-200 shadow-card">
-          {/* TODO(client-asset): 카카오맵 임베드로 교체 */}
-          <div
-            className="relative aspect-[16/9] bg-gradient-to-br from-primary-100 via-accent-100 to-primary-200"
-            role="img"
-            aria-label={`${SITE.name} 위치 지도 (자리표시자)`}
-          >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.45),transparent_60%)]" />
-            {/* grid lines for map feel */}
-            <div
-              className="absolute inset-0 opacity-30"
-              style={{
-                backgroundImage:
-                  "linear-gradient(to right, rgba(12,35,64,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(12,35,64,0.08) 1px, transparent 1px)",
-                backgroundSize: "48px 48px",
-              }}
-              aria-hidden="true"
+          <div className="relative aspect-[16/9] bg-primary-50">
+            <iframe
+              title={`${SITE.name} 구글 지도`}
+              src={GOOGLE_MAP_EMBED_URL}
+              className="absolute inset-0 h-full w-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
             />
-            {/* center marker */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="relative">
-                <div className="absolute inset-0 -m-4 rounded-full bg-accent-500/30 animate-pulse" aria-hidden="true" />
-                <span className="relative inline-flex items-center justify-center w-14 h-14 rounded-full bg-accent-500 text-white shadow-cta">
-                  <MapPin size={28} aria-hidden="true" />
-                </span>
-              </div>
+          </div>
+          <div className="flex flex-col gap-3 border-t border-neutral-200 bg-white px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
+            <div className="text-[13px] leading-relaxed text-neutral-600">
+              <p className="inline-flex items-start gap-2">
+                <MapPin size={16} className="mt-0.5 shrink-0 text-accent-600" aria-hidden="true" />
+                <span>구글 지도에서 {SITE.name} 위치와 경로를 바로 확인하실 수 있습니다.</span>
+              </p>
+              <p className="mt-1 pl-6 text-[12px] text-neutral-500">
+                지도 이용 시 Google 개인정보처리방침이 적용될 수 있습니다.
+              </p>
             </div>
-            <div className="absolute bottom-4 left-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm text-[12px] font-semibold text-primary-700 shadow">
-              <MapPin size={12} aria-hidden="true" /> {SITE.name}
-            </div>
+            <Button href={GOOGLE_MAP_LINK_URL} external variant="secondary" size="sm" className="self-start sm:self-auto">
+              구글 지도 열기
+            </Button>
           </div>
         </div>
       </Reveal>

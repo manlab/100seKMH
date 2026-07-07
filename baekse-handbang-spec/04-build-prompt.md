@@ -49,7 +49,7 @@
 - Tailwind CSS v3.4+
 - 폰트: Pretendard Variable (CDN 또는 npm 설치)
 - 아이콘: lucide-react + 6개 진료 카테고리 커스텀 SVG
-- 지도: 카카오맵 JavaScript SDK
+- 지도: Google Maps iframe embed (API key 없이 SSR 안전하게 사용)
 - 폼: react-hook-form + zod
 - 상태: 서버 컴포넌트 우선, 필요한 곳만 'use client'
 - 스타일: Tailwind only (CSS-in-JS, styled-components 사용 금지)
@@ -210,11 +210,11 @@ Notice/Quick Service, Location+Hours, Bottom CTA, Footer)을 모두 구현하세
 
 - HeroSlider: embla-carousel-react 또는 swiper. 자동 6초, 페이드, 키보드 접근성
 - ClinicCardGrid: 6+1 카드, 데스크톱 4열(첫 카드 가로 2배), 모바일 1열
-- LocationMap: 카카오맵 임베드 (window.kakao 로더, dynamic import)
+- LocationMap: Google Maps iframe embed (`https://www.google.com/maps?q=...&output=embed`)
 - 모든 섹션 padding-y는 디자인 시스템의 section.spacing 토큰 사용
 - 이미지는 placeholder (public/images/placeholder/*.jpg) 로 대체
 
-API 키는 .env.local 의 NEXT_PUBLIC_KAKAO_MAP_KEY (없으면 정적 이미지 fallback).
+지도는 API 키 없이 Google Maps iframe 으로 삽입합니다.
 ```
 
 ### 2.5 Step 5 — 진료 카테고리
@@ -311,12 +311,9 @@ content/clinics/ 에 각 진료 페이지의 MDX 파일을 만듭니다 (또는 
 # Site
 NEXT_PUBLIC_SITE_URL=https://baeksehospital.kr
 
-# Kakao Map
-NEXT_PUBLIC_KAKAO_MAP_KEY=
-
 # Email (online counsel)
 RESEND_API_KEY=
-COUNSEL_TO_EMAIL=
+COUNSEL_TO_EMAIL=6334shin@naver.com
 
 # Analytics (개원 후 발급)
 NEXT_PUBLIC_GA_ID=
@@ -345,7 +342,7 @@ NEXT_PUBLIC_NAVER_WCS_ID=
 [ ] 키보드만으로 햄버거 → 메뉴 → 페이지 이동 가능
 [ ] 한국어 본문 줄바꿈이 어절 단위로 끊김 (keep-all)
 [ ] 메인 Lighthouse Mobile 90점 이상
-[ ] 카카오맵이 SSR 깨짐 없이 로드
+[ ] Google Maps iframe 이 SSR 깨짐 없이 로드
 [ ] 전화번호 클릭 시 모바일에서 전화 앱 연결 (tel:)
 [ ] 폰트 깜빡임(FOUT/FOIT) 최소
 [ ] 404 페이지 접근 가능 (/존재안하는경로)
@@ -388,7 +385,7 @@ NEXT_PUBLIC_NAVER_WCS_ID=
 
 | 이슈 | 해결 |
 |---|---|
-| 카카오맵이 SSR에서 깨짐 | `dynamic(() => import('./Map'), { ssr: false })` |
+| 지도 iframe 접근성 | `title`, `loading="lazy"`, 외부 지도 링크를 함께 제공 |
 | 한글 폰트 깜빡임 | next/font/local + display: 'swap' + preload |
 | 모바일 100vh 이슈 | `min-h-[100dvh]` 또는 `--vh` JS 핫픽스 |
 | Tailwind JIT가 동적 클래스 못 잡음 | safelist에 등록 또는 정적 클래스로 |
