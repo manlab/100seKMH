@@ -28,3 +28,8 @@ Thumbs.db
 
 # Testing
 coverage/
+
+# Vercel CLI project metadata
+.vercel/
+.vercel
+.env*

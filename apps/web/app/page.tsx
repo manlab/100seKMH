@@ -9,12 +9,16 @@ import { Button } from "@/components/ui/Button";
 import { Section } from "@/components/ui/Section";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/layout/Reveal";
+import { HomeLayerPopups } from "@/components/home/HomeLayerPopups";
+import { getActiveHomePopups } from "@/lib/home-popups";
 
 export const metadata: Metadata = pageMeta({
   title: SITE.name,
   description: SITE.description,
   path: "/",
 });
+
+export const dynamic = "force-dynamic";
 
 type ClinicCard = {
   href: string;
@@ -67,9 +71,13 @@ const CLINICS: ClinicCard[] = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const popups = await getActiveHomePopups();
+
   return (
     <>
+      <HomeLayerPopups items={popups} />
+
       <h1 className="sr-only">
         {SITE.name} — {SITE.tagline}
       </h1>

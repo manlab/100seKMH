@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
+import { useForm, type UseFormRegisterReturn } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2, ShieldCheck, CheckCircle2, AlertTriangle, Phone } from "lucide-react";
+import { Loader2, ShieldCheck, CheckCircle2, AlertTriangle, Phone, Check } from "lucide-react";
 import {
   CounselFormSchema,
   counselDefaults,
@@ -22,6 +22,48 @@ type SubmitState =
 
 const inputClass =
   "w-full h-11 px-4 rounded-lg border bg-white text-[14px] focus:outline-none focus:ring-2 focus:ring-primary-200 transition-colors";
+
+function CheckboxField({
+  children,
+  describedBy,
+  error,
+  id,
+  registration,
+}: {
+  children: React.ReactNode;
+  describedBy?: string;
+  error?: boolean;
+  id: string;
+  registration: UseFormRegisterReturn;
+}) {
+  return (
+    <label htmlFor={id} className="flex cursor-pointer items-start gap-3 text-[13px] text-neutral-700">
+      <span className="relative mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center">
+        <input
+          id={id}
+          type="checkbox"
+          aria-invalid={error ? "true" : "false"}
+          aria-describedby={describedBy}
+          className="peer sr-only"
+          {...registration}
+        />
+        <span
+          aria-hidden="true"
+          className={cn(
+            "h-5 w-5 rounded border bg-white transition-colors peer-checked:border-primary-600 peer-checked:bg-primary-600 peer-focus-visible:ring-4 peer-focus-visible:ring-primary-200",
+            error ? "border-danger-500" : "border-neutral-300"
+          )}
+        />
+        <Check
+          size={14}
+          aria-hidden="true"
+          className="pointer-events-none absolute text-white opacity-0 transition-opacity peer-checked:opacity-100"
+        />
+      </span>
+      <span className="leading-relaxed">{children}</span>
+    </label>
+  );
+}
 
 export function CounselForm() {
   const [state, setState] = useState<SubmitState>({ kind: "idle" });
@@ -221,14 +263,9 @@ export function CounselForm() {
 
       <div className="mt-7 space-y-5">
         {/* 비공개 옵션 */}
-        <label className="flex items-start gap-3 text-[13px] text-neutral-700 cursor-pointer">
-          <input
-            type="checkbox"
-            className="mt-0.5 w-4 h-4 rounded border-neutral-300 text-primary-600 focus:ring-primary-200"
-            {...register("isPrivate")}
-          />
-          <span>비공개 글로 등록 (본인과 담당자만 확인 가능)</span>
-        </label>
+        <CheckboxField id="cs-private" registration={register("isPrivate")}>
+          비공개 글로 등록 (본인과 담당자만 확인 가능)
+        </CheckboxField>
 
         {/* 개인정보 수집·이용 안내 — 개인정보보호법 §15 4대 고지 의무 */}
         <section
@@ -281,26 +318,15 @@ export function CounselForm() {
 
         {/* 일반 개인정보 동의 — 개인정보보호법 §15 */}
         <div>
-          <label
-            htmlFor="cs-agreed"
-            className="flex items-start gap-3 text-[13px] text-neutral-700 cursor-pointer"
+          <CheckboxField
+            id="cs-agreed"
+            registration={register("agreed")}
+            error={Boolean(errors.agreed)}
+            describedBy={errors.agreed ? "cs-agreed-err" : undefined}
           >
-            <input
-              id="cs-agreed"
-              type="checkbox"
-              aria-invalid={errors.agreed ? "true" : "false"}
-              aria-describedby={errors.agreed ? "cs-agreed-err" : undefined}
-              className={cn(
-                "mt-0.5 w-4 h-4 rounded text-primary-600 focus:ring-primary-200",
-                errors.agreed ? "border-danger-500" : "border-neutral-300"
-              )}
-              {...register("agreed")}
-            />
-            <span>
-              위 개인정보 수집·이용에 동의합니다.{" "}
-              <span className="text-accent-600" aria-hidden="true">*</span>
-            </span>
-          </label>
+            위 개인정보 수집·이용에 동의합니다.{" "}
+            <span className="text-accent-600" aria-hidden="true">*</span>
+          </CheckboxField>
           {errors.agreed && (
             <p id="cs-agreed-err" className="mt-1.5 ml-7 text-[12px] text-danger-600">
               {errors.agreed.message}
@@ -319,26 +345,17 @@ export function CounselForm() {
             는 일반 개인정보와 분리해 별도 동의를 받습니다.{" "}
             <strong className="font-bold">동의를 거부하시면 온라인 상담을 신청하실 수 없습니다.</strong>
           </p>
-          <label
-            htmlFor="cs-agreed-sensitive"
-            className="mt-3 flex items-start gap-3 text-[13px] text-neutral-700 cursor-pointer"
-          >
-            <input
+          <div className="mt-3">
+            <CheckboxField
               id="cs-agreed-sensitive"
-              type="checkbox"
-              aria-invalid={errors.agreedSensitive ? "true" : "false"}
-              aria-describedby={errors.agreedSensitive ? "cs-agreed-sensitive-err" : undefined}
-              className={cn(
-                "mt-0.5 w-4 h-4 rounded text-primary-600 focus:ring-primary-200",
-                errors.agreedSensitive ? "border-danger-500" : "border-neutral-300"
-              )}
-              {...register("agreedSensitive")}
-            />
-            <span>
+              registration={register("agreedSensitive")}
+              error={Boolean(errors.agreedSensitive)}
+              describedBy={errors.agreedSensitive ? "cs-agreed-sensitive-err" : undefined}
+            >
               위 민감정보 처리에 동의합니다.{" "}
               <span className="text-accent-600" aria-hidden="true">*</span>
-            </span>
-          </label>
+            </CheckboxField>
+          </div>
           {errors.agreedSensitive && (
             <p id="cs-agreed-sensitive-err" className="mt-1.5 ml-7 text-[12px] text-danger-600">
               {errors.agreedSensitive.message}

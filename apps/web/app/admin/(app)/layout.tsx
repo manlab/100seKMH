@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import { LogOut, Megaphone, MessageCircle, ShieldCheck } from "lucide-react";
+import { LogOut, Megaphone, MessageCircle, PanelsTopLeft, ShieldCheck } from "lucide-react";
 import { ROUTES } from "@/lib/navigation";
 import { SESSION_COOKIE, verifySession } from "@/lib/auth";
 import { LogoutButton } from "./_components/LogoutButton";
@@ -38,6 +38,13 @@ export default async function AdminAppLayout({ children }: { children: React.Rea
             >
               <Megaphone size={14} aria-hidden="true" />
               공지
+            </Link>
+            <Link
+              href="/admin/popups"
+              className="inline-flex items-center gap-1.5 text-primary-100 hover:text-white"
+            >
+              <PanelsTopLeft size={14} aria-hidden="true" />
+              팝업
             </Link>
             <Link
               href="/admin/counsels"

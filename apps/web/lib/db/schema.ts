@@ -133,6 +133,45 @@ export type Notice = typeof notices.$inferSelect;
 export type NewNotice = typeof notices.$inferInsert;
 
 /**
+ * 메인페이지 레이어 팝업. 어드민이 등록·관리하고 공개 홈에서 노출한다.
+ *
+ * 본문은 plain text 로 저장·렌더링한다. HTML 입력/렌더링은 허용하지 않는다.
+ * 노출 조건: is_published=true AND (starts_at IS NULL OR starts_at <= now)
+ *           AND (ends_at IS NULL OR ends_at >= now)
+ */
+export const homePopups = pgTable(
+  "home_popups",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    title: varchar("title", { length: 120 }).notNull(),
+    content: text("content").notNull(),
+    imageUrl: varchar("image_url", { length: 500 }),
+    linkLabel: varchar("link_label", { length: 40 }),
+    linkUrl: varchar("link_url", { length: 500 }),
+    isPublished: boolean("is_published").notNull().default(false),
+    sortOrder: integer("sort_order").notNull().default(0),
+    startsAt: timestamp("starts_at", { withTimezone: true }),
+    endsAt: timestamp("ends_at", { withTimezone: true }),
+    authorId: uuid("author_id").references(() => adminUsers.id, { onDelete: "set null" }),
+    authorName: varchar("author_name", { length: 60 }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => ({
+    publishedScheduleIdx: index("home_popups_published_schedule_idx").on(
+      t.isPublished,
+      t.startsAt,
+      t.endsAt,
+      t.sortOrder,
+      t.createdAt
+    ),
+  })
+);
+
+export type HomePopup = typeof homePopups.$inferSelect;
+export type NewHomePopup = typeof homePopups.$inferInsert;
+
+/**
  * Rate limit — IP 별 카운터. Vercel serverless 의 in-memory 한계를 DB 로 우회.
  * 만료된 row 는 cleanup 시점이나 다음 호출 시 갱신.
  */

@@ -16,6 +16,56 @@ type Props = {
   initialValues: NoticeFormValues;
 };
 
+type ToggleFieldProps = {
+  checked: boolean;
+  description: string;
+  id: string;
+  label: string;
+  offLabel: string;
+  onChange: (checked: boolean) => void;
+  onLabel: string;
+};
+
+function ToggleField({
+  checked,
+  description,
+  id,
+  label,
+  offLabel,
+  onChange,
+  onLabel,
+}: ToggleFieldProps) {
+  return (
+    <label
+      htmlFor={id}
+      className="flex min-h-[76px] cursor-pointer items-center justify-between gap-4 rounded-xl border border-neutral-200 bg-white px-4 py-3 transition-colors hover:border-primary-200 hover:bg-primary-50/40"
+    >
+      <span>
+        <span className="block text-[13px] font-semibold text-neutral-800">{label}</span>
+        <span className="mt-0.5 block text-[12px] leading-snug text-neutral-500">{description}</span>
+      </span>
+      <span className="relative inline-flex shrink-0 items-center">
+        <input
+          id={id}
+          type="checkbox"
+          checked={checked}
+          onChange={(e) => onChange(e.target.checked)}
+          className="peer sr-only"
+        />
+        <span
+          aria-hidden="true"
+          className="h-7 w-12 rounded-full bg-neutral-300 transition-colors peer-checked:bg-primary-600 peer-focus-visible:ring-4 peer-focus-visible:ring-primary-200"
+        />
+        <span
+          aria-hidden="true"
+          className="absolute left-1 top-1 h-5 w-5 rounded-full bg-white shadow-sm transition-transform peer-checked:translate-x-5"
+        />
+        <span className="sr-only">{checked ? onLabel : offLabel}</span>
+      </span>
+    </label>
+  );
+}
+
 export function NoticeForm({ mode, initialValues }: Props) {
   const router = useRouter();
   const [values, setValues] = useState<NoticeFormValues>(initialValues);
@@ -116,7 +166,7 @@ export function NoticeForm({ mode, initialValues }: Props) {
         />
       </div>
 
-      <div className="grid sm:grid-cols-3 gap-4">
+      <div className="grid gap-4 lg:grid-cols-[minmax(220px,0.8fr)_minmax(240px,1fr)_minmax(280px,1fr)]">
         <div>
           <label htmlFor="nf-cat" className="block text-[12px] font-semibold text-neutral-700 mb-1">
             카테고리 <span className="text-accent-600">*</span>
@@ -135,28 +185,24 @@ export function NoticeForm({ mode, initialValues }: Props) {
             ))}
           </select>
         </div>
-        <div className="flex items-end">
-          <label className="flex items-center gap-2 text-[13px] text-neutral-700 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={values.isPinned}
-              onChange={(e) => update("isPinned", e.target.checked)}
-              className="w-4 h-4 rounded border-neutral-300 text-primary-600 focus:ring-primary-200"
-            />
-            <span>상단 고정 (공지)</span>
-          </label>
-        </div>
-        <div className="flex items-end">
-          <label className="flex items-center gap-2 text-[13px] text-neutral-700 cursor-pointer">
-            <input
-              type="checkbox"
-              checked={values.isPublished}
-              onChange={(e) => update("isPublished", e.target.checked)}
-              className="w-4 h-4 rounded border-neutral-300 text-primary-600 focus:ring-primary-200"
-            />
-            <span>게시 (체크 해제 시 임시저장)</span>
-          </label>
-        </div>
+        <ToggleField
+          id="nf-pinned"
+          checked={values.isPinned}
+          onChange={(checked) => update("isPinned", checked)}
+          label="상단 고정"
+          description="공지 목록 최상단에 고정합니다."
+          onLabel="상단 고정 켜짐"
+          offLabel="상단 고정 꺼짐"
+        />
+        <ToggleField
+          id="nf-published"
+          checked={values.isPublished}
+          onChange={(checked) => update("isPublished", checked)}
+          label="게시 상태"
+          description={values.isPublished ? "저장 즉시 공개됩니다." : "임시저장으로 보관됩니다."}
+          onLabel="게시"
+          offLabel="임시저장"
+        />
       </div>
 
       <div>

@@ -15,6 +15,13 @@
       "when": 1778105168991,
       "tag": "0001_youthful_doctor_faustus",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1783564441982,
+      "tag": "0002_ambiguous_blue_marvel",
+      "breakpoints": true
     }
   ]
 }

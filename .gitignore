@@ -42,7 +42,10 @@ coverage/
 
 # Claude Code metadata
 .claude/
+.hermes/
 
 # 3-CLI agent harness logs (Codex/Gemini outputs)
 .agents-dev/log/*
 !.agents-dev/log/.gitkeep
+.vercel
+.env*
