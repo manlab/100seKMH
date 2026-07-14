@@ -93,14 +93,16 @@ export default async function HomePage() {
           className="object-cover object-center"
           aria-hidden="true"
         />
+        <div aria-hidden="true" className="absolute inset-0 bg-primary-900/75 lg:hidden" />
+        <div aria-hidden="true" className="absolute inset-y-0 left-0 hidden w-[58%] bg-primary-900/80 lg:block" />
         <div className="relative z-10 container max-w-container-base h-full flex items-center">
           <div className="max-w-[640px]">
-            <Eyebrow variant="light">BAEKSE KOREAN MEDICINE</Eyebrow>
-            <h2 className="mt-5 text-balanced text-[36px] sm:text-[44px] lg:text-[58px] leading-[1.15] font-extrabold">
+            <Eyebrow variant="light" className="text-accent-200">BAEKSE KOREAN MEDICINE</Eyebrow>
+            <h2 className="mt-5 text-balanced text-[36px] sm:text-[44px] lg:text-[58px] leading-[1.15] font-extrabold text-white">
               백세 건강의 시작,<br />
-              <span className="text-accent-300">백세한방병원</span>입니다
+              <span className="text-accent-200">백세한방병원</span>입니다
             </h2>
-            <p className="mt-5 text-[16px] sm:text-[18px] leading-[1.7] text-primary-100/95 max-w-[480px]">
+            <p className="mt-5 text-[16px] sm:text-[18px] leading-[1.7] text-white/90 max-w-[480px]">
               정성스러운 한방 치료로 환자 한 분 한 분의<br className="hidden sm:block" />
               오랜 건강을 함께 만들어 갑니다.
             </p>
