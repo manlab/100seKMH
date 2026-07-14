@@ -93,22 +93,6 @@ export default async function HomePage() {
           className="object-cover object-center"
           aria-hidden="true"
         />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(90deg, rgba(4,12,21,0.88) 0%, rgba(8,23,42,0.70) 42%, rgba(8,23,42,0.26) 72%, rgba(8,23,42,0.10) 100%)",
-          }}
-          aria-hidden="true"
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(circle at 18% 35%, rgba(74,142,156,0.28), transparent 48%)",
-          }}
-          aria-hidden="true"
-        />
         <div className="relative z-10 container max-w-container-base h-full flex items-center">
           <div className="max-w-[640px]">
             <Eyebrow variant="light">BAEKSE KOREAN MEDICINE</Eyebrow>
