@@ -44,7 +44,7 @@ npm run db:studio            # Drizzle Studio (DB 시각화)
 |---|---|
 | **Framework Preset** | Next.js (자동 감지) |
 | **Root Directory** | `apps/web` ⚠️ 필수 |
-| **Build Command** | `next build` (기본) |
+| **Build Command** | `npm run build` (`drizzle-kit migrate && next build`) |
 | **Output Directory** | `.next` (기본) |
 | **Install Command** | `npm install` (기본) |
 

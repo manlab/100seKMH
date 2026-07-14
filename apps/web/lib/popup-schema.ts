@@ -28,7 +28,7 @@ export const HomePopupFormSchema = z
       .trim()
       .min(2, "제목은 2자 이상 입력해 주세요.")
       .max(120, "제목은 120자 이하."),
-    content: z.string().trim().max(5000, "본문은 5,000자 이하."),
+    content: z.string().trim().max(5000, "본문은 5,000자 이하.").default(""),
     imageUrl: optionalUrl.default(""),
     linkLabel: z.string().trim().max(40, "버튼 문구는 40자 이하.").default(""),
     linkUrl: optionalUrl.default(""),

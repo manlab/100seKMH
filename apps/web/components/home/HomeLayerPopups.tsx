@@ -1,12 +1,33 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import type { HomePopupView } from "@/lib/home-popups";
 import { cn } from "@/lib/cn";
 
 const DISMISS_KEY_PREFIX = "baekse-home-popup-dismissed";
+const FOCUSABLE_SELECTOR = [
+  "a[href]",
+  "button:not([disabled])",
+  "input:not([disabled])",
+  "select:not([disabled])",
+  "textarea:not([disabled])",
+  '[tabindex]:not([tabindex="-1"])',
+].join(",");
+
+function getFocusableElements(container: HTMLElement) {
+  return Array.from(
+    container.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR),
+  ).filter(
+    (element) =>
+      !element.hasAttribute("disabled") &&
+      element.getAttribute("aria-hidden") !== "true" &&
+      (element.offsetWidth > 0 ||
+        element.offsetHeight > 0 ||
+        element.getClientRects().length > 0),
+  );
+}
 
 function todayKey() {
   return new Intl.DateTimeFormat("sv-SE", { timeZone: "Asia/Seoul" }).format(
@@ -40,6 +61,7 @@ function isExternalUrl(url: string) {
 
 export function HomeLayerPopups({ items }: { items: HomePopupView[] }) {
   const [visible, setVisible] = useState<HomePopupView[]>([]);
+  const dialogRef = useRef<HTMLElement>(null);
   const current = visible[0];
 
   useEffect(() => {
@@ -49,9 +71,57 @@ export function HomeLayerPopups({ items }: { items: HomePopupView[] }) {
   useEffect(() => {
     if (!current) return;
 
+    const dialog = dialogRef.current;
+    const previouslyFocusedElement =
+      document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+    const focusTimer = window.setTimeout(() => {
+      const firstFocusable = dialog ? getFocusableElements(dialog)[0] : null;
+      (firstFocusable ?? dialog)?.focus();
+    }, 0);
+
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        event.preventDefault();
         setVisible((prev) => prev.slice(1));
+        return;
+      }
+
+      if (event.key !== "Tab" || !dialog) {
+        return;
+      }
+
+      const focusableElements = getFocusableElements(dialog);
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        dialog.focus();
+        return;
+      }
+
+      const firstFocusable = focusableElements[0];
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+      const activeElement = document.activeElement;
+
+      if (event.shiftKey) {
+        if (
+          activeElement === firstFocusable ||
+          activeElement === dialog ||
+          !(activeElement instanceof Node && dialog.contains(activeElement))
+        ) {
+          event.preventDefault();
+          lastFocusable.focus();
+        }
+        return;
+      }
+
+      if (
+        activeElement === lastFocusable ||
+        !(activeElement instanceof Node && dialog.contains(activeElement))
+      ) {
+        event.preventDefault();
+        firstFocusable.focus();
       }
     };
     const previousOverflow = document.body.style.overflow;
@@ -60,8 +130,10 @@ export function HomeLayerPopups({ items }: { items: HomePopupView[] }) {
     document.body.style.overflow = "hidden";
 
     return () => {
+      window.clearTimeout(focusTimer);
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = previousOverflow;
+      previouslyFocusedElement?.focus();
     };
   }, [current]);
 
@@ -90,8 +162,10 @@ export function HomeLayerPopups({ items }: { items: HomePopupView[] }) {
       className="fixed inset-0 z-[60] flex items-center justify-center bg-primary-900/60 px-4 py-8 backdrop-blur-sm"
     >
       <section
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
+        tabIndex={-1}
         aria-labelledby={
           isImageOnly ? undefined : `home-popup-title-${current.id}`
         }
