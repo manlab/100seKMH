@@ -80,7 +80,7 @@ export default function FaqPage() {
       >
         {faqJsonLdString}
       </Script>
-      <SubLayout
+      <SubLayout visualPath={ROUTES.community.faq}
         hero={{
           eyebrow: "COMMUNITY",
           title: (

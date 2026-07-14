@@ -125,7 +125,7 @@ export default async function NoticePage({ searchParams }: Props) {
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   return (
-    <SubLayout
+    <SubLayout visualPath={ROUTES.community.notice}
       hero={{
         eyebrow: "COMMUNITY",
         title: (

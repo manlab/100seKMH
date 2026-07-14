@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/cn";
 
 export type Crumb = { label: string; href?: string };
 export type StatCard = { eyebrow: string; value: string; caption?: string; accent?: boolean };
+export type HeroImage = { src: string; position?: string };
 
 type Props = {
   /** 페이지 카테고리 라벨 (예: "PAIN CLINIC") */
@@ -19,6 +21,8 @@ type Props = {
   compact?: boolean;
   /** 추가 CTA 버튼 (선택) */
   actions?: React.ReactNode;
+  /** 배경 이미지와 단색 대비 오버레이 (선택) */
+  image?: HeroImage;
 };
 
 /**
@@ -34,16 +38,32 @@ export function SubVisual({
   stats,
   compact = false,
   actions,
+  image,
 }: Props) {
   return (
     <section
       className={cn(
-        "relative overflow-hidden bg-primary-700 text-white"
+        "relative overflow-hidden text-white",
+        image ? "bg-primary-900" : "bg-primary-700"
       )}
     >
+      {image && (
+        <div aria-hidden="true" className="absolute inset-0">
+          <Image
+            src={image.src}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+            style={{ objectPosition: image.position ?? "center" }}
+          />
+          <div className="absolute inset-0 bg-primary-900/85" />
+        </div>
+      )}
       <div
         className={cn(
-          "relative container max-w-container-base",
+          "relative z-10 container max-w-container-base",
           compact ? "py-12 lg:py-16" : "py-16 lg:py-28"
         )}
       >

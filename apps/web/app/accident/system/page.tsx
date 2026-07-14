@@ -87,7 +87,7 @@ const FAQS = [
 
 export default function AccidentSystemPage() {
   return (
-    <SubLayout
+    <SubLayout visualPath={ROUTES.accident.system}
       hero={{
         eyebrow: "TREATMENT & ADMISSION",
         title: (

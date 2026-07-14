@@ -7,4 +7,4 @@ import { spineJointGuides } from "@/lib/spine-joint-guides";
 const guide = spineJointGuides.knee;
 const items = GNB.find((item) => item.href === ROUTES.spineJoint.root)?.children ?? [];
 export const metadata: Metadata = pageMeta({ title: guide.title, description: guide.description, path: ROUTES.spineJoint.knee });
-export default function SpineJointKneePage() { return <ClinicalGuidePage category="척추관절통증" categoryEyebrow="SPINE & JOINT CARE" categoryHref={ROUTES.spineJoint.root} lnbItems={items} {...guide} />; }
+export default function SpineJointKneePage() { return <ClinicalGuidePage category="척추관절통증" categoryEyebrow="SPINE & JOINT CARE" categoryHref={ROUTES.spineJoint.root} lnbItems={items} visualPath={ROUTES.spineJoint.knee} {...guide} />; }

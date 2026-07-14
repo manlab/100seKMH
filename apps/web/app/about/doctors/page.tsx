@@ -185,7 +185,7 @@ function DoctorProfile({ doctor }: { doctor: Doctor }) {
 
 export default function DoctorsPage() {
   return (
-    <SubLayout
+    <SubLayout visualPath={ROUTES.about.doctors}
       hero={{
         eyebrow: "MEDICAL TEAM",
         title: (

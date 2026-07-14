@@ -163,7 +163,7 @@ const GALLERY_IMAGES: FacilityImage[] = [
 
 export default function FacilityPage() {
   return (
-    <SubLayout
+    <SubLayout visualPath={ROUTES.about.facility}
       hero={{
         eyebrow: "FACILITY TOUR",
         title: (

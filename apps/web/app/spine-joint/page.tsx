@@ -19,6 +19,7 @@ export default function SpineJointPage() {
       categoryEyebrow="SPINE & JOINT CARE"
       categoryHref={ROUTES.spineJoint.root}
       lnbItems={items}
+      visualPath={ROUTES.spineJoint.chuna}
       title="척추와 관절의 불편을 함께 살핍니다"
       description="통증 부위, 생활 습관, 이전 검사·치료 이력을 확인하고 진료 상담을 안내합니다."
       overviewTitle="현재 불편과 일상 활동의 변화를 확인합니다"

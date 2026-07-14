@@ -18,6 +18,7 @@ export default function AutonomicCarePage() {
       categoryEyebrow="AUTONOMIC CARE GUIDE"
       categoryHref={ROUTES.autonomic.root}
       lnbItems={items}
+      visualPath={ROUTES.autonomic.care}
       title="현재 상태에 맞춰 진료를 안내합니다"
       description="증상, 병력, 생활 패턴을 확인한 뒤 개별 상태에 맞는 상담 방향을 안내합니다."
       overviewTitle="진료 전 현재 상태를 충분히 확인합니다"

@@ -18,6 +18,7 @@ export default function ChunaPage() {
       categoryEyebrow="SPINE & JOINT CARE"
       categoryHref={ROUTES.spineJoint.root}
       lnbItems={items}
+      visualPath={ROUTES.spineJoint.chuna}
       title="추나치료 진료 안내"
       description="현재 불편과 움직임의 변화를 확인한 뒤, 개별 상태에 맞는 진료 상담을 안내합니다."
       overviewTitle="진료 전 현재 상태를 충분히 확인합니다"

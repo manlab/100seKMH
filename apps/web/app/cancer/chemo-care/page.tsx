@@ -18,6 +18,7 @@ export default function CancerChemoCarePage() {
       categoryEyebrow="INTEGRATIVE CANCER CARE"
       categoryHref={ROUTES.cancer.root}
       lnbItems={items}
+      visualPath={ROUTES.cancer.chemoCare}
       title="항암 치료 중 불편에 관한 진료 안내"
       description="현재 항암 일정과 몸 상태를 확인한 뒤, 일상 속 불편에 대한 상담 방향을 안내합니다."
       overviewTitle="치료 일정과 현재 상태를 함께 확인합니다"

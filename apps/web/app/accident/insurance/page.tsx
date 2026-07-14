@@ -82,7 +82,7 @@ const FAQS = [
 
 export default function AccidentInsurancePage() {
   return (
-    <SubLayout
+    <SubLayout visualPath={ROUTES.accident.insurance}
       hero={{
         eyebrow: "INSURANCE PROCESS",
         title: (

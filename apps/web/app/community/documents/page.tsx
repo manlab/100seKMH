@@ -98,7 +98,7 @@ const REQUIRED_DOCS = [
 
 export default function DocumentsPage() {
   return (
-    <SubLayout
+    <SubLayout visualPath={ROUTES.community.documents}
       hero={{
         eyebrow: "COMMUNITY",
         title: (

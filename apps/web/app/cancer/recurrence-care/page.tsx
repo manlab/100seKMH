@@ -18,6 +18,7 @@ export default function CancerRecurrenceCarePage() {
       categoryEyebrow="INTEGRATIVE CANCER CARE"
       categoryHref={ROUTES.cancer.root}
       lnbItems={items}
+      visualPath={ROUTES.cancer.recurrenceCare}
       title="전이·재발 치료 과정의 진료 상담"
       description="검사와 치료 계획을 확인하고, 현재 일상에 필요한 진료 상담을 안내합니다."
       overviewTitle="담당 의료진의 치료 계획을 바탕으로 상담합니다"

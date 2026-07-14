@@ -97,7 +97,7 @@ export default function AccidentAftercarePage() {
       <Script id="ld-accident-aftercare" type="application/ld+json">
         {JSON.stringify(ld)}
       </Script>
-      <SubLayout
+      <SubLayout visualPath={ROUTES.accident.aftercare}
         hero={{
           eyebrow: "ACCIDENT AFTERCARE",
           title: (

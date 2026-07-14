@@ -13,7 +13,8 @@
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
-    "db:seed-admin": "tsx scripts/seed-admin.ts"
+    "db:seed-admin": "tsx scripts/seed-admin.ts",
+    "verify:subpage-visuals": "tsx scripts/verify-subpage-visuals.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "3.9.1",

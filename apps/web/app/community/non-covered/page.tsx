@@ -67,7 +67,7 @@ const CATEGORY_BADGE: Record<Row["category"], string> = {
 
 export default function NonCoveredPage() {
   return (
-    <SubLayout
+    <SubLayout visualPath={ROUTES.community.nonCovered}
       hero={{
         eyebrow: "COMMUNITY",
         title: (

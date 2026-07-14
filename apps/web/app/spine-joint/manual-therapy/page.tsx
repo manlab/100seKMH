@@ -18,6 +18,7 @@ export default function ManualTherapyPage() {
       categoryEyebrow="SPINE & JOINT CARE"
       categoryHref={ROUTES.spineJoint.root}
       lnbItems={items}
+      visualPath={ROUTES.spineJoint.manualTherapy}
       title="도수치료 진료 안내"
       description="증상과 움직임의 불편을 확인한 뒤, 상담이 필요한지 개별 상태에 맞춰 안내합니다."
       overviewTitle="개별 상태를 확인한 뒤 진료 방향을 안내합니다"

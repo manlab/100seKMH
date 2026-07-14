@@ -58,7 +58,7 @@ const TRANSIT = [
 
 export default function LocationPage() {
   return (
-    <SubLayout
+    <SubLayout visualPath={ROUTES.about.location}
       hero={{
         eyebrow: "DIRECTIONS",
         title: (

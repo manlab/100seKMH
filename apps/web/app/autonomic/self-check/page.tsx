@@ -19,6 +19,7 @@ export default function AutonomicSelfCheckPage() {
       categoryEyebrow="AUTONOMIC CARE GUIDE"
       categoryHref={ROUTES.autonomic.root}
       lnbItems={items}
+      visualPath={ROUTES.autonomic.selfCheck}
       title="현재 불편을 정리해 보세요"
       description="진료 전 현재 느끼는 불편과 생활 변화를 정리하는 데 활용할 수 있습니다."
       overviewTitle="증상과 생활 리듬을 함께 돌아봅니다"

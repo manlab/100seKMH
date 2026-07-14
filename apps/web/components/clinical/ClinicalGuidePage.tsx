@@ -4,10 +4,12 @@ import type { NavItem } from "@/lib/navigation";
 import { ROUTES } from "@/lib/navigation";
 import { SITE } from "@/lib/site";
 import { SubLayout } from "@/components/layout/SubLayout";
+import { ContentImage } from "@/components/layout/ContentImage";
 import { Reveal } from "@/components/layout/Reveal";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { InContentCta } from "@/components/ui/InContentCta";
+import { getSubpageVisual } from "@/lib/subpage-visuals";
 
 type GuideLink = {
   title: string;
@@ -28,6 +30,7 @@ type GuidePageProps = {
   process?: string[];
   selfCheck?: string[];
   notice?: string;
+  visualPath: string;
 };
 
 export function ClinicalGuidePage({
@@ -43,7 +46,10 @@ export function ClinicalGuidePage({
   process,
   selfCheck,
   notice,
+  visualPath,
 }: GuidePageProps) {
+  const visual = getSubpageVisual(visualPath);
+
   return (
     <SubLayout
       hero={{
@@ -55,6 +61,7 @@ export function ClinicalGuidePage({
           { label: category, href: categoryHref },
           { label: title },
         ],
+        image: visual && { src: visual.hero, position: visual.heroPosition },
         stats: [
           { eyebrow: "진료 안내", value: "상태 확인", caption: "현재 불편과 병력을 함께 확인" },
           { eyebrow: "상담", value: "개별 안내", caption: "진료 후 방향을 안내" },
@@ -75,14 +82,17 @@ export function ClinicalGuidePage({
       }}
       lnb={{ title: category, eyebrow: categoryEyebrow, items: lnbItems }}
     >
-      <Reveal as="section" className="break-keep">
-        <Eyebrow>GUIDE OVERVIEW</Eyebrow>
-        <h2 id="guide" className="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
-          {overviewTitle}
-        </h2>
-        <p className="mt-4 max-w-[760px] text-[15px] lg:text-[17px] leading-relaxed text-neutral-600">
-          {overview}
-        </p>
+      <Reveal as="section" className="grid gap-8 break-keep lg:grid-cols-12 lg:items-center lg:gap-12">
+        <div className="lg:col-span-7">
+          <Eyebrow>GUIDE OVERVIEW</Eyebrow>
+          <h2 id="guide" className="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
+            {overviewTitle}
+          </h2>
+          <p className="mt-4 max-w-[760px] text-[15px] lg:text-[17px] leading-relaxed text-neutral-600">
+            {overview}
+          </p>
+        </div>
+        {visual && <ContentImage src={visual.body} alt={visual.bodyAlt} className="lg:col-span-5" />}
       </Reveal>
 
       <Reveal as="section" className="break-keep">

@@ -52,7 +52,7 @@ const PROMISES = [
 
 export default function GreetingPage() {
   return (
-    <SubLayout
+    <SubLayout visualPath={ROUTES.about.greeting}
       hero={{
         eyebrow: "GREETING",
         title: (

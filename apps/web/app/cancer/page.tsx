@@ -18,6 +18,7 @@ export default function CancerPage() {
       categoryEyebrow="INTEGRATIVE CANCER CARE"
       categoryHref={ROUTES.cancer.root}
       lnbItems={items}
+      visualPath={ROUTES.cancer.postSurgery}
       title="암 치료 과정의 불편을 함께 살핍니다"
       description="현재 치료 이력과 일상 속 불편을 확인한 뒤, 필요한 진료와 상담 방향을 안내합니다."
       overviewTitle="치료 과정과 회복기에 필요한 진료를 안내합니다"

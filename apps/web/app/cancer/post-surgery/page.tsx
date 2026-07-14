@@ -18,6 +18,7 @@ export default function CancerPostSurgeryPage() {
       categoryEyebrow="INTEGRATIVE CANCER CARE"
       categoryHref={ROUTES.cancer.root}
       lnbItems={items}
+      visualPath={ROUTES.cancer.postSurgery}
       title="수술 후 회복기 진료 안내"
       description="수술 이후 달라진 컨디션과 일상 속 불편을 살펴보고 상담 방향을 안내합니다."
       overviewTitle="회복기 상태를 확인하고 진료 방향을 상담합니다"

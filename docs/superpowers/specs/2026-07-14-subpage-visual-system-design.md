@@ -8,16 +8,16 @@
 
 ## Scope
 
-Apply one background image to the hero of every visible dropdown page and at least one contextual image inside that page's content. The 26 dropdown pages are:
+Apply one background image to the hero of every visible dropdown page and at least one contextual image inside that page's content. The 28 dropdown pages are:
 
 | Category | Dropdown pages |
 | --- | --- |
 | 백세한방병원 | 인사말, 의료진 소개, 층별 안내, 오시는 길 |
 | 암 통합치료 | 수술 후 회복, 항암 부작용 관리, 전이·재발 관리 |
 | 교통사고 | 사고 후 증상, 자동차보험 진료, 입원 시스템 |
-| 자율신경실조증 | 자가 확인, 진료 안내 |
+| 자율신경실조증 | 자율신경실조증이란, 자가 확인, 진료 안내 |
 | 척추관절통증 | 추나, 도수치료, 디스크, 척추관협착증, 어깨 통증, 무릎 통증, 스포츠 손상 |
-| 다이어트 | 원인 확인, 생활 관리 안내 |
+| 다이어트 | 다이어트 소개, 원인 확인, 생활 관리 안내 |
 | 커뮤니티 | 공지사항, 온라인 상담, 자주 묻는 질문, 비급여 항목, 서류 발급 안내 |
 
 Category landing pages inherit their category's visual direction with a distinct responsive crop. Legacy hidden routes remain functional but are outside this visual rollout.
@@ -90,7 +90,7 @@ Generated image constraints:
 
 ## Decisions
 
-- All 26 visible dropdown pages receive individual hero image assignments and at least one contextual content image.
+- All 28 visible dropdown pages receive individual hero image assignments and at least one contextual content image.
 - Supplied facility photos are not altered to depict unavailable services.
 - Generated images supplement, rather than replace, the real hospital photography.
 - Images are delivered as project-local, versioned assets and documented in a manifest for future review.

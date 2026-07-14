@@ -18,6 +18,7 @@ export default function AutonomicPage() {
       categoryEyebrow="AUTONOMIC CARE GUIDE"
       categoryHref={ROUTES.autonomic.root}
       lnbItems={items}
+      visualPath={ROUTES.autonomic.root}
       title="반복되는 일상 불편을 함께 살핍니다"
       description="수면, 피로, 두통, 어지럼처럼 일상에 영향을 주는 변화를 확인하고 진료 상담을 안내합니다."
       overviewTitle="증상만이 아니라 생활 변화도 함께 확인합니다"

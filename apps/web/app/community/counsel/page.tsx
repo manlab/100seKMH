@@ -88,7 +88,7 @@ async function fetchCounselList(): Promise<CounselRow[]> {
 export default async function CounselPage() {
   const COUNSELS = await fetchCounselList();
   return (
-    <SubLayout
+    <SubLayout visualPath={ROUTES.community.counsel}
       hero={{
         eyebrow: "COMMUNITY",
         title: (
