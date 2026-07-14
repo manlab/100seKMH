@@ -1,0 +1,1 @@
+ALTER TABLE "home_popups" ADD COLUMN "display_type" varchar(16) DEFAULT 'content' NOT NULL;

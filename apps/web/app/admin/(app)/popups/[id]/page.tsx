@@ -42,6 +42,7 @@ export default async function AdminEditPopupPage({ params }: Props) {
       <PopupForm
         mode={{ kind: "edit", id: popup.id }}
         initialValues={{
+          displayType: popup.displayType,
           title: popup.title,
           content: popup.content,
           imageUrl: popup.imageUrl ?? "",

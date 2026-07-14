@@ -8,6 +8,7 @@ import {
   integer,
   index,
 } from "drizzle-orm/pg-core";
+import type { HomePopupDisplayType } from "../home-popup-types";
 
 /**
  * 온라인 상담.
@@ -36,7 +37,9 @@ export const counsels = pgTable(
     isPrivate: boolean("is_private").notNull().default(true),
 
     // 동의 시각 (개인정보보호법 §15·§23 — 동의 받은 시점 기록 의무)
-    agreedAt: timestamp("agreed_at", { withTimezone: true }).notNull().defaultNow(),
+    agreedAt: timestamp("agreed_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
     agreedSensitiveAt: timestamp("agreed_sensitive_at", { withTimezone: true })
       .notNull()
       .defaultNow(),
@@ -46,12 +49,16 @@ export const counsels = pgTable(
     repliedAt: timestamp("replied_at", { withTimezone: true }),
     repliedBy: varchar("replied_by", { length: 60 }),
 
-    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
   },
   (t) => ({
     createdIdx: index("counsels_created_idx").on(t.createdAt),
-  })
+  }),
 );
 
 export type Counsel = typeof counsels.$inferSelect;
@@ -66,7 +73,9 @@ export const adminUsers = pgTable("admin_users", {
   email: varchar("email", { length: 255 }).notNull().unique(),
   passwordHash: text("password_hash").notNull(),
   displayName: varchar("display_name", { length: 60 }),
-  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
   lastLoginAt: timestamp("last_login_at", { withTimezone: true }),
 });
 
@@ -85,12 +94,14 @@ export const adminSessions = pgTable(
       .notNull()
       .references(() => adminUsers.id, { onDelete: "cascade" }),
     expiresAt: timestamp("expires_at", { withTimezone: true }).notNull(),
-    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
   },
   (t) => ({
     adminIdIdx: index("admin_sessions_admin_idx").on(t.adminId),
     expiresIdx: index("admin_sessions_expires_idx").on(t.expiresAt),
-  })
+  }),
 );
 
 export type AdminSession = typeof adminSessions.$inferSelect;
@@ -101,7 +112,12 @@ export type AdminSession = typeof adminSessions.$inferSelect;
  * 정렬: is_pinned DESC → published_at DESC (고정 공지가 최상단).
  * 카테고리: 진료안내 / 이벤트 / 휴진 / 시설 (UI 와 동기).
  */
-export const NOTICE_CATEGORIES = ["진료안내", "이벤트", "휴진", "시설"] as const;
+export const NOTICE_CATEGORIES = [
+  "진료안내",
+  "이벤트",
+  "휴진",
+  "시설",
+] as const;
 export type NoticeCategory = (typeof NOTICE_CATEGORIES)[number];
 
 export const notices = pgTable(
@@ -110,23 +126,36 @@ export const notices = pgTable(
     id: uuid("id").primaryKey().defaultRandom(),
     title: varchar("title", { length: 200 }).notNull(),
     content: text("content").notNull(),
-    category: varchar("category", { length: 20 }).notNull().$type<NoticeCategory>(),
+    category: varchar("category", { length: 20 })
+      .notNull()
+      .$type<NoticeCategory>(),
 
     isPinned: boolean("is_pinned").notNull().default(false),
     isPublished: boolean("is_published").notNull().default(true),
     viewCount: integer("view_count").notNull().default(0),
 
-    authorId: uuid("author_id").references(() => adminUsers.id, { onDelete: "set null" }),
+    authorId: uuid("author_id").references(() => adminUsers.id, {
+      onDelete: "set null",
+    }),
     authorName: varchar("author_name", { length: 60 }),
 
-    publishedAt: timestamp("published_at", { withTimezone: true }).notNull().defaultNow(),
-    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+    publishedAt: timestamp("published_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
   },
   (t) => ({
-    pinnedPublishedIdx: index("notices_pinned_published_idx").on(t.isPinned, t.publishedAt),
+    pinnedPublishedIdx: index("notices_pinned_published_idx").on(
+      t.isPinned,
+      t.publishedAt,
+    ),
     categoryIdx: index("notices_category_idx").on(t.category),
-  })
+  }),
 );
 
 export type Notice = typeof notices.$inferSelect;
@@ -143,6 +172,10 @@ export const homePopups = pgTable(
   "home_popups",
   {
     id: uuid("id").primaryKey().defaultRandom(),
+    displayType: varchar("display_type", { length: 16 })
+      .notNull()
+      .default("content")
+      .$type<HomePopupDisplayType>(),
     title: varchar("title", { length: 120 }).notNull(),
     content: text("content").notNull(),
     imageUrl: varchar("image_url", { length: 500 }),
@@ -152,10 +185,16 @@ export const homePopups = pgTable(
     sortOrder: integer("sort_order").notNull().default(0),
     startsAt: timestamp("starts_at", { withTimezone: true }),
     endsAt: timestamp("ends_at", { withTimezone: true }),
-    authorId: uuid("author_id").references(() => adminUsers.id, { onDelete: "set null" }),
+    authorId: uuid("author_id").references(() => adminUsers.id, {
+      onDelete: "set null",
+    }),
     authorName: varchar("author_name", { length: 60 }),
-    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
   },
   (t) => ({
     publishedScheduleIdx: index("home_popups_published_schedule_idx").on(
@@ -163,9 +202,9 @@ export const homePopups = pgTable(
       t.startsAt,
       t.endsAt,
       t.sortOrder,
-      t.createdAt
+      t.createdAt,
     ),
-  })
+  }),
 );
 
 export type HomePopup = typeof homePopups.$inferSelect;

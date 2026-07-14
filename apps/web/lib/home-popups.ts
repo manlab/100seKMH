@@ -4,6 +4,7 @@ import { env } from "@/lib/env";
 
 export type HomePopupView = {
   id: string;
+  displayType: "content" | "image";
   title: string;
   content: string;
   imageUrl: string | null;
@@ -24,6 +25,7 @@ export async function getActiveHomePopups(limit = 3): Promise<HomePopupView[]> {
     return await db()
       .select({
         id: schema.homePopups.id,
+        displayType: schema.homePopups.displayType,
         title: schema.homePopups.title,
         content: schema.homePopups.content,
         imageUrl: schema.homePopups.imageUrl,
@@ -34,11 +36,20 @@ export async function getActiveHomePopups(limit = 3): Promise<HomePopupView[]> {
       .where(
         and(
           eq(schema.homePopups.isPublished, true),
-          or(isNull(schema.homePopups.startsAt), lte(schema.homePopups.startsAt, now)),
-          or(isNull(schema.homePopups.endsAt), gte(schema.homePopups.endsAt, now))
-        )
+          or(
+            isNull(schema.homePopups.startsAt),
+            lte(schema.homePopups.startsAt, now),
+          ),
+          or(
+            isNull(schema.homePopups.endsAt),
+            gte(schema.homePopups.endsAt, now),
+          ),
+        ),
       )
-      .orderBy(desc(schema.homePopups.sortOrder), desc(schema.homePopups.createdAt))
+      .orderBy(
+        desc(schema.homePopups.sortOrder),
+        desc(schema.homePopups.createdAt),
+      )
       .limit(limit);
   } catch (error) {
     // eslint-disable-next-line no-console

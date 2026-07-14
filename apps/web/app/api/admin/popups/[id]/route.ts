@@ -13,7 +13,10 @@ async function requireAdmin() {
 }
 
 function badId() {
-  return NextResponse.json({ ok: false, error: "잘못된 요청입니다." }, { status: 400 });
+  return NextResponse.json(
+    { ok: false, error: "잘못된 요청입니다." },
+    { status: 400 },
+  );
 }
 
 function toNullable(value: string) {
@@ -28,24 +31,35 @@ function toDateOrNull(value: string) {
 /** PUT /api/admin/popups/:id — 메인 팝업 수정. */
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: { id: string } },
 ): Promise<NextResponse> {
   const admin = await requireAdmin();
-  if (!admin) return NextResponse.json({ ok: false, error: "Unauthorized" }, { status: 401 });
+  if (!admin)
+    return NextResponse.json(
+      { ok: false, error: "Unauthorized" },
+      { status: 401 },
+    );
   if (!/^[0-9a-f-]{36}$/i.test(params.id)) return badId();
 
   let body: unknown;
   try {
     body = await req.json();
   } catch {
-    return NextResponse.json({ ok: false, error: "잘못된 요청 형식입니다." }, { status: 400 });
+    return NextResponse.json(
+      { ok: false, error: "잘못된 요청 형식입니다." },
+      { status: 400 },
+    );
   }
 
   const parsed = HomePopupFormSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
-      { ok: false, error: "입력값을 확인해 주세요.", fieldErrors: parsed.error.flatten().fieldErrors },
-      { status: 400 }
+      {
+        ok: false,
+        error: "입력값을 확인해 주세요.",
+        fieldErrors: parsed.error.flatten().fieldErrors,
+      },
+      { status: 400 },
     );
   }
 
@@ -53,6 +67,7 @@ export async function PUT(
   const result = await db()
     .update(schema.homePopups)
     .set({
+      displayType: data.displayType,
       title: data.title,
       content: data.content,
       imageUrl: toNullable(data.imageUrl),
@@ -68,7 +83,10 @@ export async function PUT(
     .returning({ id: schema.homePopups.id });
 
   if (!result[0]) {
-    return NextResponse.json({ ok: false, error: "팝업을 찾을 수 없습니다." }, { status: 404 });
+    return NextResponse.json(
+      { ok: false, error: "팝업을 찾을 수 없습니다." },
+      { status: 404 },
+    );
   }
   return NextResponse.json({ ok: true });
 }
@@ -76,10 +94,14 @@ export async function PUT(
 /** DELETE /api/admin/popups/:id — 메인 팝업 삭제. */
 export async function DELETE(
   _req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: { id: string } },
 ): Promise<NextResponse> {
   const admin = await requireAdmin();
-  if (!admin) return NextResponse.json({ ok: false, error: "Unauthorized" }, { status: 401 });
+  if (!admin)
+    return NextResponse.json(
+      { ok: false, error: "Unauthorized" },
+      { status: 401 },
+    );
   if (!/^[0-9a-f-]{36}$/i.test(params.id)) return badId();
 
   const deleted = await db()
@@ -88,7 +110,10 @@ export async function DELETE(
     .returning({ id: schema.homePopups.id });
 
   if (!deleted[0]) {
-    return NextResponse.json({ ok: false, error: "팝업을 찾을 수 없습니다." }, { status: 404 });
+    return NextResponse.json(
+      { ok: false, error: "팝업을 찾을 수 없습니다." },
+      { status: 404 },
+    );
   }
   return NextResponse.json({ ok: true });
 }

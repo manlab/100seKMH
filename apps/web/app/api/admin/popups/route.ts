@@ -20,21 +20,31 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const token = cookies().get(SESSION_COOKIE)?.value;
   const admin = await verifySession(token);
   if (!admin) {
-    return NextResponse.json({ ok: false, error: "Unauthorized" }, { status: 401 });
+    return NextResponse.json(
+      { ok: false, error: "Unauthorized" },
+      { status: 401 },
+    );
   }
 
   let body: unknown;
   try {
     body = await req.json();
   } catch {
-    return NextResponse.json({ ok: false, error: "잘못된 요청 형식입니다." }, { status: 400 });
+    return NextResponse.json(
+      { ok: false, error: "잘못된 요청 형식입니다." },
+      { status: 400 },
+    );
   }
 
   const parsed = HomePopupFormSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
-      { ok: false, error: "입력값을 확인해 주세요.", fieldErrors: parsed.error.flatten().fieldErrors },
-      { status: 400 }
+      {
+        ok: false,
+        error: "입력값을 확인해 주세요.",
+        fieldErrors: parsed.error.flatten().fieldErrors,
+      },
+      { status: 400 },
     );
   }
 
@@ -42,6 +52,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   const inserted = await db()
     .insert(schema.homePopups)
     .values({
+      displayType: data.displayType,
       title: data.title,
       content: data.content,
       imageUrl: toNullable(data.imageUrl),
