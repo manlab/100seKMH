@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import { pageMeta } from "@/lib/seo";
@@ -74,16 +75,33 @@ export default function HomePage() {
       </h1>
 
       {/* HERO — TODO: Hero slider 컴포넌트로 분리 */}
-      <section className="relative h-[520px] sm:h-[560px] lg:h-[640px] overflow-hidden bg-primary-700 text-white">
+      <section className="relative isolate h-[520px] sm:h-[560px] lg:h-[640px] overflow-hidden bg-primary-700 text-white">
+        <Image
+          src="/images/facility/hero-reception-desk.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+          aria-hidden="true"
+        />
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage:
-              "radial-gradient(circle at 18% 30%, rgba(74,142,156,0.25), transparent 50%), radial-gradient(circle at 86% 65%, rgba(143,191,204,0.18), transparent 55%), linear-gradient(135deg, #08172A 0%, #143A6B 55%, #102E55 100%)",
+            background:
+              "linear-gradient(90deg, rgba(4,12,21,0.88) 0%, rgba(8,23,42,0.70) 42%, rgba(8,23,42,0.26) 72%, rgba(8,23,42,0.10) 100%)",
           }}
           aria-hidden="true"
         />
-        <div className="relative container max-w-container-base h-full flex items-center">
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(circle at 18% 35%, rgba(74,142,156,0.28), transparent 48%)",
+          }}
+          aria-hidden="true"
+        />
+        <div className="relative z-10 container max-w-container-base h-full flex items-center">
           <div className="max-w-[640px]">
             <Eyebrow variant="light">BAEKSE KOREAN MEDICINE</Eyebrow>
             <h2 className="mt-5 text-balanced text-[36px] sm:text-[44px] lg:text-[58px] leading-[1.15] font-extrabold">
