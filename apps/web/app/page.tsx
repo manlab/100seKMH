@@ -25,6 +25,7 @@ type ClinicCard = {
   eyebrow: string;
   title: string;
   desc: string;
+  image?: string;
   big?: boolean;
   accent?: boolean;
 };
@@ -35,6 +36,7 @@ const CLINICS: ClinicCard[] = [
     eyebrow: "01 INTEGRATIVE CANCER CARE",
     title: "암 통합치료 안내",
     desc: "치료 과정과 회복기에 필요한 진료 안내를 확인하세요.",
+    image: "/images/renewal/generated/cancer-recovery.webp",
     big: true,
   },
   {
@@ -54,6 +56,7 @@ const CLINICS: ClinicCard[] = [
     eyebrow: "04 SPINE & JOINT",
     title: "척추관절통증",
     desc: "통증 부위와 생활 습관을 함께 확인해 진료 방향을 안내합니다.",
+    image: "/images/renewal/supplied/spine-model-hero.webp",
     big: true,
   },
   {
@@ -145,7 +148,19 @@ export default async function HomePage() {
                     : "bg-white border border-neutral-200")
               }
             >
-              <div className={c.big || c.accent ? "absolute inset-x-0 bottom-0 p-6 lg:p-8 text-white" : "flex-1 p-5 lg:p-6 flex flex-col h-full"}>
+              {c.image && (
+                <>
+                  <Image
+                    src={c.image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-slow group-hover:scale-105"
+                  />
+                  <div aria-hidden="true" className="absolute inset-0 bg-primary-900/75" />
+                </>
+              )}
+              <div className={c.big || c.accent ? "absolute inset-x-0 bottom-0 z-10 p-6 lg:p-8 text-white" : "flex-1 p-5 lg:p-6 flex flex-col h-full"}>
                 <Eyebrow variant={c.big || c.accent ? "light" : "default"}>{c.eyebrow}</Eyebrow>
                 <h3
                   className={
