@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { permanentRedirect } from "next/navigation";
 import Script from "next/script";
 import { ArrowRight, Phone } from "lucide-react";
 import { medicalConditionJsonLd, pageMeta } from "@/lib/seo";
@@ -77,6 +78,8 @@ const FAQS = [
 ];
 
 export default function SportsPage() {
+  permanentRedirect(ROUTES.spineJoint.sports);
+
   const ld = medicalConditionJsonLd("스포츠 손상", ["침·전기침", "약침", "추나", "도수치료", "한약", "운동재활"]);
 
   return (

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { permanentRedirect } from "next/navigation";
 import Script from "next/script";
 import { ArrowRight, Phone } from "lucide-react";
 import { medicalConditionJsonLd, pageMeta } from "@/lib/seo";
@@ -77,6 +78,8 @@ const FAQS = [
 ];
 
 export default function StenosisPage() {
+  permanentRedirect(ROUTES.spineJoint.stenosis);
+
   const ld = medicalConditionJsonLd("척추관협착증", ["한약", "약침", "봉침", "추나", "침·전기침", "물리치료"]);
 
   return (

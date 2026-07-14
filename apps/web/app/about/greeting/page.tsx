@@ -113,7 +113,7 @@ export default function GreetingPage() {
         {/* Signature placeholder */}
         <div className="mt-10 lg:mt-12 flex items-center gap-5">
           <div
-            className="w-16 h-16 rounded-full bg-gradient-to-br from-primary-100 to-primary-200 border border-primary-200 shrink-0"
+            className="w-16 h-16 rounded-full bg-primary-100 border border-primary-200 shrink-0"
             aria-hidden="true"
           />
           <div>

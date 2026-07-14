@@ -65,15 +65,6 @@ export function Lnb({ title, eyebrow, items, showCtaCard = true }: Props) {
 
         {showCtaCard && (
           <div className="mt-4 rounded-2xl bg-primary-700 text-white p-5 overflow-hidden relative">
-            {/* banner-grain placeholder via inline gradient */}
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle at 22% 28%, rgba(74,142,156,0.18), transparent 42%), radial-gradient(circle at 80% 70%, rgba(143,191,204,0.10), transparent 48%)",
-              }}
-              aria-hidden="true"
-            />
             <div className="relative">
               <span className="text-[11px] tracking-[0.18em] font-semibold text-accent-300">
                 CONSULT

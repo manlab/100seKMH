@@ -31,36 +31,36 @@ type ClinicCard = {
 
 const CLINICS: ClinicCard[] = [
   {
-    href: ROUTES.spine.root,
-    eyebrow: "01 SPINE & JOINT",
-    title: "척추·관절 클리닉",
-    desc: "디스크부터 오십견까지, 통증의 원인을 함께 봅니다.",
+    href: ROUTES.cancer.root,
+    eyebrow: "01 INTEGRATIVE CANCER CARE",
+    title: "암 통합치료 안내",
+    desc: "치료 과정과 회복기에 필요한 진료 안내를 확인하세요.",
     big: true,
-  },
-  {
-    href: ROUTES.posture.root,
-    eyebrow: "02 POSTURE",
-    title: "추나·체형교정",
-    desc: "틀어진 자세를 바로잡는 비수술 한방 교정.",
   },
   {
     href: ROUTES.accident.root,
-    eyebrow: "03 ACCIDENT",
-    title: "교통사고 한방치료",
-    desc: "교통사고 후유증, 자동차보험으로 진료받으세요.",
+    eyebrow: "02 TRAFFIC ACCIDENT",
+    title: "교통사고",
+    desc: "사고 후 증상과 자동차보험 진료절차를 안내합니다.",
   },
   {
-    href: ROUTES.immunity.root,
-    eyebrow: "04 IMMUNITY & CHRONIC",
-    title: "면역·만성 클리닉",
-    desc: "떨어진 면역과 누적된 피로, 한방으로 회복합니다.",
+    href: ROUTES.autonomic.root,
+    eyebrow: "03 AUTONOMIC CARE",
+    title: "자율신경실조증",
+    desc: "일상에 반복되는 불편을 진료와 함께 살펴봅니다.",
+  },
+  {
+    href: ROUTES.spineJoint.root,
+    eyebrow: "04 SPINE & JOINT",
+    title: "척추관절통증",
+    desc: "통증 부위와 생활 습관을 함께 확인해 진료 방향을 안내합니다.",
     big: true,
   },
   {
-    href: ROUTES.womenKids.root,
-    eyebrow: "05 WOMEN & KIDS",
-    title: "여성·소아 클리닉",
-    desc: "산후·생리·갱년기·성장, 시기별 맞춤 진료.",
+    href: ROUTES.diet.root,
+    eyebrow: "05 WEIGHT MANAGEMENT",
+    title: "다이어트",
+    desc: "생활 습관과 건강 상태를 함께 확인하는 체중 관리 상담.",
   },
   {
     href: ROUTES.about.doctors,
@@ -141,14 +141,6 @@ export default async function HomePage() {
                   : c.big
                     ? "bg-primary-700 md:col-span-2 lg:col-span-2 text-white"
                     : "bg-white border border-neutral-200")
-              }
-              style={
-                c.big
-                  ? {
-                      background:
-                        "linear-gradient(135deg, #08172A 0%, #143A6B 55%, #2C555E 100%)",
-                    }
-                  : undefined
               }
             >
               <div className={c.big || c.accent ? "absolute inset-x-0 bottom-0 p-6 lg:p-8 text-white" : "flex-1 p-5 lg:p-6 flex flex-col h-full"}>

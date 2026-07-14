@@ -255,10 +255,6 @@ export default function FacilityPage() {
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   className="object-cover"
                 />
-                <div
-                  className="absolute inset-0 bg-gradient-to-t from-primary-900/55 via-primary-900/10 to-transparent"
-                  aria-hidden="true"
-                />
                 <div className="absolute bottom-4 left-4 rounded-full bg-white/90 backdrop-blur-sm px-4 py-2 text-[18px] font-bold text-primary-700 tabular shadow">
                   {f.floor}
                 </div>

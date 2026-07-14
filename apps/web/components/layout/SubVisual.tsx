@@ -38,21 +38,9 @@ export function SubVisual({
   return (
     <section
       className={cn(
-        "relative overflow-hidden text-white",
-        // gradient + radial overlays — globals.css의 .sub-hero 패턴을 인라인으로
-        "bg-[radial-gradient(circle_at_18%_30%,rgba(74,142,156,0.22),transparent_45%),radial-gradient(circle_at_86%_65%,rgba(143,191,204,0.16),transparent_50%),linear-gradient(135deg,#0C2340_0%,#143A6B_55%,#102E55_100%)]"
+        "relative overflow-hidden bg-primary-700 text-white"
       )}
     >
-      {/* decorative blobs */}
-      <div
-        className="absolute -right-40 -top-40 w-[520px] h-[520px] rounded-full bg-accent-500/15 blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute -left-32 -bottom-32 w-[420px] h-[420px] rounded-full bg-accent-400/10 blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
-
       <div
         className={cn(
           "relative container max-w-container-base",

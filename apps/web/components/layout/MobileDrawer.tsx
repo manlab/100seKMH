@@ -1,11 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { X, MessageSquare, Phone, Clock } from "lucide-react";
 import { GNB, ROUTES } from "@/lib/navigation";
 import { SITE } from "@/lib/site";
-import { cn } from "@/lib/cn";
 
 type Props = {
   open: boolean;
@@ -14,36 +13,68 @@ type Props = {
 };
 
 /**
- * 모바일 풀스크린 드로어. ESC/오버레이 클릭/배경 스크롤 잠금 처리.
+ * 모바일 풀스크린 드로어. ESC 닫기, 포커스 순환, 배경 스크롤 잠금을 처리한다.
  */
 export function MobileDrawer({ open, onClose, activeCategory }: Props) {
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    const focusCloseButton = window.setTimeout(() => closeButtonRef.current?.focus(), 0);
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusable = Array.from(
+        document.querySelectorAll<HTMLElement>(
+          "#mobileDrawer a[href], #mobileDrawer button:not([disabled]), #mobileDrawer summary",
+        ),
+      );
+      const first = focusable[0];
+      const last = focusable.at(-1);
+
+      if (!first || !last) return;
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
     return () => {
+      window.clearTimeout(focusCloseButton);
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      previouslyFocused?.focus();
     };
   }, [open, onClose]);
+
+  if (!open) return null;
 
   return (
     <div
       id="mobileDrawer"
       role="dialog"
+      aria-modal="true"
       aria-label="모바일 메뉴"
-      aria-hidden={!open}
-      className={cn(
-        "fixed inset-0 z-50 lg:hidden bg-white transition-transform duration-300 ease-out-soft",
-        open ? "translate-x-0" : "translate-x-full"
-      )}
+      className="fixed inset-0 z-50 lg:hidden bg-white"
     >
       <div className="flex items-center justify-between h-14 border-b border-neutral-200 px-5">
         <span className="font-bold text-primary-700">메뉴</span>
         <button
           type="button"
           onClick={onClose}
+          ref={closeButtonRef}
           aria-label="메뉴 닫기"
           className="inline-flex items-center justify-center w-11 h-11 rounded-md text-primary-700 hover:bg-primary-50"
         >
@@ -55,7 +86,7 @@ export function MobileDrawer({ open, onClose, activeCategory }: Props) {
         className="overflow-y-auto h-[calc(100%-56px-72px)] px-2 py-3"
         aria-label="모바일 주메뉴"
       >
-        {GNB.map((item) => {
+        {GNB.filter((item) => !item.hidden).map((item) => {
           const itemSeg = item.href.split("/")[1] ?? null;
           const isActive = activeCategory === itemSeg;
           return (

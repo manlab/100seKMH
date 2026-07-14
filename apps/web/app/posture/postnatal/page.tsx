@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { permanentRedirect } from "next/navigation";
 import Script from "next/script";
 import { ArrowRight, Phone } from "lucide-react";
 import { medicalConditionJsonLd, pageMeta } from "@/lib/seo";
@@ -77,6 +78,8 @@ const FAQS = [
 ];
 
 export default function PostnatalPage() {
+  permanentRedirect(ROUTES.spineJoint.chuna);
+
   const ld = medicalConditionJsonLd("산후 체형교정", ["산후 한약", "추나", "도수치료", "산후 운동"]);
 
   return (

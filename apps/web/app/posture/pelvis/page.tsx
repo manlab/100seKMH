@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { permanentRedirect } from "next/navigation";
 import Script from "next/script";
 import { ArrowRight, Phone } from "lucide-react";
 import { medicalConditionJsonLd, pageMeta } from "@/lib/seo";
@@ -77,6 +78,8 @@ const FAQS = [
 ];
 
 export default function PelvisPage() {
+  permanentRedirect(ROUTES.spineJoint.chuna);
+
   const ld = medicalConditionJsonLd("골반·휜다리", ["추나", "약침", "도수치료", "교정 운동"]);
 
   return (

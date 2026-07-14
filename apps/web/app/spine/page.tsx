@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { permanentRedirect } from "next/navigation";
 import { ArrowRight, Phone, Activity, Layers, Clock, Shield } from "lucide-react";
 import { pageMeta } from "@/lib/seo";
 import { GNB, ROUTES } from "@/lib/navigation";
@@ -109,6 +110,8 @@ const FAQS = [
 ];
 
 export default function SpinePage() {
+  permanentRedirect(ROUTES.spineJoint.root);
+
   return (
     <SubLayout
       hero={{

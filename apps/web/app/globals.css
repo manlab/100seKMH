@@ -204,6 +204,11 @@
     visibility: visible;
     transform: translateY(0);
   }
+  .gnb-item:focus-within .mega {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
   .mega {
     opacity: 0;
     visibility: hidden;

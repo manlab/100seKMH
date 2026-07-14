@@ -11,7 +11,7 @@ type Props = {
 };
 
 /**
- * 페이지 본문 내부 강조 CTA 배너 (gradient + 전화/온라인 상담).
+ * 페이지 본문 내부 강조 CTA 배너 (전화/온라인 상담).
  */
 export function InContentCta({
   eyebrow = "CONSULT",
@@ -20,18 +20,6 @@ export function InContentCta({
 }: Props) {
   return (
     <section className="relative overflow-hidden rounded-3xl bg-primary-700 text-white p-8 lg:p-12">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 22% 28%, rgba(74,142,156,0.18), transparent 42%), radial-gradient(circle at 80% 70%, rgba(143,191,204,0.10), transparent 48%)",
-        }}
-        aria-hidden="true"
-      />
-      <div
-        className="absolute -right-24 -top-24 w-[320px] h-[320px] rounded-full bg-accent-500/15 blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
       <div className="relative grid lg:grid-cols-12 gap-6 items-center">
         <div className="lg:col-span-8">
           <Eyebrow variant="light">{eyebrow}</Eyebrow>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { permanentRedirect } from "next/navigation";
 import Script from "next/script";
 import { ArrowRight, Phone } from "lucide-react";
 import { medicalConditionJsonLd, pageMeta } from "@/lib/seo";
@@ -77,6 +78,8 @@ const FAQS = [
 ];
 
 export default function ScoliosisPage() {
+  permanentRedirect(ROUTES.spineJoint.chuna);
+
   const ld = medicalConditionJsonLd("척추측만증", ["추나", "교정 운동", "슬링치료", "도수치료", "한약"]);
 
   return (

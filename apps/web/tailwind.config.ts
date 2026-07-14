@@ -153,13 +153,6 @@ const config: Config = {
         hero: "700ms",
       },
 
-      backgroundImage: {
-        "gradient-hero":
-          "linear-gradient(90deg, rgba(8,23,42,0.65) 0%, rgba(20,58,107,0.30) 60%, rgba(20,58,107,0) 100%)",
-        "gradient-card": "linear-gradient(180deg, rgba(8,23,42,0.0) 50%, rgba(8,23,42,0.65) 100%)",
-        "gradient-primary": "linear-gradient(135deg, #143A6B 0%, #4A8E9C 100%)",
-      },
-
       keyframes: {
         "fade-in": {
           from: { opacity: "0", transform: "translateY(8px)" },

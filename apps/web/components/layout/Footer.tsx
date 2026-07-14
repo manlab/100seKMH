@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import { FOOTER_LINKS, ROUTES } from "@/lib/navigation";
 import { SITE } from "@/lib/site";
+import { BrandLogo } from "@/components/icons/BrandLogo";
 
 /**
  * 글로벌 푸터 — 4단 그리드 (≥md), 모바일 1단 스택.
@@ -14,21 +15,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
           {/* 로고 + 소개 */}
           <div className="md:col-span-4">
-            <div className="flex items-center gap-3">
-              <span
-                aria-hidden="true"
-                className="relative inline-flex items-center justify-center w-10 h-10 rounded-full bg-white text-primary-700 font-bold tabular shadow-md"
-              >
-                <span className="absolute -right-1 -top-1 w-3 h-3 rotate-45 bg-accent-500 rounded-[2px]" />
-                100
-              </span>
-              <span className="flex flex-col leading-none">
-                <span className="text-white text-[18px] font-bold">{SITE.name}</span>
-                <span className="text-[11px] tracking-[0.18em] text-accent-300 mt-1">
-                  BAEKSE KOREAN MEDICINE
-                </span>
-              </span>
-            </div>
+            <Link href={ROUTES.home} aria-label={`${SITE.name} 홈으로`} className="inline-flex max-w-full">
+              <BrandLogo variant="light" className="h-6 lg:h-8 w-auto max-w-full" />
+            </Link>
             <p className="mt-5 text-[13px] leading-relaxed text-primary-100/85">
               정성스러운 한방 치료로 환자 한 분 한 분의<br className="hidden sm:block" />
               오랜 건강을 함께 만들어 갑니다.

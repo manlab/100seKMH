@@ -238,10 +238,6 @@ export default function AdmissionPage() {
                 sizes="(min-width: 1024px) 36vw, 100vw"
                 className="object-cover"
               />
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-primary-900/55 via-primary-900/10 to-transparent"
-                aria-hidden="true"
-              />
             </div>
             <figcaption className="absolute left-4 bottom-4 rounded-full bg-white/90 backdrop-blur-sm px-3.5 py-2 text-[12px] font-semibold text-primary-700 shadow">
               실제 입원실 대표 사진

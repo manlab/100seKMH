@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FocusEvent } from "react";
 import { Menu, Phone } from "lucide-react";
 import { GNB, getActiveCategory, ROUTES } from "@/lib/navigation";
 import { SITE } from "@/lib/site";
@@ -21,6 +21,7 @@ export function Header() {
   const activeCategory = getActiveCategory(pathname);
   const [isScrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -32,7 +33,14 @@ export function Header() {
   // route 변경 시 드로어 닫기
   useEffect(() => {
     setDrawerOpen(false);
+    setOpenMenu(null);
   }, [pathname]);
+
+  const closeMenuAfterFocusLeaves = (event: FocusEvent<HTMLLIElement>) => {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      setOpenMenu(null);
+    }
+  };
 
   return (
     <>
@@ -94,13 +102,23 @@ export function Header() {
           {/* 데스크톱 GNB */}
           <nav className="hidden lg:flex items-center" aria-label="주메뉴">
             <ul className="flex items-center gap-1">
-              {GNB.map((item) => {
+              {GNB.filter((item) => !item.hidden).map((item) => {
                 const itemSeg = item.href.split("/")[1] ?? null;
                 const isActive = activeCategory === itemSeg;
                 return (
-                  <li key={item.label} className="gnb-item relative">
+                  <li
+                    key={item.label}
+                    className="gnb-item relative"
+                    onMouseEnter={() => setOpenMenu(item.label)}
+                    onMouseLeave={() => setOpenMenu(null)}
+                    onFocus={() => setOpenMenu(item.label)}
+                    onBlur={closeMenuAfterFocusLeaves}
+                  >
                     <Link
                       href={item.href}
+                      aria-controls={item.children ? `mega-menu-${itemSeg}` : undefined}
+                      aria-expanded={item.children ? openMenu === item.label : undefined}
+                      aria-haspopup={item.children ? "true" : undefined}
                       className={cn(
                         "gnb-link px-3 xl:px-4 py-5 text-[15px] font-semibold hover:text-accent-600",
                         isActive ? "is-active" : "text-primary-700",
@@ -109,7 +127,10 @@ export function Header() {
                       {item.label}
                     </Link>
                     {item.children && (
-                      <div className="mega absolute left-0 top-full w-[260px] bg-white border border-neutral-200 shadow-lg rounded-b-xl p-3">
+                      <div
+                        id={`mega-menu-${itemSeg}`}
+                        className="mega absolute left-0 top-full w-[260px] bg-white border border-neutral-200 shadow-lg rounded-b-xl p-3"
+                      >
                         <ul className="text-[14px] text-neutral-700">
                           {item.children.map((child) => (
                             <li key={child.href}>

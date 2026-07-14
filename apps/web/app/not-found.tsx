@@ -66,7 +66,7 @@ export default function NotFound() {
           진료 카테고리 바로가기
         </p>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 lg:gap-4 max-w-[1080px] mx-auto">
-          {GNB.slice(1, 7).map((item) => (
+          {GNB.filter((item) => !item.hidden).slice(1).map((item) => (
             <Link
               key={item.href}
               href={item.href}

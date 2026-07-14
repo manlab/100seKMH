@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { permanentRedirect } from "next/navigation";
 import Script from "next/script";
 import { ArrowRight, Phone, Activity, Layers, Clock, Shield } from "lucide-react";
 import { medicalConditionJsonLd, pageMeta } from "@/lib/seo";
@@ -77,6 +78,8 @@ const FAQS = [
 ];
 
 export default function DiscPage() {
+  permanentRedirect(ROUTES.spineJoint.disc);
+
   const ld = medicalConditionJsonLd("디스크 (목·허리)", [
     "한약",
     "약침",

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { GNB, ROUTES } from "@/lib/navigation";
+import { GNB, LEGACY_REDIRECT_PATHS, ROUTES } from "@/lib/navigation";
 import { SITE } from "@/lib/site";
 
 /**
@@ -30,7 +30,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // 중복 제거 (GNB 중복 가능)
   const seen = new Set<string>();
+  const redirectedPaths = new Set<string>(LEGACY_REDIRECT_PATHS);
   const unique = allRoutes.filter((r) => {
+    if (redirectedPaths.has(r.path)) return false;
     if (seen.has(r.path)) return false;
     seen.add(r.path);
     return true;

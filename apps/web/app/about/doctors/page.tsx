@@ -31,7 +31,6 @@ type Doctor = {
   careers: string[];
   activities: string[];
   publications?: string[];
-  tone: "primary" | "accent";
 };
 
 const DOCTORS: Doctor[] = [
@@ -61,7 +60,6 @@ const DOCTORS: Doctor[] = [
       "카이로프랙틱 자격 취득",
       "중국 장춘중의학원 명예박사 학위취득",
     ],
-    tone: "primary",
   },
   {
     name: "윤성수",
@@ -96,14 +94,8 @@ const DOCTORS: Doctor[] = [
       "Health-Screening-Based Chronic Obstructive Pulmonary Disease and Its Effect on Cardiovascular Disease Risk. J Clin Med. 2022",
       "Development and validation of a nonalcoholic fatty liver disease-based self-diagnosis tool for diabetes. Ann Transl Med. 2022",
     ],
-    tone: "accent",
   },
 ];
-
-const TONES: Record<Doctor["tone"], string> = {
-  primary: "from-primary-700 via-primary-600 to-accent-600",
-  accent: "from-accent-600 via-primary-600 to-primary-700",
-};
 
 function DetailList({ title, items }: { title: string; items: string[] }) {
   return (
@@ -127,7 +119,7 @@ function DoctorProfile({ doctor }: { doctor: Doctor }) {
   return (
     <article className="overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-card transition-all duration-base ease-out-soft hover:-translate-y-1 hover:border-accent-200 hover:shadow-xl">
       <div className="grid lg:grid-cols-[360px_1fr]">
-        <div className={`relative min-h-[420px] bg-gradient-to-br ${TONES[doctor.tone]}`}>
+        <div className="relative min-h-[420px] bg-primary-100">
           <Image
             src={doctor.image}
             alt={doctor.imageAlt}
@@ -136,7 +128,7 @@ function DoctorProfile({ doctor }: { doctor: Doctor }) {
             className="object-cover object-top"
             priority={doctor.position === "대표원장"}
           />
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary-900/80 via-primary-900/25 to-transparent p-6 text-white">
+          <div className="absolute inset-x-0 bottom-0 bg-primary-900/75 p-6 text-white">
             <p className="text-[12px] tracking-[0.18em] font-semibold text-accent-200">
               {doctor.position}
             </p>

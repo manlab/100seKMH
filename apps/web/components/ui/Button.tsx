@@ -57,11 +57,12 @@ export function Button(props: ButtonProps | LinkProps) {
 
   if ("href" in props && props.href) {
     if (props.external) {
+      const opensNewWindow = !props.href.startsWith("tel:");
       return (
         <a
           href={props.href}
-          target="_blank"
-          rel="noopener noreferrer"
+          target={opensNewWindow ? "_blank" : undefined}
+          rel={opensNewWindow ? "noopener noreferrer" : undefined}
           className={base}
         >
           {children}
