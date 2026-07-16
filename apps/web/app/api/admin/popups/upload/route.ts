@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { SESSION_COOKIE, verifySession } from "@/lib/auth";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const ALLOWED_TYPES = new Map([
@@ -58,12 +59,29 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     );
   }
 
-  const pathname = `popups/${Date.now()}-${safeName(file.name)}.${extension}`;
-  const blob = await put(pathname, file, {
-    access: "public",
-    addRandomSuffix: true,
-    contentType: file.type,
-  });
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    return NextResponse.json(
+      {
+        ok: false,
+        error: "이미지 저장소 설정이 없습니다. Vercel Blob 연결을 확인해 주세요.",
+      },
+      { status: 500 }
+    );
+  }
 
-  return NextResponse.json({ ok: true, url: blob.url });
+  const pathname = `popups/${Date.now()}-${safeName(file.name)}.${extension}`;
+  try {
+    const blob = await put(pathname, file, {
+      access: "public",
+      addRandomSuffix: true,
+      contentType: file.type,
+    });
+
+    return NextResponse.json({ ok: true, url: blob.url });
+  } catch {
+    return NextResponse.json(
+      { ok: false, error: "이미지 저장 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요." },
+      { status: 500 }
+    );
+  }
 }

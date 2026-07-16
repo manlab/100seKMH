@@ -47,6 +47,31 @@ const POPUP_TYPE_OPTIONS = [
   },
 ];
 
+async function readApiJson<T extends { error?: string }>(
+  res: Response,
+): Promise<T | null> {
+  const contentType = res.headers.get("content-type") ?? "";
+  if (!contentType.includes("application/json")) return null;
+  try {
+    return (await res.json()) as T;
+  } catch {
+    return null;
+  }
+}
+
+function fallbackApiError(res: Response): string {
+  if (res.status === 401) {
+    return "로그인이 만료되었습니다. 다시 로그인한 뒤 업로드해 주세요.";
+  }
+  if (res.status === 404) {
+    return "이미지 업로드 API를 찾을 수 없습니다. 최신 배포가 반영되었는지 확인해 주세요.";
+  }
+  if (res.status >= 500) {
+    return "서버에서 이미지 업로드를 처리하지 못했습니다. 저장소 설정을 확인해 주세요.";
+  }
+  return "요청 처리 중 오류가 발생했습니다.";
+}
+
 function ToggleField({
   checked,
   description,
@@ -132,13 +157,13 @@ export function PopupForm({ mode, initialValues }: Props) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(parsed.data),
       });
-      const data = (await res.json()) as {
+      const data = await readApiJson<{
         ok: boolean;
         id?: string;
         error?: string;
-      };
-      if (!res.ok || !data.ok) {
-        setError(data.error ?? "저장에 실패했습니다.");
+      }>(res);
+      if (!res.ok || !data?.ok) {
+        setError(data?.error ?? fallbackApiError(res));
         setBusy(null);
         return;
       }
@@ -160,9 +185,9 @@ export function PopupForm({ mode, initialValues }: Props) {
       const res = await fetch(`/api/admin/popups/${mode.id}`, {
         method: "DELETE",
       });
-      const data = (await res.json()) as { ok: boolean; error?: string };
-      if (!res.ok || !data.ok) {
-        setError(data.error ?? "삭제에 실패했습니다.");
+      const data = await readApiJson<{ ok: boolean; error?: string }>(res);
+      if (!res.ok || !data?.ok) {
+        setError(data?.error ?? fallbackApiError(res));
         setBusy(null);
         return;
       }
@@ -195,13 +220,13 @@ export function PopupForm({ mode, initialValues }: Props) {
         method: "POST",
         body: formData,
       });
-      const data = (await res.json()) as {
+      const data = await readApiJson<{
         ok: boolean;
         url?: string;
         error?: string;
-      };
-      if (!res.ok || !data.ok || !data.url) {
-        setError(data.error ?? "이미지 업로드에 실패했습니다.");
+      }>(res);
+      if (!res.ok || !data?.ok || !data.url) {
+        setError(data?.error ?? fallbackApiError(res));
         return;
       }
       update("imageUrl", data.url);
