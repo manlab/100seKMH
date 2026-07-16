@@ -58,7 +58,13 @@ export function SubVisual({
             className="object-cover"
             style={{ objectPosition: image.position ?? "center" }}
           />
-          <div className="absolute inset-0 bg-primary-900/85" />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(90deg, rgba(4, 12, 21, 0.78) 0%, rgba(4, 12, 21, 0.58) 48%, rgba(4, 12, 21, 0.32) 100%)",
+            }}
+          />
         </div>
       )}
       <div

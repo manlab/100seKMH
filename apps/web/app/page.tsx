@@ -101,8 +101,8 @@ export default async function HomePage() {
           className="object-cover object-center"
           aria-hidden="true"
         />
-        <div aria-hidden="true" className="absolute inset-0 bg-primary-900/75 lg:hidden" />
-        <div aria-hidden="true" className="absolute inset-y-0 left-0 hidden w-[58%] bg-primary-900/80 lg:block" />
+        <div aria-hidden="true" className="absolute inset-0 bg-primary-900/55 lg:hidden" />
+        <div aria-hidden="true" className="absolute inset-y-0 left-0 hidden w-[58%] bg-primary-900/60 lg:block" />
         <div className="relative z-10 container max-w-container-base h-full flex items-center">
           <div className="max-w-[640px]">
             <Eyebrow variant="light" className="text-accent-200">BAEKSE KOREAN MEDICINE HOSPITAL</Eyebrow>
