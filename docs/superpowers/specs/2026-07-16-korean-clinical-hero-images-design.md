@@ -8,13 +8,14 @@ Replace the empty traffic-accident hero background and the non-Korean cancer-car
 
 - `traffic-accident-care-hero.webp`: Korean adult patient in a modern Korean medicine clinic consultation. The clinician checks neck or lower-back discomfort after a traffic accident. The left side remains visually quiet for the existing hero copy; the people and consultation details sit toward the right.
 - `cancer-integrative-care-hero.webp`: Korean middle-aged or older patient consulting with a Korean medical professional in a calm clinic setting. The left side remains visually quiet for the existing hero copy; the consultation sits toward the right.
+- `cancer-post-surgery-hero.webp`, `cancer-chemo-care-hero.webp`, and `cancer-recurrence-care-hero.webp`: Korean adult patients and medical professionals in distinct recovery, current-condition, and follow-up consultations. Each retains a quiet left copy area and places the consultation on the right.
 
 Both assets are photorealistic, horizontal hero images, contain no text, no logos, no vehicle-crash depiction, and make no treatment-outcome claims.
 
 ## Integration
 
 - Add the traffic-accident asset to the `/accident` `SubLayout` hero directly, which fixes its missing image reference.
-- Change the `/cancer` visual mapping in `subpage-visuals.ts` to the Korean consultation image. Its related cancer subpages continue using their existing images.
+- Change the `/cancer` visual mapping and its three visible cancer subpages in `subpage-visuals.ts` to Korean consultation images.
 - Keep the shared `SubVisual` overlay and all existing content, controls, and layout unchanged.
 
 ## Verification
