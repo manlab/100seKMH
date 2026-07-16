@@ -183,7 +183,7 @@ export const GNB: NavItem[] = [
     ],
   },
   {
-    label: "추나·교정",
+    label: "자세·체형교정",
     href: ROUTES.posture.root,
     hidden: true,
     children: [

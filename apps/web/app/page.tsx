@@ -28,6 +28,7 @@ type ClinicCard = {
   image?: string;
   big?: boolean;
   accent?: boolean;
+  largeTitle?: boolean;
 };
 
 const CLINICS: ClinicCard[] = [
@@ -35,7 +36,7 @@ const CLINICS: ClinicCard[] = [
     href: ROUTES.cancer.root,
     eyebrow: "01 INTEGRATIVE CANCER CARE",
     title: "암 통합치료 안내",
-    desc: "치료 과정과 회복기에 필요한 진료 안내를 확인하세요.",
+    desc: "환자 상태에 맞춘 맞춤형 통합암 치료와 회복 관리를 제공합니다.",
     image: "/images/renewal/generated/cancer-recovery.webp",
     big: true,
   },
@@ -44,18 +45,20 @@ const CLINICS: ClinicCard[] = [
     eyebrow: "02 TRAFFIC ACCIDENT",
     title: "교통사고",
     desc: "사고 후 증상과 자동차보험 진료절차를 안내합니다.",
+    largeTitle: true,
   },
   {
     href: ROUTES.autonomic.root,
     eyebrow: "03 AUTONOMIC CARE",
     title: "자율신경실조증",
     desc: "일상에 반복되는 불편을 진료와 함께 살펴봅니다.",
+    largeTitle: true,
   },
   {
     href: ROUTES.spineJoint.root,
     eyebrow: "04 SPINE & JOINT",
     title: "척추관절통증",
-    desc: "통증 부위와 생활 습관을 함께 확인해 진료 방향을 안내합니다.",
+    desc: "척추·관절 통증의 원인을 면밀히 살펴 맞춤형 치료를 제공합니다.",
     image: "/images/renewal/supplied/spine-model-hero.webp",
     big: true,
   },
@@ -64,6 +67,7 @@ const CLINICS: ClinicCard[] = [
     eyebrow: "05 WEIGHT MANAGEMENT",
     title: "다이어트",
     desc: "생활 습관과 건강 상태를 함께 확인하는 체중 관리 상담.",
+    largeTitle: true,
   },
   {
     href: ROUTES.about.doctors,
@@ -71,6 +75,7 @@ const CLINICS: ClinicCard[] = [
     title: "의료진 소개",
     desc: "한방 전문성을 갖춘 의료진이 책임감을 가지고 진료합니다.",
     accent: true,
+    largeTitle: true,
   },
 ];
 
@@ -88,7 +93,7 @@ export default async function HomePage() {
       {/* HERO — TODO: Hero slider 컴포넌트로 분리 */}
       <section className="relative isolate h-[520px] sm:h-[560px] lg:h-[640px] overflow-hidden bg-primary-700 text-white">
         <Image
-          src="/images/facility/hero-reception-desk.webp"
+          src="/images/renewal/supplied/reception-hero.webp"
           alt=""
           fill
           priority
@@ -100,7 +105,7 @@ export default async function HomePage() {
         <div aria-hidden="true" className="absolute inset-y-0 left-0 hidden w-[58%] bg-primary-900/80 lg:block" />
         <div className="relative z-10 container max-w-container-base h-full flex items-center">
           <div className="max-w-[640px]">
-            <Eyebrow variant="light" className="text-accent-200">BAEKSE KOREAN MEDICINE</Eyebrow>
+            <Eyebrow variant="light" className="text-accent-200">BAEKSE KOREAN MEDICINE HOSPITAL</Eyebrow>
             <h2 className="mt-5 text-balanced text-[36px] sm:text-[44px] lg:text-[58px] leading-[1.15] font-extrabold text-white">
               백세 건강의 시작,<br />
               <span className="text-accent-200">백세한방병원</span>입니다
@@ -157,7 +162,7 @@ export default async function HomePage() {
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     className="object-cover transition-transform duration-slow group-hover:scale-105"
                   />
-                  <div aria-hidden="true" className="absolute inset-0 bg-primary-900/75" />
+                  <div aria-hidden="true" className="absolute inset-0 bg-primary-900/50" />
                 </>
               )}
               <div className={c.big || c.accent ? "absolute inset-x-0 bottom-0 z-10 p-6 lg:p-8 text-white" : "flex-1 p-5 lg:p-6 flex flex-col h-full"}>
@@ -165,7 +170,13 @@ export default async function HomePage() {
                 <h3
                   className={
                     "mt-2 font-bold leading-snug " +
-                    (c.big ? "text-[22px] lg:text-[28px] text-white" : c.accent ? "text-[20px] lg:text-[24px] text-white" : "text-[18px] lg:text-[20px] text-primary-700")
+                    (c.big
+                      ? "text-[22px] lg:text-[28px] text-white"
+                      : c.accent
+                      ? "text-[20px] lg:text-[24px] text-white"
+                      : c.largeTitle
+                      ? "text-[24px] lg:text-[28px] text-primary-700"
+                      : "text-[18px] lg:text-[20px] text-primary-700")
                   }
                 >
                   {c.title}
@@ -198,15 +209,21 @@ export default async function HomePage() {
           <div className="lg:col-span-8">
             <Eyebrow variant="light">WEEKDAY & SATURDAY CARE</Eyebrow>
             <h2 className="mt-3 text-[28px] sm:text-[34px] lg:text-[44px] font-bold text-white text-balanced leading-[1.2]">
-              아플 때 참지 마세요.<br />
-              진료시간에 맞춰 <span className="text-accent-300">{SITE.name}</span>을 찾아주세요.
+              회복이 필요한 모든 순간,<br />
+              백세한방병원이 함께합니다.
             </h2>
             <p className="mt-5 text-[15px] sm:text-[17px] text-primary-100/90 leading-relaxed max-w-[640px]">
-              평일은 09:00–18:00, 토요일은 09:00–13:00까지 진료합니다. 일요일은 휴진입니다.
+              환자 중심의 진료와 체계적인 치료로 건강한 일상을 위해 최선을 다하겠습니다.
             </p>
           </div>
           <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3">
-            <Button href={`tel:${SITE.contact.representative}`} external variant="accent" size="lg" className="justify-between h-14">
+            <Button
+              href={`tel:${SITE.contact.representative}`}
+              external
+              variant="accent"
+              size="lg"
+              className="h-14 justify-between !bg-[#0F3866] !shadow-none hover:!bg-[#0b2d52] hover:!shadow-none"
+            >
               <span className="inline-flex items-center gap-2">
                 <Phone size={18} aria-hidden="true" />
                 지금 전화 상담하기

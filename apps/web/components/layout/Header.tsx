@@ -58,7 +58,7 @@ export function Header() {
                 className="inline-flex w-1.5 h-1.5 rounded-full bg-accent-400"
                 aria-hidden="true"
               />
-              <span>평일 09:00–18:00 · 토요일 09:00–13:00 · 일요일 휴진</span>
+              <span>평일 09:00~18:00 · 토요일 09:00~13:00 · 일요일 휴진</span>
             </div>
             <nav aria-label="유틸리티" className="flex items-center gap-5">
               <Link
@@ -161,7 +161,7 @@ export function Header() {
             </Link>
             <a
               href={`tel:${SITE.contact.representative}`}
-              className="inline-flex items-center gap-2 h-11 px-5 rounded-full text-[14px] font-semibold text-white bg-accent-500 hover:bg-accent-600 shadow-cta transition-colors whitespace-nowrap"
+              className="inline-flex items-center gap-2 h-11 px-5 rounded-full text-[14px] font-semibold text-white bg-[#0F3866] hover:bg-[#0b2d52] transition-colors whitespace-nowrap"
             >
               <Phone size={16} aria-hidden="true" />
               전화 예약

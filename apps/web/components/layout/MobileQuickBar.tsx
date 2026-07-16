@@ -22,7 +22,7 @@ export function MobileQuickBar() {
       </Link>
       <a
         href={`tel:${SITE.contact.representative}`}
-        className="flex flex-col items-center justify-center gap-1 text-[11px] font-semibold bg-accent-500 text-white"
+        className="flex flex-col items-center justify-center gap-1 text-[11px] font-semibold bg-[#0F3866] text-white"
       >
         <Phone size={20} aria-hidden="true" />
         전화걸기

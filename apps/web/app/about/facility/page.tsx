@@ -227,7 +227,7 @@ export default function FacilityPage() {
           <span className="text-accent-600">함께 살핀 진료 공간</span>
         </h2>
         <p className="mt-4 text-[15px] lg:text-[17px] text-neutral-600 leading-relaxed max-w-[760px]">
-          백세한방병원은 부산 서면 MMM메디컬센터 9층, 10층, 12층, 13층, 14층에서
+          백세한방병원은 부산 서면 mmm메디컬센터 9층, 10층, 12층, 13층, 14층에서
           접수·진료·치료·입원 공간을 운영합니다. 실제 시설 사진과 층별 구성을
           확인하시고 방문 동선을 미리 살펴보세요.
         </p>

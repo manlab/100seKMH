@@ -13,18 +13,18 @@ export const SITE = {
   contact: {
     representative: "1668-0103",
     counsel: "1668-0103",
-    address: "부산광역시 부산진구 서면로 32 MMM메디컬센터 9F·10F·12F·13F·14F",
+    address: "부산광역시 부산진구 서면로 32, 9F, 10F, 12F, 13F, 14F (부전동, mmm메디컬센터)",
     businessNumber: "610-96-11438",
     representativeName: "신승협",
   },
 
   // 진료시간
   hours: {
-    weekday: "09:00 — 18:00",
-    saturday: "09:00 — 13:00",
+    weekday: "09:00~18:00",
+    saturday: "09:00~13:00",
     sunday: "휴진",
-    holiday: "별도 공지",
-    lunch: "12:30 — 13:30",
+    holiday: "방문 전 확인",
+    lunch: "12:30~13:30",
   },
 
   social: {

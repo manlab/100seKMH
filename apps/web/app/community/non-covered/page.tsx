@@ -10,7 +10,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 export const metadata: Metadata = pageMeta({
   title: "비급여 항목 안내",
   description:
-    "백세한방병원 비급여 항목 안내 — 한약·약침·추나·시술·서류 발급 등 주요 비급여 진료 비용을 투명하게 안내드립니다.",
+    "백세한방병원 비급여 항목 안내 — 한약·약침·추나·시술·서류 발급 등 주요 비급여 진료 항목을 안내드립니다.",
   path: "/community/non-covered",
 });
 
@@ -33,28 +33,27 @@ type Row = {
   note?: string;
 };
 
-// TODO(client-asset): 실제 비급여 가격 / 보건복지부 고시 기준 검토 후 갱신
 const ROWS: Row[] = [
   // 한약 5
-  { category: "한약", name: "면역·체력 보양 한약", unit: "1일 2회 / 30일", price: "₩ 350,000 ~ 600,000", note: "체질·증상에 따라 차등" },
-  { category: "한약", name: "산후조리 한약", unit: "1일 2회 / 30일", price: "₩ 380,000 ~ 650,000" },
-  { category: "한약", name: "성장 한약 (소아)", unit: "1일 2회 / 30일", price: "₩ 320,000 ~ 580,000", note: "연령·체중에 따라 차등" },
-  { category: "한약", name: "갱년기 한약", unit: "1일 2회 / 30일", price: "₩ 350,000 ~ 600,000" },
-  { category: "한약", name: "총명탕 (학습기)", unit: "1일 2회 / 30일", price: "₩ 320,000 ~ 580,000" },
+  { category: "한약", name: "면역·체력 보양 한약", unit: "1일 2회 / 30일", price: "", note: "체질·증상에 따라 차등" },
+  { category: "한약", name: "산후조리 한약", unit: "1일 2회 / 30일", price: "" },
+  { category: "한약", name: "성장 한약 (소아)", unit: "1일 2회 / 30일", price: "", note: "연령·체중에 따라 차등" },
+  { category: "한약", name: "갱년기 한약", unit: "1일 2회 / 30일", price: "" },
+  { category: "한약", name: "총명탕 (학습기)", unit: "1일 2회 / 30일", price: "" },
   // 약침 3
-  { category: "약침", name: "일반 약침", unit: "1회", price: "₩ 15,000 ~ 25,000" },
-  { category: "약침", name: "봉약침", unit: "1회", price: "₩ 25,000 ~ 40,000", note: "사전 알레르기 검사 필요" },
-  { category: "약침", name: "자하거 약침", unit: "1회", price: "₩ 20,000 ~ 35,000" },
+  { category: "약침", name: "일반 약침", unit: "1회", price: "" },
+  { category: "약침", name: "봉약침", unit: "1회", price: "", note: "사전 알레르기 검사 필요" },
+  { category: "약침", name: "자하거 약침", unit: "1회", price: "" },
   // 추나 2
-  { category: "추나", name: "단순 추나 (비급여 회차)", unit: "1회", price: "₩ 30,000 ~ 50,000", note: "보험 적용 횟수 초과 시" },
-  { category: "추나", name: "복잡 추나 (비급여 회차)", unit: "1회", price: "₩ 50,000 ~ 80,000", note: "보험 적용 횟수 초과 시" },
+  { category: "추나", name: "단순 추나 (비급여 회차)", unit: "1회", price: "", note: "보험 적용 횟수 초과 시" },
+  { category: "추나", name: "복잡 추나 (비급여 회차)", unit: "1회", price: "", note: "보험 적용 횟수 초과 시" },
   // 시술 2
-  { category: "시술", name: "도수치료", unit: "1회 (30분)", price: "₩ 60,000 ~ 100,000" },
-  { category: "시술", name: "체외충격파", unit: "1회", price: "₩ 50,000 ~ 90,000" },
+  { category: "시술", name: "도수치료", unit: "1회 (30분)", price: "" },
+  { category: "시술", name: "체외충격파", unit: "1회", price: "" },
   // 서류 3
-  { category: "서류", name: "진료확인서·소견서", unit: "1부", price: "₩ 3,000 ~ 10,000" },
-  { category: "서류", name: "입퇴원확인서", unit: "1부", price: "₩ 3,000" },
-  { category: "서류", name: "진료기록사본", unit: "1매", price: "₩ 1,000 (1매 추가 ₩ 100)" },
+  { category: "서류", name: "진료확인서·소견서", unit: "1부", price: "" },
+  { category: "서류", name: "입퇴원확인서", unit: "1부", price: "" },
+  { category: "서류", name: "진료기록사본", unit: "1매", price: "" },
 ];
 
 const CATEGORY_BADGE: Record<Row["category"], string> = {
@@ -78,7 +77,7 @@ export default function NonCoveredPage() {
         ),
         description: (
           <>
-            한약·약침·추나·시술·서류 발급까지 백세한방병원의 주요 비급여 항목과 비용을 정리했습니다.<br className="hidden sm:block" />
+            한약·약침·추나·시술·서류 발급까지 백세한방병원의 주요 비급여 항목을 정리했습니다.<br className="hidden sm:block" />
             진료 시 환자분께 다시 한번 안내드립니다.
           </>
         ),
@@ -106,9 +105,9 @@ export default function NonCoveredPage() {
                 비급여 항목 안내 사항
               </h2>
               <ul className="mt-3 space-y-1.5 text-[13px] lg:text-[14px] text-neutral-700 leading-relaxed">
-                <li>· 본 표시 가격은 보건복지부 고시 기준에 따라 의료기관이 자율적으로 정한 비급여 진료비입니다.</li>
-                <li>· 환자 상태·체질·시술 난이도에 따라 실제 비용은 차등 적용될 수 있습니다.</li>
-                <li>· 진료 전 비용 안내를 함께 드리며, 동의 후 진료가 진행됩니다.</li>
+                <li>· 비급여 비용은 확정 후 별도 안내 예정입니다.</li>
+                <li>· 환자 상태·체질·시술 난이도에 따라 진료 내용은 달라질 수 있습니다.</li>
+                <li>· 진료 전 필요한 항목을 안내드리며, 동의 후 진료가 진행됩니다.</li>
                 <li>· 자세한 항목 문의는{" "}
                   <Link href={ROUTES.community.counsel} className="text-primary-600 underline underline-offset-2">
                     온라인 상담
@@ -217,7 +216,7 @@ export default function NonCoveredPage() {
         </div>
 
         <p className="mt-4 text-[12px] text-neutral-500">
-          ※ 본 안내는 일반적인 비급여 가격대이며, 실제 비용은 환자 상태와 시술 난이도에 따라 달라질 수 있습니다.
+          ※ 비용 항목은 확정 후 업데이트 예정입니다.
           (보건복지부 고시 「비급여 진료비용 등의 공개에 관한 기준」 준수)
         </p>
       </Reveal>

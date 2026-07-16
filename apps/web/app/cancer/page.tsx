@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ClinicalGuidePage } from "@/components/clinical/ClinicalGuidePage";
 import { GNB, ROUTES } from "@/lib/navigation";
+import { SITE } from "@/lib/site";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
@@ -18,7 +19,7 @@ export default function CancerPage() {
       categoryEyebrow="INTEGRATIVE CANCER CARE"
       categoryHref={ROUTES.cancer.root}
       lnbItems={items}
-      visualPath={ROUTES.cancer.postSurgery}
+      visualPath={ROUTES.cancer.root}
       title="암 치료 과정의 불편을 함께 살핍니다"
       description="현재 치료 이력과 일상 속 불편을 확인한 뒤, 필요한 진료와 상담 방향을 안내합니다."
       overviewTitle="치료 과정과 회복기에 필요한 진료를 안내합니다"
@@ -30,6 +31,11 @@ export default function CancerPage() {
       ]}
       process={["현재 치료 이력과 불편을 확인합니다.", "복용 중인 약과 검사·치료 일정을 확인합니다.", "개별 상태에 맞는 진료 방향을 상담합니다.", "진료 후 변화를 확인하며 안내를 조정합니다."]}
       notice="암의 진단과 표준 치료 계획은 관련 진료과 의료진의 판단이 우선입니다. 현재 받고 있는 치료와 복용 중인 약을 진료 전 알려 주세요."
+      stats={[
+        { eyebrow: "상태확인", value: "현재 불편과 병력을 함께 확인", caption: "진료 전 상태와 병력 확인" },
+        { eyebrow: "개별안내", value: "진료 후 방향을 안내", caption: "진료 후 방향 안내" },
+        { eyebrow: "문의 및 예약", value: SITE.contact.representative, caption: "대표 번호", accent: true },
+      ]}
     />
   );
 }

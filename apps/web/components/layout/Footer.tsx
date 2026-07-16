@@ -68,7 +68,7 @@ export function Footer() {
             </dl>
             <a
               href={`tel:${SITE.contact.representative}`}
-              className="mt-5 inline-flex items-center gap-2 h-11 px-5 rounded-full bg-accent-500 text-white text-[13px] font-semibold shadow-cta hover:bg-accent-600 transition-colors"
+              className="mt-5 inline-flex items-center gap-2 h-11 px-5 rounded-full bg-[#0F3866] text-white text-[13px] font-semibold hover:bg-[#0b2d52] transition-colors"
             >
               <Phone size={14} aria-hidden="true" />
               전화로 상담 예약 →

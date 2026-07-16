@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ArrowRight, Phone, Activity, Layers, Clock, Shield } from "lucide-react";
 import { pageMeta } from "@/lib/seo";
 import { GNB, ROUTES } from "@/lib/navigation";
@@ -14,7 +15,7 @@ import Link from "next/link";
 export const metadata: Metadata = pageMeta({
   title: "교통사고 한방치료",
   description:
-    "백세한방병원 교통사고 클리닉 — 자동차보험 한방 진료, 입원 가능. 목·허리 통증, 두통, 손저림, 외상 후 피로까지 한방으로 함께 봅니다.",
+    "백세한방병원 교통사고 한방 진료 안내 — 사고 후 목·허리 통증, 두통, 손저림, 외상 후 피로 등 후유 증상을 확인하고 자동차보험 절차를 안내합니다.",
   path: "/accident",
 });
 
@@ -35,17 +36,17 @@ const USPS = [
   {
     Icon: Activity,
     title: "자동차보험 진료",
-    desc: "사고 접수번호와 보험사 정보만 가져오시면 자동차보험 한방 진료가 가능합니다. 보험 처리 절차를 함께 안내드립니다.",
+    desc: "사고 접수번호와 보험사 정보를 확인한 뒤 자동차보험 한방 진료 절차를 안내드립니다.",
   },
   {
     Icon: Layers,
     title: "한방 통증 관리",
-    desc: "한약·침·약침·추나·물리치료를 함께 사용해 사고 후 통증과 후유증을 종합적으로 살핍니다. 한 곳에서 치료가 끊기지 않습니다.",
+    desc: "한약·침·약침·추나·물리치료 등 현재 상태에 맞는 진료 방향을 함께 살핍니다.",
   },
   {
     Icon: Clock,
-    title: "입원 진료 가능",
-    desc: "통증으로 일상이 어려운 경우, 집중 치료가 필요한 경우 입원 진료가 가능합니다. 회복기에 맞춘 한방 진료를 받으실 수 있습니다.",
+    title: "입원 상담 안내",
+    desc: "통원이 어렵거나 집중 진료가 필요한 경우, 진료 후 입원 필요 여부와 일정을 안내드립니다.",
   },
   {
     Icon: Shield,
@@ -55,18 +56,44 @@ const USPS = [
 ];
 
 const TREATMENTS = [
-  { num: "01", title: "한약", desc: "체질·증상에 맞춰 처방. 어혈 해소와 회복기 보양을 함께 봅니다." },
-  { num: "02", title: "침·약침", desc: "통증 부위와 경혈을 함께 자극해 근육 긴장과 통증을 완화합니다." },
-  { num: "03", title: "추나", desc: "사고 충격으로 틀어진 척추·관절 정렬을 단계적으로 잡아드립니다." },
-  { num: "04", title: "물리·도수", desc: "근막·근육 긴장 완화와 회복을 위한 물리치료를 병행합니다." },
+  { num: "01", title: "한약", desc: "체질과 현재 증상을 확인한 뒤 필요한 처방 방향을 안내합니다." },
+  { num: "02", title: "침·약침", desc: "통증 부위와 몸 상태를 함께 살펴 필요한 치료 계획을 세웁니다." },
+  { num: "03", title: "추나", desc: "사고 이후 불편한 움직임과 자세 변화를 확인해 진료합니다." },
+  { num: "04", title: "물리·도수", desc: "근육 긴장과 일상 움직임의 불편을 함께 확인합니다." },
 ];
 
 const PROCESS = [
-  { num: "01", title: "접수·문진", desc: "사고 시점·증상·기존 병력을 먼저 확인합니다." },
-  { num: "02", title: "보험 접수", desc: "사고 접수번호·보험사 정보로 자동차보험 처리 절차를 안내드립니다." },
-  { num: "03", title: "맞춤 치료", desc: "한약·침·약침·추나를 환자 상태에 맞춰 조합합니다.", highlight: true },
-  { num: "04", title: "경과 점검", desc: "정기적으로 경과를 확인하고 치료 강도를 조정합니다." },
-  { num: "05", title: "사후 관리", desc: "후유증 재발 위험을 줄이기 위한 자세·생활 가이드를 안내드립니다." },
+  {
+    num: "01",
+    title: "내원·접수",
+    desc: "사고 접수번호와 보험사 정보를 확인합니다.",
+    image: "/images/renewal/supplied/reception-direction-hero.webp",
+  },
+  {
+    num: "02",
+    title: "상태 확인",
+    desc: "사고 경위, 현재 증상, 기존 병력을 함께 살핍니다.",
+    image: "/images/renewal/supplied/back-consultation.webp",
+  },
+  {
+    num: "03",
+    title: "진료 계획 안내",
+    desc: "한약·침·약침·추나 등 필요한 진료 방향을 안내합니다.",
+    highlight: true,
+    image: "/images/renewal/supplied/chuna-treatment-hero.webp",
+  },
+  {
+    num: "04",
+    title: "경과 확인",
+    desc: "진료 중 느끼는 변화와 불편을 계속 확인합니다.",
+    image: "/images/renewal/supplied/xray-room-hero.webp",
+  },
+  {
+    num: "05",
+    title: "생활 관리",
+    desc: "일상 복귀 과정에서 필요한 자세·생활 안내를 제공합니다.",
+    image: "/images/renewal/generated/walking-recovery.webp",
+  },
 ];
 
 const SELF_CHECK = [
@@ -92,7 +119,7 @@ const FAQS = [
   {
     question: "입원 치료는 어떻게 진행되나요?",
     answer:
-      "통증으로 일상이 어려운 경우, 집중 치료가 필요한 경우 입원 진료를 진행합니다. 입원 가능 여부와 일정은 진료 후 안내드리며, 자세한 사항은 입원 안내 페이지를 참고해 주세요.",
+      "통증이 심하거나 통원이 어려운 경우 진료 후 입원 필요 여부를 함께 확인합니다. 입원 상담과 일정은 현재 상태와 병동 상황에 따라 안내드립니다.",
   },
   {
     question: "보험사 처리는 어떻게 시작하나요?",
@@ -110,17 +137,17 @@ export default function AccidentPage() {
   return (
     <SubLayout
       hero={{
-        eyebrow: "TRAFFIC ACCIDENT CLINIC",
+        eyebrow: "TRAFFIC ACCIDENT CARE",
         title: (
           <>
             교통사고 후유증,<br />
-            <span className="text-accent-300">초기부터 한방으로 함께</span>
+            <span className="text-accent-300">현재 증상부터 함께 확인합니다</span>
           </>
         ),
         description: (
           <>
-            자동차보험으로 한방 진료가 가능합니다. 사고 직후의 통증부터 후유증·회복기까지<br className="hidden sm:block" />
-            한약·침·약침·추나로 끊기지 않는 진료를 안내드리겠습니다.
+            사고 직후의 통증부터 시간이 지나 나타나는 후유 증상까지<br className="hidden sm:block" />
+            현재 상태와 자동차보험 절차를 함께 확인해 안내드립니다.
           </>
         ),
         breadcrumb: [
@@ -129,9 +156,9 @@ export default function AccidentPage() {
           { label: "교통사고" },
         ],
         stats: [
-          { eyebrow: "보험 처리", value: "자동차보험", caption: "한방 진료 가능" },
+          { eyebrow: "보험 처리", value: "자동차보험", caption: "절차 안내" },
           { eyebrow: "진료 시간", value: "월-토", caption: "토요일 오전" },
-          { eyebrow: "입원", value: "입원 가능", caption: "집중 치료 시" },
+          { eyebrow: "입원", value: "상담 안내", caption: "진료 후 확인" },
           { eyebrow: "절차 안내", value: "직접 안내", caption: "접수·서류 도움", accent: true },
         ],
         actions: (
@@ -148,7 +175,7 @@ export default function AccidentPage() {
       }}
       lnb={{
         title: "교통사고",
-        eyebrow: "ACCIDENT CLINIC",
+        eyebrow: "ACCIDENT CARE",
         items: ACCIDENT_CATEGORY.children ?? [],
       }}
     >
@@ -160,13 +187,13 @@ export default function AccidentPage() {
           한방 진료로 함께 봅니다
         </h2>
         <p className="mt-4 text-[15px] lg:text-[17px] text-neutral-600 leading-relaxed max-w-[760px]">
-          백세한방병원 교통사고 클리닉은 자동차보험 적용 한방 진료를 운영합니다. 사고 직후의
-          통증, 며칠 뒤 시작되는 후유증, 회복기 보양까지 한약·침·약침·추나를 함께 사용해
-          끊기지 않는 진료를 안내드립니다.
+          백세한방병원은 교통사고 후 나타나는 통증과 후유 증상을 한방 진료로 함께 살핍니다.
+          사고 접수번호와 보험사 정보를 확인한 뒤, 현재 불편과 생활 상황에 맞춰 필요한 진료 방향을
+          안내드립니다.
         </p>
 
         <div id="symptoms" className="mt-7 lg:mt-9">
-          <h3 className="text-[14px] font-semibold text-primary-600 mb-3">이 클리닉에서 다루는 증상</h3>
+          <h3 className="text-[14px] font-semibold text-primary-600 mb-3">함께 확인하는 증상</h3>
           <ul className="flex flex-wrap gap-2">
             {SYMPTOMS.map((s, i) => (
               <li key={i}>
@@ -187,11 +214,11 @@ export default function AccidentPage() {
         <header className="mb-7 lg:mb-9">
           <Eyebrow>WHY BAEKSE</Eyebrow>
           <h2 className="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
-            백세한방병원 교통사고 클리닉이 다른 점
+            백세한방병원의 교통사고 진료 안내
           </h2>
           <p className="mt-3 text-[15px] text-neutral-600 leading-relaxed max-w-[760px]">
-            교통사고는 통증만의 문제가 아닙니다. 보험 처리, 입원 일정, 회복기 관리까지
-            환자분께서 헤매지 않도록 함께 안내드립니다.
+            교통사고는 통증뿐 아니라 보험 처리, 입원 상담, 생활 관리 안내가 함께 필요한 경우가 많습니다.
+            처음 오시는 분도 절차를 이해하실 수 있도록 차근차근 안내드립니다.
           </p>
         </header>
         <div className="grid sm:grid-cols-2 gap-4 lg:gap-5">
@@ -242,17 +269,28 @@ export default function AccidentPage() {
         </header>
         <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-3">
           {PROCESS.map((p) => (
-            <li key={p.num} className="bg-white border border-neutral-200 rounded-2xl p-5 lg:p-6 shadow-card">
-              <span
-                className={
-                  "inline-flex items-center justify-center w-12 h-12 rounded-full text-white tabular text-[18px] font-bold " +
-                  (p.highlight ? "bg-accent-500 shadow-cta" : "bg-primary-500 shadow-md")
-                }
-              >
-                {p.num}
-              </span>
-              <h3 className="mt-4 text-[16px] font-bold text-primary-700">{p.title}</h3>
-              <p className="mt-2 text-[13px] text-neutral-600 leading-relaxed">{p.desc}</p>
+            <li key={p.num} className="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-card">
+              <div className="relative aspect-[4/3] bg-primary-50">
+                <Image
+                  src={p.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 1024px) 16vw, (min-width: 640px) 50vw, 100vw"
+                  className="object-cover"
+                />
+                <span
+                  className={
+                    "absolute left-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full text-white tabular text-[15px] font-bold " +
+                    (p.highlight ? "bg-[#0F3866]" : "bg-primary-500")
+                  }
+                >
+                  {p.num}
+                </span>
+              </div>
+              <div className="p-5 lg:p-6">
+                <h3 className="text-[16px] font-bold text-primary-700">{p.title}</h3>
+                <p className="mt-2 text-[13px] text-neutral-600 leading-relaxed">{p.desc}</p>
+              </div>
             </li>
           ))}
         </ol>
@@ -301,10 +339,10 @@ export default function AccidentPage() {
         <InContentCta
           title={
             <>
-              사고 후 통증이 남아 있다면,<br />지금 전화 한 통이면 됩니다.
+              사고 후 불편이 남아 있다면,<br />진료 상담을 받아보세요.
             </>
           }
-          description="자동차보험 처리 절차와 진료 일정을 함께 안내해 드리겠습니다."
+          description="자동차보험 처리 절차와 진료 일정을 현재 상황에 맞춰 안내해 드리겠습니다."
         />
       </Reveal>
     </SubLayout>

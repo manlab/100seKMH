@@ -22,6 +22,7 @@ const ABOUT_LNB_ITEMS = GNB.find((g) => g.href === ROUTES.about.greeting)?.child
 type Doctor = {
   name: string;
   position: string;
+  specialty: string;
   headline: string;
   image: string;
   imageAlt: string;
@@ -37,6 +38,7 @@ const DOCTORS: Doctor[] = [
   {
     name: "신승협",
     position: "대표원장",
+    specialty: "한방내과 전문의",
     headline: "오랜 한방병원 진료·운영 경험으로 환자분의 회복을 살핍니다.",
     image: "/images/doctors/shin-seunghyup.jpg",
     imageAlt: "신승협 대표원장 프로필 사진",
@@ -63,7 +65,8 @@ const DOCTORS: Doctor[] = [
   },
   {
     name: "윤성수",
-    position: "진료원장 · 한방내과 전문의",
+    position: "진료원장",
+    specialty: "한방내과 전문의",
     headline: "한방내과 전문의이자 이학 박사로 통합의학 기반 진료를 제공합니다.",
     image: "/images/doctors/yoon-seongsu.jpg",
     imageAlt: "윤성수 진료원장 프로필 사진",
@@ -130,9 +133,11 @@ function DoctorProfile({ doctor }: { doctor: Doctor }) {
           />
           <div className="absolute inset-x-0 bottom-0 bg-primary-900/75 p-6 text-white">
             <p className="text-[12px] tracking-[0.18em] font-semibold text-accent-200">
-              {doctor.position}
+              {doctor.specialty}
             </p>
-            <h3 className="mt-1 text-[28px] font-bold">{doctor.name} 원장</h3>
+            <h3 className="mt-1 text-[28px] font-bold">
+              {doctor.name} {doctor.position}
+            </h3>
           </div>
         </div>
 

@@ -24,12 +24,17 @@ export default function CancerRecurrenceCarePage() {
       overviewTitle="담당 의료진의 치료 계획을 바탕으로 상담합니다"
       overview="전이·재발 여부의 진단과 치료 선택은 관련 진료과 의료진의 검사와 판단을 바탕으로 합니다. 백세한방병원은 현재 치료 계획을 대체하지 않으며, 치료 과정에서 느끼는 불편과 생활 관리에 대한 상담을 안내합니다."
       topics={[
-        { title: "검사·치료 계획 확인", description: "현재 검사 결과와 치료 계획을 알고 계신 범위에서 확인합니다." },
-        { title: "일상 불편 상담", description: "통증, 피로, 수면, 식사처럼 생활에 영향을 주는 변화를 함께 살펴봅니다." },
-        { title: "진료 협력", description: "필요한 경우 현재 치료를 받는 의료기관과의 상담을 우선 권합니다." },
+        { title: "현재 불편 확인", description: "통증, 피로, 수면, 식사처럼 생활에 영향을 주는 변화를 함께 살펴봅니다.", href: ROUTES.cancer.recurrenceCare },
+        { title: "치료 이력 확인", description: "현재 검사 결과와 치료 계획을 알고 계신 범위에서 확인합니다.", href: ROUTES.cancer.recurrenceCare },
+        { title: "생활 관리 상담", description: "필요한 경우 현재 치료를 받는 의료기관과의 상담을 우선 권합니다.", href: ROUTES.cancer.recurrenceCare },
       ]}
       process={["현재 진단과 치료 계획을 확인합니다.", "생활 불편과 복용 약을 함께 확인합니다.", "개별 상태에 맞는 진료 상담을 안내합니다.", "변화가 있으면 담당 의료진과 상담하도록 안내합니다."]}
       notice="수술, 항암치료, 방사선치료, 정기 추적 검사와 관련한 결정은 담당 의료진과 상의해 주세요."
+      stats={[
+        { eyebrow: "상태확인", value: "현재 불편과 병력을 함께 확인", caption: "진료 전 상태와 병력 확인" },
+        { eyebrow: "개별안내", value: "진료 후 방향을 안내", caption: "진료 후 방향 안내" },
+        { eyebrow: "진료 상담이 필요하신가요?", value: "1668-0103", caption: "대표 번호", accent: true },
+      ]}
     />
   );
 }

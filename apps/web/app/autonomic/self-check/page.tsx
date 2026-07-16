@@ -20,11 +20,17 @@ export default function AutonomicSelfCheckPage() {
       categoryHref={ROUTES.autonomic.root}
       lnbItems={items}
       visualPath={ROUTES.autonomic.selfCheck}
-      title="현재 불편을 정리해 보세요"
-      description="진료 전 현재 느끼는 불편과 생활 변화를 정리하는 데 활용할 수 있습니다."
-      overviewTitle="증상과 생활 리듬을 함께 돌아봅니다"
-      overview="아래 항목은 질병을 판정하거나 진단을 대신하지 않습니다. 불편이 시작된 시점, 빈도, 생활에 미치는 영향을 함께 기록해 두면 상담에 도움이 될 수 있습니다."
-      topics={[{ title: "증상 시작 시점", description: "불편이 언제 시작됐는지와 반복되는 상황을 정리합니다." }, { title: "생활 변화", description: "수면, 식사, 업무, 스트레스처럼 최근 달라진 생활 리듬을 확인합니다." }, { title: "복용 중인 약", description: "현재 복용 중인 약과 건강 관련 제품을 진료 시 알려 주세요." }]}
+      title="지금 느끼는 불편을 진료 전 정리합니다"
+      description="반복되는 몸의 변화를 항목별로 체크해 상담 때 빠뜨리지 않도록 준비합니다."
+      overviewTitle="체크 결과보다 변화의 흐름이 중요합니다"
+      overview="자가 확인은 진단을 대신하지 않습니다. 언제부터, 어떤 상황에서, 얼마나 자주 불편한지 정리해 두면 현재 상태를 설명하는 데 도움이 됩니다."
+      topics={[{ title: "수면과 피로", description: "잠드는 시간, 자주 깨는지, 쉬어도 피로가 남는지 확인합니다." }, { title: "두근거림과 어지럼", description: "답답함, 두통, 어지럼이 나타나는 상황과 빈도를 정리합니다." }, { title: "소화와 체온 변화", description: "속 불편, 땀, 손발 차가움처럼 함께 느끼는 변화를 살핍니다." }]}
+      guideTitle="진료 전 함께 확인하는 사항"
+      stats={[
+        { eyebrow: "기록", value: "시작 시점", caption: "처음 불편했던 때 확인" },
+        { eyebrow: "빈도", value: "반복 상황", caption: "자주 나타나는 조건 정리" },
+        { eyebrow: "상담", value: "참고 자료", caption: "진료 시 설명에 활용" },
+      ]}
       selfCheck={selfCheck}
       notice="불편이 심해지거나 갑작스러운 증상이 나타나면 자가 확인 결과와 관계없이 의료진과 상담해 주세요."
     />

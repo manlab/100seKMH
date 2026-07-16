@@ -1,25 +1,16 @@
 import type { Metadata } from "next";
-import { permanentRedirect } from "next/navigation";
-import { ArrowRight, Phone, Activity, Layers, Clock, Shield } from "lucide-react";
-import { pageMeta } from "@/lib/seo";
+import { ClinicalGuidePage } from "@/components/clinical/ClinicalGuidePage";
 import { GNB, ROUTES } from "@/lib/navigation";
-import { SITE } from "@/lib/site";
-import { SubLayout } from "@/components/layout/SubLayout";
-import { Reveal } from "@/components/layout/Reveal";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { Button } from "@/components/ui/Button";
-import { FaqAccordion } from "@/components/ui/FaqAccordion";
-import { InContentCta } from "@/components/ui/InContentCta";
-import Link from "next/link";
+import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "추나·체형교정",
+  title: "자세·체형교정",
   description:
-    "백세한방병원 추나·체형교정 클리닉 — 척추측만증, 일자목·거북목, 골반비대칭, 산후 체형까지. 한방 추나·약침으로 자세를 바로잡습니다.",
-  path: "/posture",
+    "백세한방병원 자세·체형교정 클리닉 — 척추측만증, 일자목·거북목, 골반비대칭, 산후 체형까지. 한방 추나·약침으로 자세를 바로잡습니다.",
+  path: ROUTES.posture.root,
 });
 
-const POSTURE_CATEGORY = GNB.find((g) => g.href === "/posture")!;
+const POSTURE_CATEGORY = GNB.find((g) => g.href === ROUTES.posture.root)!;
 
 const SYMPTOMS = [
   { label: "척추측만증", href: ROUTES.posture.scoliosis },
@@ -34,22 +25,18 @@ const SYMPTOMS = [
 
 const USPS = [
   {
-    Icon: Activity,
     title: "정밀 자세 진단",
     desc: "전신 자세·골반 정렬·근육 긴장도를 함께 살펴보고, 체형 변화의 원인을 찾는 데 집중합니다. 단순 교정이 아닌 분석 기반의 진료 계획을 세웁니다.",
   },
   {
-    Icon: Layers,
     title: "한방 추나·약침",
     desc: "정규 교육과정을 이수한 한의사가 추나(밀고 당기는 수기치료)와 약침을 함께 진행해 자세와 근막을 부드럽게 정돈합니다.",
   },
   {
-    Icon: Clock,
     title: "단계별 교정 계획",
     desc: "한 번의 시술이 아닌 단계별 교정 일정을 안내드립니다. 변화에 맞춰 강도를 조절해 무리 없이 진행하실 수 있습니다.",
   },
   {
-    Icon: Shield,
     title: "사후 자세 관리",
     desc: "교정 이후에도 일상에서 유지할 수 있는 자세 습관과 운동 가이드를 함께 안내합니다. 변화가 오래 유지되도록 도와드립니다.",
   },
@@ -108,208 +95,39 @@ const FAQS = [
 ];
 
 export default function PosturePage() {
-  permanentRedirect(ROUTES.spineJoint.chuna);
-
   return (
-    <SubLayout
-      hero={{
-        eyebrow: "POSTURE & ALIGNMENT CLINIC",
-        title: (
-          <>
-            틀어진 자세를<br />
-            <span className="text-accent-300">단계별로 바로잡습니다</span>
-          </>
-        ),
-        description: (
-          <>
-            정밀 자세 진단부터 한방 추나·약침, 사후 운동 관리까지.<br className="hidden sm:block" />
-            무리 없는 단계적 교정으로 변화를 오래 유지할 수 있도록 안내드리겠습니다.
-          </>
-        ),
-        breadcrumb: [
-          { label: "홈", href: ROUTES.home },
-          { label: "진료안내" },
-          { label: "추나·교정" },
-        ],
-        stats: [
-          { eyebrow: "치료 방식", value: "한방 추나", caption: "정규 추나요법" },
-          { eyebrow: "진료 시간", value: "월-토", caption: "토요일 오전" },
-          { eyebrow: "진단 방식", value: "체형 분석", caption: "정렬·근막 평가" },
-          { eyebrow: "보험 적용", value: "추나 급여", caption: "적응증 기준 적용", accent: true },
-        ],
-        actions: (
-          <>
-            <Button href="#symptoms" variant="secondary" size="lg" className="bg-white text-primary-700 hover:bg-primary-50">
-              증상별 진료 보기 <ArrowRight size={16} aria-hidden="true" />
-            </Button>
-            <Button href={`tel:${SITE.contact.representative}`} external variant="accent" size="lg">
-              <Phone size={16} aria-hidden="true" />
-              지금 전화 상담
-            </Button>
-          </>
-        ),
-      }}
-      lnb={{
-        title: "추나·교정",
-        eyebrow: "POSTURE CLINIC",
-        items: POSTURE_CATEGORY.children ?? [],
-      }}
-    >
-      {/* Overview */}
-      <Reveal as="section">
-        <Eyebrow>CLINIC OVERVIEW</Eyebrow>
-        <h2 className="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
-          틀어진 정렬을 단계별로,<br className="hidden sm:block" />
-          무리 없이 바로잡습니다
-        </h2>
-        <p className="mt-4 text-[15px] lg:text-[17px] text-neutral-600 leading-relaxed max-w-[760px]">
-          백세한방병원 추나·체형교정 클리닉은 척추측만증·일자목·골반 비대칭·산후 체형 같은
-          정렬 문제를 한방 비수술 치료로 봅니다. 표면적인 자세가 아니라 원인을 함께 살피고,
-          한약·추나·약침·운동치료를 환자 상태에 맞게 조합해 드립니다.
-        </p>
-
-        <div id="symptoms" className="mt-7 lg:mt-9">
-          <h3 className="text-[14px] font-semibold text-primary-600 mb-3">이 클리닉에서 다루는 증상</h3>
-          <ul className="flex flex-wrap gap-2">
-            {SYMPTOMS.map((s, i) => (
-              <li key={i}>
-                <Link
-                  href={s.href}
-                  className="inline-flex items-center gap-1.5 h-9 px-4 rounded-full bg-primary-50 text-primary-700 text-[13px] font-semibold hover:bg-primary-100 transition-colors"
-                >
-                  {s.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Reveal>
-
-      {/* USPs */}
-      <Reveal as="section">
-        <header className="mb-7 lg:mb-9">
-          <Eyebrow>WHY BAEKSE</Eyebrow>
-          <h2 className="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
-            백세한방병원 추나·교정 클리닉이 다른 점
-          </h2>
-          <p className="mt-3 text-[15px] text-neutral-600 leading-relaxed max-w-[760px]">
-            자세 변화는 한 번의 시술로 끝나지 않습니다. 정밀 진단부터 사후 관리까지
-            단계별로 함께 진행해야 변화가 오래 유지됩니다.
-          </p>
-        </header>
-        <div className="grid sm:grid-cols-2 gap-4 lg:gap-5">
-          {USPS.map((u) => (
-            <article
-              key={u.title}
-              className="rounded-2xl bg-white border border-neutral-200 shadow-card p-6 lg:p-7 transition-all duration-base ease-out-soft hover:-translate-y-1 hover:border-accent-200 hover:shadow-xl"
-            >
-              <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-accent-50 text-accent-600">
-                <u.Icon size={24} strokeWidth={1.6} aria-hidden="true" />
-              </span>
-              <h3 className="mt-4 text-[18px] lg:text-[20px] font-bold text-primary-700">{u.title}</h3>
-              <p className="mt-2 text-[14px] lg:text-[15px] text-neutral-600 leading-relaxed">{u.desc}</p>
-            </article>
-          ))}
-        </div>
-      </Reveal>
-
-      {/* Treatment methods */}
-      <Reveal as="section">
-        <header className="mb-7 lg:mb-9">
-          <Eyebrow>TREATMENT</Eyebrow>
-          <h2 className="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
-            백세한방병원의 추나·교정 치료 방법
-          </h2>
-        </header>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {TREATMENTS.map((t) => (
-            <article
-              key={t.num}
-              className="rounded-2xl border border-neutral-200 bg-white p-5 lg:p-6 hover:border-primary-200 transition-colors"
-            >
-              <span className="text-[11px] tracking-[0.18em] font-semibold text-accent-600 tabular">METHOD {t.num}</span>
-              <h3 className="mt-2 text-[17px] font-bold text-primary-700">{t.title}</h3>
-              <p className="mt-2 text-[13px] text-neutral-600 leading-relaxed">{t.desc}</p>
-            </article>
-          ))}
-        </div>
-      </Reveal>
-
-      {/* Process */}
-      <Reveal as="section">
-        <header className="mb-8 lg:mb-10">
-          <Eyebrow>CARE PROCESS</Eyebrow>
-          <h2 className="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
-            내원부터 사후 관리까지, 5단계 진료 과정
-          </h2>
-        </header>
-        <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-3">
-          {PROCESS.map((p) => (
-            <li key={p.num} className="bg-white border border-neutral-200 rounded-2xl p-5 lg:p-6 shadow-card">
-              <span
-                className={
-                  "inline-flex items-center justify-center w-12 h-12 rounded-full text-white tabular text-[18px] font-bold " +
-                  (p.highlight ? "bg-accent-500 shadow-cta" : "bg-primary-500 shadow-md")
-                }
-              >
-                {p.num}
-              </span>
-              <h3 className="mt-4 text-[16px] font-bold text-primary-700">{p.title}</h3>
-              <p className="mt-2 text-[13px] text-neutral-600 leading-relaxed">{p.desc}</p>
-            </li>
-          ))}
-        </ol>
-      </Reveal>
-
-      {/* Self check */}
-      <Reveal as="section">
-        <div className="rounded-2xl bg-primary-50 border border-primary-100 p-6 lg:p-8">
-          <header className="mb-5 lg:mb-6">
-            <Eyebrow>SELF CHECK</Eyebrow>
-            <h2 className="mt-2 text-[22px] lg:text-[26px] font-bold text-primary-700 leading-snug">
-              이런 신호가 있다면 자세 진료가 필요합니다
-            </h2>
-          </header>
-          <ul className="grid sm:grid-cols-2 gap-3 lg:gap-4">
-            {SELF_CHECK.map((s, i) => (
-              <li key={i} className="flex items-start gap-3 text-[14px] lg:text-[15px] text-neutral-700">
-                <span className="shrink-0 inline-flex items-center justify-center w-6 h-6 rounded-md bg-accent-500 text-white">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </span>
-                {s}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-5 text-[12px] text-neutral-500">
-            ※ 자가 점검은 일반적인 안내이며, 정확한 진단은 내원 후 진료를 통해 안내드립니다.
-          </p>
-        </div>
-      </Reveal>
-
-      {/* FAQ */}
-      <Reveal as="section">
-        <header className="mb-7 lg:mb-9">
-          <Eyebrow>FAQ</Eyebrow>
-          <h2 className="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
-            자주 묻는 질문
-          </h2>
-        </header>
-        <FaqAccordion items={FAQS} />
-      </Reveal>
-
-      {/* In-content CTA */}
-      <Reveal as="section">
-        <InContentCta
-          title={
-            <>
-              자세가 신경 쓰인다면,<br />먼저 전화 한 통 부탁드립니다.
-            </>
-          }
-          description="진료 가능 일정과 추나·약침 절차를 함께 안내해 드리겠습니다."
-        />
-      </Reveal>
-    </SubLayout>
+    <ClinicalGuidePage
+      category="자세·체형교정"
+      categoryEyebrow="POSTURE & ALIGNMENT"
+      categoryHref={ROUTES.posture.root}
+      lnbItems={POSTURE_CATEGORY.children ?? []}
+      visualPath={ROUTES.posture.root}
+      title="틀어진 자세를 단계별로, 무리 없이 바로잡습니다"
+      description="척추측만증, 일자목·거북목, 골반 비대칭, 산후 체형 같은 정렬 문제를 한방 비수술 치료로 봅니다."
+      overviewTitle="정밀 진단부터 사후 관리까지 단계별로 함께합니다"
+      overview="자세 변화는 한 번의 시술로 끝나지 않습니다. 정밀 진단부터 추나·약침·운동치료, 사후 관리까지 단계별로 진행해야 변화가 오래 유지됩니다."
+      topics={[
+              { title: "정밀 자세 진단", description: "전신 자세·골반 정렬·근육 긴장도를 함께 살펴보고 체형 변화의 원인을 찾습니다.", href: ROUTES.posture.forwardHead },
+              { title: "한방 추나·약침", description: "정규 교육을 이수한 한의사가 추나와 약침을 함께 진행해 자세와 근막을 정돈합니다.", href: ROUTES.posture.forwardHead },
+              { title: "단계별 교정 계획", description: "한 번의 시술이 아닌 단계별 교정 일정을 안내드립니다. 변화에 맞춰 강도를 조절합니다.", href: ROUTES.posture.forwardHead },
+              { title: "사후 자세 관리", description: "교정 이후에도 일상에서 유지할 수 있는 자세 습관과 운동 가이드를 함께 안내합니다.", href: ROUTES.posture.postnatal },
+            ]}
+      guideTitle="진료 전 함께 확인하는 사항"
+      stats={[
+        { eyebrow: "치료 방식", value: "한방 추나", caption: "정규 추나요법" },
+        { eyebrow: "진료 시간", value: "월-토", caption: "토요일 오전" },
+        { eyebrow: "진단 방식", value: "체형 분석", caption: "정렬·근막 평가" },
+        { eyebrow: "보험 적용", value: "추나 급여", caption: "적응증 기준 적용", accent: true },
+      ]}
+      process={[
+        "자세 변화 시점·생활 습관·통증 여부를 먼저 살펴봅니다.",
+        "체형 분석·정렬 평가, 필요한 경우 영상검사를 안내드립니다.",
+        "추나·약침·한약을 환자 상태에 맞춰 단계별로 조합합니다.",
+        "정기적으로 자세 변화를 확인하고 강도를 조절해 드립니다.",
+        "유지 운동·생활 자세 가이드 안내, 재발 위험을 줄여드립니다.",
+      ]}
+      selfCheck={SELF_CHECK}
+      notice="※ 자가 점검은 일반적인 안내이며, 정확한 진단은 내원 후 진료를 통해 안내드립니다."
+    />
   );
 }

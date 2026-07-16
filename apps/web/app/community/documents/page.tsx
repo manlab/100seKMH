@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  FileText,
-  ClipboardList,
-  Stethoscope,
-  Bed,
-  Receipt,
-  FileSignature,
   MapPin,
   Phone,
   Printer,
@@ -29,43 +23,16 @@ export const metadata: Metadata = pageMeta({
 
 const COMMUNITY_LNB = GNB.find((g) => g.href === ROUTES.community.notice)?.children ?? [];
 
-const DOCUMENTS = [
-  {
-    Icon: FileText,
-    title: "진료확인서",
-    desc: "진료 사실을 확인하는 서류. 학교·직장 제출용으로 자주 발급됩니다.",
-    fee: "₩ 3,000",
-  },
-  {
-    Icon: Stethoscope,
-    title: "소견서",
-    desc: "담당 한의사가 작성하는 진료 소견 서류. 보험·재진료 안내 시 활용됩니다.",
-    fee: "₩ 10,000",
-  },
-  {
-    Icon: ClipboardList,
-    title: "진료기록사본",
-    desc: "진료 기록 원본의 사본. 환자 본인 또는 위임자가 신청할 수 있습니다.",
-    fee: "₩ 1,000 / 매 (1매 추가 ₩ 100)",
-  },
-  {
-    Icon: Bed,
-    title: "입퇴원확인서",
-    desc: "입원·퇴원 일자와 사유를 기재한 서류. 보험 청구 시 자주 활용됩니다.",
-    fee: "₩ 3,000",
-  },
-  {
-    Icon: Receipt,
-    title: "진료비 영수증·세부내역서",
-    desc: "당일 진료비 영수증과 세부내역서. 실손보험 청구 시 함께 제출합니다.",
-    fee: "무료",
-  },
-  {
-    Icon: FileSignature,
-    title: "기타 (수수료 별도)",
-    desc: "장애진단서·후유장해진단서 등 특수 서류는 별도 안내드립니다.",
-    fee: "별도 문의",
-  },
+const CERTIFICATE_FEES = [
+  { category: "진단서", name: "일반진단서", fee: "20,000원" },
+  { category: "확인서", name: "입·퇴원확인서", fee: "3,000원" },
+  { category: "확인서", name: "통원확인서", fee: "3,000원" },
+  { category: "확인서", name: "진료확인서", fee: "3,000원" },
+  { category: "소견서", name: "소견서", fee: "20,000원" },
+  { category: "진료기록", name: "진료기록사본(1~5매)", fee: "1매당 1,000원" },
+  { category: "진료기록", name: "진료기록사본(6매 이상)", fee: "1매당 100원" },
+  { category: "기타", name: "보험사 양식에 의한 제증명", fee: "50,000원" },
+  { category: "기타", name: "제증명 재발급", fee: "1,000원" },
 ];
 
 const METHODS = [
@@ -125,33 +92,42 @@ export default function DocumentsPage() {
         items: COMMUNITY_LNB,
       }}
     >
-      {/* Documents grid */}
+      {/* Certificate fees */}
       <Reveal as="section">
         <Eyebrow>DOCUMENTS</Eyebrow>
         <h2 className="mt-2 text-[24px] sm:text-[28px] lg:text-[32px] font-bold text-primary-700 leading-tight">
-          발급 가능한 서류 6종
+          제증명 발급 수수료 안내
         </h2>
         <p className="mt-3 text-[14px] text-neutral-600 max-w-[640px]">
-          아래 서류를 발급해 드립니다. 비용은 보건복지부 고시 기준에 따른 일반적인 가격이며, 실제 발급 시
-          항목·매수에 따라 달라질 수 있습니다.
+          병원 제증명 발급 수수료 기준으로 항목과 수수료를 표기했습니다. 대리인 발급 시에는 위임장 및 관련 증빙서류가 필요할 수 있습니다.
         </p>
 
-        <div className="mt-7 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
-          {DOCUMENTS.map((d) => (
-            <article
-              key={d.title}
-              className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-card hover:border-accent-200 hover:shadow-xl transition-all duration-base ease-out-soft"
-            >
-              <span className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-primary-50 text-primary-600">
-                <d.Icon size={22} strokeWidth={1.6} aria-hidden="true" />
-              </span>
-              <h3 className="mt-4 text-[17px] font-bold text-primary-700">{d.title}</h3>
-              <p className="mt-2 text-[13px] text-neutral-600 leading-relaxed">{d.desc}</p>
-              <div className="mt-4 inline-flex items-center px-3 py-1 rounded-full bg-accent-50 text-accent-700 text-[12px] font-semibold tabular">
-                {d.fee}
-              </div>
-            </article>
-          ))}
+        <div className="mt-7 overflow-x-auto rounded-2xl border border-neutral-200 bg-white shadow-card">
+          <table className="w-full min-w-[560px] text-[14px]">
+            <caption className="sr-only">제증명 발급 수수료 안내</caption>
+            <thead className="bg-primary-50/70 text-primary-700">
+              <tr>
+                <th scope="col" className="w-[150px] px-4 py-3 text-left font-semibold">
+                  구분
+                </th>
+                <th scope="col" className="px-4 py-3 text-left font-semibold">
+                  증명서 종류
+                </th>
+                <th scope="col" className="w-[180px] px-4 py-3 text-right font-semibold">
+                  수수료
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-neutral-200">
+              {CERTIFICATE_FEES.map((row) => (
+                <tr key={`${row.category}-${row.name}`} className="transition-colors hover:bg-primary-50/40">
+                  <td className="px-4 py-3 font-semibold text-primary-700">{row.category}</td>
+                  <td className="px-4 py-3 text-neutral-700">{row.name}</td>
+                  <td className="px-4 py-3 text-right font-semibold tabular text-neutral-800">{row.fee}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </Reveal>
 

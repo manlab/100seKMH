@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { ArrowRight, Check, Phone } from "lucide-react";
+import {
+  Activity,
+  ArrowRight,
+  Check,
+  ClipboardCheck,
+  HeartPulse,
+  Phone,
+} from "lucide-react";
 import type { NavItem } from "@/lib/navigation";
 import { ROUTES } from "@/lib/navigation";
 import { SITE } from "@/lib/site";
@@ -10,6 +17,13 @@ import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { InContentCta } from "@/components/ui/InContentCta";
 import { getSubpageVisual } from "@/lib/subpage-visuals";
+
+type Stat = {
+  eyebrow: string;
+  value: string;
+  caption: string;
+  accent?: boolean;
+};
 
 type GuideLink = {
   title: string;
@@ -31,7 +45,11 @@ type GuidePageProps = {
   selfCheck?: string[];
   notice?: string;
   visualPath: string;
+  stats?: Stat[];
+  guideTitle?: string;
 };
+
+const topicIcons = [ClipboardCheck, Activity, HeartPulse];
 
 export function ClinicalGuidePage({
   category,
@@ -47,6 +65,8 @@ export function ClinicalGuidePage({
   selfCheck,
   notice,
   visualPath,
+  stats,
+  guideTitle = "함께 확인하는 내용",
 }: GuidePageProps) {
   const visual = getSubpageVisual(visualPath);
 
@@ -62,7 +82,7 @@ export function ClinicalGuidePage({
           { label: title },
         ],
         image: visual && { src: visual.hero, position: visual.heroPosition },
-        stats: [
+        stats: stats ?? [
           { eyebrow: "진료 안내", value: "상태 확인", caption: "현재 불편과 병력을 함께 확인" },
           { eyebrow: "상담", value: "개별 안내", caption: "진료 후 방향을 안내" },
           { eyebrow: "진료 시간", value: "월-토", caption: "일요일 휴진" },
@@ -92,21 +112,32 @@ export function ClinicalGuidePage({
             {overview}
           </p>
         </div>
-        {visual && <ContentImage src={visual.body} alt={visual.bodyAlt} className="lg:col-span-5" />}
+        {visual && (
+          <ContentImage
+            src={visual.body}
+            alt={visual.bodyAlt}
+            className="lg:col-span-5"
+            position={visual.bodyPosition}
+          />
+        )}
       </Reveal>
 
       <Reveal as="section" className="break-keep">
         <header className="mb-7 lg:mb-9">
           <Eyebrow>CARE GUIDE</Eyebrow>
           <h2 className="mt-2 text-[26px] sm:text-[30px] lg:text-[36px] font-bold text-primary-700 leading-tight text-balanced">
-            함께 확인하는 내용
+            {guideTitle}
           </h2>
         </header>
         <div className="grid gap-4 sm:grid-cols-2 lg:gap-5">
           {topics.map((topic, index) => {
+            const TopicIcon = topicIcons[index % topicIcons.length]!;
             const content = (
               <>
-                <span className="text-[11px] font-semibold tracking-[0.18em] text-accent-600">GUIDE {String(index + 1).padStart(2, "0")}</span>
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-accent-50 text-accent-600 ring-1 ring-accent-100">
+                  <TopicIcon size={20} aria-hidden="true" />
+                </span>
+                <span className="mt-5 block text-[11px] font-semibold tracking-[0.18em] text-accent-600">GUIDE {String(index + 1).padStart(2, "0")}</span>
                 <h3 className="mt-3 text-[18px] font-bold text-primary-700">{topic.title}</h3>
                 <p className="mt-2 text-[14px] leading-relaxed text-neutral-600">{topic.description}</p>
                 {topic.href && (

@@ -46,13 +46,13 @@ export function SubLayout({ hero, lnb, visualPath, children }: Props) {
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
             <Lnb {...lnb} />
             <div className="lg:col-span-9 space-y-16 lg:space-y-24">
-              {visual && <ContentImage src={visual.body} alt={visual.bodyAlt} />}
+              {visual && <ContentImage src={visual.body} alt={visual.bodyAlt} position={visual.bodyPosition} />}
               {children}
             </div>
           </div>
         ) : (
           <div className="space-y-16 lg:space-y-24">
-            {visual && <ContentImage src={visual.body} alt={visual.bodyAlt} />}
+            {visual && <ContentImage src={visual.body} alt={visual.bodyAlt} position={visual.bodyPosition} />}
             {children}
           </div>
         )}

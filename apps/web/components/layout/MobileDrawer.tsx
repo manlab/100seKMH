@@ -136,7 +136,7 @@ export function MobileDrawer({ open, onClose, activeCategory }: Props) {
         </Link>
         <a
           href={`tel:${SITE.contact.representative}`}
-          className="flex flex-col items-center justify-center h-14 rounded-md bg-accent-500 text-white text-[12px] font-semibold gap-1"
+          className="flex flex-col items-center justify-center h-14 rounded-md bg-[#0F3866] text-white text-[12px] font-semibold gap-1"
         >
           <Phone size={16} aria-hidden="true" />
           전화걸기

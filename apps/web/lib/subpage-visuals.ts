@@ -5,6 +5,7 @@ export type SubpageVisual = {
   heroPosition: string;
   body: string;
   bodyAlt: string;
+  bodyPosition?: string;
   source: VisualSource;
 };
 
@@ -25,13 +26,14 @@ export const SUBPAGE_VISUALS: Record<string, SubpageVisual> = {
     heroPosition: "center 35%",
     body: "/images/renewal/supplied/doctor-consultation.webp",
     bodyAlt: "환자와 상담하는 의료진",
+    bodyPosition: "68% center",
     source: "supplied",
   },
   "/about/facility": {
     hero: "/images/renewal/supplied/facility-corridor-hero.webp",
     heroPosition: "center 50%",
-    body: "/images/renewal/supplied/floor-directory.webp",
-    bodyAlt: "백세한방병원 층별 안내",
+    body: "/images/renewal/supplied/reception-hero.webp",
+    bodyAlt: "백세한방병원 밝은 접수 공간",
     source: "supplied",
   },
   "/about/location": {
@@ -41,26 +43,36 @@ export const SUBPAGE_VISUALS: Record<string, SubpageVisual> = {
     bodyAlt: "백세한방병원 접수 공간",
     source: "supplied",
   },
+  "/cancer": {
+    hero: "/images/renewal/supplied/doctor-consultation.webp",
+    heroPosition: "68% center",
+    body: "/images/renewal/supplied/doctor-consultation.webp",
+    bodyAlt: "의료진과 치료 과정의 불편을 상담하는 성인 환자",
+    bodyPosition: "68% center",
+    source: "supplied",
+  },
   "/cancer/post-surgery": {
-    hero: "/images/renewal/generated/cancer-recovery.webp",
-    heroPosition: "center",
-    body: "/images/renewal/generated/cancer-followup.webp",
-    bodyAlt: "밝은 진료 공간에서 회복 상담을 받는 성인 환자",
-    source: "generated",
+    hero: "/images/renewal/supplied/doctor-consultation.webp",
+    heroPosition: "68% center",
+    body: "/images/renewal/supplied/doctor-consultation.webp",
+    bodyAlt: "의료진과 회복기 불편을 상담하는 성인 환자",
+    bodyPosition: "68% center",
+    source: "supplied",
   },
   "/cancer/chemo-care": {
-    hero: "/images/renewal/generated/cancer-followup.webp",
-    heroPosition: "center",
+    hero: "/images/renewal/supplied/doctor-consultation.webp",
+    heroPosition: "68% center",
     body: "/images/renewal/generated/cancer-recovery.webp",
-    bodyAlt: "차분한 상담 공간의 의료진과 성인 환자",
-    source: "generated",
+    bodyAlt: "차분한 공간에서 컨디션을 살피는 성인 환자",
+    source: "supplied",
   },
   "/cancer/recurrence-care": {
-    hero: "/images/renewal/generated/cancer-recovery.webp",
-    heroPosition: "center",
-    body: "/images/renewal/generated/cancer-followup.webp",
-    bodyAlt: "진료 기록을 함께 확인하는 의료진과 성인 환자",
-    source: "generated",
+    hero: "/images/renewal/supplied/doctor-consultation.webp",
+    heroPosition: "68% center",
+    body: "/images/renewal/supplied/doctor-consultation.webp",
+    bodyAlt: "의료진과 치료 이력을 상담하는 성인 환자",
+    bodyPosition: "68% center",
+    source: "supplied",
   },
   "/accident/aftercare": {
     hero: "/images/renewal/supplied/traffic-aftercare-hero.webp",
@@ -85,24 +97,31 @@ export const SUBPAGE_VISUALS: Record<string, SubpageVisual> = {
   },
   "/autonomic": {
     hero: "/images/renewal/generated/autonomic-care.webp",
-    heroPosition: "center",
+    heroPosition: "center 44%",
     body: "/images/renewal/generated/autonomic-check.webp",
-    bodyAlt: "차분한 진료실에서 생활 습관을 상담하는 성인",
+    bodyAlt: "생활 변화와 현재 불편을 정리하는 성인",
     source: "generated",
   },
   "/autonomic/self-check": {
     hero: "/images/renewal/generated/autonomic-check.webp",
-    heroPosition: "center",
+    heroPosition: "center 46%",
     body: "/images/renewal/generated/autonomic-care.webp",
-    bodyAlt: "건강 상태를 기록하는 성인",
+    bodyAlt: "진료 전 현재 상태를 정리하는 성인",
     source: "generated",
   },
   "/autonomic/care": {
     hero: "/images/renewal/generated/autonomic-care.webp",
-    heroPosition: "center",
-    body: "/images/renewal/generated/walking-recovery.webp",
-    bodyAlt: "안정된 상담 환경에서 진료 계획을 듣는 성인",
+    heroPosition: "center 44%",
+    body: "/images/renewal/supplied/doctor-consultation.webp",
+    bodyAlt: "의료진과 현재 증상을 상담하는 성인",
     source: "generated",
+  },
+  "/spine-joint": {
+    hero: "/images/renewal/supplied/spine-model-hero.webp",
+    heroPosition: "center 48%",
+    body: "/images/renewal/supplied/back-consultation.webp",
+    bodyAlt: "허리와 등 불편감에 관해 상담하는 성인",
+    source: "supplied",
   },
   "/spine-joint/chuna": {
     hero: "/images/renewal/supplied/chuna-treatment-hero.webp",
@@ -135,15 +154,15 @@ export const SUBPAGE_VISUALS: Record<string, SubpageVisual> = {
   "/spine-joint/shoulder": {
     hero: "/images/renewal/supplied/shoulder-exam.webp",
     heroPosition: "center 42%",
-    body: "/images/renewal/generated/sports-recovery.webp",
-    bodyAlt: "편안한 실내에서 어깨 움직임을 확인하는 성인",
+    body: "/images/renewal/supplied/manual-therapy-body.webp",
+    bodyAlt: "어깨와 상체 움직임을 확인하는 치료 공간",
     source: "supplied",
   },
   "/spine-joint/knee": {
     hero: "/images/renewal/supplied/knee-exam-hero.webp",
     heroPosition: "center 45%",
-    body: "/images/renewal/generated/sports-recovery.webp",
-    bodyAlt: "밝은 실내에서 무릎 움직임을 확인하는 성인",
+    body: "/images/renewal/generated/walking-recovery.webp",
+    bodyAlt: "밝은 실내에서 보행 상태를 확인하는 성인",
     source: "supplied",
   },
   "/spine-joint/sports": {
@@ -198,8 +217,8 @@ export const SUBPAGE_VISUALS: Record<string, SubpageVisual> = {
   "/community/non-covered": {
     hero: "/images/renewal/supplied/reception-direction-hero.webp",
     heroPosition: "center 48%",
-    body: "/images/renewal/supplied/floor-directory.webp",
-    bodyAlt: "병원 내 안내 표지",
+    body: "/images/renewal/supplied/reception-hero.webp",
+    bodyAlt: "백세한방병원 접수 공간",
     source: "supplied",
   },
   "/community/documents": {

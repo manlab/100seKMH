@@ -6,10 +6,11 @@ type Props = {
   alt: string;
   className?: string;
   priority?: boolean;
+  position?: string;
 };
 
 /** A stable, responsive editorial image block for subpage content. */
-export function ContentImage({ src, alt, className, priority = false }: Props) {
+export function ContentImage({ src, alt, className, priority = false, position }: Props) {
   return (
     <figure className={cn("overflow-hidden rounded-lg bg-neutral-100", className)}>
       <div className="relative aspect-[4/3]">
@@ -20,6 +21,7 @@ export function ContentImage({ src, alt, className, priority = false }: Props) {
           priority={priority}
           sizes="(min-width: 1024px) 40vw, 100vw"
           className="object-cover"
+          style={{ objectPosition: position ?? "center" }}
         />
       </div>
     </figure>

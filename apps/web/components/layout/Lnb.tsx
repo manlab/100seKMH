@@ -8,7 +8,7 @@ import type { NavItem } from "@/lib/navigation";
 import { SITE } from "@/lib/site";
 
 type Props = {
-  /** LNB 헤더 라벨 (예: "통증클리닉") */
+  /** LNB 헤더 라벨 (예: "척추관절통증") */
   title: string;
   /** 카테고리 영문 라벨 (예: "PAIN CLINIC") */
   eyebrow?: string;
@@ -70,11 +70,11 @@ export function Lnb({ title, eyebrow, items, showCtaCard = true }: Props) {
                 CONSULT
               </span>
               <p className="mt-2 text-[15px] font-semibold text-white leading-snug">
-                통증으로 일상이 어렵다면<br />전화 한 통이면 됩니다.
+                진료 상담이 필요하신가요?<br />대표번호로 안내드립니다.
               </p>
               <a
                 href={`tel:${SITE.contact.representative}`}
-                className="mt-4 inline-flex items-center gap-2 h-10 px-4 rounded-full bg-accent-500 text-white text-[13px] font-semibold shadow-cta hover:bg-accent-600 transition-colors"
+                className="mt-4 inline-flex items-center gap-2 h-10 px-4 rounded-full bg-[#0F3866] text-white text-[13px] font-semibold hover:bg-[#0b2d52] transition-colors"
               >
                 <Phone size={14} aria-hidden="true" />
                 <span className="tabular">{SITE.contact.representative}</span>
