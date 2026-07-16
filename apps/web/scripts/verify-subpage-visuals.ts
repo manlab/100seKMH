@@ -53,11 +53,15 @@ for (const route of requiredPaths) {
     continue;
   }
 
-  if (!visual.bodyAlt.trim()) {
-    failures.push(`${route}: bodyAlt must not be empty.`);
+  if (visual.body && !visual.bodyAlt?.trim()) {
+    failures.push(`${route}: bodyAlt must not be empty when a body image is set.`);
   }
 
-  for (const [kind, assetPath] of Object.entries({ hero: visual.hero, body: visual.body })) {
+  const assets = visual.body
+    ? { hero: visual.hero, body: visual.body }
+    : { hero: visual.hero };
+
+  for (const [kind, assetPath] of Object.entries(assets)) {
     if (!assetPath.startsWith("/images/")) {
       failures.push(`${route}: ${kind} must be a project public image path.`);
       continue;

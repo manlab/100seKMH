@@ -112,10 +112,10 @@ export function ClinicalGuidePage({
             {overview}
           </p>
         </div>
-        {visual && (
+        {visual?.body && (
           <ContentImage
             src={visual.body}
-            alt={visual.bodyAlt}
+            alt={visual.bodyAlt ?? ""}
             className="lg:col-span-5"
             position={visual.bodyPosition}
           />

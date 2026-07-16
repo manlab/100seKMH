@@ -3,8 +3,8 @@ export type VisualSource = "supplied" | "generated";
 export type SubpageVisual = {
   hero: string;
   heroPosition: string;
-  body: string;
-  bodyAlt: string;
+  body?: string;
+  bodyAlt?: string;
   bodyPosition?: string;
   source: VisualSource;
 };
@@ -24,9 +24,6 @@ export const SUBPAGE_VISUALS: Record<string, SubpageVisual> = {
   "/about/doctors": {
     hero: "/images/renewal/supplied/medical-team-hero.webp",
     heroPosition: "center 35%",
-    body: "/images/renewal/supplied/doctor-consultation.webp",
-    bodyAlt: "환자와 상담하는 의료진",
-    bodyPosition: "68% center",
     source: "supplied",
   },
   "/about/facility": {
@@ -39,24 +36,22 @@ export const SUBPAGE_VISUALS: Record<string, SubpageVisual> = {
   "/about/location": {
     hero: "/images/renewal/supplied/reception-direction-hero.webp",
     heroPosition: "center 48%",
-    body: "/images/renewal/supplied/reception-hero.webp",
-    bodyAlt: "백세한방병원 접수 공간",
     source: "supplied",
   },
   "/cancer": {
     hero: "/images/renewal/generated/cancer-integrative-care-hero.webp",
     heroPosition: "center",
-    body: "/images/renewal/supplied/doctor-consultation.webp",
-    bodyAlt: "의료진과 치료 과정의 불편을 상담하는 성인 환자",
-    bodyPosition: "68% center",
+    body: "/images/renewal/generated/cancer-integrative-care-hero.webp",
+    bodyAlt: "한국인 성인 환자와 의료진이 치료 과정의 불편을 상담하는 장면",
+    bodyPosition: "right center",
     source: "generated",
   },
   "/cancer/post-surgery": {
     hero: "/images/renewal/generated/cancer-post-surgery-hero.webp",
     heroPosition: "center",
-    body: "/images/renewal/supplied/doctor-consultation.webp",
-    bodyAlt: "의료진과 회복기 불편을 상담하는 성인 환자",
-    bodyPosition: "68% center",
+    body: "/images/renewal/generated/cancer-post-surgery-hero.webp",
+    bodyAlt: "한국인 성인 환자와 의료진이 회복기 불편을 상담하는 장면",
+    bodyPosition: "right center",
     source: "generated",
   },
   "/cancer/chemo-care": {
@@ -69,9 +64,9 @@ export const SUBPAGE_VISUALS: Record<string, SubpageVisual> = {
   "/cancer/recurrence-care": {
     hero: "/images/renewal/generated/cancer-recurrence-care-hero.webp",
     heroPosition: "center",
-    body: "/images/renewal/supplied/doctor-consultation.webp",
-    bodyAlt: "의료진과 치료 이력을 상담하는 성인 환자",
-    bodyPosition: "68% center",
+    body: "/images/renewal/generated/cancer-recurrence-care-hero.webp",
+    bodyAlt: "한국인 성인 환자와 의료진이 치료 이력을 상담하는 장면",
+    bodyPosition: "right center",
     source: "generated",
   },
   "/accident/aftercare": {
@@ -91,8 +86,9 @@ export const SUBPAGE_VISUALS: Record<string, SubpageVisual> = {
   "/accident/system": {
     hero: "/images/renewal/supplied/inpatient-room-hero.webp",
     heroPosition: "center",
-    body: "/images/renewal/supplied/medical-team-hero.webp",
-    bodyAlt: "진료 공간의 의료진",
+    body: "/images/doctors/shin-seunghyup.jpg",
+    bodyAlt: "신승협 대표원장",
+    bodyPosition: "center 24%",
     source: "supplied",
   },
   "/autonomic": {
@@ -112,8 +108,8 @@ export const SUBPAGE_VISUALS: Record<string, SubpageVisual> = {
   "/autonomic/care": {
     hero: "/images/renewal/generated/autonomic-care.webp",
     heroPosition: "center 44%",
-    body: "/images/renewal/supplied/doctor-consultation.webp",
-    bodyAlt: "의료진과 현재 증상을 상담하는 성인",
+    body: "/images/renewal/generated/autonomic-care.webp",
+    bodyAlt: "현재 불편을 상담하는 성인과 의료진",
     source: "generated",
   },
   "/spine-joint": {
@@ -175,57 +171,47 @@ export const SUBPAGE_VISUALS: Record<string, SubpageVisual> = {
   "/diet": {
     hero: "/images/renewal/generated/diet-guide.webp",
     heroPosition: "center",
-    body: "/images/renewal/generated/diet-guide.webp",
-    bodyAlt: "건강한 식사 계획을 상담하는 성인",
+    body: "/images/renewal/generated/diet-herbal-consultation.webp",
+    bodyAlt: "한약재를 정리하는 한의학 진료 장면",
     source: "generated",
   },
   "/diet/causes": {
     hero: "/images/renewal/generated/autonomic-check.webp",
     heroPosition: "center",
-    body: "/images/renewal/generated/diet-guide.webp",
-    bodyAlt: "일상 습관을 기록하는 성인",
+    body: "/images/renewal/generated/diet-herbal-consultation.webp",
+    bodyAlt: "한약재를 정리하는 한의학 진료 장면",
     source: "generated",
   },
   "/diet/guide": {
     hero: "/images/renewal/generated/diet-guide.webp",
     heroPosition: "center",
-    body: "/images/renewal/generated/diet-guide.webp",
-    bodyAlt: "영양 균형을 고려한 식사 준비 장면",
+    body: "/images/renewal/generated/diet-herbal-consultation.webp",
+    bodyAlt: "한약재를 정리하는 한의학 진료 장면",
     source: "generated",
   },
   "/community/notice": {
     hero: "/images/renewal/supplied/reception-hero.webp",
     heroPosition: "center 48%",
-    body: "/images/renewal/supplied/facility-corridor-hero.webp",
-    bodyAlt: "병원 내부 복도",
     source: "supplied",
   },
   "/community/counsel": {
     hero: "/images/renewal/generated/community-consultation.webp",
     heroPosition: "center",
-    body: "/images/renewal/generated/community-guidance.webp",
-    bodyAlt: "온라인 상담을 준비하는 성인",
     source: "generated",
   },
   "/community/faq": {
     hero: "/images/renewal/generated/community-guidance.webp",
     heroPosition: "center",
-    body: "/images/renewal/generated/community-guidance.webp",
-    bodyAlt: "안내 자료를 살펴보는 성인",
     source: "generated",
   },
   "/community/non-covered": {
     hero: "/images/renewal/supplied/reception-direction-hero.webp",
     heroPosition: "center 48%",
-    body: "/images/renewal/supplied/reception-hero.webp",
-    bodyAlt: "백세한방병원 접수 공간",
     source: "supplied",
   },
   "/community/documents": {
     hero: "/images/renewal/supplied/facility-corridor-hero.webp",
     heroPosition: "center 45%",
-    body: "/images/renewal/supplied/reception-hero.webp",
-    bodyAlt: "병원 접수 공간",
     source: "supplied",
   },
 };
