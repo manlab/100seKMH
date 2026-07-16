@@ -44,12 +44,12 @@ export const SUBPAGE_VISUALS: Record<string, SubpageVisual> = {
     source: "supplied",
   },
   "/cancer": {
-    hero: "/images/renewal/supplied/doctor-consultation.webp",
-    heroPosition: "68% center",
+    hero: "/images/renewal/generated/cancer-integrative-care-hero.webp",
+    heroPosition: "center",
     body: "/images/renewal/supplied/doctor-consultation.webp",
     bodyAlt: "의료진과 치료 과정의 불편을 상담하는 성인 환자",
     bodyPosition: "68% center",
-    source: "supplied",
+    source: "generated",
   },
   "/cancer/post-surgery": {
     hero: "/images/renewal/supplied/doctor-consultation.webp",

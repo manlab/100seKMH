@@ -155,6 +155,10 @@ export default function AccidentPage() {
           { label: "진료안내" },
           { label: "교통사고" },
         ],
+        image: {
+          src: "/images/renewal/generated/traffic-accident-care-hero.webp",
+          position: "center",
+        },
         stats: [
           { eyebrow: "보험 처리", value: "자동차보험", caption: "절차 안내" },
           { eyebrow: "진료 시간", value: "월-토", caption: "토요일 오전" },
