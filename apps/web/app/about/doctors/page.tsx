@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { Award, Phone, ArrowRight } from "lucide-react";
+import { Phone, ArrowRight } from "lucide-react";
 import { pageMeta } from "@/lib/seo";
 import { GNB, ROUTES } from "@/lib/navigation";
 import { SITE } from "@/lib/site";
@@ -22,7 +22,6 @@ const ABOUT_LNB_ITEMS = GNB.find((g) => g.href === ROUTES.about.greeting)?.child
 type Doctor = {
   name: string;
   position: string;
-  specialty: string;
   headline: string;
   image: string;
   imageAlt: string;
@@ -38,7 +37,6 @@ const DOCTORS: Doctor[] = [
   {
     name: "신승협",
     position: "대표원장",
-    specialty: "한방내과 전문의",
     headline: "오랜 한방병원 진료·운영 경험으로 환자분의 회복을 살핍니다.",
     image: "/images/doctors/shin-seunghyup.jpg",
     imageAlt: "신승협 대표원장 프로필 사진",
@@ -66,9 +64,8 @@ const DOCTORS: Doctor[] = [
   {
     name: "윤성수",
     position: "진료원장",
-    specialty: "한방내과 전문의",
     headline: "한방내과 전문의이자 이학 박사로 통합의학 기반 진료를 제공합니다.",
-    image: "/images/doctors/yoon-seongsu.jpg",
+    image: "/images/doctors/yoon-seongsu-clean.webp",
     imageAlt: "윤성수 진료원장 프로필 사진",
     fields: ["한방내과", "통합의학", "암 증상 완화", "면역·만성"],
     education: [
@@ -131,21 +128,16 @@ function DoctorProfile({ doctor }: { doctor: Doctor }) {
             className="object-cover object-top"
             priority={doctor.position === "대표원장"}
           />
-          <div className="absolute inset-x-0 bottom-0 bg-primary-900/75 p-6 text-white">
-            <p className="text-[12px] tracking-[0.18em] font-semibold text-accent-200">
-              {doctor.specialty}
-            </p>
-            <h3 className="mt-1 text-[28px] font-bold">
-              {doctor.name} {doctor.position}
-            </h3>
-          </div>
         </div>
 
         <div className="p-6 lg:p-8">
-          <span className="inline-flex items-center gap-1.5 text-[11px] tracking-[0.18em] font-semibold text-accent-600">
-            <Award size={12} aria-hidden="true" /> MEDICAL TEAM
-          </span>
-          <p className="mt-3 text-[18px] lg:text-[20px] font-bold text-primary-700 leading-snug">
+          <p className="text-[12px] tracking-[0.18em] font-semibold text-accent-600">
+            {doctor.position}
+          </p>
+          <h3 className="mt-1 text-[28px] lg:text-[32px] font-bold text-primary-700">
+            {doctor.name}
+          </h3>
+          <p className="mt-4 text-[18px] lg:text-[20px] font-bold text-primary-700 leading-snug">
             {doctor.headline}
           </p>
 
