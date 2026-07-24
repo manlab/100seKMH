@@ -41,7 +41,7 @@ const ROWS: Row[] = [
   { category: "한약", name: "갱년기 한약", unit: "1일 2회 / 30일", price: "" },
   { category: "한약", name: "총명탕 (학습기)", unit: "1일 2회 / 30일", price: "" },
   // 약침 3
-  { category: "약침", name: "일반 약침", unit: "1회", price: "" },
+  { category: "약침", name: "일반 약침", unit: "1회", price: "20,000~200,000" },
   { category: "약침", name: "봉약침", unit: "1회", price: "", note: "사전 알레르기 검사 필요" },
   { category: "약침", name: "자하거 약침", unit: "1회", price: "" },
   // 추나 2
